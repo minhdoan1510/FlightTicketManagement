@@ -1,0 +1,15 @@
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\bin\Debug\FlightTicketManagement.exe.config
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\bin\Debug\FlightTicketManagement.exe
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\bin\Debug\FlightTicketManagement.pdb
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement.csprojAssemblyReference.cache
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement_MarkupCompile.cache
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement_MarkupCompile.lref
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement.g.resources
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement.Properties.Resources.resources
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.GenerateResource.cache
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.CoreCompileInputs.cache
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement.exe
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\FlightTicketManagement.pdb
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\MainWindow.g.cs
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\App.g.cs
+C:\Users\Minh\source\repos\FlightTicketManagement\FlightTicketManagement\obj\Debug\MainWindow.baml
