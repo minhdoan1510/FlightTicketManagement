@@ -4,6 +4,8 @@ using ServerFTM.Authorization;
 using ServerFTM.BUS;
 using ServerFTM.Models;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ServerFTM.Controllers
@@ -24,7 +26,7 @@ namespace ServerFTM.Controllers
             if (type.Equals("login"))
             {
                 Profile profile = BUS_Controls.Controls.Login(account);
-                if (profile!=null)
+                if (profile != null)
                 {
                     string ip = Request.Headers["X-Forwarded-For"];
                     if (string.IsNullOrEmpty(ip))
@@ -37,20 +39,31 @@ namespace ServerFTM.Controllers
                     return new JsonResult(new ApiResponse<object>(infoLogin));
                 }
                 else
-                    return new JsonResult(new ApiResponse<object>(401, "Incorrect information"));
+                {
+                    Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    return new JsonResult("");
+                }
             }
             else if (type.Equals("signup"))
             {
                 if (BUS_Controls.Controls.Signup(account))
                 {
                     Debug.WriteLine("Signup success User: " + account.Username);
-                    return new JsonResult(new ApiResponse<object>(201, "Account successfully created"));
+                    Response.StatusCode = 201;
+                    return new JsonResult("");
                 }
                 else
-                    return new JsonResult(new ApiResponse<object>(401, "Account creation failed"));
+                {
+                    Response.StatusCode = -201;
+                    return new JsonResult("");
+                }
+                //return new JsonResult(new ApiResponse<object>(401, "Account creation failed"));
             }
             else
-                return new JsonResult(new ApiResponse<object>(401, "Error syntax"));
+            {
+                Response.StatusCode = (int) HttpStatusCode.BadRequest;
+                    return new JsonResult("");
+            }
         }
 
 

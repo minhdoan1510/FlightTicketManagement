@@ -1,0 +1,9 @@
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\bin\Release\netstandard2.0\API.Shared.deps.json
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\bin\Release\netstandard2.0\API.Shared.dll
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\bin\Release\netstandard2.0\API.Shared.pdb
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\obj\Release\netstandard2.0\API.Shared.csprojAssemblyReference.cache
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\obj\Release\netstandard2.0\API.Shared.AssemblyInfoInputs.cache
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\obj\Release\netstandard2.0\API.Shared.AssemblyInfo.cs
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\obj\Release\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\obj\Release\netstandard2.0\API.Shared.dll
+C:\Users\Minh\Desktop\GitCNPM\FlightTicketManagement\Source\API.Shared\obj\Release\netstandard2.0\API.Shared.pdb
