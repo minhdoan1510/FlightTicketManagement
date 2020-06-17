@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightTicketManagement", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerFTM", "ServerFTM\ServerFTM.csproj", "{3C4B84D7-4865-4871-BA19-9A176D9F91DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Shared", "API.Shared\API.Shared.csproj", "{5F2C72BF-4B36-4A5E-930E-2B244DD0403C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3C4B84D7-4865-4871-BA19-9A176D9F91DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C4B84D7-4865-4871-BA19-9A176D9F91DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C4B84D7-4865-4871-BA19-9A176D9F91DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2C72BF-4B36-4A5E-930E-2B244DD0403C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2C72BF-4B36-4A5E-930E-2B244DD0403C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2C72BF-4B36-4A5E-930E-2B244DD0403C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2C72BF-4B36-4A5E-930E-2B244DD0403C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

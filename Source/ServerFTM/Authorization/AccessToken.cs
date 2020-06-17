@@ -69,8 +69,6 @@ namespace ServerFTM.Authorization
                 return Convert.ToBase64String(hmac.Hash);
             }
         }
-
-
         #endregion
     }
 

@@ -1,15 +1,19 @@
 ﻿using ServerFTM.DAL.Controls;
-using ServerFTM.DTO;
+using ServerFTM.Models;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using ServerFTM.Authorization.TokenManager;
 
 namespace ServerFTM.BUS
 {
     class BUS_Controls
     {
-        #region Propertion
+        #region Contructor
         private static BUS_Controls controls;
         public static BUS_Controls Controls
         {
@@ -22,31 +26,43 @@ namespace ServerFTM.BUS
             set => controls = value;
         }
 
-        private Profile accountCurrent;
-        internal Profile AccountCurrent { get => accountCurrent; set => accountCurrent = value; }
+        private BUS_Controls() { }
+        
         #endregion
-        public bool Login(Account account)
+
+        #region DeviceManager
+        public void AddDevice(string idUser,string token)
+        {
+            TokenManager.Instance.AddAccessToken(idUser, token);
+        }
+        public void DelDevice(string token)
+        {
+            TokenManager.Instance.DelAccessToken(token);
+        }
+        #endregion
+
+        #region Account_Handle
+        public Profile Login(Account account)
         {
             DataRow dataAcc = DAL_Controls.Controls.Login(account)?.Rows[0];
 
             if (dataAcc == null)
-                return false;
-            accountCurrent = new Profile();
+                return null;
+            Profile accountCurrent = new Profile();
             accountCurrent.IDAccount = dataAcc["ID"].ToString();
             accountCurrent.Name = dataAcc["Name"].ToString();
-            accountCurrent.Acctype = (TypeAccount)(Convert.ToInt32(dataAcc["TypeAccount"]));
-
-            //accountCurrent.Acctype = Convert.ToInt32(dataAcc.Rows[0].ItemArray[1]);
-            //accountCurrent.Name = dataAcc.Rows[0].ItemArray[2].ToString();
-            return true;
+            accountCurrent.Acctype = (Convert.ToInt32(dataAcc["TypeAccount"]));
+            return accountCurrent;
         }
         public bool Signup(Account account)
         {
             account.IDAccount = GenerateID();
-            account.Acctype = TypeAccount.Staff;
+            account.Acctype = 1;
             return DAL_Controls.Controls.SignUp(account);
         }
+        #endregion
 
+        #region Utilities
         string GenerateID()
         {
             StringBuilder builder = new StringBuilder();
@@ -60,5 +76,7 @@ namespace ServerFTM.BUS
                 .ToList().ForEach(e => builder.Append(e));
             return builder.ToString();
         }
+        #endregion
+
     }
 }

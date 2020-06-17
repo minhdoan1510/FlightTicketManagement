@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.Shared.APIResponse;
+using Microsoft.AspNetCore.Mvc;
 using ServerFTM.Authorization;
 using ServerFTM.BUS;
-using ServerFTM.DTO;
-using System.Collections.Generic;
+using ServerFTM.Models;
 using System.Diagnostics;
-using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ServerFTM.Controllers
 {
@@ -13,72 +12,47 @@ namespace ServerFTM.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        [HttpPost]
-        public HttpResponseMessage Post(string type, string user, string pass, string name)
+        /// <summary>
+        /// Account
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        [HttpPost("{type}")]
+        public async Task<IActionResult> Post(string type, [FromBody] Account account)
         {
-            HttpResponseMessage responseMessage = new HttpResponseMessage();
             if (type.Equals("login"))
             {
-                if (BUS_Controls.Controls.Login(new Account(user, pass)))
+                Profile profile = BUS_Controls.Controls.Login(account);
+                if (profile!=null)
                 {
                     string ip = Request.Headers["X-Forwarded-For"];
                     if (string.IsNullOrEmpty(ip))
-                    {
                         ip = Request.Host.Value;
-                    }
-                    AccessToken accessToken = new AccessToken(BUS_Controls.Controls.AccountCurrent.IDAccount, user, pass, ip);
-                    responseMessage.Headers.Add("ID", accessToken.IdAccount);
-                    responseMessage.Headers.Add("Name", BUS_Controls.Controls.AccountCurrent.Name);
-                    responseMessage.Headers.Add("Token", accessToken.Token);
-                    responseMessage.StatusCode = HttpStatusCode.OK;
-                    Debug.WriteLine("IDuser " + accessToken.Token+ " login" );
+                    AccessToken accessToken = new AccessToken(profile.IDAccount, account.Username, account.Password, ip);
+                    InfoLogin infoLogin = new InfoLogin(accessToken.IdAccount, profile.Name, accessToken.Token);
+                    BUS_Controls.Controls.AddDevice(accessToken.IdAccount, accessToken.Token);
+                    Debug.WriteLine("IDuser " + accessToken.Token + " login");
                     Debug.WriteLine("Create succsess token:" + accessToken.Token);
-
-                    return responseMessage;
+                    return new JsonResult(new ApiResponse<object>(infoLogin));
                 }
                 else
-                {
-                    responseMessage.StatusCode = HttpStatusCode.Unauthorized;
-                    return responseMessage;
-                }
+                    return new JsonResult(new ApiResponse<object>(401, "Incorrect information"));
             }
             else if (type.Equals("signup"))
             {
-                if (BUS_Controls.Controls.Signup(new Account()
+                if (BUS_Controls.Controls.Signup(account))
                 {
-                    Name = name,
-                    Username = user,
-                    Password = pass
-                }))
-                {
-                    Debug.WriteLine("Signup success User: " + user);
-                    responseMessage.StatusCode = HttpStatusCode.Created;
-                    return responseMessage;
+                    Debug.WriteLine("Signup success User: " + account.Username);
+                    return new JsonResult(new ApiResponse<object>(201, "Account successfully created"));
                 }
                 else
-                {
-                    responseMessage.StatusCode = HttpStatusCode.NoContent;
-                    return responseMessage;
-                }
+                    return new JsonResult(new ApiResponse<object>(401, "Account creation failed"));
             }
             else
-            {
-                responseMessage.StatusCode = HttpStatusCode.BadRequest;
-                return responseMessage;
-            }
+                return new JsonResult(new ApiResponse<object>(401, "Error syntax"));
         }
 
-        // PUT api/<AccountController>/5
-        [HttpPut]
-        public void Put(int idAcc, [FromBody] string value)
-        {
 
-        }
-
-        // DELETE api/<AccountController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

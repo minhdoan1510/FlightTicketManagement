@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
-namespace ServerFTM.Authorization
+namespace ServerFTM.Authorization.TokenManager
 {
     public class TokenManager
     {
         static TokenManager instance;
-        public static TokenManager GetInstance
+        public static TokenManager Instance
         {
             get
             {
@@ -24,24 +24,21 @@ namespace ServerFTM.Authorization
             set => instance = value;
         }
 
-        private Hashtable accessTokens;
+        private static List<KeyValuePair<string,string>> accessTokens;
 
         TokenManager()
         {
-            accessTokens = new Hashtable();
+            accessTokens = new List<KeyValuePair<string, string>>();
         }
 
         AccessToken GetInfoToken(string token)
         {
             try
             {
-                // Base64 decode the string, obtaining the token:username:timeStamp.
                 string key = Encoding.UTF8.GetString(Convert.FromBase64String(token));
-                // Split the parts.
                 string[] parts = key.Split(new char[] { ':' });
                 if (parts.Length == 4)
                 {
-                    // Get the hash message, username, and timestamp.
                     string hash = parts[0];
                     string idAcc = parts[1];
                     string username = parts[2];
@@ -60,23 +57,35 @@ namespace ServerFTM.Authorization
             }
         }
 
-        void AddAccessToken(string idAcc, AccessToken token)
+        public void AddAccessToken(string idAcc, string token)
         {
-            accessTokens.Add(idAcc, token);
+            accessTokens.Add(new KeyValuePair<string, string>(idAcc, token));
         }
 
-        AccessToken GetAccessToken(string idAcc)
+        public string GetAccessToken(string idAcc)
         {
-            return (AccessToken)accessTokens[idAcc];
+            return accessTokens.Where(x => x.Key == idAcc).Single().Value;
         }
 
-        string GetIDAccountToken(AccessToken token)
+        public void DelAccessToken(string token)
         {
-            foreach (DictionaryEntry item in accessTokens)
+            foreach (KeyValuePair<string,string> item in accessTokens)
             {
-                if (((AccessToken)item.Value).Token.Equals(token))
+                if(item.Value.Equals(token))
                 {
-                    return (string)item.Key;
+                    accessTokens.Remove(item);
+                    return;
+                }    
+            }
+        }
+
+        public string GetIDAccountToken(string token)
+        {
+            foreach (KeyValuePair<string, string> item in accessTokens)
+            {
+                if (item.Value.Equals(token))
+                {
+                    return item.Key;
                 }                    
             }
             return null;

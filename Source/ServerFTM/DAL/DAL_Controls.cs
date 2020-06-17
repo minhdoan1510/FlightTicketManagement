@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ServerFTM.DTO;
+using ServerFTM.Models;
 using ServerFTM.DAL.Query;
 using ServerFTM.DAL.DataProvider;
 using System.Data;
