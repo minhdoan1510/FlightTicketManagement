@@ -54,7 +54,7 @@ namespace ServerFTM.Controllers
                 }
                 else
                 {
-                    Response.StatusCode = -201;
+                    Response.StatusCode = (int)HttpStatusCode.NotAcceptable;
                     return new JsonResult("");
                 }
                 //return new JsonResult(new ApiResponse<object>(401, "Account creation failed"));
