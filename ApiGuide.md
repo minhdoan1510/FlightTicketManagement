@@ -1,7 +1,6 @@
 # API Reference
 
 ## Cấu trúc chung về API
-
 ```sh
 {
     "isSuccess": <result>, // Trả về kết quả true|false
@@ -15,6 +14,13 @@
 }
 ```
 Các thành phần sẽ thay đổi tuỳ thuộc vào kết quả
+
+Chú ý: Ngoại trừ API lấy thông tin Access Token và đăng kí tài khoản, toàn bộ các API khác đều có 
+header trong request với thông tin:  
+```sh
+"accesstoken": <accesstoken>
+```
+    
 ## Chức năng
 ### 1. Tài khoản
 #### a. Lấy thông tin Access Token 
