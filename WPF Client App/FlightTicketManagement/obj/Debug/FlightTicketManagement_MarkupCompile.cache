@@ -4,16 +4,16 @@
 exe
 C#
 .cs
-D:\check tien\Source\FlightTicketManagement\obj\Debug\
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\
 FlightTicketManagement
 none
 false
 DEBUG;TRACE
-D:\check tien\Source\FlightTicketManagement\App.xaml
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\App.xaml
 17455207693
 
 18118581589
-18-127701499
+18-2122412045
 MainApp\CreateTicket.xaml;MainApp\Donate.xaml;MainApp\Dashboard.xaml;Login\login.xaml;MainApp\Main\MainApp.xaml;MainWindow.xaml;MainApp\PlaneList.xaml;MainApp\PlaneSchedule.xaml;MainApp\Report.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Login\signUp.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;MainApp\Setting.xaml;
 
 False

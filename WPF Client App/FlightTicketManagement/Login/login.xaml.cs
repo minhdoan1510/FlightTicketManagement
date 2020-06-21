@@ -37,7 +37,7 @@ namespace FlightTicketManagement
             string _userName = this.userName.Text;
             string _password = this.passWord.Password.ToString();
 
-            InfoLogin.Data user = await BusControl.Instance.Login(_userName, _password);
+            InfoLogin user = await BusControl.Instance.Login(_userName, _password);
 
             if (user.IsSuccess) {
                 Console.WriteLine("id: " + user.Result.Id + '\n');
@@ -47,15 +47,13 @@ namespace FlightTicketManagement
                 MainWindow.Instance.Hide();
 
                 MainApp mainApp = new MainApp();
-                mainApp.Closed += onMainAppClose; 
+                mainApp.Closed += onMainAppClose;
                 mainApp.Show();
             }
             else {
                 MessageBox.Show("login failed\n");
             }
         }
-
-
 
         private void signUp_Click(object sender, RoutedEventArgs e) {
             MainWindow.Instance.switchToSignUp();

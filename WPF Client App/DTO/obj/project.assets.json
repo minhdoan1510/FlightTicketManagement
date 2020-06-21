@@ -225,11 +225,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\check tien\\Source\\DTO\\DTO.csproj",
+      "projectUniqueName": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\DTO.csproj",
       "projectName": "DTO",
-      "projectPath": "D:\\check tien\\Source\\DTO\\DTO.csproj",
+      "projectPath": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\DTO.csproj",
       "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
-      "outputPath": "D:\\check tien\\Source\\DTO\\obj\\",
+      "outputPath": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -12,7 +12,7 @@ namespace FlightTicketManagement.Helper
 {
     public class APIHelper<T>
     {
-        private InfoLogin.Result userInfo;
+        private InfoLogin userInfo;
         private HttpClient apiClient { get ; set ; }
         private APIHelper()
         {
@@ -31,7 +31,7 @@ namespace FlightTicketManagement.Helper
             }
         }
 
-        private InfoLogin.Result authenticatedUser {
+        private InfoLogin authenticatedUser {
             get { return this.userInfo; }
             set { this.userInfo = value; }
         }

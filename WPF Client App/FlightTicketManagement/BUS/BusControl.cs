@@ -21,12 +21,12 @@ namespace FlightTicketManagement.BUS
             }
         }
 
-        public async Task<InfoLogin.Data> Login(string username, string password) {
+        public async Task<InfoLogin> Login(string username, string password) {
             UserAccount user = new UserAccount();
             user.Username = username;
             user.Password = password;
 
-            return await APIHelper<InfoLogin.Data>.Instance.Post(ApiRoutes.Account.LogIn,
+            return await APIHelper<InfoLogin>.Instance.Post(ApiRoutes.Account.LogIn,
                 user);
         }
 

@@ -34,3 +34,12 @@ D:\New folder\New folder\API.Shared\obj\Debug\netstandard2.0\API.Shared.Assembly
 D:\New folder\New folder\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
 D:\New folder\New folder\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
 D:\New folder\New folder\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.deps.json
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.pdb
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csprojAssemblyReference.cache
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfoInputs.cache
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfo.cs
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb
