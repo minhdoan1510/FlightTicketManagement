@@ -205,3 +205,9 @@ D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.CopyComplete
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.exe
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.pdb
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\Resource\transparentBackground.baml
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignColors.dll
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignColors.pdb
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignThemes.Wpf.xml

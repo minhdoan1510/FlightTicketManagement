@@ -27,4 +27,24 @@
                  UriSource="menu.png" />
     <BitmapImage x:Key="home"
                  UriSource="home.png" />
+    <BitmapImage x:Key="dashboardIcon"
+                 UriSource="dashboard.png" />
+    <BitmapImage x:Key="airplaneIcon"
+                 UriSource="airplane.png" />
+    <BitmapImage x:Key="ticketIcon"
+                 UriSource="ticket.png" />
+    <BitmapImage x:Key="reportIcon"
+                 UriSource="report.png" />
+    <BitmapImage x:Key="listIcon"
+                 UriSource="list.png" />
+    <BitmapImage x:Key="settingIcon"
+                 UriSource="setting.png" />
+    <BitmapImage x:Key="donateIcon"
+                 UriSource="donate.png" />
+    <BitmapImage x:Key="menuBackground"
+                 UriSource="menuBackground.jpg" />
+    <BitmapImage x:Key="menuBackground1"
+                 UriSource="menuBackground1.jpg" />
+    <BitmapImage x:Key="mainIcon"
+                 UriSource="mainIcon.png" />
 </ResourceDictionary>

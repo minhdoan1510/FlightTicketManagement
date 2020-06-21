@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FlightTicketManagement"
              mc:Ignorable="d"
              Background="White"
-             d:DesignHeight="724" d:DesignWidth="1012">
+             d:DesignHeight="722" d:DesignWidth="1094">
     <Grid>
         <TextBlock FontSize="50">create ticket</TextBlock>
     </Grid>

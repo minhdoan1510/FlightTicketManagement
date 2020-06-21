@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FlightTicketManagement"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -11,7 +12,7 @@
         AllowsTransparency="True"
         Title="MainApp"
         Height="768"
-        Width="1024"
+        Width="1300"
         ResizeMode="NoResize"
         Loaded="Window_Loaded">
     <Window.Resources>
@@ -23,491 +24,261 @@
 
     <Border BorderThickness="1"
             BorderBrush="Black"
-            Padding="5">
+            Padding="2">
         <Grid>
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="5"
-                                  Direction="220"
-                                  RenderingBias="Performance"
-                                  ShadowDepth="2" />
-            </Grid.Effect>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="32" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <Grid Grid.Column="0">
+                <Image Source="{StaticResource menuBackground}"
+                       Stretch="Fill" />
 
-            <Grid Grid.Row="0"
-                  x:Name="tileBar"
-                  MouseLeftButtonDown="tileBar_MouseDown"
-                  Background="Transparent">
-            </Grid>
+                <Grid x:Name="menuBar"
+                      Grid.Column="0"
+                      Background="#CC151313">
 
-            <Grid Grid.Row="0">
+                    <Border Margin="0,0,0,691.4"
+                            BorderThickness="0.8"
+                            BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal"
+                                    FlowDirection="LeftToRight"
+                                    Background="#FF1C1B38">
+                            <Image Source="{StaticResource mainIcon}"
+                                   Margin="5" />
+                            <TextBlock Text="MingTuf Airlines"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       FontSize="25"
+                                       Foreground="White"
+                                       Margin="0,0,0,-0.4"
+                                       Width="128" />
+                        </StackPanel>
+                    </Border>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Orientation="Horizontal"
-                            FlowDirection="LeftToRight"
-                            Grid.Column="0">
-
-                    <Button HorizontalAlignment="Right"
-                            Width="32"
-                            Background="Transparent"
-                            x:Name="homeBtn"
-                            BorderThickness="0"
-                            Margin="2"
-                            Style="{StaticResource tileBarButton}"
-                            Click="homeBtn_Click">
-                        <Image Source="{StaticResource home}"
-                               Stretch="Fill">
-
-                        </Image>
-                    </Button>
-
-                    <Button HorizontalAlignment="Right"
-                            Width="32"
-                            Background="Transparent"
-                            x:Name="menuBtn"
-                            BorderThickness="0"
-                            Margin="2"
-                            Style="{StaticResource tileBarButton}"
-                            Click="menuBtn_Click">
-                        <Image Source="{StaticResource menu}"
-                               Stretch="Fill">
-
-                        </Image>
-                    </Button>
-
-                    <TextBlock Text="MingTuf Airline"
-                               FontSize="18"
-                               Margin="5, 3, 0, 0"
-                               Foreground="Black"
-                               Opacity="0.5"
-                               FontWeight="Bold" />
-
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal"
-                            FlowDirection="RightToLeft"
-                            Grid.Column="1">
-
-                    <Button HorizontalAlignment="Right"
-                            Width="32"
-                            Background="Transparent"
-                            x:Name="cancelBtn"
-                            BorderThickness="0"
-                            Margin="2"
-                            Style="{StaticResource tileBarButton}"
-                            Click="cancelBtn_Click">
-                        <Image Source="{StaticResource close}">
-
-                        </Image>
-                    </Button>
-
-                    <Button HorizontalAlignment="Right"
-                            Width="32"
-                            Background="Transparent"
-                            x:Name="maximizeBtn"
-                            Margin="2"
-                            BorderThickness="0"
-                            Style="{StaticResource tileBarButton}"
-                            Click="maximizeBtn_Click">
-                        <Image Source="{StaticResource maximize}">
-
-                        </Image>
-                    </Button>
-
-                    <Button HorizontalAlignment="Right"
-                            Width="32"
-                            Background="Transparent"
-                            x:Name="minimizeBtn"
-                            Margin="2"
-                            BorderThickness="0"
-                            Style="{StaticResource tileBarButton}"
-                            Click="minimizeBtn_Click">
-                        <Image Source="{StaticResource minimize}">
-
-                        </Image>
-                    </Button>
-                </StackPanel>
-            </Grid>
-
-            <Border x:Name="menuSideBar"
-                    Margin="-251,10,1074,156.8"
-                    Grid.Row="1"
-                    MaxWidth="189"
-                    Background="#CC313C4B"
-                    CornerRadius="10"
-                    Panel.ZIndex="1">
-
-                <Border.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform />
-                        <SkewTransform />
-                        <RotateTransform />
-                        <TranslateTransform />
-                    </TransformGroup>
-                </Border.RenderTransform>
-
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding checkMenuMode, ElementName=window}"
-                                         Value="true">
-                                <DataTrigger.EnterActions>
-                                    <BeginStoryboard x:Name="bs1">
-                                        <Storyboard>
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                                                <EasingDoubleKeyFrame KeyTime="0:0:0.35"
-                                                                      Value="250" />
-                                            </DoubleAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </DataTrigger.EnterActions>
-                                <DataTrigger.ExitActions>
-                                    <RemoveStoryboard BeginStoryboardName="bs1" />
-                                </DataTrigger.ExitActions>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding checkMenuMode, ElementName=window}"
-                                         Value="false">
-                                <DataTrigger.EnterActions>
-                                    <BeginStoryboard x:Name="bs2">
-                                        <Storyboard>
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5"
-                                                                      Value="-250" />
-                                            </DoubleAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </DataTrigger.EnterActions>
-                                <DataTrigger.ExitActions>
-                                    <RemoveStoryboard BeginStoryboardName="bs2" />
-                                </DataTrigger.ExitActions>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-
-                <ScrollViewer VerticalScrollBarVisibility="Hidden"
-                              HorizontalScrollBarVisibility="Disabled">
-                    <WrapPanel>
-                        <WrapPanel.Effect>
-                            <DropShadowEffect BlurRadius="5"
-                                              ShadowDepth="2"
-                                              Direction="220"
-                                              RenderingBias="Performance" />
-                        </WrapPanel.Effect>
-                        <Button Margin="10"
+                    <StackPanel Margin="0,143,0,54.4">
+                        <Button x:Name="dashBoardBtn"
+                                Margin="3"
                                 Background="Transparent"
-                                Foreground="White"
-                                Style="{StaticResource menuStyle}"
                                 Click="dashBoardBtn_Click"
-                                Width="165">
-                            <TextBlock FontSize="22"
-                                       Text="DashBoard"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-
-                            </TextBlock>
-                        </Button>
-
-                        <Button Margin="10"
-                                Background="Transparent"
-                                Foreground="White"
-                                Style="{StaticResource menuStyle}"
-                                Click="planeScheduleBtn_Click"
-                                Width="165">
-                            <TextBlock FontSize="22"
-                                       Text="Lập Lịch Máy Bay"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-
-                            </TextBlock>
-                        </Button>
-
-                        <Button Margin="10"
-                                Background="Transparent"
-                                Foreground="White"
-                                Style="{StaticResource menuStyle}"
-                                Click="createTicketBtn_Click"
-                                Width="165">
-                            <TextBlock FontSize="22"
-                                       Text="Tạo Vé Máy Bay"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-
-                            </TextBlock>
-                        </Button>
-
-                        <Button Margin="10"
-                                Background="Transparent"
-                                Foreground="White"
-                                Style="{StaticResource menuStyle}"
-                                Click="reportBtn_Click"
-                                Width="165">
-                            <TextBlock FontSize="22"
-                                       Text="Báo Cáo Doanh Thu"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-
-                            </TextBlock>
-                        </Button>
-
-                        <Button Margin="10"
-                                Background="Transparent"
-                                Foreground="White"
-                                Style="{StaticResource menuStyle}"
-                                Click="planeListBtn_Click"
-                                Width="165">
-                            <TextBlock FontSize="22"
-                                       Text="Danh Sách Chuyến Bay"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-
-                            </TextBlock>
-                        </Button>
-
-                        <Button Margin="10"
-                                Background="Transparent"
-                                Foreground="White"
-                                Style="{StaticResource menuStyle}"
-                                Click="settingBtn_Click"
-                                Width="165">
-                            <TextBlock FontSize="22"
-                                       Text="Cài Đặt"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-
-                            </TextBlock>
-                        </Button>
-
-                        <Button Margin="10"
-                                Background="Transparent"
-                                Foreground="White"
-                                Style="{StaticResource menuStyle}"
-                                Click="donateBtn_Click"
-                                Width="165">
-                            <TextBlock FontSize="22"
-                                       Text="Donate Ủng Hộ Nhà Phát Triển"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-
-                            </TextBlock>
-                        </Button>
-
-                    </WrapPanel>
-                </ScrollViewer>
-
-            </Border>
-
-
-            <Grid Grid.Row="1"
-                  x:Name="homeGrid">
-
-
-                <TextBlock Text="Flight Ticket"
-                           x:Name="appTile"
-                           FontSize="45"
-                           FontWeight="UltraBold"
-                           Margin="10,10,0,0"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top" />
-
-                <StackPanel Margin="0,10,10.4,0"
-                            Orientation="Horizontal"
-                            FlowDirection="RightToLeft"
-                            MaxWidth="610"
-                            MaxHeight="70"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            x:Name="userArea"
-                            Grid.Column="1">
-
-                    <Image Source="{StaticResource man}"
-                           HorizontalAlignment="Right"
-                           x:Name="userImg" />
-
-                    <TextBlock Text="UserName"
-                               x:Name="userName"
-                               FontWeight="Bold"
-                               FontSize="25"
-                               TextAlignment="Left"
-                               Padding="0, 15, 0, 0"
-                               HorizontalAlignment="Right"
-                               Width="466.587">
-                    </TextBlock>
-
-                </StackPanel>
-
-                <Border BorderThickness="1"
-                        BorderBrush="Black"
-                        CornerRadius="10"
-                        Margin="50,150,50,50"
-                        Grid.ColumnSpan="2"
-                        x:Name="buttonArea">
-                    <ScrollViewer VerticalScrollBarVisibility="Hidden"
-                                  HorizontalScrollBarVisibility="Disabled"
-                                  x:Name="scrollView">
-
-                        <ScrollViewer.Style>
-                            <Style x:Name="functionGridNewStyle"
-                                   TargetType="ScrollViewer">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=IsVisible}"
-                                                 Value="true">
-                                        <DataTrigger.EnterActions>
-                                            <BeginStoryboard x:Name="bs1">
-                                                <Storyboard>
-                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
-                                                        <EasingDoubleKeyFrame KeyTime="0"
-                                                                              Value="0.2" />
-                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.8"
-                                                                              Value="1" />
-                                                    </DoubleAnimationUsingKeyFrames>
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </DataTrigger.EnterActions>
-                                        <DataTrigger.ExitActions>
-                                            <RemoveStoryboard BeginStoryboardName="bs1" />
-                                        </DataTrigger.ExitActions>
-                                    </DataTrigger>
-                                </Style.Triggers>
-
-                            </Style>
-                        </ScrollViewer.Style>
-
-                        <WrapPanel x:Name="buttonGrid"
-                                   Margin="5">
-
-                            <Button x:Name="dashBoardBtn"
-                                    Width="280"
-                                    Height="150"
-                                    Margin="10"
-                                    Background="#FF9A9F63"
-                                    Click="dashBoardBtn_Click"
-                                    Style="{StaticResource tileButton}">
+                                BorderThickness="0"
+                                Padding="0"
+                                Height="45">
+                            <StackPanel FlowDirection="LeftToRight"
+                                        Orientation="Horizontal"
+                                        Width="181">
+                                <Image Source="{StaticResource dashboardIcon}"
+                                       Margin="5" />
                                 <TextBlock Text="DashBoard"
-                                           HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            TextWrapping="Wrap"
                                            Foreground="White"
-                                           FontSize="30"
-                                           FontWeight="Bold" />
-                            </Button>
-                            <Button x:Name="planeScheduleBtn"
-                                    Width="280"
-                                    Height="150"
-                                    Margin="10"
-                                    Background="#FFA58757"
-                                    Click="planeScheduleBtn_Click"
-                                    Style="{StaticResource tileButton}">
-                                <TextBlock Text="Lập Lịch Máy Bay"
-                                           HorizontalAlignment="Center"
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                           Width="135"
+                                           Padding="10, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="planeScheduleBtn"
+                                Margin="3"
+                                Background="Transparent"
+                                Click="planeScheduleBtn_Click"
+                                BorderThickness="0"
+                                Padding="0"
+                                Height="45">
+                            <StackPanel FlowDirection="LeftToRight"
+                                        Orientation="Horizontal"
+                                        Width="181">
+                                <Image Source="{StaticResource airplaneIcon}"
+                                       Margin="5" />
+                                <TextBlock Text="Lập Lịch"
                                            VerticalAlignment="Center"
                                            TextWrapping="Wrap"
                                            Foreground="White"
-                                           FontSize="30"
-                                           FontWeight="Bold" />
-                            </Button>
-                            <Button x:Name="createTicketBtn"
-                                    Width="280"
-                                    Height="150"
-                                    Margin="10"
-                                    Background="#FF6B3636"
-                                    Click="createTicketBtn_Click"
-                                    Style="{StaticResource tileButton}">
-                                <TextBlock Text="Tạo Vé Máy Bay"
-                                           HorizontalAlignment="Center"
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                           Width="135"
+                                           Padding="10, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="createTicketBtn"
+                                Margin="3"
+                                Background="Transparent"
+                                Click="createTicketBtn_Click"
+                                BorderThickness="0"
+                                Padding="0"
+                                Height="45">
+                            <StackPanel FlowDirection="LeftToRight"
+                                        Orientation="Horizontal"
+                                        Width="181">
+                                <Image Source="{StaticResource ticketIcon}"
+                                       Margin="5" />
+                                <TextBlock Text="Bán Vé"
                                            VerticalAlignment="Center"
                                            TextWrapping="Wrap"
                                            Foreground="White"
-                                           FontSize="30"
-                                           FontWeight="Bold" />
-                            </Button>
-                            <Button x:Name="reportBtn"
-                                    Width="280"
-                                    Height="150"
-                                    Margin="10"
-                                    Background="#FF6DA05A"
-                                    Click="reportBtn_Click"
-                                    Style="{StaticResource tileButton}">
-                                <TextBlock Text="Báo Cáo Doanh Thu"
-                                           HorizontalAlignment="Center"
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                           Width="135"
+                                           Padding="10, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="planeListBtn"
+                                Margin="3"
+                                Background="Transparent"
+                                Click="planeListBtn_Click"
+                                BorderThickness="0"
+                                Padding="0"
+                                Height="45">
+                            <StackPanel FlowDirection="LeftToRight"
+                                        Orientation="Horizontal"
+                                        Width="181">
+                                <Image Source="{StaticResource listIcon}"
+                                       Margin="5" />
+                                <TextBlock Text="Chuyến Bay"
                                            VerticalAlignment="Center"
                                            TextWrapping="Wrap"
                                            Foreground="White"
-                                           FontSize="30"
-                                           FontWeight="Bold" />
-                            </Button>
-                            <Button x:Name="planeListBtn"
-                                    Width="280"
-                                    Height="150"
-                                    Margin="10"
-                                    Background="#FF7E5886"
-                                    Click="planeListBtn_Click"
-                                    Style="{StaticResource tileButton}">
-                                <TextBlock Text="Danh Sách Chuyến Bay"
-                                           HorizontalAlignment="Center"
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                           Width="135"
+                                           Padding="10, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="reportBtn"
+                                Margin="3"
+                                Background="Transparent"
+                                Click="reportBtn_Click"
+                                BorderThickness="0"
+                                Padding="0"
+                                Height="45">
+                            <StackPanel FlowDirection="LeftToRight"
+                                        Orientation="Horizontal"
+                                        Width="181">
+                                <Image Source="{StaticResource reportIcon}"
+                                       Margin="5" />
+                                <TextBlock Text="Báo Cáo"
                                            VerticalAlignment="Center"
                                            TextWrapping="Wrap"
                                            Foreground="White"
-                                           FontSize="30"
-                                           FontWeight="Bold" />
-                            </Button>
-                            <Button x:Name="settingBtn"
-                                    Width="280"
-                                    Height="150"
-                                    Margin="10"
-                                    Background="#FF407480"
-                                    Click="settingBtn_Click"
-                                    Style="{StaticResource tileButton}">
-                                <TextBlock Text="Cài Đặt"
-                                           HorizontalAlignment="Center"
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                           Width="135"
+                                           Padding="10, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="donateBtn"
+                                Margin="3"
+                                Background="Transparent"
+                                Click="donateBtn_Click"
+                                BorderThickness="0"
+                                Padding="0"
+                                Height="45">
+                            <StackPanel FlowDirection="LeftToRight"
+                                        Orientation="Horizontal"
+                                        Width="181">
+                                <Image Source="{StaticResource donateIcon}"
+                                       Margin="5" />
+                                <TextBlock Text="Donate"
                                            VerticalAlignment="Center"
                                            TextWrapping="Wrap"
                                            Foreground="White"
-                                           FontSize="30"
-                                           FontWeight="Bold" />
-                            </Button>
-                            <Button x:Name="donateBtn"
-                                    Width="280"
-                                    Height="150"
-                                    Margin="10"
-                                    Background="#FF806E52"
-                                    Click="donateBtn_Click"
-                                    Style="{StaticResource tileButton}">
-                                <TextBlock Text="Donate Ủng Hộ Nhà Phát Triển"
-                                           HorizontalAlignment="Center"
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                           Width="135"
+                                           Padding="10, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="settingBtn"
+                                Margin="3"
+                                Background="Transparent"
+                                Click="settingBtn_Click"
+                                BorderThickness="0"
+                                Padding="0"
+                                Height="45">
+                            <StackPanel FlowDirection="LeftToRight"
+                                        Orientation="Horizontal"
+                                        Width="181">
+                                <Image Source="{StaticResource settingIcon}"
+                                       Margin="5" />
+                                <TextBlock Text="Setting"
                                            VerticalAlignment="Center"
                                            TextWrapping="Wrap"
                                            Foreground="White"
-                                           FontSize="30"
-                                           FontWeight="Bold" />
-                            </Button>
-
-                        </WrapPanel>
-                    </ScrollViewer>
-                </Border>
-
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                           Width="135"
+                                           Padding="10, 0, 0, 0" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
 
-            <Grid x:Name="userControlGrid"
-                  Grid.Row="1"
-                  Background="Transparent"
-                  Visibility="Hidden"
-                  Panel.ZIndex="-1">
+            <Grid Grid.Column="1"
+                  Background="White">
 
-                <local:Dashboard x:Name="DashboardCtrl"></local:Dashboard>
-                <local:PlaneSchedule x:Name="PlaneScheduleCtrl"></local:PlaneSchedule>
-                <local:CreateTicket x:Name="CreateTicketCtrl"></local:CreateTicket>
-                <local:Report x:Name="ReportCtrl"></local:Report>
-                <local:PlaneList x:Name="PlaneListCtrl"></local:PlaneList>
-                <local:Setting x:Name="SettingCtrl"></local:Setting>
-                <local:Donate x:Name="DonateCtrl"></local:Donate>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0"
+                            BorderThickness="0.5"
+                            BorderBrush="Black"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch">
+                        <StackPanel x:Name="tileBar"
+                                    Background="White"
+                                    MouseDown="tileBar_MouseDown"
+                                    Orientation="Horizontal"
+                                    FlowDirection="RightToLeft">
+                            <Button x:Name="closeBtn"
+                                    Background="{x:Null}"
+                                    Click="cancelBtn_Click"
+                                    Width="35"
+                                    Padding="0"
+                                    BorderThickness="0">
+                                <materialDesign:PackIcon Kind="WindowClose"
+                                                         Background="White"
+                                                         Foreground="Black"
+                                                         Margin="0"
+                                                         Height="29"
+                                                         Width="32" />
+                            </Button>
+                            <Button x:Name="minimizeBtn"
+                                    Background="{x:Null}"
+                                    Click="minimizeBtn_Click"
+                                    Width="35"
+                                    Padding="0"
+                                    BorderThickness="0">
+                                <materialDesign:PackIcon Kind="WindowMinimize"
+                                                         Background="White"
+                                                         Foreground="Black"
+                                                         Margin="0"
+                                                         Height="29"
+                                                         Width="32" />
+                            </Button>
+                        </StackPanel>
+                    </Border >
+
+                    <Grid Grid.Row="1"
+                          x:Name="homeGrid">
+                        <Grid x:Name="userControlGrid">
+                            <local:PlaneSchedule x:Name="planeScheduleCtrl" />
+                            <local:CreateTicket x:Name="createTicketCtrl" />
+                            <local:PlaneList x:Name="planeListCtrl" />
+                            <local:Report x:Name="reportCtrl" />
+                            <local:Donate x:Name="donateCtrl" />
+                            <local:Setting x:Name="settingCtrl" />
+                            <local:Dashboard x:Name="dashBoardCtrl" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+
             </Grid>
         </Grid>
     </Border>

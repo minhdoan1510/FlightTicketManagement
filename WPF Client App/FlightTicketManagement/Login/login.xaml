@@ -28,7 +28,7 @@
                        Padding="10, 20, 0, 5" />
             <TextBox x:Name="userName"
                      Height="34"
-                     FontSize="15"
+                     FontSize="18"
                      Margin="5, 0, 5, 0"
                      Opacity="80" />
             <TextBlock Text="Password"
@@ -36,7 +36,7 @@
                        Padding="10, 20, 0, 5" />
             <PasswordBox x:Name="passWord"
                          Height="34"
-                         FontSize="15"
+                         FontSize="18"
                          Margin="5, 0, 5, 0"
                          Opacity="80" />
 

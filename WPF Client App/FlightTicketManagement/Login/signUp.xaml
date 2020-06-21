@@ -21,7 +21,8 @@
                 BorderBrush="Transparent"
                 Style="{StaticResource loginButton}"
                 Click="backToLogin_Click">
-            <Image Source="{StaticResource back}"></Image>
+            <Image Source="{StaticResource back}">
+            </Image>
         </Button>
         <TextBlock Text="SignUp"
                    TextAlignment="Center"
@@ -35,23 +36,23 @@
         <TextBox x:Name="name"
                  Height="34"
                  Margin="5, 0, 5, 0"
-                 FontSize="15" />
+                 FontSize="18" />
         <TextBlock Text="Username"
-                   FontSize="15"
+                   FontSize="18"
                    Padding="10, 10, 0, 5" />
         <TextBox x:Name="userName"
                  Height="34"
                  Margin="5, 0, 5, 0"
                  FontSize="15" />
         <TextBlock Text="Password"
-                   FontSize="15"
+                   FontSize="18"
                    Padding="10, 10, 0, 5" />
         <PasswordBox x:Name="passWord"
                      Height="34"
                      Margin="5, 0, 5, 0"
-                     FontSize="15" />
+                     FontSize="18" />
         <TextBlock Text="Account Type"
-                   FontSize="15"
+                   FontSize="18"
                    Padding="10, 10, 0, 5" />
         
         <ComboBox x:Name="accountType"

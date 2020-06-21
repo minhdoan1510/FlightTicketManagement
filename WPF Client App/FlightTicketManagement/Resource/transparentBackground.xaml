@@ -1,0 +1,68 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FlightTicketManagement.Resource">
+    <Style x:Key="mainWindowBackground" 
+           TargetType="{x:Type Image}">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard>
+                    <Storyboard RepeatBehavior="Forever">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0"
+                                                  Value="0.0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:4"
+                                                  Value="0.8" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:8"
+                                                  Value="0.0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:12"
+                                                  Value="0.8" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:16"
+                                                  Value="0.0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:20"
+                                                  Value="0.8" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:24"
+                                                  Value="0.0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:28"
+                                                  Value="0.8" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:32"
+                                                  Value="0.0" />
+                        </DoubleAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <BitmapImage UriSource="Art/login1.jpg" />
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+
+                            <DiscreteObjectKeyFrame KeyTime="0:0:8">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <BitmapImage UriSource="Art/login2.jpg" />
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+
+                            <DiscreteObjectKeyFrame KeyTime="0:0:16">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <BitmapImage UriSource="Art/login3.jpg" />
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+
+                            <DiscreteObjectKeyFrame KeyTime="0:0:24">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <BitmapImage UriSource="Art/login4.jpg" />
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+
+                            <DiscreteObjectKeyFrame KeyTime="0:0:32">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <BitmapImage UriSource="Art/login5.jpg" />
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

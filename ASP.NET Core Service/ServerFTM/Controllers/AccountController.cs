@@ -24,6 +24,7 @@ namespace ServerFTM.Controllers
                 AccessToken accessToken = new AccessToken(profile.IDAccount, account.Username, account.Password, ip);
                 InfoLogin infoLogin = new InfoLogin(accessToken.IdAccount, profile.Name, accessToken.Token);
                 BUS_Controls.Controls.AddDevice(accessToken.IdAccount, accessToken.Token);
+
                 Debug.WriteLine("IDuser " + accessToken.Token + " login");
                 Debug.WriteLine("Create succsess token:" + accessToken.Token);
 

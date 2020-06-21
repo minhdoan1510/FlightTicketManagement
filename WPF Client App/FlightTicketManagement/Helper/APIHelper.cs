@@ -51,7 +51,7 @@ namespace FlightTicketManagement.Helper
             this.InitializeClient();
 
             // add token to header 
-            apiClient.DefaultRequestHeaders.Add("token", authenticatedUser.Token);
+            apiClient.DefaultRequestHeaders.Add("token", authenticatedUser.Result.Token);
 
             using (HttpResponseMessage response = await apiClient.GetAsync(route))
             {

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightTicketManagement"
              mc:Ignorable="d" 
-             d:DesignHeight="724" d:DesignWidth="1012"
+             d:DesignHeight="722" d:DesignWidth="1094"
              Background="White">
     <Grid>
         <TextBlock FontSize="50">Dashboard</TextBlock>
