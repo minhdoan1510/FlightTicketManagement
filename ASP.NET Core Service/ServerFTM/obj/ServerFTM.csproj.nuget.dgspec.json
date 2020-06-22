@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {}
+    "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {}
   },
   "projects": {
-    "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+    "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
         "projectName": "API.Shared",
-        "projectPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
-        "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
-        "outputPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\obj\\",
+        "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,17 +74,20 @@
         }
       }
     },
-    "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {
+    "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+        "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
         "projectName": "ServerFTM",
-        "projectPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
-        "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
-        "outputPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\obj\\",
+        "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,8 +100,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
-                "projectPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
+              "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+                "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
               }
             }
           }

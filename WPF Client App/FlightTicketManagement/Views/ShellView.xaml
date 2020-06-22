@@ -1,0 +1,88 @@
+﻿<Window x:Class="FlightTicketManagement.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightTicketManagement"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow"
+        Background="{StaticResource MaterialDesignPaper}"
+        FontFamily="{StaticResource MaterialDesignFont}"
+        BorderThickness="1"
+        Width="480"
+        Height="640">
+    <Window.Resources>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10"
+                              Direction="220"
+                              RenderingBias="Performance"
+                              ShadowDepth="2" />
+        </Grid.Effect>
+
+        <Image Grid.Row="1"
+               Panel.ZIndex="-1"
+               Stretch="Fill"
+               x:Name="loginBackground"
+               Opacity="0.8" 
+               Style="{StaticResource mainWindowBackground}">
+        </Image>
+
+        <Border Margin="0,0,39,604.747"
+                BorderThickness="1"
+                BorderBrush="Black"
+                x:Name="tileBar"    
+                MouseLeftButtonDown="tileBar_MouseDown"
+                Background="#CCFFFFFF">
+        </Border>
+
+        <TextBlock Text="MingTuf Airline"
+                   FontSize="25"
+                   FontWeight="Bold"
+                   Margin="5, 0, 0, 0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top" />
+
+        <Button Margin="2"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="32"
+                Background="Transparent"
+                x:Name="cancelBtn"
+                BorderThickness="0"
+                Style="{StaticResource tileBarButton}"
+                Click="cancelBtn_Click">
+            <Image Source="{StaticResource close}">
+
+            </Image>
+        </Button>
+       
+        <Border Grid.Row="1"
+                Opacity="0.8"
+                Background="White"
+                CornerRadius="10"
+                BorderThickness="0.5"
+                BorderBrush="Black"
+                Margin="85">
+            <Grid>
+                <ContentControl x:Name="ActiveItem" Margin="5"/>
+            </Grid>
+            <!--<Grid>
+                <local:login x:Name="loginCtrl"
+                             Visibility="Visible" />
+                <local:signUp x:Name="signupCtrl"
+                              Visibility="Hidden" />
+            </Grid>-->
+        </Border>
+
+    </Grid>
+
+</Window>

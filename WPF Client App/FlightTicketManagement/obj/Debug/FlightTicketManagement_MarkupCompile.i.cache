@@ -1,0 +1,20 @@
+﻿FlightTicketManagement
+
+
+exe
+C#
+.cs
+D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\
+FlightTicketManagement
+none
+false
+DEBUG;TRACE
+D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\App.xaml
+181648493333
+
+26-803431267
+1271155617955
+MainApp\CreateTicket.xaml;MainApp\Donate.xaml;MainApp\Dashboard.xaml;Views\LoginView.xaml;Views\MainAppView.xaml;MainApp\PlaneList.xaml;MainApp\PlaneSchedule.xaml;MainApp\Report.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Views\SignupView.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;MainApp\Setting.xaml;Resource\transparentBackground.xaml;Views\ShellView.xaml;
+
+True
+

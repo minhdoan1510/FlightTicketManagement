@@ -10,10 +10,10 @@ using DTO;
 
 namespace FlightTicketManagement.Helper
 {
-    public class APIHelper<T>
+    public class APIHelper<T> : IAPIHelper<T>
     {
         private InfoLogin userInfo;
-        private HttpClient apiClient { get ; set ; }
+        private HttpClient apiClient { get; set; }
         private APIHelper()
         {
             InitializeClient();
@@ -31,7 +31,8 @@ namespace FlightTicketManagement.Helper
             }
         }
 
-        private InfoLogin authenticatedUser {
+        private InfoLogin authenticatedUser
+        {
             get { return this.userInfo; }
             set { this.userInfo = value; }
         }
@@ -41,12 +42,12 @@ namespace FlightTicketManagement.Helper
             string api = ConfigurationManager.AppSettings["api"];
 
             apiClient = new HttpClient();
-            apiClient.BaseAddress =new Uri(api);
+            apiClient.BaseAddress = new Uri(api);
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-      
-        public async Task<T> Get (string route)
+
+        public async Task<T> Get(string route)
         {
             this.InitializeClient();
 
@@ -59,7 +60,7 @@ namespace FlightTicketManagement.Helper
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsAsync<T>();
-                    if(data != null)
+                    if (data != null)
                         return data;
                 }
                 else
@@ -82,7 +83,8 @@ namespace FlightTicketManagement.Helper
                     if (data != null)
                         return data;
                 }
-                else {
+                else
+                {
                     throw new Exception(response.ReasonPhrase);
                 }
                 return default;

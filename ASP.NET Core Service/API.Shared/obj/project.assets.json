@@ -4254,19 +4254,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mingkhoi\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+      "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
       "projectName": "API.Shared",
-      "projectPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
-      "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
-      "outputPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\obj\\",
+      "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

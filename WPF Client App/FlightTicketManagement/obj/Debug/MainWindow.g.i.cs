@@ -41,7 +41,7 @@ namespace FlightTicketManagement {
     /// <summary>
     /// MainWindow
     /// </summary>
-    public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
+    public partial class ShellView : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
         #line 34 "..\..\MainWindow.xaml"

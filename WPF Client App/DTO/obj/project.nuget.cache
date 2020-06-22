@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FQRZpoMh6AwLf1AuEo9x3ZBaZ1CkpOJD6gc50XHs4wLZC0BRt4K6g5zNcQNj16d4oeTSu5kPRxDxVZxF4tB7Kg==",
+  "dgSpecHash": "+NCkzu3oKBwlOaoLrOsofMIVC0qGs4NJwWJY5nYTcdUpCj0nZoJbDmBtU0odqceA5Y/cLx60jj0GU4mnIDaLFQ==",
   "success": true,
-  "projectFilePath": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\DTO.csproj",
+  "projectFilePath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\DTO.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\mingkhoi\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\mingkhoi\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }
