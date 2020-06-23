@@ -1,11 +1,11 @@
 ﻿
 FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\App.xaml;;
-FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\MainApp\CreateTicket.xaml;;
+FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\Views\CreateTicketView.xaml;;
 FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\MainApp\Donate.xaml;;
-FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\MainApp\Dashboard.xaml;;
+FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\Views\DashboardView.xaml;;
 FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\Views\LoginView.xaml;;
 FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\Views\MainAppView.xaml;;
-FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\MainApp\PlaneList.xaml;;
+FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\Views\FlightListView.xaml;;
 FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\MainApp\PlaneSchedule.xaml;;
 FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\MainApp\Report.xaml;;
 FD:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\Resource\Art\artResource.xaml;;

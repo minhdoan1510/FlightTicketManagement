@@ -21,7 +21,7 @@ namespace FlightTicketManagement.Helper
         }
         public static class Flight
         {
-            public const string GetAll = Base + "/flights";
+            public const string GetAll = Base + "/Flight";
 
             public const string Get = Base + "/flights" + Key;
 

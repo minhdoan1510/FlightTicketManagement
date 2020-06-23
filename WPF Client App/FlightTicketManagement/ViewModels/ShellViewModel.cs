@@ -3,9 +3,11 @@ using FlightTicketManagement.EventModels;
 
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FlightTicketManagement.ViewModels
 {
@@ -28,7 +30,7 @@ namespace FlightTicketManagement.ViewModels
             switch (message)
             {
                 case (int)EventModel.LogOnEventModel:
-                    ActivateItem(_container.GetInstance<MainAppViewModel>());
+                    showVMDialog(_container.GetInstance<MainAppViewModel>(), "MainApp");
                     break;
                 case (int)EventModel.SwitchToLoginEventModel:
                     ActivateItem(_container.GetInstance<LoginViewModel>());
@@ -39,6 +41,18 @@ namespace FlightTicketManagement.ViewModels
                 default:
                     break;
             }
+        }
+        public static void showVMDialog(PropertyChangedBase viewmodel, string windowHeader)
+        {
+            WindowManager windowManager = new WindowManager();
+            dynamic settings = new ExpandoObject();
+            settings.WindowStyle = WindowStyle.None;
+            settings.ShowInTaskbar = true;
+            settings.Title = windowHeader;
+            settings.WindowState = WindowState.Normal;
+            settings.ResizeMode = ResizeMode.CanMinimize;
+
+            windowManager.ShowDialog(viewmodel, null, settings);
         }
     }
 }

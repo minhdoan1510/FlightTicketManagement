@@ -7,6 +7,7 @@ using ServerFTM.Models;
 using ServerFTM.DAL.Query;
 using ServerFTM.DAL.DataProvider;
 using System.Data;
+using System.Reflection;
 
 namespace ServerFTM.DAL.Controls
 {
@@ -27,7 +28,7 @@ namespace ServerFTM.DAL.Controls
         {
             try
             {
-                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcSignUp, 
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcSignUp, 
                     new object[] { 
                         account.IDAccount, 
                         account.Username , 
@@ -45,7 +46,7 @@ namespace ServerFTM.DAL.Controls
         {
             try
             {
-                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.Query.ProcLogin, 
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcLogin, 
                     new object[] {
                         account.Username,
                         account.Password }); //--@id   @user @pass @name @acctype
@@ -55,5 +56,39 @@ namespace ServerFTM.DAL.Controls
                 return null;
             }
         }
+        public DataTable GetAllFlight()
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetAllFlight);
+                    
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public List<T> CreateListFromTable<T>(DataTable dt)
+        {
+            var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
+            var properties = typeof(T).GetProperties();
+            return dt.AsEnumerable().Select(row => {
+                var objT = Activator.CreateInstance<T>();
+                foreach (var pro in properties)
+                {
+                    if (columnNames.Contains(pro.Name.ToLower()))
+                    {
+                        try
+                        {
+                            pro.SetValue(objT, row[pro.Name]);
+                        }
+                        catch (Exception ex) { }
+                    }
+                }
+                return objT;
+            }).ToList();
+        }
+
+      
     }
 }

@@ -226,9 +226,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\DTO.csproj",
-      "projectName": "DTO",
-      "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\DTO.csproj",
+      "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj",
+      "projectName": "Models",
+      "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\obj\\",
       "projectStyle": "PackageReference",

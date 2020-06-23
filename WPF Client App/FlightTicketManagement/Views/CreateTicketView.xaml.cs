@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightTicketManagement
+namespace FlightTicketManagement.Views
 {
     /// <summary>
-    /// Interaction logic for PlaneList.xaml
+    /// Interaction logic for CreateTicket.xaml
     /// </summary>
-    public partial class PlaneList : UserControl
+    public partial class CreateTicket : UserControl
     {
-        public PlaneList() {
+        public CreateTicket() {
             InitializeComponent();
         }
     }

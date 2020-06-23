@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using DTO;
+using Models;
 
 namespace FlightTicketManagement.Helper
 {
-    public class APIHelper<T> : IAPIHelper<T>
+    public class APIHelper<T> 
     {
         private InfoLogin userInfo;
         private HttpClient apiClient { get; set; }
@@ -52,7 +52,7 @@ namespace FlightTicketManagement.Helper
             this.InitializeClient();
 
             // add token to header 
-            apiClient.DefaultRequestHeaders.Add("token", authenticatedUser.Result.Token);
+          //  apiClient.DefaultRequestHeaders.Add("token", authenticatedUser.Result.Token);
 
             using (HttpResponseMessage response = await apiClient.GetAsync(route))
             {

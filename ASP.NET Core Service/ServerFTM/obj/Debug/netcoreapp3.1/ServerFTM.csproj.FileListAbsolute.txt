@@ -274,3 +274,5 @@ D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.dll
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.pdb
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.genruntimeconfig.cache
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Models.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Models.pdb

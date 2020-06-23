@@ -1,5 +1,5 @@
 ﻿using Caliburn.Micro;
-using DTO;
+using Models;
 using FlightTicketManagement.BUS;
 using FlightTicketManagement.EventModels;
 using System;

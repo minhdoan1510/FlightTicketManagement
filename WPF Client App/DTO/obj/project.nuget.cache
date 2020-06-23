@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+NCkzu3oKBwlOaoLrOsofMIVC0qGs4NJwWJY5nYTcdUpCj0nZoJbDmBtU0odqceA5Y/cLx60jj0GU4mnIDaLFQ==",
+  "dgSpecHash": "ZkKT44CfInaKG4lqtf7k/QI9HwOKHbPewQtdo/cdwWr+VA5yxy5xw1+jvwUh6g/Yf7wY5gkskuAzx3lRKJsE1g==",
   "success": true,
-  "projectFilePath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\DTO.csproj",
+  "projectFilePath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

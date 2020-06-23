@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qkBJnHqZkJAcJcRcG8ZqirGwGmvxqndHpV0hRejUbVVS8hI+VgfPFDUO5irintmVLyQXugpAr64DmTf2M1lGYQ==",
+  "dgSpecHash": "yRWjwFo3yQJwIgGHbJrraMtb7k+aAJY5ULXyD9WJw2acwsg8XLZL+xUbLsUya94ReNI+L/45aMK3/Dlavpgvrg==",
   "success": true,
   "projectFilePath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
   "expectedPackageFiles": [
@@ -55,7 +55,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netframework.analyzers\\3.0.0\\microsoft.netframework.analyzers.3.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

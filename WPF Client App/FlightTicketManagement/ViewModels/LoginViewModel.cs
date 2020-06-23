@@ -1,7 +1,8 @@
 ﻿using Caliburn.Micro;
-using DTO;
+using Models;
 using FlightTicketManagement.BUS;
 using FlightTicketManagement.EventModels;
+using FlightTicketManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.IO.Packaging;
@@ -87,8 +88,8 @@ namespace FlightTicketManagement.ViewModels
 
         public void SwitchToSignup()
         {
-            _events.PublishOnUIThread((int)EventModel.SwitchToSignupEventModel);
-           
+            //_events.PublishOnUIThread((int)EventModel.SwitchToSignupEventModel);
+            ShellView.Instance.switchToSignUp();
         }
     }
 }

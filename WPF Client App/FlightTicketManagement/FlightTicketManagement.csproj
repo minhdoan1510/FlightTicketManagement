@@ -105,16 +105,18 @@
     <Compile Include="EventModels\EventModels.cs" />
     <Compile Include="Helper\APIHelper.cs" />
     <Compile Include="Helper\ApiRoute.cs" />
-    <Compile Include="Helper\IAPIHelper.cs" />
     <Compile Include="Helper\PasswordBoxHelper.cs" />
-    <Compile Include="MainApp\CreateTicket.xaml.cs">
-      <DependentUpon>CreateTicket.xaml</DependentUpon>
+    <Compile Include="ViewModels\CreateTicketViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\FlightListViewModel.cs" />
+    <Compile Include="Views\CreateTicketView.xaml.cs">
+      <DependentUpon>CreateTicketView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainApp\Donate.xaml.cs">
       <DependentUpon>Donate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainApp\Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
+    <Compile Include="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainAppViewModel.cs" />
     <Compile Include="Views\MainAppView.xaml.cs">
@@ -123,8 +125,8 @@
     <Compile Include="Views\SignupView.xaml.cs">
       <DependentUpon>SignupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainApp\PlaneList.xaml.cs">
-      <DependentUpon>PlaneList.xaml</DependentUpon>
+    <Compile Include="Views\FlightListView.xaml.cs">
+      <DependentUpon>FlightListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainApp\Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
@@ -138,7 +140,7 @@
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainApp\CreateTicket.xaml">
+    <Page Include="Views\CreateTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,7 +148,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainApp\Dashboard.xaml">
+    <Page Include="Views\DashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,7 +167,7 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainApp\PlaneList.xaml">
+    <Page Include="Views\FlightListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,9 +302,9 @@
     <Resource Include="Resource\Art\home.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DTO\DTO.csproj">
+    <ProjectReference Include="..\DTO\Models.csproj">
       <Project>{1e44269c-ff44-4faa-8bb7-365b99527137}</Project>
-      <Name>DTO</Name>
+      <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

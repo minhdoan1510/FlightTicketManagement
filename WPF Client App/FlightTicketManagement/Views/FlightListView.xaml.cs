@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightTicketManagement
+namespace FlightTicketManagement.Views
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for PlaneList.xaml
     /// </summary>
-    public partial class Dashboard : UserControl
+    public partial class FlightListView : UserControl
     {
-        public Dashboard() {
+        public FlightListView() {
             InitializeComponent();
         }
     }

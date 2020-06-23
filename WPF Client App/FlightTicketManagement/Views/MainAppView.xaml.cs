@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace FlightTicketManagement.Views
     /// Interaction logic for MainApp.xaml
     /// </summary>
 
-    public partial class MainAppView : UserControl
+    public partial class MainAppView : Window
     {
         const int controlTopLayer = 0;
         const int controlBottomLayer = -1;
@@ -83,30 +84,30 @@ namespace FlightTicketManagement.Views
 
         private void dashBoardBtn_Click(object sender, RoutedEventArgs e)
         {
-            bringToFront(userControlGrid);
+            //bringToFront(userControlGrid);
 
-            bringToFrontControlByName("dashBoardCtrl");
+            //bringToFrontControlByName("dashBoardCtrl");
         }
 
         private void planeScheduleBtn_Click(object sender, RoutedEventArgs e)
         {
-            bringToFront(userControlGrid);
+            //bringToFront(userControlGrid);
 
-            bringToFrontControlByName("planeScheduleCtrl");
+            //bringToFrontControlByName("planeScheduleCtrl");
         }
 
         private void createTicketBtn_Click(object sender, RoutedEventArgs e)
         {
-            bringToFront(userControlGrid);
+            //bringToFront(userControlGrid);
 
-            bringToFrontControlByName("createTicketCtrl");
+            //bringToFrontControlByName("createTicketCtrl");
         }
 
         private void planeListBtn_Click(object sender, RoutedEventArgs e)
         {
-            bringToFront(userControlGrid);
+            //bringToFront(userControlGrid);
 
-            bringToFrontControlByName("planeListCtrl");
+            //bringToFrontControlByName("planeListCtrl");
         }
 
         private void reportBtn_Click(object sender, RoutedEventArgs e)

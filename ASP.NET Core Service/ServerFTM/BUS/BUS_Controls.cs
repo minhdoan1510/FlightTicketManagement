@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServerFTM.Authorization.TokenManager;
-
+using Models;
 namespace ServerFTM.BUS
 {
     class BUS_Controls
@@ -59,6 +59,22 @@ namespace ServerFTM.BUS
             account.IDAccount = GenerateID();
             return DAL_Controls.Controls.SignUp(account);
         }
+        #endregion
+
+        #region Flights
+        public List<FlightModel> GetAllFlight()
+        {
+            List<FlightModel> models = new List<FlightModel>();
+            DataTable dataTable = DAL_Controls.Controls.GetAllFlight();
+            if (dataTable != null)
+            {
+                //Pass datatable from dataset to our DAL Method.
+                models = DAL_Controls.Controls.CreateListFromTable<FlightModel>(dataTable);
+            }
+            return models;
+        }
+
+
         #endregion
 
         #region Utilities
