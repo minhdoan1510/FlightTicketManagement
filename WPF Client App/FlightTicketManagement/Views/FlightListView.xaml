@@ -26,8 +26,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="10" Text="{Binding OriginAP}" />
                                 <TextBlock Margin="10" Text="{Binding DestAP}" />
-                                <TextBlock Margin="10,10,0,10" Text="{Binding Time.Hour}" > : </TextBlock>
-                                <TextBlock Margin="0,10,10,10" Text="{Binding Time.Minute}"/>
+                                <TextBlock Margin="10,10,0,10" Text="{Binding Time, StringFormat=hh\\:mm}" /> 
+                        
                 
                                 
                                 <TextBlock Margin="10" Text="{Binding TotalSeat}"/>

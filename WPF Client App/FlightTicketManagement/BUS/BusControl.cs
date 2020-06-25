@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlightTicketManagement.Helper;
-using Models;
+using Library.Models;
 
 namespace FlightTicketManagement.BUS
 {

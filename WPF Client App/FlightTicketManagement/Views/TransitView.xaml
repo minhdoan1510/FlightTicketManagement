@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="FlightTicketManagement.Views.TransitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightTicketManagement.Views"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ItemsControl x:Name="Transits" Grid.Row="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10" Padding="10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="10" Text="{Binding Number}" />
+                            <TextBlock Margin="10" Text="{Binding APName}" />
+                            <TextBlock Margin="10" Text="{Binding CityName}"/>
+                            <TextBlock Margin="10" Text="{Binding CountryName}"/>
+                            <TextBlock Margin="10" Text="{Binding Time.Hours}"/>
+                            <TextBlock Margin="10" Text="{Binding Note}"/>
+                        </StackPanel>
+                    </Border>
+
+                </DataTemplate>
+
+
+
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </Grid>
+</UserControl>

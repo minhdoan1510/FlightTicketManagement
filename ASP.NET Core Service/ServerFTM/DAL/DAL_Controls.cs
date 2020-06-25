@@ -89,6 +89,21 @@ namespace ServerFTM.DAL.Controls
             }).ToList();
         }
 
-      
+        public DataTable GetTransits(string transitId)
+        {
+
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetTransits,
+                    new object[] { transitId });
+                      
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+           
+        }
     }
 }

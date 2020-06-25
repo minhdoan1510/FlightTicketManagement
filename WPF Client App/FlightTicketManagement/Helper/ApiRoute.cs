@@ -75,7 +75,7 @@ namespace FlightTicketManagement.Helper
         {
             public const string GetAll = Base + "/transits";
 
-            public const string Get = Base + "/transits" + Key;
+            public const string Get = Base + "/Transit" + Key;
 
             public const string Update = Base + "/transits" + Key;
 

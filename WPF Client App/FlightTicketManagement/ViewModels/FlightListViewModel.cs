@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
 using FlightTicketManagement.Helper;
 
-using Models;
+using Library.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

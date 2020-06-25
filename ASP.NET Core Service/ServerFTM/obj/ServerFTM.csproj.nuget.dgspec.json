@@ -103,8 +103,8 @@
               "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
                 "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
               },
-              "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj": {
-                "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj"
+              "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
+                "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj"
               }
             }
           }
@@ -175,12 +175,12 @@
         }
       }
     },
-    "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj": {
+    "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj",
-        "projectName": "Models",
-        "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj",
+        "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
+        "projectName": "Library",
+        "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\obj\\",
         "projectStyle": "PackageReference",
@@ -221,6 +221,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[4.7.2, )"
             }
           },
           "imports": [

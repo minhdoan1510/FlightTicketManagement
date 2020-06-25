@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\WPF Client App\DTO\Models.csproj" />
+	  <ProjectReference Include="..\..\WPF Client App\DTO\Library.csproj" />
 	  <ProjectReference Include="..\API.Shared\API.Shared.csproj" />
 	</ItemGroup>
 

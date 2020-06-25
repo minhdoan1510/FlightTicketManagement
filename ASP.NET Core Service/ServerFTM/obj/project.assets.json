@@ -1358,6 +1358,15 @@
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
       },
+      "System.Text.Json/4.7.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
+        }
+      },
       "System.Threading/4.0.11": {
         "type": "package",
         "dependencies": {
@@ -1406,17 +1415,18 @@
           "bin/placeholder/API.Shared.dll": {}
         }
       },
-      "Models/1.0.0": {
+      "Library/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "12.0.3",
+          "System.Text.Json": "4.7.2"
         },
         "compile": {
-          "bin/placeholder/Models.dll": {}
+          "bin/placeholder/Library.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Models.dll": {}
+          "bin/placeholder/Library.dll": {}
         }
       }
     }
@@ -4886,6 +4896,28 @@
         "version.txt"
       ]
     },
+    "System.Text.Json/4.7.2": {
+      "sha512": "TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
+      "type": "package",
+      "path": "system.text.json/4.7.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Text.Json.dll",
+        "lib/net461/System.Text.Json.xml",
+        "lib/netcoreapp3.0/System.Text.Json.dll",
+        "lib/netcoreapp3.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.4.7.2.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Threading/4.0.11": {
       "sha512": "N+3xqIcg3VDKyjwwCGaZ9HawG9aC6cSDI+s7ROma310GQo8vilFZa86hqKppwTHleR/G0sfOzhvgnUxWCR/DrQ==",
       "type": "package",
@@ -5069,19 +5101,19 @@
       "path": "../API.Shared/API.Shared.csproj",
       "msbuildProject": "../API.Shared/API.Shared.csproj"
     },
-    "Models/1.0.0": {
+    "Library/1.0.0": {
       "type": "project",
-      "path": "../../WPF Client App/DTO/Models.csproj",
-      "msbuildProject": "../../WPF Client App/DTO/Models.csproj"
+      "path": "../../WPF Client App/DTO/Library.csproj",
+      "msbuildProject": "../../WPF Client App/DTO/Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "API.Shared >= 1.0.0",
+      "Library >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "Microsoft.AspNetCore.Mvc.Formatters.Json >= 2.2.0",
       "Microsoft.CodeAnalysis.FxCopAnalyzers >= 3.0.0",
-      "Models >= 1.0.0",
       "Swashbuckle.AspNetCore.Swagger >= 5.5.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 5.5.0",
       "Swashbuckle.AspNetCore.SwaggerUI >= 5.5.0",
@@ -5122,8 +5154,8 @@
             "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
               "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
             },
-            "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj": {
-              "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Models.csproj"
+            "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
+              "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj"
             }
           }
         }

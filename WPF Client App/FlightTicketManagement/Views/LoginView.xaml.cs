@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using FlightTicketManagement.BUS;
-using Models;
+using Library.Models;
 
 
 namespace FlightTicketManagement.Views

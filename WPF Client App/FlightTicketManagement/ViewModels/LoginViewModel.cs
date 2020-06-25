@@ -1,5 +1,5 @@
 ﻿using Caliburn.Micro;
-using Models;
+using Library.Models;
 using FlightTicketManagement.BUS;
 using FlightTicketManagement.EventModels;
 using FlightTicketManagement.Views;

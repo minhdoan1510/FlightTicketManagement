@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServerFTM.Authorization.TokenManager;
-using Models;
+using Library.Models;
 namespace ServerFTM.BUS
 {
     class BUS_Controls
@@ -75,6 +75,19 @@ namespace ServerFTM.BUS
         }
 
 
+        #endregion
+        #region
+        public List<TransitModel> GetTransits(string transitId)
+        {
+            List<TransitModel> models = new List<TransitModel>();
+            DataTable dataTable = DAL_Controls.Controls.GetTransits(transitId);
+            if (dataTable != null)
+            {
+                //Pass datatable from dataset to our DAL Method.
+                models = DAL_Controls.Controls.CreateListFromTable<TransitModel>(dataTable);
+            }
+            return models;
+        }
         #endregion
 
         #region Utilities

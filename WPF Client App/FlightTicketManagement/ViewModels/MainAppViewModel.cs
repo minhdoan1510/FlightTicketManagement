@@ -31,7 +31,7 @@ namespace FlightTicketManagement.ViewModels
 
         public void ShowPlaneListView()
         {
-            ActivateItem(_container.GetInstance<FlightListViewModel>());
+            ActivateItem(_container.GetInstance<TransitViewModel>());
         }
 
     }
