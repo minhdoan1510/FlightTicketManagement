@@ -19,6 +19,12 @@ namespace FlightTicketManagement.Helper
             public const string SignUp = Base + "/Account/signup";
 
         }
+
+        public static class Restriction
+        {
+            public const string Get = Base + "/Restrictions";
+            public const string Update = Base + "/Restrictions";
+        }
         public static class Flight
         {
             public const string GetAll = Base + "/Flight";

@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="FlightTicketManagement.Views.SettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightTicketManagement"
+             mc:Ignorable="d"
+             Background="White"
+             d:DesignHeight="722"
+             d:DesignWidth="1094">
+    <Grid>
+        <TextBlock FontSize="50" Margin="10,10,-10,-10"><Run Text="setting"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="75,159,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20">
+            Thời gian bay tối thiểu
+        </TextBlock>
+        
+        <TextBlock HorizontalAlignment="Left" Margin="75,218,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20" Text="Số lần Transit tối đa"/>
+        <TextBlock HorizontalAlignment="Left" Margin="75,284,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian Transit tối thiểu"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="75,325,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian Transit tối đa"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="75,366,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian đặt vé trễ nhất"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="75,424,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian hủy vé trễ nhất"/></TextBlock>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--<ItemsControl x:Name="Restrictions" Grid.Row="1">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="10" Padding="10">
+                            <StackPanel Orientation="Horizontal">-->
+                                <TextBox Text="{Binding Restrictions.MinFlightTime}" HorizontalAlignment="Left" Margin="380,172,0,527" TextWrapping="Wrap" Width="480"/>
+            <TextBox Text="{Binding Restrictions.MaxTransit}"  HorizontalAlignment="Left" Margin="375,218,0,481" TextWrapping="Wrap"  Width="480" />
+            <TextBox Text="{Binding Restrictions.MinTransitTime}" HorizontalAlignment="Left" Margin="375,289,0,410" TextWrapping="Wrap"  Width="480"/>
+            <TextBox Text="{Binding Restrictions.MaxTransitTime}" HorizontalAlignment="Left" Margin="380,330,0,369" TextWrapping="Wrap" Width="480" />
+            <TextBox Text="{Binding Restrictions.LatestBookingTime}" HorizontalAlignment="Left" Margin="375,379,0,320" TextWrapping="Wrap"  Width="480"/>
+            <TextBox Text="{Binding Restrictions.LatestCancelingTime}" HorizontalAlignment="Left" Margin="380,424,0,275" TextWrapping="Wrap" Width="480" />
+                            <!--</StackPanel>
+                        </Border>
+                    </DataTemplate>
+
+
+
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>-->
+        </Grid>
+    </Grid>
+</UserControl>

@@ -26,6 +26,8 @@ namespace ServerFTM.BUS
             set => controls = value;
         }
 
+       
+
         private BUS_Controls() { }
         
         #endregion
@@ -76,17 +78,31 @@ namespace ServerFTM.BUS
 
 
         #endregion
-        #region
+        #region Transit
         public List<TransitModel> GetTransits(string transitId)
         {
             List<TransitModel> models = new List<TransitModel>();
             DataTable dataTable = DAL_Controls.Controls.GetTransits(transitId);
             if (dataTable != null)
             {
-                //Pass datatable from dataset to our DAL Method.
+   
                 models = DAL_Controls.Controls.CreateListFromTable<TransitModel>(dataTable);
             }
             return models;
+        }
+        #endregion
+        #region Restriction
+        public RestrictionsModel GetRestriction()
+        {
+            List<RestrictionsModel> models = new List<RestrictionsModel>();
+            DataTable dataTable = DAL_Controls.Controls.GetRestrictions();
+            if (dataTable != null)
+            {
+
+                models = DAL_Controls.Controls.CreateListFromTable<RestrictionsModel>(dataTable);
+            }
+            if (models.Count != 1) return null;
+            return models[0];
         }
         #endregion
 

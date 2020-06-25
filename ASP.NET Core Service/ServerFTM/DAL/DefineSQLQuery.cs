@@ -14,5 +14,6 @@ namespace ServerFTM.DAL.Query
         public const string ProcLogin = "EXECUTE ProcLogin @user , @pass";
         public const string ProcGetAllFlight = "EXECUTE GetAllFlight";
         public const string ProcGetTransits = "EXECUTE GetTransit @flightId";
+        public const string ProcGetRestrictions = "EXECUTE GetRestrictions";
     }
 }

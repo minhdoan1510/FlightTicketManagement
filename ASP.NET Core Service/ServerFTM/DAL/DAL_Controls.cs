@@ -105,5 +105,19 @@ namespace ServerFTM.DAL.Controls
 
            
         }
+
+        public DataTable GetRestrictions()
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetRestrictions);
+                    
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }

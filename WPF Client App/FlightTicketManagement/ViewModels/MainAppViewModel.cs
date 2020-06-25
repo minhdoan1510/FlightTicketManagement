@@ -18,7 +18,7 @@ namespace FlightTicketManagement.ViewModels
             _events = events;
             _container = container;
             _events.Subscribe(this);
-            ActivateItem(_container.GetInstance<FlightListViewModel>());
+            ActivateItem(_container.GetInstance<TransitView>());
 
         }
 
@@ -31,8 +31,13 @@ namespace FlightTicketManagement.ViewModels
 
         public void ShowPlaneListView()
         {
-            ActivateItem(_container.GetInstance<TransitViewModel>());
+            ActivateItem(_container.GetInstance<FlightListViewModel>());
         }
+        public void ShowSettingView()
+        {
+            ActivateItem(_container.GetInstance<SettingViewModel>());
+        }
+
 
     }
 }

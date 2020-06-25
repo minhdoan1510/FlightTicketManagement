@@ -191,7 +191,7 @@
                                            Padding="10, 0, 0, 0" />
                             </StackPanel>
                         </Button>
-                        <Button x:Name="settingBtn"
+                        <Button x:Name="ShowSettingView"
                                 Margin="3"
                                 Background="Transparent"
                                 Click="settingBtn_Click"

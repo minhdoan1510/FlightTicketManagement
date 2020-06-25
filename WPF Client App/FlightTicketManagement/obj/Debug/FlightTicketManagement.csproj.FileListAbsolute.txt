@@ -215,7 +215,6 @@ D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Donate.g.cs
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\PlaneSchedule.g.cs
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Report.g.cs
-D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Setting.g.cs
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\App.g.cs
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement_MarkupCompile.cache
@@ -244,7 +243,6 @@ D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\Resource\loginButton.baml
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\Resource\resource.baml
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\Resource\tileBarButton.baml
-D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Setting.baml
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\Resource\transparentBackground.baml
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.g.resources
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.Properties.Resources.resources
@@ -294,3 +292,5 @@ D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\bin
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\bin\Debug\System.Text.Json.xml
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\bin\Debug\System.ValueTuple.xml
+D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\Views\SettingView.g.cs
+D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\Views\SettingView.baml

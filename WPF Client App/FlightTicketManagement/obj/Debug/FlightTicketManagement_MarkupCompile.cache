@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\App.xaml
-19-1433389672
+191489053475
 
-301039088119
+31-536814441
 136-302041137
-Views\CreateTicketView.xaml;MainApp\Donate.xaml;Views\DashboardView.xaml;Views\LoginView.xaml;Views\MainAppView.xaml;Views\FlightListView.xaml;MainApp\PlaneSchedule.xaml;MainApp\Report.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Views\SignupView.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;MainApp\Setting.xaml;Resource\transparentBackground.xaml;Views\ShellView.xaml;Views\TransitView.xaml;
+Views\CreateTicketView.xaml;MainApp\Donate.xaml;Views\DashboardView.xaml;Views\LoginView.xaml;Views\MainAppView.xaml;Views\FlightListView.xaml;MainApp\PlaneSchedule.xaml;MainApp\Report.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Views\SignupView.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;Views\SettingView.xaml;Resource\transparentBackground.xaml;Views\ShellView.xaml;Views\TransitView.xaml;
 
 False
 
