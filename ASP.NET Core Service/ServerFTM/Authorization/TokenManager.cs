@@ -31,7 +31,7 @@ namespace ServerFTM.Authorization.TokenManager
             accessTokens = new List<KeyValuePair<string, string>>();
         }
 
-        AccessToken GetInfoToken(string token)
+        public AccessToken GetInfoToken(string token)
         {
             try
             {
@@ -44,6 +44,7 @@ namespace ServerFTM.Authorization.TokenManager
                     string username = parts[2];
                     long ticks = long.Parse(parts[3]);
                     DateTime timeStamp = new DateTime(ticks);
+
                     return new AccessToken(idAcc, username, timeStamp, token);
                 }
                 else
@@ -51,7 +52,7 @@ namespace ServerFTM.Authorization.TokenManager
                     return null;
                 }    
             }
-            catch
+            catch (Exception e)
             {
                 return null;
             }

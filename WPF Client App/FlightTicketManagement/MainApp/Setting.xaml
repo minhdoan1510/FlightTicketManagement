@@ -9,6 +9,5 @@
              d:DesignHeight="722"
              d:DesignWidth="1094">
     <Grid>
-        <TextBlock FontSize="50">setting</TextBlock>
     </Grid>
 </UserControl>

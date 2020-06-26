@@ -32,9 +32,8 @@ namespace FlightTicketManagement
             user.Username = this.userName.Text;
             user.Password = this.passWord.Password.ToString();
             user.Name = this.name.Text;
-            user.Acctype = Int32.Parse(this.accountType.Text);
 
-            Signup signUpAccount = await BusControl.Instance.Signup(user);
+            Response<string> signUpAccount = await BusControl.Instance.Signup(user);
 
             if (signUpAccount.IsSuccess)
                 MainWindow.Instance.switchToLogin();

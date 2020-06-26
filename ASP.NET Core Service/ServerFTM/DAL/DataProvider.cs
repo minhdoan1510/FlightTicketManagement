@@ -45,7 +45,6 @@ namespace ServerFTM.DAL.DataProvider
                 }
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
-
                 adapter.Fill(data);
 
                 connection.Close();

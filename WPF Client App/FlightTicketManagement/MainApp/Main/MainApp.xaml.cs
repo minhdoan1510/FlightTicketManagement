@@ -25,15 +25,31 @@ namespace FlightTicketManagement
         const int controlTopLayer = 0;
         const int controlBottomLayer = -1;
 
-        bool isMaximize = false;
-
-        bool onMenuMode = false;
-
-        List<Brush> buttonOrigionalColor = new List<Brush>();
+        Dictionary<UIElement, int> btnOrder;
+        Dictionary<UIElement, string> usercontrolTiles;
 
         public MainApp() {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+
+            btnOrder = new Dictionary<UIElement, int>();
+            usercontrolTiles = new Dictionary<UIElement, string>();
+
+            btnOrder[dashBoardBtn] = 0;
+            btnOrder[planeScheduleBtn] = 1;
+            btnOrder[createTicketBtn] = 2;
+            btnOrder[planeListBtn] = 3;
+            btnOrder[reportBtn] = 4;
+            btnOrder[donateBtn] = 5;
+            btnOrder[settingBtn] = 6;
+
+            usercontrolTiles[dashBoardBtn] = "DashBoard";
+            usercontrolTiles[planeScheduleBtn] = "Lập Lịch Máy Bay";
+            usercontrolTiles[createTicketBtn] = "Bán Vé";
+            usercontrolTiles[planeListBtn] = "Danh Sách Chuyến Bay";
+            usercontrolTiles[reportBtn] = "Báo Cáo Doanh Số";
+            usercontrolTiles[donateBtn] = "Ủng Hộ Nhà Phát Triển";
+            usercontrolTiles[settingBtn] = "Cài Đặt";
         }
 
         void bringToFront(UIElement control) {
@@ -75,42 +91,69 @@ namespace FlightTicketManagement
             bringToFront(userControlGrid);
 
             bringToFrontControlByName("dashBoardCtrl");
+            this.setSelectionBtn(sender);
+
+            this.tile.Text = this.usercontrolTiles[sender as UIElement];
         }
 
         private void planeScheduleBtn_Click(object sender, RoutedEventArgs e) {
             bringToFront(userControlGrid);
 
             bringToFrontControlByName("planeScheduleCtrl");
+            this.setSelectionBtn(sender);
+
+            this.tile.Text = this.usercontrolTiles[sender as UIElement];
         }
 
         private void createTicketBtn_Click(object sender, RoutedEventArgs e) {
             bringToFront(userControlGrid);
 
             bringToFrontControlByName("createTicketCtrl");
+            this.setSelectionBtn(sender);
+
+            this.tile.Text = this.usercontrolTiles[sender as UIElement];
         }
 
         private void planeListBtn_Click(object sender, RoutedEventArgs e) {
             bringToFront(userControlGrid);
 
             bringToFrontControlByName("planeListCtrl");
+            this.setSelectionBtn(sender);
+
+            this.tile.Text = this.usercontrolTiles[sender as UIElement];
         }
 
         private void reportBtn_Click(object sender, RoutedEventArgs e) {
             bringToFront(userControlGrid);
 
             bringToFrontControlByName("reportCtrl");
+            this.setSelectionBtn(sender);
+
+            this.tile.Text = this.usercontrolTiles[sender as UIElement];
         }
 
         private void donateBtn_Click(object sender, RoutedEventArgs e) {
             bringToFront(userControlGrid);
 
             bringToFrontControlByName("donateCtrl");
+            this.setSelectionBtn(sender);
+
+            this.tile.Text = this.usercontrolTiles[sender as UIElement];
         }
 
         private void settingBtn_Click(object sender, RoutedEventArgs e) {
             bringToFront(userControlGrid);
 
             bringToFrontControlByName("settingCtrl");
+            this.setSelectionBtn(sender);
+
+            this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        }
+
+        private void setSelectionBtn(object btn) {
+            int index = btnOrder[btn as UIElement];
+
+            buttonFlag.Margin = new Thickness(0, 146 + (51 * index), 0, 571 - (51 * index));
         }
     }
 }

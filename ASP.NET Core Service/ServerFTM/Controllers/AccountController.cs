@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using ServerFTM.Authorization;
 using ServerFTM.BUS;
 using ServerFTM.Models;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -23,7 +25,6 @@ namespace ServerFTM.Controllers
 
                 AccessToken accessToken = new AccessToken(profile.IDAccount, account.Username, account.Password, ip);
                 InfoLogin infoLogin = new InfoLogin(accessToken.IdAccount, profile.Name, accessToken.Token);
-                BUS_Controls.Controls.AddDevice(accessToken.IdAccount, accessToken.Token);
 
                 Debug.WriteLine("IDuser " + accessToken.Token + " login");
                 Debug.WriteLine("Create succsess token:" + accessToken.Token);
@@ -41,6 +42,12 @@ namespace ServerFTM.Controllers
                 return new JsonResult(new ApiResponse<object>("ok"));
             }
             else return new JsonResult(new ApiResponse<object>(200, "signup failed"));
+        }
+
+        [HttpPost("testTime")]
+        public async Task<IActionResult> PostTestTime() {
+
+            return new JsonResult(new ApiResponse<object>(BUS_Controls.Controls.testTime())); 
         }
     }
 }

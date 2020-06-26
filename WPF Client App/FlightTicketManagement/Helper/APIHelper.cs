@@ -10,74 +10,103 @@ using DTO;
 
 namespace FlightTicketManagement.Helper
 {
-    public class APIHelper<T>
+    public class AuthenticatedUser
     {
+        private static AuthenticatedUser instance = null;
         private InfoLogin userInfo;
-        private HttpClient apiClient { get ; set ; }
-        private APIHelper()
-        {
+
+        public static AuthenticatedUser Instance {
+            get {
+                if (instance == null)
+                    instance = new AuthenticatedUser();
+                return instance;
+            }
+        }
+
+        public InfoLogin data {
+            get { return this.userInfo; }
+            set { this.userInfo = value; }
+        }
+    }
+    public class APIHelper
+    {
+        private HttpClient apiClient { get; set; }
+        private APIHelper() {
             InitializeClient();
         }
-        private static APIHelper<T> instance = null;
-        public static APIHelper<T> Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new APIHelper<T>();
+        private static APIHelper instance = null;
+        public static APIHelper Instance {
+            get {
+                if (instance == null) {
+                    instance = new APIHelper();
                 }
                 return instance;
             }
         }
 
-        private InfoLogin authenticatedUser {
-            get { return this.userInfo; }
-            set { this.userInfo = value; }
-        }
-
-        private void InitializeClient()
-        {
+        private void InitializeClient() {
             string api = ConfigurationManager.AppSettings["api"];
 
             apiClient = new HttpClient();
-            apiClient.BaseAddress =new Uri(api);
+            apiClient.BaseAddress = new Uri(api);
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-      
-        public async Task<T> Get (string route)
-        {
+
+        public async Task<T> PostInit<T>(string route, object body) {
             this.InitializeClient();
 
-            // add token to header 
-            apiClient.DefaultRequestHeaders.Add("token", authenticatedUser.Result.Token);
-
-            using (HttpResponseMessage response = await apiClient.GetAsync(route))
-            {
-
-                if (response.IsSuccessStatusCode)
-                {
+            using (HttpResponseMessage response = await apiClient.PostAsJsonAsync(route, body)) {
+                if (response.IsSuccessStatusCode) {
                     var data = await response.Content.ReadAsAsync<T>();
-                    if(data != null)
+                    if (data != null)
                         return data;
                 }
-                else
-                {
+                else {
                     throw new Exception(response.ReasonPhrase);
                 }
                 return default;
             }
         }
 
-        public async Task<T> Post(string route, object body)
-        {
+        public async Task<T> Get<T>(string route) {
             this.InitializeClient();
 
-            using (HttpResponseMessage response = await apiClient.PostAsJsonAsync(route, body))
-            {
-                if (response.IsSuccessStatusCode)
-                {
+            // add token to header 
+            CheckToken headerValue = new CheckToken();
+            headerValue.id = AuthenticatedUser.Instance.data.Id;
+            headerValue.data = AuthenticatedUser.Instance.data.Token;
+
+            apiClient.DefaultRequestHeaders.Add("id", headerValue.id);
+            apiClient.DefaultRequestHeaders.Add("token", headerValue.data);
+
+            using (HttpResponseMessage response = await apiClient.GetAsync(route)) {
+
+                if (response.IsSuccessStatusCode) {
+                    var data = await response.Content.ReadAsAsync<T>();
+                    if (data != null)
+                        return data;
+                }
+                else {
+                    throw new Exception(response.ReasonPhrase);
+                }
+                return default;
+            }
+        }
+
+        public async Task<T> PostWithToken<T>(string route, object body = null) {
+            this.InitializeClient();
+            // add token to header 
+
+            CheckToken headerValue = new CheckToken();
+            headerValue.id = AuthenticatedUser.Instance.data.Id;
+            headerValue.data = AuthenticatedUser.Instance.data.Token;
+
+            apiClient.DefaultRequestHeaders.Add("id", headerValue.id);
+            apiClient.DefaultRequestHeaders.Add("token", headerValue.data);
+
+            using (HttpResponseMessage response = await apiClient.PostAsJsonAsync(route, body)) {
+                if (response.IsSuccessStatusCode) {
                     var data = await response.Content.ReadAsAsync<T>();
                     if (data != null)
                         return data;

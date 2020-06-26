@@ -34,31 +34,25 @@ namespace FlightTicketManagement
         }
 
         private async void login_Click(object sender, RoutedEventArgs e) {
-            //string _userName = this.userName.Text;
-            //string _password = this.passWord.Password.ToString();
+            string _userName = this.userName.Text;
+            string _password = this.passWord.Password.ToString();
 
-            //InfoLogin user = await BusControl.Instance.Login(_userName, _password);
+            Response<InfoLogin> user = await BusControl.Instance.Login(_userName, _password);
 
-            //if (user.IsSuccess) {
-            //    Console.WriteLine("id: " + user.Result.Id + '\n');
-            //    Console.WriteLine("userName: " + user.Result.Name + '\n');
-            //    Console.WriteLine("token: " + user.Result.Token + '\n');
+            if (user.IsSuccess) {
+                Console.WriteLine("id: " + user.Result.Id + '\n');
+                Console.WriteLine("userName: " + user.Result.Name + '\n');
+                Console.WriteLine("token: " + user.Result.Token + '\n');
 
-            //    MainWindow.Instance.Hide();
+                MainWindow.Instance.Hide();
 
-            //    MainApp mainApp = new MainApp();
-            //    mainApp.Closed += onMainAppClose;
-            //    mainApp.Show();
-            //}
-            //else {
-            //    MessageBox.Show("login failed\n");
-            //}
-
-            MainWindow.Instance.Hide();
-
-            MainApp mainApp = new MainApp();
-            mainApp.Closed += onMainAppClose;
-            mainApp.Show();
+                MainApp mainApp = new MainApp();
+                mainApp.Closed += onMainAppClose;
+                mainApp.Show();
+            }
+            else {
+                MessageBox.Show("login failed\n");
+            }
         }
 
         private void signUp_Click(object sender, RoutedEventArgs e) {

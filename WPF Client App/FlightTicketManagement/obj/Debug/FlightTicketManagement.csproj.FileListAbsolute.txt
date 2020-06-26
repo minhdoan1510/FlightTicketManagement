@@ -211,3 +211,5 @@ D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignColors.pdb
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\SupportForm\getTransit.g.cs
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\SupportForm\getTransit.baml

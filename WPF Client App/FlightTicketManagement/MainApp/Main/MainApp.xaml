@@ -58,7 +58,15 @@
                         </StackPanel>
                     </Border>
 
-                    <StackPanel Margin="0,143,0,54.4">
+                    <Grid Background="#FF4BC7D9"
+                          Name="buttonFlag"
+                          Width="8"
+                          Margin="0, 146, 0, 571"
+                          HorizontalAlignment="Left" />
+
+                    <StackPanel Margin="0,143,0,54.4"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
                         <Button x:Name="dashBoardBtn"
                                 Margin="3"
                                 Background="Transparent"
@@ -81,6 +89,8 @@
                                            Padding="10, 0, 0, 0" />
                             </StackPanel>
                         </Button>
+
+
                         <Button x:Name="planeScheduleBtn"
                                 Margin="3"
                                 Background="Transparent"
@@ -103,6 +113,7 @@
                                            Padding="10, 0, 0, 0" />
                             </StackPanel>
                         </Button>
+
                         <Button x:Name="createTicketBtn"
                                 Margin="3"
                                 Background="Transparent"
@@ -125,6 +136,7 @@
                                            Padding="10, 0, 0, 0" />
                             </StackPanel>
                         </Button>
+
                         <Button x:Name="planeListBtn"
                                 Margin="3"
                                 Background="Transparent"
@@ -147,6 +159,7 @@
                                            Padding="10, 0, 0, 0" />
                             </StackPanel>
                         </Button>
+
                         <Button x:Name="reportBtn"
                                 Margin="3"
                                 Background="Transparent"
@@ -165,10 +178,10 @@
                                            Foreground="White"
                                            FontSize="15"
                                            FontWeight="Bold"
-                                           Width="135"
                                            Padding="10, 0, 0, 0" />
                             </StackPanel>
                         </Button>
+
                         <Button x:Name="donateBtn"
                                 Margin="3"
                                 Background="Transparent"
@@ -191,6 +204,7 @@
                                            Padding="10, 0, 0, 0" />
                             </StackPanel>
                         </Button>
+
                         <Button x:Name="settingBtn"
                                 Margin="3"
                                 Background="Transparent"
@@ -227,42 +241,50 @@
                     </Grid.RowDefinitions>
 
                     <Border Grid.Row="0"
-                            BorderThickness="0.5"
+                            BorderThickness="1"
                             BorderBrush="Black"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Stretch">
-                        <StackPanel x:Name="tileBar"
-                                    Background="White"
-                                    MouseDown="tileBar_MouseDown"
-                                    Orientation="Horizontal"
-                                    FlowDirection="RightToLeft">
-                            <Button x:Name="closeBtn"
-                                    Background="{x:Null}"
-                                    Click="cancelBtn_Click"
-                                    Width="35"
-                                    Padding="0"
-                                    BorderThickness="0">
-                                <materialDesign:PackIcon Kind="WindowClose"
-                                                         Background="White"
-                                                         Foreground="Black"
-                                                         Margin="0"
-                                                         Height="29"
-                                                         Width="32" />
-                            </Button>
-                            <Button x:Name="minimizeBtn"
-                                    Background="{x:Null}"
-                                    Click="minimizeBtn_Click"
-                                    Width="35"
-                                    Padding="0"
-                                    BorderThickness="0">
-                                <materialDesign:PackIcon Kind="WindowMinimize"
-                                                         Background="White"
-                                                         Foreground="Black"
-                                                         Margin="0"
-                                                         Height="29"
-                                                         Width="32" />
-                            </Button>
-                        </StackPanel>
+                        <Grid>
+                            <TextBlock FontSize="20"
+                                       x:Name="tile"
+                                       Panel.ZIndex="1"
+                                       Margin="5,0,711.8,0"
+                                       FontWeight="Bold"
+                                       MouseDown="tileBar_MouseDown">Dashboard</TextBlock>
+                            <StackPanel x:Name="tileBar"
+                                        Background="White"
+                                        MouseDown="tileBar_MouseDown"
+                                        Orientation="Horizontal"
+                                        FlowDirection="RightToLeft">
+                                <Button x:Name="closeBtn"
+                                        Background="{x:Null}"
+                                        Click="cancelBtn_Click"
+                                        Width="35"
+                                        Padding="0"
+                                        BorderThickness="0">
+                                    <materialDesign:PackIcon Kind="WindowClose"
+                                                             Background="White"
+                                                             Foreground="Black"
+                                                             Margin="0"
+                                                             Height="29"
+                                                             Width="32" />
+                                </Button>
+                                <Button x:Name="minimizeBtn"
+                                        Background="{x:Null}"
+                                        Click="minimizeBtn_Click"
+                                        Width="35"
+                                        Padding="0"
+                                        BorderThickness="0">
+                                    <materialDesign:PackIcon Kind="WindowMinimize"
+                                                             Background="White"
+                                                             Foreground="Black"
+                                                             Margin="0"
+                                                             Height="29"
+                                                             Width="32" />
+                                </Button>
+                            </StackPanel> 
+                        </Grid>
                     </Border >
 
                     <Grid Grid.Row="1"

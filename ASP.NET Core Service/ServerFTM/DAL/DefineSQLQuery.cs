@@ -20,7 +20,14 @@ namespace ServerFTM.DAL.Query
             set => query = value;
         }
 
-        public string ProcSignUp = "EXECUTE ProcSignup @id , @user , @pass , @name , @acctype";
+        public string ProcSignUp = "EXECUTE ProcSignup @id , @user , @pass , @name";
         public string ProcLogin = "EXECUTE ProcLogin @user , @pass";
+        public string ProcGetAccount = "EXECUTE ProcGetAccount @idaccount";
+        public string ProcGetAirportMenu = "EXECUTE ProcGetAirportMenu @key";
+        public string ProcCreateFlight = "EXECUTE ProcCreateFlight @flightID , @durationFlightID , @originAP , @destinationAP , @totalSeat , @price , @width , @height , @duration";
+        public string ProcGetFlightAll = "EXECUTE ProcGetFlightAll";
+        public string ProcCreateTransit = "EXECUTE ProcCreateTransit @transitID , @flightID , @airportID , @transitOrder , @transitTime , @transitNote";
+        public string ProcGetTransit = "EXECUTE ProcGetTransit @flightID"; 
+        public string ProcTestTime = "exec testTimeMap"; 
     }
 }
