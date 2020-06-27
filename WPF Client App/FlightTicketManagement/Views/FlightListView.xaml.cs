@@ -23,5 +23,6 @@ namespace FlightTicketManagement.Views
         public FlightListView() {
             InitializeComponent();
         }
+
     }
 }

@@ -26,8 +26,7 @@ namespace ServerFTM.BUS
             set => controls = value;
         }
 
-       
-
+      
         private BUS_Controls() { }
         
         #endregion
@@ -37,6 +36,9 @@ namespace ServerFTM.BUS
         {
             TokenManager.Instance.AddAccessToken(idUser, token);
         }
+
+     
+
         public void DelDevice(string token)
         {
             TokenManager.Instance.DelAccessToken(token);
@@ -75,9 +77,32 @@ namespace ServerFTM.BUS
             }
             return models;
         }
-
+        internal List<FlightModel> GetFlightForCity(string cityId)
+        {
+            List<FlightModel> models = new List<FlightModel>();
+            DataTable dataTable = DAL_Controls.Controls.GetFlightForCity(cityId);
+            if (dataTable != null)
+            {
+                //Pass datatable from dataset to our DAL Method.
+                models = DAL_Controls.Controls.CreateListFromTable<FlightModel>(dataTable);
+            }
+            return models;
+        }
 
         #endregion
+
+        internal List<CityModel> GetAllCity()
+        {
+            List<CityModel> models = new List<CityModel>();
+            DataTable dataTable = DAL_Controls.Controls.GetAllCity();
+            if (dataTable != null)
+            {
+                //Pass datatable from dataset to our DAL Method.
+                models = DAL_Controls.Controls.CreateListFromTable<CityModel>(dataTable);
+            }
+            return models;
+        }
+
         #region Transit
         public List<TransitModel> GetTransits(string transitId)
         {

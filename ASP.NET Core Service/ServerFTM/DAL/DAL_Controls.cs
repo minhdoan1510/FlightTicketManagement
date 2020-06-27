@@ -89,6 +89,33 @@ namespace ServerFTM.DAL.Controls
             }).ToList();
         }
 
+        internal DataTable GetFlightForCity(string cityId)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightForCity,
+                    new object[] { cityId});
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public DataTable GetAllCity()
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetCity);
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         public DataTable GetTransits(string transitId)
         {
 

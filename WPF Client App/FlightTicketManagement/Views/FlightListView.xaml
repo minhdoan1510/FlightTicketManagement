@@ -4,11 +4,50 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightTicketManagement"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              Background="White"
              d:DesignHeight="722"
              d:DesignWidth="1094">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding SelectedCity.Name}" Grid.Row="0"  FontWeight="Bold" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
+        <ComboBox Grid.Row="1"
+  materialDesign:HintAssist.Hint="Thành phố"
+  ItemsSource="{Binding Cities}"
+                  DisplayMemberPath="Name"
+                  IsSynchronizedWithCurrentItem="True"
+  Style="{StaticResource MaterialDesignFloatingHintComboBox}"  SelectedItem="{Binding SelectedCity}">
+            
+         
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate >
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <DataGrid Grid.Row="2"
+  ItemsSource="{Binding Flights}"
+  CanUserAddRows="False"
+  SelectionUnit="FullRow"
+        AutoGenerateColumns="False"
+  SelectionMode="Extended" Margin="0,261,0,10" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Điểm khởi hành" Binding="{Binding OriginCity}" />
+                <DataGridTextColumn Header="Sân bay đi" Binding="{Binding OriginAP}" />
+                <DataGridTextColumn Header="Điểm kết thúc" Binding="{Binding DestCity}" />
+                <DataGridTextColumn Header="Sân bay đến" Binding="{Binding DestAP}"/>
+                <DataGridTextColumn Header="Thời gian" Binding="{Binding Time, StringFormat=hh\\:mm}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+    <!--<Grid>
         <TextBlock FontSize="50">plane list</TextBlock>  
     
     <Grid>
@@ -47,5 +86,5 @@
             </ItemsControl>
         
     </Grid>
-    </Grid>
+    </Grid>-->
 </UserControl>

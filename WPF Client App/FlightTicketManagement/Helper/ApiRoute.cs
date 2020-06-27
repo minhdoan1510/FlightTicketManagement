@@ -92,7 +92,7 @@ namespace FlightTicketManagement.Helper
         public static class City
 
         {
-            public const string GetAll = Base + "/cities";
+            public const string GetAll = Base + "/City";
 
             public const string Get = Base + "/cities" + Key;
 

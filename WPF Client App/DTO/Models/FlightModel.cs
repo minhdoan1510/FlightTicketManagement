@@ -30,13 +30,20 @@ namespace Library.Models
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+        [JsonProperty("originCityId")]
+        public string OriginCityId { get; set; }
+        [JsonProperty("originCity")]
+        public string OriginCity { get; set; }
 
         [JsonProperty("originAPId")]
         public string OriginAPId { get; set; }
 
         [JsonProperty("originAP")]
         public string OriginAP { get; set; }
-
+        [JsonProperty("destCityId")]
+        public string DestCityId { get; set; }
+        [JsonProperty("destCity")]
+        public string DestCity { get; set; }
         [JsonProperty("destAPId")]
         public string DestAPId { get; set; }
 
