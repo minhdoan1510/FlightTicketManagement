@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightTicketManagement"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewmodel="clr-namespace:FlightTicketManagement.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              mc:Ignorable="d"
              Background="White"
              d:DesignHeight="722"
@@ -16,13 +17,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding SelectedCity.Name}" Grid.Row="0"  FontWeight="Bold" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Text="{Binding SelectedCityId}" Grid.Row="0"  FontWeight="Bold" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
         <ComboBox Grid.Row="1"
-  materialDesign:HintAssist.Hint="Thành phố"
-  ItemsSource="{Binding Cities}"
-                  DisplayMemberPath="Name"
-                  IsSynchronizedWithCurrentItem="True"
-  Style="{StaticResource MaterialDesignFloatingHintComboBox}"  SelectedItem="{Binding SelectedCity}">
+                    materialDesign:HintAssist.Hint="Thành phố"
+                    ItemsSource="{Binding Cities}"
+                    DisplayMemberPath="Name"
+             
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                    SelectedValue="{Binding SelectedCityId ,Mode=TwoWay}"
+                  SelectedValuePath="Id">
             
          
             <ComboBox.ItemsPanel>
@@ -32,17 +35,47 @@
             </ComboBox.ItemsPanel>
         </ComboBox>
         <DataGrid Grid.Row="2"
-  ItemsSource="{Binding Flights}"
-  CanUserAddRows="False"
-  SelectionUnit="FullRow"
-        AutoGenerateColumns="False"
-  SelectionMode="Extended" Margin="0,261,0,10" >
+            ItemsSource="{Binding Flights}"
+            CanUserAddRows="False"
+            SelectionUnit="FullRow"
+            AutoGenerateColumns="False"
+            SelectionMode="Extended" Margin="0,261,0,10" 
+            IsReadOnly="True"
+            SelectedItem="{Binding SelectedFlight,Mode=TwoWay}"
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Điểm khởi hành" Binding="{Binding OriginCity}" />
                 <DataGridTextColumn Header="Sân bay đi" Binding="{Binding OriginAP}" />
                 <DataGridTextColumn Header="Điểm kết thúc" Binding="{Binding DestCity}" />
                 <DataGridTextColumn Header="Sân bay đến" Binding="{Binding DestAP}"/>
                 <DataGridTextColumn Header="Thời gian" Binding="{Binding Time, StringFormat=hh\\:mm}"/>
+                <DataGridTextColumn Header="Transit" Binding="{Binding TransitNum}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate xmlns:cal="http://www.caliburnproject.org">
+                            <StackPanel Orientation="Horizontal">
+                                <!--<Button cal:Bind.Model="{Binding FlightViewModel, RelativeSource={RelativeSource AncestorType=DataGrid}}" cal:Message.Attach="ShowTransit" 
+                                        IsEnabled="{Binding IsEnabled}"
+                                        >Details</Button>-->
+                                <Button
+                                    IsEnabled="True"
+    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+>
+                                    <Button.CommandParameter>
+                                        <!-- the simplest view model of all, a DateTime. the view can be found in the resources of MainWindow.xaml  -->
+                                        <system:DateTime xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                            1966-JUL-30
+                                        </system:DateTime>
+                                    </Button.CommandParameter>
+                                    PASS MODEL
+                                </Button>
+
+                                <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"  x:Name="ShowTransit" >Details</Button>
+                            <Button x:Name="BookTicket">Book Ticket</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
 
         </DataGrid>

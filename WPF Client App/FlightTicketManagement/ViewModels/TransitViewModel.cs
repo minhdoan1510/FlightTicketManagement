@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using FlightTicketManagement.EventModels;
 using FlightTicketManagement.Helper;
 
 using Library.Models;
@@ -13,12 +14,16 @@ namespace FlightTicketManagement.ViewModels
 {
     public class TransitViewModel: Screen
     {
-        protected override async void OnViewLoaded(object view)
+        public TransitViewModel()
         {
-            base.OnViewLoaded(view);
-            FlightId = "123123";
-            await LoadTransits();
+            DisplayName = "Transit";
         }
+        public TransitViewModel(string flightId)
+        {
+            FlightId = flightId;
+            DisplayName = "Transit";
+        }
+       
         private async Task LoadTransits()
         {
             Response<List<TransitModel>> response = await APIHelper<Response<List<TransitModel>>>.Instance.Get(ApiRoutes.Transit.Get.Replace(ApiRoutes.Keybase,FlightId));
@@ -30,6 +35,12 @@ namespace FlightTicketManagement.ViewModels
             }
 
         }
+
+        public void Handle(GetTransitEvent message)
+        {
+            FlightId = message.FlightId;
+        }
+
         private BindingList<TransitModel> _transits;
 
         public BindingList<TransitModel> Transits
@@ -49,6 +60,7 @@ namespace FlightTicketManagement.ViewModels
             set { 
                 flightId = value;
                 NotifyOfPropertyChange(() => FlightId);
+                Task.Run(() => LoadTransits());
             }
         }
 

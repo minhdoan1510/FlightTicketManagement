@@ -29,13 +29,13 @@ namespace FlightTicketManagement.Helper
         {
             public const string GetAll = Base + "/Flight";
 
-            public const string Get = Base + "/flights" + Key;
+            public const string Get = Base + "/Flight" + Key;
 
-            public const string Update = Base + "/flights" + Key;
+            public const string Update = Base + "/Flight" + Key;
 
-            public const string Delete = Base + "/flights" + Key;
+            public const string Delete = Base + "/Flight" + Key;
 
-            public const string Create = Base + "/flights";
+            public const string Create = Base + "/Flight";
         }
         public static class Class
 

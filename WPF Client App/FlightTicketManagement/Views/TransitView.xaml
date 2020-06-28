@@ -15,26 +15,26 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ItemsControl x:Name="Transits" Grid.Row="1">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="10" Padding="10">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="10" Text="{Binding Number}" />
-                            <TextBlock Margin="10" Text="{Binding APName}" />
-                            <TextBlock Margin="10" Text="{Binding CityName}"/>
-                            <TextBlock Margin="10" Text="{Binding CountryName}"/>
-                            <TextBlock Margin="10" Text="{Binding Time.Hours}"/>
-                            <TextBlock Margin="10" Text="{Binding Note}"/>
-                        </StackPanel>
-                    </Border>
+        <DataGrid Grid.Row="0"
+            ItemsSource="{Binding Transits}"
+            CanUserAddRows="False"
+            SelectionUnit="FullRow"
+            AutoGenerateColumns="False"
+            SelectionMode="Extended" 
+            IsReadOnly="True"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Thứ tự" Binding="{Binding Number}" />
+                <DataGridTextColumn Header="Tên sân bay" Binding="{Binding APName}" />
+                <DataGridTextColumn Header="Thành phố" Binding="{Binding CityName}" />
+                <DataGridTextColumn Header="Nước" Binding="{Binding CountryName}"/>
+                <DataGridTextColumn Header="Thời gian" Binding="{Binding Time, StringFormat=hh\\:mm}"/>
+                <DataGridTextColumn Header="Ghi chú" Binding="{Binding Note}"/>
+                
+            </DataGrid.Columns>
 
-                </DataTemplate>
-
-
-
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        </DataGrid>
+       
 
     </Grid>
 </UserControl>

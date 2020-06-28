@@ -1,23 +1,28 @@
 ﻿using Caliburn.Micro;
+using FlightTicketManagement.EventModels;
 using FlightTicketManagement.Helper;
 
 using Library.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 
 namespace FlightTicketManagement.ViewModels
 {
+
     class FlightListViewModel : Screen
     {
-        public FlightListViewModel()
+        private readonly IEventAggregator _events;
+        public FlightListViewModel(IEventAggregator events)
         {
-
+            _events = events;
         }
         protected override async void OnViewLoaded(object view)
         {
@@ -32,19 +37,19 @@ namespace FlightTicketManagement.ViewModels
             {
                 var list = response.Result;
 
-                Flights = new BindingList<FlightModel>(list);
+                Flights = new ObservableCollection<FlightModel>(list);
             }
 
         }
 
         private async Task LoadFlightsForCity()
         {
-            Response<List<FlightModel>> response = await APIHelper<Response<List<FlightModel>>>.Instance.Get(ApiRoutes.Flight.Get.Replace(ApiRoutes.Keybase,SelectedCity.Id));
+            Response<List<FlightModel>> response = await APIHelper<Response<List<FlightModel>>>.Instance.Get(ApiRoutes.Flight.Get.Replace(ApiRoutes.Keybase,SelectedCityId));
             if (response.IsSuccess)
             {
                 var list = response.Result;
-                Flights.Clear();
-                Flights = new BindingList<FlightModel>(list);
+                
+                Flights = new ObservableCollection<FlightModel>(list);
             }
 
         }
@@ -60,9 +65,9 @@ namespace FlightTicketManagement.ViewModels
 
         }
 
-        private BindingList<FlightModel> _flights;
+        private ObservableCollection<FlightModel> _flights;
 
-        public  BindingList<FlightModel> Flights
+        public ObservableCollection<FlightModel> Flights
         {
             get => _flights;
             set
@@ -84,18 +89,43 @@ namespace FlightTicketManagement.ViewModels
             }
         }
 
-        private CityModel _selectedCity;
-        public CityModel SelectedCity
-        {
-            get { return _selectedCity; }
-            set { 
-                _selectedCity = value;
-                Task.Run(() => LoadFlightsForCity());
-                NotifyOfPropertyChange(() => SelectedCity);
+        //private CityModel _selectedCity;
+        //public CityModel SelectedCity
+        //{
+        //    get { return _selectedCity; }
+        //    set { 
+        //        _selectedCity = value;
+                
                 
 
+        //    }
+        //}
+        private string _selectedCityId;
+
+        public string SelectedCityId
+        {
+            get { return _selectedCityId; }
+            set { 
+                _selectedCityId = value;
+                NotifyOfPropertyChange(() => SelectedCityId);
+                Flights.Clear();
+                Task.WhenAll(Task.Run(() => LoadFlightsForCity()));
+                
             }
         }
+        private FlightModel _selectedFlight;
+
+        public FlightModel SelectedFlight
+        {
+            get { return _selectedFlight; }
+            set { _selectedFlight = value; }
+        }
+
+        public void ShowTransit()
+        {
+            _events.PublishOnUIThread(new GetTransitEvent(SelectedFlight.Id));
+        }
+
 
     }
 }

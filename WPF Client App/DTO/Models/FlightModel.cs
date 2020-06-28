@@ -51,10 +51,22 @@ namespace Library.Models
         public string DestAP { get; set; }
         [JsonProperty("totalSeat")]
         public int TotalSeat { get; set; }
+
+        [JsonProperty("transitNum")]
+        public int TransitNum { get; set; }
         [JsonProperty("Time")]
         [System.Text.Json.Serialization.JsonConverter(typeof(JsonTimeSpanConverter))]
         public TimeSpan Time { get; set; }
-        // public int NumOfTransit { get; set; } public class InfoLogin
+
+      
+ 
+        public bool  IsEnabled
+        {
+            get {
+                return TransitNum > 0;
+            }
+           
+        }
 
     }
 }

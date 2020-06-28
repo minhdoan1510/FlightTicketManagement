@@ -131,6 +131,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="BUS\BusControl.cs" />
     <Compile Include="EventModels\EventModels.cs" />
+    <Compile Include="EventModels\GetTransitEvent.cs" />
     <Compile Include="Helper\APIHelper.cs" />
     <Compile Include="Helper\ApiRoute.cs" />
     <Compile Include="Helper\PasswordBoxHelper.cs" />

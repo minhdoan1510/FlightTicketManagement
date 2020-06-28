@@ -24,6 +24,17 @@ namespace FlightTicketManagement.ViewModels
             }
         }
 
+        private TimeSpan time;
+
+        public TimeSpan TestTime
+        {
+            get { return time; }
+            set {
+                time = value;
+                NotifyOfPropertyChange(() => TestTime);
+            }
+        }
+
         protected override async void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
