@@ -44,8 +44,6 @@ namespace FlightTicketManagement
             InitializeComponent();
 
             airportList.Result = new List<AirportMenu>();
-
-            this.flightDataGridView.ItemsSource = flightList.Result;
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e) {

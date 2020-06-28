@@ -49,7 +49,7 @@ namespace FlightTicketManagement
             usercontrolTiles[planeListBtn] = "Danh Sách Chuyến Bay";
             usercontrolTiles[reportBtn] = "Báo Cáo Doanh Số";
             usercontrolTiles[donateBtn] = "Ủng Hộ Nhà Phát Triển";
-            usercontrolTiles[settingBtn] = "Cài Đặt";
+            usercontrolTiles[settingBtn] = "Cài Đặt"; 
         }
 
         void bringToFront(UIElement control) {

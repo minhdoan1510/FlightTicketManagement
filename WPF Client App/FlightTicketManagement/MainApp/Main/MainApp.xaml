@@ -258,7 +258,6 @@
                                         Orientation="Horizontal"
                                         FlowDirection="RightToLeft">
                                 <Button x:Name="closeBtn"
-                                        Background="{x:Null}"
                                         Click="cancelBtn_Click"
                                         Width="35"
                                         Padding="0"
@@ -271,7 +270,6 @@
                                                              Width="32" />
                                 </Button>
                                 <Button x:Name="minimizeBtn"
-                                        Background="{x:Null}"
                                         Click="minimizeBtn_Click"
                                         Width="35"
                                         Padding="0"

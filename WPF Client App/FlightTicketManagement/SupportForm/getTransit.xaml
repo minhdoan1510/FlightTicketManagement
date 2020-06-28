@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FlightTicketManagement.SupportForm"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        WindowStyle="ToolWindow"
         Title="AirplaneTransit"
         ResizeMode="NoResize"
         Height="460.976"
