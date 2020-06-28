@@ -1,0 +1,36 @@
+D:\Coding\GUI\Source\DTO\bin\Debug\netstandard2.0\DTO.deps.json
+D:\Coding\GUI\Source\DTO\bin\Debug\netstandard2.0\DTO.dll
+D:\Coding\GUI\Source\DTO\bin\Debug\netstandard2.0\DTO.pdb
+D:\Coding\GUI\Source\DTO\obj\Debug\netstandard2.0\DTO.csprojAssemblyReference.cache
+D:\Coding\GUI\Source\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfoInputs.cache
+D:\Coding\GUI\Source\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfo.cs
+D:\Coding\GUI\Source\DTO\obj\Debug\netstandard2.0\DTO.csproj.CoreCompileInputs.cache
+D:\Coding\GUI\Source\DTO\obj\Debug\netstandard2.0\DTO.dll
+D:\Coding\GUI\Source\DTO\obj\Debug\netstandard2.0\DTO.pdb
+D:\check tien\Source\DTO\bin\Debug\netstandard2.0\DTO.deps.json
+D:\check tien\Source\DTO\bin\Debug\netstandard2.0\DTO.dll
+D:\check tien\Source\DTO\bin\Debug\netstandard2.0\DTO.pdb
+D:\check tien\Source\DTO\obj\Debug\netstandard2.0\DTO.csprojAssemblyReference.cache
+D:\check tien\Source\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfoInputs.cache
+D:\check tien\Source\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfo.cs
+D:\check tien\Source\DTO\obj\Debug\netstandard2.0\DTO.dll
+D:\check tien\Source\DTO\obj\Debug\netstandard2.0\DTO.pdb
+D:\check tien\Source\DTO\obj\Debug\netstandard2.0\DTO.csproj.CoreCompileInputs.cache
+D:\FlightTicketManagement-master\WPF Client App\DTO\bin\Debug\netstandard2.0\DTO.deps.json
+D:\FlightTicketManagement-master\WPF Client App\DTO\bin\Debug\netstandard2.0\DTO.dll
+D:\FlightTicketManagement-master\WPF Client App\DTO\bin\Debug\netstandard2.0\DTO.pdb
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.csprojAssemblyReference.cache
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfoInputs.cache
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfo.cs
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.csproj.CoreCompileInputs.cache
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.dll
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.pdb
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\bin\Debug\netstandard2.0\DTO.deps.json
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\bin\Debug\netstandard2.0\DTO.dll
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\bin\Debug\netstandard2.0\DTO.pdb
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.csprojAssemblyReference.cache
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfoInputs.cache
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfo.cs
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.csproj.CoreCompileInputs.cache
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.dll
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\DTO.pdb

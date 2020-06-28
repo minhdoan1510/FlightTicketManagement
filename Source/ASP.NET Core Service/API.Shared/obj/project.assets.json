@@ -4259,11 +4259,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
       "projectName": "API.Shared",
-      "projectPath": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+      "projectPath": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
       "packagesPath": "C:\\Users\\Minh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
+      "outputPath": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",

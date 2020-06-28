@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {}
+    "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+    "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
         "projectName": "API.Shared",
-        "projectPath": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "projectPath": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
         "packagesPath": "C:\\Users\\Minh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
+        "outputPath": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {
+    "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+        "projectUniqueName": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
         "projectName": "ServerFTM",
-        "projectPath": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+        "projectPath": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
         "packagesPath": "C:\\Users\\Minh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\obj\\",
+        "outputPath": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\ServerFTM\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -94,8 +94,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
-                "projectPath": "C:\\Users\\Minh\\Desktop\\GitMain\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
+              "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+                "projectPath": "C:\\Users\\Minh\\Desktop\\GitMinh\\FlightTicketManagement\\Source\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
               }
             }
           }

@@ -52,3 +52,12 @@ C:\Users\Minh\Desktop\GitMain\FlightTicketManagement\ASP.NET Core Service\API.Sh
 C:\Users\Minh\Desktop\GitMain\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
 C:\Users\Minh\Desktop\GitMain\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
 C:\Users\Minh\Desktop\GitMain\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.deps.json
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.dll
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.pdb
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csprojAssemblyReference.cache
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfoInputs.cache
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfo.cs
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb

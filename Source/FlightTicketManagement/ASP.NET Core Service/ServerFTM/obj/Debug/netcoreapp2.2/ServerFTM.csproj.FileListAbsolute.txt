@@ -1,4 +1,0 @@
-D:\New folder\Source\ServerFTM\obj\Debug\netcoreapp2.2\ServerFTM.csprojAssemblyReference.cache
-D:\New folder\Source\ServerFTM\obj\Debug\netcoreapp2.2\ServerFTM.AssemblyInfoInputs.cache
-D:\New folder\Source\ServerFTM\obj\Debug\netcoreapp2.2\ServerFTM.AssemblyInfo.cs
-D:\New folder\Source\ServerFTM\obj\Debug\netcoreapp2.2\ServerFTM.csproj.CoreCompileInputs.cache

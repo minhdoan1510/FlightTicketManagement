@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FlightTicketManagement.Resource" xmlns:local1="clr-namespace:FlightTicketManagement">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Art/artResource.xaml" />
+        <ResourceDictionary Source="loginButton.xaml" />
+        <ResourceDictionary Source="tileBarButton.xaml" />
+        <ResourceDictionary Source="tileButton.xaml" />
+        <ResourceDictionary Source="menuStyle.xaml" />
+        <ResourceDictionary Source="transparentBackground.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+
+            <ResourceDictionary>
+                <local1:Bootstrapper x:Key="Bootstrapper"/>
+            </ResourceDictionary>
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
