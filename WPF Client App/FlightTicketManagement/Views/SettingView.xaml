@@ -4,44 +4,84 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightTicketManagement" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d"
              Background="White"
              d:DesignHeight="722"
              d:DesignWidth="1094">
-    <Grid>
-        <TextBlock FontSize="50" Margin="10,10,-10,-10"><Run Text="setting"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="75,159,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20">
+    
+    <Grid >
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="6*"/>
+
+        </Grid.ColumnDefinitions>
+        <TextBlock FontSize="50" HorizontalAlignment ="Center" Grid.ColumnSpan="4"    ><Run Text="Settings"/></TextBlock>
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap"  VerticalAlignment="Center"  FontSize="20" Grid.Column="0" Grid.Row="1">
             Thời gian bay tối thiểu
         </TextBlock>
 
-        <TextBlock HorizontalAlignment="Left" Margin="75,218,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20" Text="Số lần Transit tối đa"/>
-        <TextBlock HorizontalAlignment="Left" Margin="75,284,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian Transit tối thiểu"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="75,325,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian Transit tối đa"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="75,366,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian đặt vé trễ nhất"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="75,424,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="36" Width="300" FontSize="20"><Run Text="Thời gian hủy vé trễ nhất"/></TextBlock>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <materialDesign:TimePicker
-  Is24Hours="True"
-  x:Name="Time"
-  Width="100"
-                SelectedTime="{Binding TestTime}"
-                
-    BindingGroup="{Binding TestTime}" Margin="215,125,779,574" />
-            <TextBox Text="{Binding Restrictions.MinFlightTime}" HorizontalAlignment="Left" Margin="380,172,0,527" TextWrapping="Wrap" Width="480"/>
-            <TextBox Text="{Binding TestTime, StringFormat=hh//:mm,Mode=TwoWay}" HorizontalAlignment="Left" Margin="380,125,0,574" TextWrapping="Wrap" Width="480"/>
-            <TextBox Text="{Binding Restrictions.MaxTransit}"  HorizontalAlignment="Left" Margin="375,218,0,481" TextWrapping="Wrap"  Width="480" />
-            <TextBox Text="{Binding Restrictions.MinTransitTime}" HorizontalAlignment="Left" Margin="375,289,0,410" TextWrapping="Wrap"  Width="480"/>
-            <TextBox Text="{Binding Restrictions.MaxTransitTime}" HorizontalAlignment="Left" Margin="380,330,0,369" TextWrapping="Wrap" Width="480" />
-            <TextBox Text="{Binding Restrictions.LatestBookingTime}" HorizontalAlignment="Left" Margin="375,379,0,320" TextWrapping="Wrap"  Width="480"/>
-            <TextBox Text="{Binding Restrictions.LatestCancelingTime}" HorizontalAlignment="Left" Margin="380,424,0,275" TextWrapping="Wrap" Width="480" />
-            <!--</StackPanel>
+        <TextBlock HorizontalAlignment="Right"  TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"
+                   FontSize="20" Text="Số lần Transit tối đa"/>
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"
+                   FontSize="20" ><Run Text="Thời gian Transit tối thiểu"/></TextBlock>
+        <TextBlock HorizontalAlignment="Right"  TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="4"
+                   FontSize="20"><Run Text="Thời gian Transit tối đa"/></TextBlock>
+        <TextBlock HorizontalAlignment="Right"  TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="5"
+                   FontSize="20"><Run Text="Thời gian đặt vé trễ nhất"/></TextBlock>
+        <TextBlock HorizontalAlignment="Right"  TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="6"
+                   FontSize="20"><Run Text="Thời gian hủy vé trễ nhất"/></TextBlock>
+
+
+        <materialDesign:TimePicker
+                Is24Hours="True"
+                SelectedTime="{Binding MinFlightTime}"
+                WithSeconds="True"
+                Grid.Row="1" Grid.Column="2" 
+                IsEnabled="{Binding Editting}"/>
+        <TextBox Text="{Binding MaxTransit}"  HorizontalAlignment="Left"  MaxHeight="25" Width="355" IsEnabled="{Binding Editting}"
+                 TextWrapping="Wrap"  Grid.Row="2" Grid.Column="2"/>
+        <materialDesign:TimePicker
+                Is24Hours="True"
+                SelectedTime="{Binding MinTransitTime}"
+                WithSeconds="True"
+                 IsEnabled="{Binding Editting}"
+                Grid.Row="3" Grid.Column="2"  />
+        <materialDesign:TimePicker
+                Is24Hours="True"
+                SelectedTime="{Binding MaxTransitTime}"
+                WithSeconds="True"
+                IsEnabled="{Binding Editting}"
+                Grid.Row="4" Grid.Column="2"  />
+        <TextBox Text="{Binding LatestBookingTime}" HorizontalAlignment="Left"  
+                 MaxHeight="25" Width="355" IsEnabled="{Binding Editting}"
+                 TextWrapping="Wrap"  Grid.Row="5" Grid.Column="2"/>
+        <TextBox Text="{Binding LatestCancelingTime}" HorizontalAlignment="Left"  
+                 MaxHeight="25" Width="355" IsEnabled="{Binding Editting}"
+                 TextWrapping="Wrap" Grid.Row="6" Grid.Column="2"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"   Grid.Row="7" Grid.Column="2">
+            <Button Width="100" x:Name="StartEdit" >Chỉnh sửa</Button>
+            <Button Width="100" x:Name="Reset" IsEnabled="{Binding Editting}">Reset</Button>
+            <Button Width="100" x:Name="Save" IsEnabled="{Binding Editting}">Save</Button>
+        </StackPanel>
+        
+        
+        <!--</StackPanel>
                         </Border>
                     </DataTemplate>
 
@@ -49,6 +89,6 @@
 
                 </ItemsControl.ItemTemplate>
             </ItemsControl>-->
-        </Grid>
     </Grid>
+
 </UserControl>

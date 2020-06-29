@@ -23,7 +23,7 @@ namespace FlightTicketManagement.Helper
         public static class Restriction
         {
             public const string Get = Base + "/Restrictions";
-            public const string Update = Base + "/Restrictions";
+            public const string Post = Base + "/Restrictions";
         }
         public static class Flight
         {

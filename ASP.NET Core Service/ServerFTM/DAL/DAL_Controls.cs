@@ -8,6 +8,7 @@ using ServerFTM.DAL.Query;
 using ServerFTM.DAL.DataProvider;
 using System.Data;
 using System.Reflection;
+using Library.Models;
 
 namespace ServerFTM.DAL.Controls
 {
@@ -144,6 +145,25 @@ namespace ServerFTM.DAL.Controls
             catch (Exception e)
             {
                 return null;
+            }
+        }
+
+        public bool ChangeRestrictions(RestrictionsModel model)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcChangeRestrictions,
+                    new object[] {  model.MinFlightTime,
+                                    model.MaxTransit,
+                                    model.MinTransitTime,
+                                    model.MaxTransitTime,
+                                    model.LatestBookingTime,
+                                    model.LatestCancelingTime
+                                     } )>0;
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
     }

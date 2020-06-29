@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding SelectedCityId}" Grid.Row="0"  FontWeight="Bold" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Text="Tìm kiếm chuyến bay" Grid.Row="0"  FontWeight="Bold" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
         <ComboBox Grid.Row="1"
                     materialDesign:HintAssist.Hint="Thành phố"
                     ItemsSource="{Binding Cities}"
@@ -44,33 +44,19 @@
             SelectedItem="{Binding SelectedFlight,Mode=TwoWay}"
                   >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Điểm khởi hành" Binding="{Binding OriginCity}" />
-                <DataGridTextColumn Header="Sân bay đi" Binding="{Binding OriginAP}" />
-                <DataGridTextColumn Header="Điểm kết thúc" Binding="{Binding DestCity}" />
-                <DataGridTextColumn Header="Sân bay đến" Binding="{Binding DestAP}"/>
-                <DataGridTextColumn Header="Thời gian" Binding="{Binding Time, StringFormat=hh\\:mm}"/>
-                <DataGridTextColumn Header="Transit" Binding="{Binding TransitNum}"/>
-                <DataGridTemplateColumn>
+                <DataGridTextColumn Header="Điểm khởi hành" Binding="{Binding OriginCity}"   Width="auto"/>
+                <DataGridTextColumn Header="Sân bay đi" Binding="{Binding OriginAP}" Width="auto" />
+                <DataGridTextColumn Header="Điểm kết thúc" Binding="{Binding DestCity}" Width="auto" />
+                <DataGridTextColumn Header="Sân bay đến" Binding="{Binding DestAP}" Width="auto"/>
+                <DataGridTextColumn Header="Thời gian" Binding="{Binding Time, StringFormat=hh\\:mm}" Width="auto"/>
+                <DataGridTextColumn Header="Transit" Binding="{Binding TransitNum}" Width="auto"/>
+                <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate xmlns:cal="http://www.caliburnproject.org">
                             <StackPanel Orientation="Horizontal">
-                                <!--<Button cal:Bind.Model="{Binding FlightViewModel, RelativeSource={RelativeSource AncestorType=DataGrid}}" cal:Message.Attach="ShowTransit" 
+                                <Button cal:Bind.Model="{Binding FlightViewModel, RelativeSource={RelativeSource AncestorType=DataGrid}}" cal:Message.Attach="ShowTransit" 
                                         IsEnabled="{Binding IsEnabled}"
-                                        >Details</Button>-->
-                                <Button
-                                    IsEnabled="True"
-    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
->
-                                    <Button.CommandParameter>
-                                        <!-- the simplest view model of all, a DateTime. the view can be found in the resources of MainWindow.xaml  -->
-                                        <system:DateTime xmlns:system="clr-namespace:System;assembly=mscorlib">
-                                            1966-JUL-30
-                                        </system:DateTime>
-                                    </Button.CommandParameter>
-                                    PASS MODEL
-                                </Button>
-
-                                <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"  x:Name="ShowTransit" >Details</Button>
+                                        >Details</Button>
                             <Button x:Name="BookTicket">Book Ticket</Button>
                             </StackPanel>
                         </DataTemplate>
@@ -80,44 +66,5 @@
 
         </DataGrid>
     </Grid>
-    <!--<Grid>
-        <TextBlock FontSize="50">plane list</TextBlock>  
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-            <ItemsControl x:Name="Flights" Grid.Row="1">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1" Margin="10" Padding="10">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="10" Text="{Binding OriginAP}" />
-                                <TextBlock Margin="10" Text="{Binding DestAP}" />
-                                <TextBlock Margin="10,10,0,10" Text="{Binding Time, StringFormat=hh\\:mm}" /> 
-                        
-                
-                                
-                                <TextBlock Margin="10" Text="{Binding TotalSeat}"/>
-                                <Button x:Name="Detail">Details</Button>
-                            </StackPanel>
-                            
-                                
-                            
-                               
-                        </Border>
-                       
-                    </DataTemplate>
-                 
-                                      
-    
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        
-    </Grid>
-    </Grid>-->
+
 </UserControl>

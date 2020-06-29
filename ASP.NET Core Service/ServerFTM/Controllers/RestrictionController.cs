@@ -26,6 +26,15 @@ namespace ServerFTM.Controllers
             else return new JsonResult(new ApiResponse<object>(200, "found nothing"));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]RestrictionsModel model)
+        {
+            if(BUS_Controls.Controls.ChangeRestriction(model))
+            {
+                return new JsonResult(new ApiResponse<object>("Ok"));
+            }
+            else return new JsonResult(new ApiResponse<object>(200, "cant change"));
 
+        }
     }
 }

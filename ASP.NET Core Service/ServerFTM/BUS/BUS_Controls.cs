@@ -37,7 +37,7 @@ namespace ServerFTM.BUS
             TokenManager.Instance.AddAccessToken(idUser, token);
         }
 
-     
+      
 
         public void DelDevice(string token)
         {
@@ -128,6 +128,11 @@ namespace ServerFTM.BUS
             }
             if (models.Count != 1) return null;
             return models[0];
+        }
+
+        public bool ChangeRestriction(RestrictionsModel model)
+        {
+            return DAL_Controls.Controls.ChangeRestrictions(model);
         }
         #endregion
 

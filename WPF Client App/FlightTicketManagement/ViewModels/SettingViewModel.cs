@@ -10,30 +10,80 @@ using System.Threading.Tasks;
 
 namespace FlightTicketManagement.ViewModels
 {
-    class SettingViewModel:Screen
+    class SettingViewModel : Screen
     {
-        private RestrictionsModel restrictions;
 
-        public RestrictionsModel Restrictions
+        private DateTime _minFlightTime;
+
+        public DateTime MinFlightTime
         {
-            get => restrictions;
+            get { return _minFlightTime; }
             set
             {
-                restrictions = value;
-                NotifyOfPropertyChange(() => Restrictions);
+                _minFlightTime = value;
+                NotifyOfPropertyChange(() => MinFlightTime);
             }
         }
+        private int _maxTransit;
 
-        private TimeSpan time;
-
-        public TimeSpan TestTime
+        public int MaxTransit
         {
-            get { return time; }
-            set {
-                time = value;
-                NotifyOfPropertyChange(() => TestTime);
+            get { return _maxTransit; }
+            set
+            {
+                _maxTransit = value;
+                NotifyOfPropertyChange(() => MaxTransit);
             }
         }
+        private DateTime _minTransitTime;
+
+        public DateTime MinTransitTime
+        {
+            get { return _minTransitTime; }
+            set
+            {
+                _minTransitTime = value;
+                NotifyOfPropertyChange(() => MinTransitTime);
+            }
+        }
+
+        private DateTime _maxTransitTime;
+
+        public DateTime MaxTransitTime
+        {
+            get { return _maxTransitTime; }
+            set
+            {
+                _maxTransitTime = value;
+                NotifyOfPropertyChange(() => MaxTransitTime);
+            }
+        }
+
+        private int _latestBookingTime;
+
+        public int LatestBookingTime
+        {
+            get { return _latestBookingTime; }
+            set
+            {
+                _latestBookingTime = value;
+                NotifyOfPropertyChange(() => LatestBookingTime);
+            }
+        }
+
+        private int _latestCancelingTime;
+
+        public int LatestCancelingTime
+        {
+            get { return _latestCancelingTime; }
+            set
+            {
+                _latestCancelingTime = value;
+                NotifyOfPropertyChange(() => LatestCancelingTime);
+            }
+        }
+
+
 
         protected override async void OnViewLoaded(object view)
         {
@@ -45,9 +95,59 @@ namespace FlightTicketManagement.ViewModels
             Response<RestrictionsModel> response = await APIHelper<Response<RestrictionsModel>>.Instance.Get(ApiRoutes.Restriction.Get);
             if (response.IsSuccess)
             {
-                Restrictions = response.Result;
+                RestrictionsModel result = response.Result;
+                MinFlightTime = new DateTime() + result.MinFlightTime;
+                MaxTransit = result.MaxTransit;
+                MinTransitTime = new DateTime() + result.MinTransitTime;
+                MaxTransitTime = new DateTime() + result.MaxTransitTime;
+                LatestBookingTime = result.LatestBookingTime;
+                LatestCancelingTime = result.LatestCancelingTime;
+
             }
 
+        }
+
+        public async void Reset()
+        {
+            await LoadRestrictions();
+            Editting = false;
+        }
+
+        private bool _editting;
+
+        public bool Editting
+        {
+            get { return _editting; }
+            set
+            {
+                _editting = value;
+                NotifyOfPropertyChange(() => Editting);
+                NotifyOfPropertyChange(() => CanStartEdit);
+            }
+
+        }
+
+        public bool CanStartEdit
+        {
+            get { return !Editting; }
+
+        }
+        public void StartEdit()
+        {
+            Editting = true;
+        }
+        public async Task Save()
+        {
+            RestrictionsModel restrictionsModel = new RestrictionsModel { 
+                LatestBookingTime = this.LatestBookingTime,
+                LatestCancelingTime = this.LatestCancelingTime,
+                MaxTransit = this.MaxTransit,
+                MaxTransitTime = this.MaxTransitTime.TimeOfDay,
+                MinFlightTime = this.MinFlightTime.TimeOfDay,
+                MinTransitTime = this.MinTransitTime.TimeOfDay };
+            await APIHelper<RestrictionsModel>.Instance.Post(ApiRoutes.Restriction.Post, restrictionsModel);
+            Editting = false;
+            Reset();
         }
     }
 }
