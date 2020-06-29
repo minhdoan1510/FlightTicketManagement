@@ -11,7 +11,73 @@
              d:DesignWidth="1094"
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
+        <ContextMenu x:Key="flightContextMenu">
+            <MenuItem Header="Sửa Dữ Liệu"
+                      Click="flightDataModify_Click" />
+            <MenuItem Header="Xóa Dữ Liệu"
+                      Click="flightDataDelete_Click" />
+        </ContextMenu>
+        <ContextMenu x:Key="transitContextMenu">
+            <MenuItem Header="Sửa Dữ Liệu"
+                      Click="transitDataModify_Click" />
+            <MenuItem Header="Xóa Dữ Liệu"
+                      Click="transitDataDelete_Click" />
+        </ContextMenu>
+        <Style x:Key="DataGridRowStyle1"
+               TargetType="{x:Type DataGridRow}">
 
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridRow}">
+                        <Border x:Name="DGR_Border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                            <SelectiveScrollingGrid>
+                                <SelectiveScrollingGrid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </SelectiveScrollingGrid.ColumnDefinitions>
+                                <SelectiveScrollingGrid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </SelectiveScrollingGrid.RowDefinitions>
+                                <DataGridCellsPresenter Grid.Column="1"
+                                                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <DataGridDetailsPresenter Grid.Column="1"
+                                                          Grid.Row="1"
+                                                          Visibility="{TemplateBinding DetailsVisibility}">
+                                    <SelectiveScrollingGrid.SelectiveScrollingOrientation>
+                                        <Binding Path="AreRowDetailsFrozen"
+                                                 RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}">
+                                            <Binding.ConverterParameter>
+                                                <SelectiveScrollingOrientation>Vertical</SelectiveScrollingOrientation>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </SelectiveScrollingGrid.SelectiveScrollingOrientation>
+                                </DataGridDetailsPresenter>
+                                <DataGridRowHeader Grid.RowSpan="2"
+                                                   SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical">
+                                    <DataGridRowHeader.Visibility>
+                                        <Binding Path="HeadersVisibility"
+                                                 RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}">
+                                            <Binding.ConverterParameter>
+                                                <DataGridHeadersVisibility>Row</DataGridHeadersVisibility>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </DataGridRowHeader.Visibility>
+                                </DataGridRowHeader>
+                            </SelectiveScrollingGrid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="TextBlock.Margin"
+                    Value="0 0 0 0" />
+
+        </Style>
     </UserControl.Resources>
     <Grid>
         <StackPanel Margin="10,0,850,0"
@@ -29,7 +95,6 @@
 
                 </materialDesign:PackIcon>
             </StackPanel>
-
             <ComboBox Height="30"
                       FontSize="13"
                       IsEditable="True"
@@ -132,16 +197,18 @@
                 <materialDesign:PackIcon Margin="5, 0, 0, 0"
                                          x:Name="timeFlight_status"
                                          Kind="Check"
-                                         Foreground="Transparent">
-
+                                         Foreground="Transparent"
+                                         IsHitTestVisible="False">
                 </materialDesign:PackIcon>
             </StackPanel>
+
             <materialDesign:TimePicker FontSize="13"
                                        Height="30"
                                        Margin="5,0,15,0"
-                                       x:Name="timeFlight"
-                                       Is24Hours="True">
+                                       x:Name="timeFlight">
+
             </materialDesign:TimePicker>
+
             <StackPanel Height="20"
                         Margin="5, 10, 0, 0"
                         Orientation="Horizontal">
@@ -166,13 +233,67 @@
                    FontWeight="Bold"
                    Margin="15,300,0,400"
                    HorizontalAlignment="Left"
-                   Width="167">Danh Sách Chuyến Bay</TextBlock>
-        <TextBlock Margin="540,10,348.4,691.6"
+                   Width="167">Danh Sách Chuyến Bay
+        </TextBlock>
+        <TextBlock Margin="540,10,468.4,691.6"
                    FontSize="15"
                    Text="Transit List"
                    FontWeight="Bold">
-            
         </TextBlock>
+        <Button Margin="631,10,438.4,691.6"
+                Height="20"
+                Name="transitAdd"
+                Click="transitAdd_Click"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="0"
+                Width="25"
+                BorderBrush="Transparent"
+                Background="#FF3AB77F">
+            <materialDesign:PackIcon Kind="PlusBox"
+                                     Foreground="White" />
+        </Button>
+        <Button Margin="661,10,408.4,691.6"
+                Height="20"
+                Name="transitClearAll"
+                Click="transitClearAll_Click"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="0"
+                Width="25"
+                BorderBrush="Transparent"
+                Background="#FFB73A3A">
+            <materialDesign:PackIcon Kind="DeleteAlert"
+                                     Foreground="White" />
+        </Button>
+        <Button Margin="194,302,875.4,399.6"
+                Height="20"
+                Name="flightRefresh"
+                Click="flightRefresh_Click"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="0"
+                Width="25"
+                BorderBrush="Transparent"
+                Background="#FF3AB77F"
+                RenderTransformOrigin="-1.641,1.707">
+            <materialDesign:PackIcon Kind="Refresh"
+                                     Foreground="White" />
+        </Button>
+        <Button Margin="224,302,845.4,399.6"
+                Height="20"
+                Name="flightClearAll"
+                Click="flightClearAll_Click"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="0"
+                Width="25"
+                BorderBrush="Transparent"
+                Background="#FFB73A3A">
+            <materialDesign:PackIcon Kind="DeleteAlert"
+                                     Foreground="White" />
+        </Button>
+
         <DataGrid Margin="540,35,10.4,497.6"
                   Background="WhiteSmoke"
                   IsReadOnly="True"
@@ -181,16 +302,59 @@
                   AutoGenerateColumns="False"
                   VerticalScrollBarVisibility="Visible"
                   Name="transitDataGridView">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="ContextMenu"
+                            Value="{DynamicResource transitContextMenu}">
+                    </Setter>
+                    <Setter Property="Background"
+                            Value="Transparent" />
+                    <Setter Property="SnapsToDevicePixels"
+                            Value="True" />
+                    <Setter Property="Validation.ErrorTemplate"
+                            Value="{x:Null}" />
+                    <Setter Property="ValidationErrorTemplate">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBlock Foreground="#FFD50000"
+                                           Margin="2,0,0,0"
+                                           Text="!"
+                                           VerticalAlignment="Center"><Run Text="!" /></TextBlock>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="{DynamicResource MaterialDesignSelection}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="{DynamicResource MaterialDesignDivider}" />
+                        </Trigger>
+                        <Trigger Property="IsNewItem"
+                                 Value="True">
+                            <Setter Property="Margin"
+                                    Value="{Binding NewItemMargin, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Airport"
                                     Width="*"
-                                    Binding="{Binding airportName}"/>
+                                    Binding="{Binding Path=airportName}" />
                 <DataGridTextColumn Header="Time"
                                     Width="*"
-                                    Binding="{Binding transitTime}"/>
+                                    Binding="{Binding Path=transitTime}" />
                 <DataGridTextColumn Header="Note"
                                     Width="*"
-                                    Binding="{Binding transitNote}"/>
+                                    Binding="{Binding Path=transitNote}" />
+                <DataGridTemplateColumn>
+
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -201,24 +365,65 @@
                   Name="flightDataGridView"
                   AutoGenerateColumns="False"
                   VerticalScrollBarVisibility="Visible"
+                  HorizontalScrollBarVisibility="Hidden"
                   Background="WhiteSmoke"
                   SelectionChanged="flightDataGridView_SelectionChanged">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="ContextMenu"
+                            Value="{DynamicResource flightContextMenu}">
+                    </Setter>
+                    <Setter Property="Background"
+                            Value="Transparent" />
+                    <Setter Property="SnapsToDevicePixels"
+                            Value="True" />
+                    <Setter Property="Validation.ErrorTemplate"
+                            Value="{x:Null}" />
+                    <Setter Property="ValidationErrorTemplate">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBlock Foreground="#FFD50000"
+                                           Margin="2,0,0,0"
+                                           Text="!"
+                                           VerticalAlignment="Center"><Run Text="!" /></TextBlock>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="{DynamicResource MaterialDesignSelection}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="{DynamicResource MaterialDesignDivider}" />
+                        </Trigger>
+                        <Trigger Property="IsNewItem"
+                                 Value="True">
+                            <Setter Property="Margin"
+                                    Value="{Binding NewItemMargin, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Khởi Hành"
-                                    Binding="{Binding OriginAP}"
-                                    Width="*" />
+                                    Width="*"
+                                    Binding="{Binding Path=OriginAP}" />
                 <DataGridTextColumn Header="Kết Thúc"
-                                    Binding="{Binding DestinationAP}"
-                                    Width="*" />
+                                    Width="*"
+                                    Binding="{Binding Path=DestinationAP}" />
                 <DataGridTextColumn Header="Giá (VNĐ)"
-                                    Binding="{Binding displayPrice}"
-                                    Width="*" />
+                                    Width="*"
+                                    Binding="{Binding Path=displayPrice}" />
                 <DataGridTextColumn Header="Giờ Khởi Hành"
-                                    Binding="{Binding Duration}"
-                                    Width="*" />
-                <DataGridTextColumn Header="TotalSeat"
-                                    Binding="{Binding displayTotalSeat}"
-                                    Width="*" />
+                                    Width="*"
+                                    Binding="{Binding Path=Duration}" />
+                <DataGridTextColumn Header="Số Ghế"
+                                    Width="*"
+                                    Binding="{Binding Path=displayTotalSeat}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

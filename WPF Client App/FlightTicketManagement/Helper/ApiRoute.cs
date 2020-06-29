@@ -8,11 +8,8 @@ namespace FlightTicketManagement.Helper
 {
     public class ApiRoutes
     {
-        public const string Root = "api";
-        public const string Base = Root;
+        public const string Base = "api";
 
-        public const string Keybase = "{id}";
-        public const string Key = "/{id}";
         public static class Account
         {
             public const string LogIn = Base + "/Account/login";
@@ -24,13 +21,20 @@ namespace FlightTicketManagement.Helper
         {
             public const string Token = Base + "/Account/testTime";
         }
+
         public static class Flight
         {
-            public const string GetAirportMenu = Base + "/Flight/airportMenu";
+            public const string GetTransit = Base + "/Flight/getTransit/ID={id}";
+            public const string GetAirportMenu = Base + "/Flight/airportMenu/Search={search}";
             public const string CreateFlight = Base + "/Flight/createFlight";
             public const string GetFlightAll = Base + "/Flight/getFlightAll";
             public const string CreateTransit = Base + "/Flight/createTransit";
-            public const string GetTransit = Base + "/Flight/getTransit";   
+            public const string UpdateFlight = Base + "/Flight/updateFlight";
+            public const string DisableFlight = Base + "/Flight/disableFlight";
+            public const string UpdateTransit = Base + "/Flight/updateTransit";
+            public const string DisableTransit = Base + "/Flight/disableTransit";
+            public const string DisableFlightTransit = Base + "/Flight/disableFlightTransit";
+            public const string DisableFlightAll = Base + "/Flight/disableFlightAll"; 
         }
     }
 }

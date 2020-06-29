@@ -71,19 +71,19 @@ namespace ServerFTM.DAL.Controls
             }
         }
 
-        public bool CreateFlight(PostFlight flight) {
+        public bool CreateFlight(Flight flight) {
             try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcCreateFlight,
                     new object[] {
-                        flight.flightID,
-                        flight.durationFlightID,
-                        flight.originAP,
-                        flight.destinationAP,
-                        flight.totalSeat,
-                        flight.price,
-                        flight.width,
-                        flight.height,
-                        flight.duration}) > 0;
+                        flight.FlightID,
+                        flight.DurationID,
+                        flight.OriginApID,
+                        flight.DestinationApID,
+                        flight.TotalSeat,
+                        flight.Price,
+                        flight.Width,
+                        flight.Height,
+                        flight.Duration}) > 0;
             }
             catch (Exception e) {
                 return false;
@@ -125,6 +125,87 @@ namespace ServerFTM.DAL.Controls
             }
             catch (Exception e) {
                 return null;
+            }
+        }
+
+        public bool UpdateFlight(Flight value) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcUpdateFlight,
+                    new object[] {
+                        value.FlightID,
+                        value.DurationID,
+                        value.OriginApID,
+                        value.DestinationApID,
+                        value.Price,
+                        value.Width,
+                        value.Height,
+                        value.TotalSeat,
+                        value.Duration
+                    }) > 0; 
+            }
+            catch (Exception e) {
+                return false; 
+            }
+        }
+
+        public bool DisableFlight(Flight value) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcDisableFlight,
+                    new object[] {
+                        value.FlightID
+                    }) > 0;
+            }
+            catch (Exception e) {
+                return false;
+            }
+        }
+
+        public bool UpdateTransit(Transit value) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcUpdateTransit,
+                    new object[] {
+                        value.transitID,
+                        value.airportID,
+                        value.transitOrder,
+                        value.transitTime,
+                        value.transitNote
+                    }) > 0; 
+            }
+            catch (Exception e) {
+                return false; 
+            }
+        }
+
+        public bool DisableTransit(Transit value) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcDisableTransit,
+                    new object[] {
+                        value.transitID
+                    }) > 0;
+            }
+            catch (Exception e) {
+                return false; 
+            }
+        }
+
+        public bool DisableFlightTransit(Flight value) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcDisableFlightTransit,
+                    new object[] {
+                        value.FlightID
+                    }) > 0;
+            }
+            catch (Exception e) {
+                return false;
+            }
+        }
+
+        public bool DisableFlightAll() {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.Query.ProcDisableFlightAll) > 0;
+            }
+            catch (Exception e) {
+                return false;
             }
         }
 

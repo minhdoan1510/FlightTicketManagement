@@ -213,3 +213,8 @@ D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\SupportForm\getTransit.g.cs
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\SupportForm\getTransit.baml
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\SupportForm\getFlight.g.cs
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\SupportForm\getFlight.baml
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\WpfAnimatedGif.dll
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\WpfAnimatedGif.pdb
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\bin\Debug\WpfAnimatedGif.xml

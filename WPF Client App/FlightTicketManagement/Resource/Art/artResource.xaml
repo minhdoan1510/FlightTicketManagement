@@ -47,4 +47,6 @@
                  UriSource="menuBackground1.jpg" />
     <BitmapImage x:Key="mainIcon"
                  UriSource="mainIcon.png" />
+    <BitmapImage x:Key="appIcon"
+                 UriSource="appIcon.png" />
 </ResourceDictionary>

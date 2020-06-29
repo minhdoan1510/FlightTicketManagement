@@ -43,11 +43,5 @@ namespace ServerFTM.Controllers
             }
             else return new JsonResult(new ApiResponse<object>(200, "signup failed"));
         }
-
-        [HttpPost("testTime")]
-        public async Task<IActionResult> PostTestTime() {
-
-            return new JsonResult(new ApiResponse<object>(BUS_Controls.Controls.testTime())); 
-        }
     }
 }

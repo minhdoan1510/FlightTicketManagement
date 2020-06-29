@@ -249,7 +249,7 @@
                             <TextBlock FontSize="20"
                                        x:Name="tile"
                                        Panel.ZIndex="1"
-                                       Margin="5,0,711.8,0"
+                                       Margin="10,0,872.8,0"
                                        FontWeight="Bold"
                                        MouseDown="tileBar_MouseDown">Dashboard</TextBlock>
                             <StackPanel x:Name="tileBar"
@@ -261,7 +261,8 @@
                                         Click="cancelBtn_Click"
                                         Width="35"
                                         Padding="0"
-                                        BorderThickness="0">
+                                        BorderThickness="0"
+                                        Background="Transparent">
                                     <materialDesign:PackIcon Kind="WindowClose"
                                                              Background="White"
                                                              Foreground="Black"
@@ -273,7 +274,8 @@
                                         Click="minimizeBtn_Click"
                                         Width="35"
                                         Padding="0"
-                                        BorderThickness="0">
+                                        BorderThickness="0"
+                                        Background="Transparent">
                                     <materialDesign:PackIcon Kind="WindowMinimize"
                                                              Background="White"
                                                              Foreground="Black"

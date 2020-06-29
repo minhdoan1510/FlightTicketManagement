@@ -37,12 +37,7 @@ namespace FlightTicketManagement.BUS
                 account);
         }
 
-        public async Task<Response<List<AirportMenu>>> GetAirportList(string search) {
-            return await APIHelper.Instance.PostWithToken<Response<List<AirportMenu>>>
-                (ApiRoutes.Flight.GetAirportMenu, new { searchKey = search });
-        }
-
-        public async Task<Response<string>> CreateFlight(PostFlight flight) {
+        public async Task<Response<string>> CreateFlight(Flight flight) {
             return await APIHelper.Instance.PostWithToken<Response<string>>
                 (ApiRoutes.Flight.CreateFlight, flight); 
         }
@@ -53,18 +48,55 @@ namespace FlightTicketManagement.BUS
         }
 
         public async Task<Response<List<Transit>>> GetTransit(string _flightID) {
-            return await APIHelper.Instance.PostWithToken<Response<List<Transit>>>
-                (ApiRoutes.Flight.GetTransit, new { flightID = _flightID });
+
+            string apiURL = ApiRoutes.Flight.GetTransit;
+            apiURL = apiURL.Replace("{id}", _flightID); 
+
+            return await APIHelper.Instance.Get<Response<List<Transit>>>(apiURL);
+        }
+
+        public async Task<Response<List<AirportMenu>>> GetAirportMenu(string searchKey) {
+            string apiURL = ApiRoutes.Flight.GetAirportMenu;
+            apiURL = apiURL.Replace("{search}", searchKey);
+
+            Console.WriteLine(apiURL); 
+
+            return await APIHelper.Instance.Get<Response<List<AirportMenu>>>(apiURL);
         }
 
         public async Task<Response<List<Flight>>> GetFlightAll() {
-            return await APIHelper.Instance.PostWithToken<Response<List<Flight>>>
+            return await APIHelper.Instance.Get<Response<List<Flight>>>
                 (ApiRoutes.Flight.GetFlightAll);
         }
 
-        public async Task<Response<List<Duration>>> testTime() {
-            return await APIHelper.Instance.PostWithToken<Response<List<Duration>>>
-                (ApiRoutes.Test.Token); 
+        public async Task<Response<string>> UpdateFlight(Flight value) {
+            return await APIHelper.Instance.PostWithToken<Response<string>>
+                (ApiRoutes.Flight.UpdateFlight, value);
+        }
+
+        public async Task<Response<string>> DisableFlight(Flight value) {
+            return await APIHelper.Instance.PostWithToken<Response<string>>
+                (ApiRoutes.Flight.DisableFlight, value);
+        }
+
+        public async Task<Response<string>> UpdateTransit(Transit value) {
+            return await APIHelper.Instance.PostWithToken<Response<string>>
+                (ApiRoutes.Flight.UpdateTransit, value);
+        }
+
+        public async Task<Response<string>> DisableTransit(Transit value) {
+            return await APIHelper.Instance.PostWithToken<Response<string>>
+                (ApiRoutes.Flight.DisableTransit, value);
+        }
+
+        public async Task<Response<string>> DisableFlightTransit(Flight value) {
+            return await APIHelper.Instance.PostWithToken<Response<string>>
+                (ApiRoutes.Flight.DisableFlightTransit, value);
+        }
+
+        public async Task<Response<string>> DisableFlightAll() {
+            return await APIHelper.Instance.PostWithToken<Response<string>>
+                (ApiRoutes.Flight.DisableFlightAll);
         }
     }
 }

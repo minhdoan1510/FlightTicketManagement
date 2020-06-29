@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 using DTO;
 using FlightTicketManagement.SupportForm;
@@ -28,46 +29,40 @@ namespace FlightTicketManagement
     {
         Response<List<AirportMenu>> airportList = new Response<List<AirportMenu>>();
         Response<List<Flight>> flightList = new Response<List<Flight>>();
-        Response<List<Transit>> transitList = new Response<List<Transit>>(); 
+        Response<List<Transit>> transitList = new Response<List<Transit>>();
 
-        PostFlight flightToCreate = new PostFlight();
+        Flight flightToCreate = new Flight();
 
         List<Flight> flightListForDataGrid { get; set; }
 
-        public PlaneSchedule Instance {
-            get {
-                return this; 
-            }
-        }
+        public static PlaneSchedule Instance;
 
         public PlaneSchedule() {
+            Instance = this;
             InitializeComponent();
 
             airportList.Result = new List<AirportMenu>();
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e) {
-            flightList = await BUS.BusControl.Instance.GetFlightAll();
-
-            this.flightDataGridView.ItemsSource = flightList.Result;
-            this.flightDataGridView.Items.Refresh();
+            this.refreshFlights();
         }
 
-        private void setApproveStatus(UIElement icon) {
+        public void setApproveStatus(UIElement icon) {
             var status = icon as MaterialDesignThemes.Wpf.PackIcon;
 
             status.Kind = MaterialDesignThemes.Wpf.PackIconKind.Check;
             status.Foreground = Brushes.Green;
         }
 
-        private void setDeniedStatus(UIElement icon) {
+        public void setDeniedStatus(UIElement icon) {
             var status = icon as MaterialDesignThemes.Wpf.PackIcon;
 
             status.Kind = MaterialDesignThemes.Wpf.PackIconKind.Cancel;
             status.Foreground = Brushes.Red;
         }
 
-        private void setNormalStatus(UIElement icon) {
+        public void setNormalStatus(UIElement icon) {
             var status = icon as MaterialDesignThemes.Wpf.PackIcon;
 
             status.Kind = MaterialDesignThemes.Wpf.PackIconKind.Check;
@@ -76,7 +71,19 @@ namespace FlightTicketManagement
 
         private void callTransitInputForm(string _flightID) {
             getTransit transitForm = new getTransit(_flightID);
-            transitForm.WindowStartupLocation = WindowStartupLocation.CenterOwner; 
+            transitForm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            transitForm.ShowDialog();
+        }
+
+        private void callModifyFlightForm(ref object value) {
+            getFlight flightForm = new getFlight(ref value);
+            flightForm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            flightForm.ShowDialog();
+        }
+
+        private void callModifyTransit(ref object value) {
+            getTransit transitForm = new getTransit(ref value);
+            transitForm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             transitForm.ShowDialog();
         }
 
@@ -93,7 +100,11 @@ namespace FlightTicketManagement
             }
 
             await Task.Factory.StartNew(async () => {
-                airportList = await BUS.BusControl.Instance.GetAirportList(searchKey);
+                airportList = await BUS.BusControl.Instance.GetAirportMenu(searchKey);
+
+                foreach (var item in airportList.Result) {
+                    Console.WriteLine(item.AirportName);
+                }
             });
 
             (sender as ComboBox).ItemsSource = airportList.Result;
@@ -101,14 +112,14 @@ namespace FlightTicketManagement
             (sender as ComboBox).IsDropDownOpen = true;
         }
 
-        private void Menu_TextInput(object sender, TextCompositionEventArgs e) {
+        public void Menu_TextInput(object sender, TextCompositionEventArgs e) {
             var textBox = e.OriginalSource as TextBox;
 
             textBox.SelectionLength = 0;
             textBox.SelectionStart = textBox.Text.Length;
         }
 
-        private async void Menu_PreviewKeyDown(object sender, KeyEventArgs e) {
+        public async void Menu_PreviewKeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Space || e.Key == Key.Enter) {
                 var textBox = e.OriginalSource as TextBox;
 
@@ -118,7 +129,7 @@ namespace FlightTicketManagement
             menuGetData(sender);
         }
 
-        private void Menu_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        public void Menu_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             Console.WriteLine("airplane selected");
 
             AirportMenu res = (sender as ComboBox).SelectedItem as AirportMenu;
@@ -127,18 +138,18 @@ namespace FlightTicketManagement
                 return;
 
             if ((sender as ComboBox).Name == "origionalAP") {
-                flightToCreate.originAP = res.AirportID;
+                flightToCreate.OriginApID = res.AirportID;
 
-                Console.WriteLine("origion: " + res.AirportID);
+                Console.WriteLine("origin: " + res.AirportID);
             }
             else if ((sender as ComboBox).Name == "destinationAP") {
-                flightToCreate.destinationAP = res.AirportID;
+                flightToCreate.DestinationApID = res.AirportID;
 
                 Console.WriteLine("destination: " + res.AirportID);
             }
         }
 
-        private void price_KeyDown(object sender, KeyEventArgs e) {
+        public void price_KeyDown(object sender, KeyEventArgs e) {
             // backspace press 
             if (e.Key == Key.Back)
                 return;
@@ -156,7 +167,7 @@ namespace FlightTicketManagement
             e.Handled = keyboardHandle;
         }
 
-        private void price_TextChanged(object sender, TextChangedEventArgs e) {
+        public void price_TextChanged(object sender, TextChangedEventArgs e) {
             string text = (sender as TextBox).Text;
             double value = 0.0f;
 
@@ -167,7 +178,7 @@ namespace FlightTicketManagement
             }
         }
 
-        private bool checkOrigionalAP() {
+        public bool checkOrigionalAP() {
             if (origionalAP.SelectedIndex == -1) {
                 this.setDeniedStatus(origionalAP_status);
                 return false;
@@ -176,7 +187,7 @@ namespace FlightTicketManagement
             return true;
         }
 
-        private bool checkDestinationAP() {
+        public bool checkDestinationAP() {
             if (destinationAP.SelectedIndex == -1) {
                 this.setDeniedStatus(destinationAP_status);
                 return false;
@@ -185,7 +196,7 @@ namespace FlightTicketManagement
             return true;
         }
 
-        private bool checkPrice() {
+        public bool checkPrice() {
             if (price.Text == "") {
                 this.setDeniedStatus(price_status);
                 return false;
@@ -194,7 +205,7 @@ namespace FlightTicketManagement
             return true;
         }
 
-        private bool checkTimeFlight() {
+        public bool checkTimeFlight() {
             if (timeFlight.Text == "" || timeFlight.Text == null) {
                 this.setDeniedStatus(timeFlight_status);
                 return false;
@@ -203,7 +214,7 @@ namespace FlightTicketManagement
             return true;
         }
 
-        private bool checkVerticalSeat() {
+        public bool checkVerticalSeat() {
             int value = 0;
 
             if (!int.TryParse(verticalSeat.Text, out value) || value < 2) {
@@ -214,7 +225,7 @@ namespace FlightTicketManagement
             return true;
         }
 
-        private bool checkHorizontalSeat() {
+        public bool checkHorizontalSeat() {
             int value = 0;
 
             if (!int.TryParse(horizontalSeat.Text, out value) || value < 2) {
@@ -225,7 +236,7 @@ namespace FlightTicketManagement
             return true;
         }
 
-        private void resetInformation() {
+        public void resetInformation() {
             setNormalStatus(origionalAP_status);
             setNormalStatus(destinationAP_status);
             setNormalStatus(price_status);
@@ -256,33 +267,143 @@ namespace FlightTicketManagement
                 Console.WriteLine("ready to post data");
 
                 // orginAP, destinationAP
-                flightToCreate.price = price.Text;
-                flightToCreate.duration = timeFlight.Text.ToString();
-                flightToCreate.width = int.Parse(horizontalSeat.Text);
-                flightToCreate.height = int.Parse(verticalSeat.Text);
-                flightToCreate.totalSeat = flightToCreate.width * flightToCreate.height;
+                flightToCreate.Price = price.Text;
+                flightToCreate.Duration = timeFlight.Text.ToString();
+                flightToCreate.Width = int.Parse(horizontalSeat.Text);
+                flightToCreate.Height = int.Parse(verticalSeat.Text);
+                flightToCreate.TotalSeat = flightToCreate.Width * flightToCreate.Height;
 
-                PostFlight clone = new PostFlight();
+                Flight clone = new Flight();
                 clone = flightToCreate;
 
-                flightToCreate = new PostFlight();
+                flightToCreate = new Flight();
                 this.resetInformation();
 
                 Response<string> sign = await BUS.BusControl.Instance.CreateFlight(clone);
                 string flightID = sign.Result;
 
-                this.callTransitInputForm(flightID); 
+                this.callTransitInputForm(flightID);
+                this.refreshFlights();
             }
         }
 
         private async void flightDataGridView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             Flight rowValue = flightDataGridView.SelectedItem as Flight;
 
-            Console.WriteLine(rowValue.FlightId);
+            if (rowValue != null) {
+                this.refreshTransits(rowValue.FlightID);
+            }
+        }
 
-            transitList = await BUS.BusControl.Instance.GetTransit(rowValue.FlightId);
-            transitDataGridView.ItemsSource = transitList.Result;
+        private async void refreshFlights() {
+            if (flightList.Result != null)
+                flightList.Result.Clear();
+            this.flightDataGridView.Items.Refresh();
+
+            flightList = await BUS.BusControl.Instance.GetFlightAll();
+
+            this.flightDataGridView.ItemsSource = flightList.Result;
+            this.flightDataGridView.Items.Refresh();
+        }
+
+        private async void refreshTransits(string _flightID) {
+            if (transitList.Result != null)
+                transitList.Result.Clear();
+            this.transitDataGridView.Items.Refresh();
+
+            transitList = await BUS.BusControl.Instance.GetTransit(_flightID);
+
+            this.transitDataGridView.ItemsSource = transitList.Result;
+            this.transitDataGridView.Items.Refresh();
+        }
+
+        private void flightDataModify_Click(object sender, RoutedEventArgs e) {
+            object value = flightDataGridView.SelectedItem;
+
+            this.callModifyFlightForm(ref value);
+
+            flightDataGridView.Items.Refresh();
+        }
+
+        private async void flightDataDelete_Click(object sender, RoutedEventArgs e) {
+            Flight rowValue = flightDataGridView.SelectedItem as Flight;
+
+            await BUS.BusControl.Instance.DisableFlight(rowValue);
+
+            await Task.Factory.StartNew(() => {
+                this.Dispatcher.Invoke(() => {
+                    flightList.Result.Remove(rowValue);
+                    flightDataGridView.Items.Refresh();
+                });
+            });
+        }
+
+        private void transitDataModify_Click(object sender, RoutedEventArgs e) {
+            object value = transitDataGridView.SelectedItem;
+
+            this.callModifyTransit(ref value);
+
             transitDataGridView.Items.Refresh();
+        }
+
+        private async void transitDataDelete_Click(object sender, RoutedEventArgs e) {
+            Transit rowValue = transitDataGridView.SelectedItem as Transit;
+
+            await BUS.BusControl.Instance.DisableTransit(rowValue);
+
+            await Task.Factory.StartNew(() => {
+                this.Dispatcher.Invoke(() => {
+                    transitList.Result.Remove(rowValue);
+                    transitDataGridView.Items.Refresh();
+                });
+            });
+        }
+
+        private void transitAdd_Click(object sender, RoutedEventArgs e) {
+            Flight rowValue = flightDataGridView.SelectedItem as Flight;
+
+            if (rowValue == null) {
+                MessageBox.Show("hãy chọn một chuyến bay"); 
+            }
+            else {
+                this.callTransitInputForm(rowValue.FlightID);
+                this.refreshTransits(rowValue.FlightID); 
+            }
+        }
+
+        private async void transitClearAll_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult res = MessageBox.Show("Bạn có chắc muốn xóa hết dữ liệu không ?", "Caution!", 
+                MessageBoxButton.YesNo);
+
+            if (res == MessageBoxResult.Yes) {
+                Flight rowValue = flightDataGridView.SelectedItem as Flight;
+
+                if (rowValue == null) {
+                    MessageBox.Show("hãy chọn một chuyến bay");
+                }
+                else {
+                    transitList.Result.Clear();
+                    transitDataGridView.Items.Refresh();
+
+                    await BUS.BusControl.Instance.DisableFlightTransit(rowValue);
+                }
+            }
+        }
+
+        private void flightRefresh_Click(object sender, RoutedEventArgs e) {
+            this.refreshFlights();
+        }
+
+        private async void flightClearAll_Click(object sender, RoutedEventArgs e) {
+            MessageBoxResult res = MessageBox.Show("Bạn có chắc muốn xóa hết dữ liệu không ?", "Caution!",
+               MessageBoxButton.YesNo);
+
+            if (res == MessageBoxResult.Yes) {
+                flightList.Result.Clear();
+                flightDataGridView.Items.Refresh();
+
+                await BUS.BusControl.Instance.DisableFlightAll();
+            }
         }
     }
 }

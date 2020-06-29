@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:FlightTicketManagement.SupportForm"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        WindowStyle="ToolWindow"
         Title="AirplaneTransit"
         ResizeMode="NoResize"
         Height="460.976"
@@ -31,9 +30,7 @@
                       IsEditable="True"
                       StaysOpenOnEdit="True"
                       IsTextSearchEnabled="False"
-                      PreviewTextInput="airport_PreviewTextInput"
                       SelectionChanged="airport_SelectionChanged"
-                      PreviewKeyDown="airport_PreviewKeyDown"
                       Text="Nhập Sân Bay"
                       x:Name="airport"
                       Margin="5,0,5,0" />
@@ -72,14 +69,14 @@
             </TextBox>
         </StackPanel>
         <Button Height="Auto"
-                Margin="10,345,256.4,36"
+                Margin="10,354,256.4,36"
                 Background="#FF3AB768"
                 Name="saveBtn"
-                Click="saveBtn_Click">Save</Button>
+                Click="saveBtn_Click">Lưu</Button>
         <Button Height="Auto"
-                Margin="100,345,150.4,36"
+                Margin="102,354,159.4,36"
                 Name="cancelBtn"
                 IsCancel="True"
-                Background="#FFB76B3A">Cancel</Button>
+                Background="#FFB76B3A">Hủy</Button>
     </Grid>
 </Window>

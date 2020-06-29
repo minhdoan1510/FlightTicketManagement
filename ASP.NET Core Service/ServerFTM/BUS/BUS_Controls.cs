@@ -72,15 +72,15 @@ namespace ServerFTM.BUS
             return result;
         }
 
-        public string createFlight(PostFlight flight) {
-            flight.flightID = GenerateID();
-            flight.durationFlightID = GenerateID();
+        public string createFlight(Flight flight) {
+            flight.FlightID = GenerateID();
+            flight.DurationID = GenerateID();
 
             if (!DAL_Controls.Controls.CreateFlight(flight)) {
                 return ""; 
             }
 
-            return flight.flightID;
+            return flight.FlightID;
         }
 
         public bool createTransit(Transit transit) {
@@ -122,14 +122,15 @@ namespace ServerFTM.BUS
                 foreach(DataRow row in flights.Rows) {
                     Flight item = new Flight();
 
-                    item.FlightId = row["FlightId"].ToString();
+                    item.FlightID = row["FlightId"].ToString();
                     item.OriginApID = row["OriginApID"].ToString();
                     item.DestinationApID = row["DestinationApID"].ToString();
                     item.OriginAP = row["OriginAP"].ToString();
                     item.DestinationAP = row["DestinationAP"].ToString(); 
-                    item.Price = double.Parse(row["Price"].ToString());
-                    item.width = int.Parse(row["width"].ToString());
-                    item.height = int.Parse(row["height"].ToString());
+                    item.Price = row["Price"].ToString();
+                    item.Width = int.Parse(row["width"].ToString());
+                    item.Height = int.Parse(row["height"].ToString());
+                    item.DurationID = row["IDDurationFlight"].ToString(); 
                     item.Duration = row["Duration"].ToString();
 
                     result.Add(item); 
@@ -138,24 +139,28 @@ namespace ServerFTM.BUS
             return result;
         }
 
-        public List<Duration> testTime() {
-            List<Duration> result = new List<Duration>();
+        public bool DisableFlight(Flight value) {
+            return DAL_Controls.Controls.DisableFlight(value); 
+        }
 
-            DataTable time = DAL_Controls.Controls.testTime(); 
+        public bool UpdateFlight(Flight value) {
+            return DAL_Controls.Controls.UpdateFlight(value); 
+        }
 
-            if (time != null) {
-                foreach (DataRow item in time.Rows) {
-                    Duration a = new Duration();
+        public bool UpdateTransit(Transit value) {
+            return DAL_Controls.Controls.UpdateTransit(value); 
+        }
 
-                    a.IDFlight = item["IDFlight"].ToString();
-                    a.TimeDuration = item["Duration"].ToString();
-                    a.IDDurationFlight = item["IDDurationFlight"].ToString();
-                    a.AmmountBooked = item["AmountBooked"].ToString();
+        public bool DisableTransit(Transit value) {
+            return DAL_Controls.Controls.DisableTransit(value); 
+        }
 
-                    result.Add(a); 
-                }
-            }
-            return result;
+        public bool DisableFlightTransit(Flight value) {
+            return DAL_Controls.Controls.DisableFlightTransit(value); 
+        }
+
+        public bool DisableFlightAll() {
+            return DAL_Controls.Controls.DisableFlightAll(); 
         }
 
         public bool checkToken(string token) {
