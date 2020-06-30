@@ -264,9 +264,6 @@ D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csprojAssemblyReference.cache
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.AssemblyInfoInputs.cache
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.AssemblyInfo.cs
-D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csproj.CoreCompileInputs.cache
-D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cs
-D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cache
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.RazorTargetAssemblyInfo.cache
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csproj.CopyComplete
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\staticwebassets\ServerFTM.StaticWebAssets.Manifest.cache
@@ -277,3 +274,13 @@ D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Library.dll
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Library.pdb
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csproj.CoreCompileInputs.cache
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cs
+D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cache

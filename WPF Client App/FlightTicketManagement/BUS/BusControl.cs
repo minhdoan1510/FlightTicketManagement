@@ -21,18 +21,18 @@ namespace FlightTicketManagement.BUS
             }
         }
 
-        public async Task<InfoLogin> Login(string username, string password) {
-            UserAccount user = new UserAccount();
-            user.Username = username;
-            user.Password = password;
+        //public async Task<InfoLogin> Login(string username, string password) {
+        //    UserAccount user = new UserAccount();
+        //    user.Username = username;
+        //    user.Password = password;
 
-            return await APIHelper<InfoLogin>.Instance.Post(ApiRoutes.Account.LogIn,
-                user);
-        }
+        //    return await APIHelper<InfoLogin>.Instance.Post(ApiRoutes.Account.LogIn,
+        //        user);
+        //}
 
-        public async Task<Signup> Signup(object account) {
-            return await APIHelper<Signup>.Instance.Post(ApiRoutes.Account.SignUp,
-                account);
-        }
+        //public async Task<Signup> Signup(object account) {
+        //    return await APIHelper<Signup>.Instance.Post(ApiRoutes.Account.SignUp,
+        //        account);
+        //}
     }
 }

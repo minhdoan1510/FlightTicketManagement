@@ -1,5 +1,6 @@
 ﻿using API.Shared.APIResponse;
 using Library.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerFTM.BUS;
 using System;
@@ -15,6 +16,7 @@ namespace ServerFTM.Controllers
     public class CityController : Controller
     {
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             List<CityModel> cities = BUS_Controls.Controls.GetAllCity();

@@ -26,7 +26,7 @@ namespace FlightTicketManagement.ViewModels
        
         private async Task LoadTransits()
         {
-            Response<List<TransitModel>> response = await APIHelper<Response<List<TransitModel>>>.Instance.Get(ApiRoutes.Transit.Get.Replace(ApiRoutes.Keybase,FlightId));
+            Response<List<TransitModel>> response = await APIHelper.Instance.Get<Response<List<TransitModel>>>(ApiRoutes.Transit.Get.Replace(ApiRoutes.Keybase,FlightId));
             if (response.IsSuccess)
             {
                 var list = response.Result;

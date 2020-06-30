@@ -32,7 +32,7 @@ namespace FlightTicketManagement.ViewModels
         }
         private async Task LoadFlights()
         {
-            Response <List<FlightModel>> response = await APIHelper<Response<List<FlightModel>>>.Instance.Get(ApiRoutes.Flight.GetAll);
+            Response <List<FlightModel>> response = await APIHelper.Instance.Get<Response<List<FlightModel>>>(ApiRoutes.Flight.GetAll);
             if (response.IsSuccess)
             {
                 var list = response.Result;
@@ -44,7 +44,7 @@ namespace FlightTicketManagement.ViewModels
 
         private async Task LoadFlightsForCity()
         {
-            Response<List<FlightModel>> response = await APIHelper<Response<List<FlightModel>>>.Instance.Get(ApiRoutes.Flight.Get.Replace(ApiRoutes.Keybase,SelectedCityId));
+            Response<List<FlightModel>> response = await APIHelper.Instance.Get<Response<List<FlightModel>>>(ApiRoutes.Flight.Get.Replace(ApiRoutes.Keybase,SelectedCityId));
             if (response.IsSuccess)
             {
                 var list = response.Result;
@@ -55,7 +55,7 @@ namespace FlightTicketManagement.ViewModels
         }
         private async Task LoadCity()
         {
-            Response<List<CityModel>> response = await APIHelper<Response<List<CityModel>>>.Instance.Get(ApiRoutes.City.GetAll);
+            Response<List<CityModel>> response = await APIHelper.Instance.Get<Response<List<CityModel>>>(ApiRoutes.City.GetAll);
             if (response.IsSuccess)
             {
                 var list = response.Result;

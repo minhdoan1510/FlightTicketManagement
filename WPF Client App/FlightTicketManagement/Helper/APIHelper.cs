@@ -10,7 +10,7 @@ using Library.Models;
 
 namespace FlightTicketManagement.Helper
 {
-    public class APIHelper<T> 
+    public class APIHelper
     {
         private InfoLogin userInfo;
         private HttpClient apiClient { get; set; }
@@ -18,14 +18,14 @@ namespace FlightTicketManagement.Helper
         {
             InitializeClient();
         }
-        private static APIHelper<T> instance = null;
-        public static APIHelper<T> Instance
+        private static APIHelper instance = null;
+        public static APIHelper Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new APIHelper<T>();
+                    instance = new APIHelper();
                 }
                 return instance;
             }
@@ -45,9 +45,13 @@ namespace FlightTicketManagement.Helper
             apiClient.BaseAddress = new Uri(api);
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if(userInfo!=null)
+            {
+                apiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer { userInfo.Token}");
+            }
         }
 
-        public async Task<T> Get(string route)
+        public async Task<T> Get<T>(string route)
         {
             this.InitializeClient();
 
@@ -71,10 +75,10 @@ namespace FlightTicketManagement.Helper
             }
         }
 
-        public async Task<T> Post(string route, object body)
+        public async Task<T> Post<T>(string route, object body)
         {
             this.InitializeClient();
-
+   
             using (HttpResponseMessage response = await apiClient.PostAsJsonAsync(route, body))
             {
                 if (response.IsSuccessStatusCode)
@@ -88,6 +92,30 @@ namespace FlightTicketManagement.Helper
                     throw new Exception(response.ReasonPhrase);
                 }
                 return default;
+            }
+        }
+
+        public async Task<bool> Authenticate(string username, string password)
+        {
+            this.InitializeClient();
+            UserAccount account = new UserAccount
+            {
+                Username = username,
+                Password = password
+
+            };
+            using (HttpResponseMessage response = await apiClient.PostAsJsonAsync(ApiRoutes.Account.LogIn, account))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = await response.Content.ReadAsAsync<Response<InfoLogin>>();
+                    if (data != null)
+                    {
+                        userInfo = data.Result;
+                        return true;
+                    }
+                }
+                return false;
             }
         }
     }

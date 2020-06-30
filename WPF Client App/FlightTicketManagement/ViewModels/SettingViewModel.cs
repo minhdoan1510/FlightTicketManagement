@@ -92,7 +92,7 @@ namespace FlightTicketManagement.ViewModels
         }
         private async Task LoadRestrictions()
         {
-            Response<RestrictionsModel> response = await APIHelper<Response<RestrictionsModel>>.Instance.Get(ApiRoutes.Restriction.Get);
+            Response<RestrictionsModel> response = await APIHelper.Instance.Get<Response<RestrictionsModel>>(ApiRoutes.Restriction.Get);
             if (response.IsSuccess)
             {
                 RestrictionsModel result = response.Result;
@@ -145,7 +145,7 @@ namespace FlightTicketManagement.ViewModels
                 MaxTransitTime = this.MaxTransitTime.TimeOfDay,
                 MinFlightTime = this.MinFlightTime.TimeOfDay,
                 MinTransitTime = this.MinTransitTime.TimeOfDay };
-            await APIHelper<RestrictionsModel>.Instance.Post(ApiRoutes.Restriction.Post, restrictionsModel);
+            await APIHelper.Instance.Post<RestrictionsModel>(ApiRoutes.Restriction.Post, restrictionsModel);
             Editting = false;
             Reset();
         }

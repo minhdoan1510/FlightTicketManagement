@@ -71,24 +71,24 @@ namespace FlightTicketManagement.ViewModels
 
         public async Task Signup()
         {
-            UserAccount user = new UserAccount();
-            user.Username = Username;
-            user.Password = Password;
-            user.Name = Name;
-            user.Acctype = AccountType;
-            MessageBox.Show("Signup success\n");
-            Signup signUpAccount = await BusControl.Instance.Signup(user);
+          //  UserAccount user = new UserAccount();
+          //  user.Username = Username;
+          //  user.Password = Password;
+          //  user.Name = Name;
+          //  user.Acctype = AccountType;
+          //  MessageBox.Show("Signup success\n");
+          ////  Signup signUpAccount = await BusControl.Instance.Signup(user);
 
-            if (signUpAccount.IsSuccess)
-            {
-                MessageBox.Show("Signup success\n");
-                _events.PublishOnUIThread((int)EventModel.SwitchToLoginEventModel);
-            }
+          //  if (signUpAccount.IsSuccess)
+          //  {
+          //      MessageBox.Show("Signup success\n");
+          //      _events.PublishOnUIThread((int)EventModel.SwitchToLoginEventModel);
+          //  }
                 
-            else
-            {
-                MessageBox.Show("signup failed\n");
-            }
+          //  else
+          //  {
+          //      MessageBox.Show("signup failed\n");
+          //  }
         }
 
         public void backToLogin()

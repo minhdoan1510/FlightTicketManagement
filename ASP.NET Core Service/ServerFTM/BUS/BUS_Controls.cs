@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ServerFTM.Authorization.TokenManager;
+using ServerFTM.Authorization;
 using Library.Models;
 namespace ServerFTM.BUS
 {
@@ -53,9 +53,9 @@ namespace ServerFTM.BUS
             if (dataAcc == null)
                 return null;
             Profile accountCurrent = new Profile();
-            accountCurrent.IDAccount = dataAcc["ID"].ToString();
+            accountCurrent.IDAccount = dataAcc["IDAccount"].ToString();
             accountCurrent.Name = dataAcc["Name"].ToString();
-            accountCurrent.Acctype = (Convert.ToInt32(dataAcc["TypeAccount"]));
+            //accountCurrent.Acctype = (Convert.ToInt32(dataAcc["TypeAccount"]));
             return accountCurrent;
         }
         public bool Signup(Account account)

@@ -9,6 +9,8 @@ using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlightTicketManagement.Helper;
+using System.Windows;
 
 namespace FlightTicketManagement.ViewModels
 {
@@ -58,38 +60,18 @@ namespace FlightTicketManagement.ViewModels
         public async Task Login()
         {
 
-            //InfoLogin user = await BusControl.Instance.Login(_userName, _password);
-
-            //if (user.IsSuccess)
-            //{
-            //    Console.WriteLine("id: " + user.Result.Id + '\n');
-            //    Console.WriteLine("userName: " + user.Result.Name + '\n');
-            //    Console.WriteLine("token: " + user.Result.Token + '\n');
-
-            //    MainWindow.Instance.Hide();
-
-            //    MainApp mainApp = new MainApp();
-            //    mainApp.Closed += onMainAppClose;
-            //    mainApp.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("login failed\n");
-            //}
-
-            //ShellView.Instance.Hide();
-
-            //    MainApp mainApp = new MainApp();
-            //    mainApp.Closed += onMainAppClose;
-            //    mainApp.Show();
-
-            _events.PublishOnUIThread((int)EventModel.LogOnEventModel);
+            if(await APIHelper.Instance.Authenticate(Username, Password))
+            {
+                _events.PublishOnUIThread((int)EventModel.LogOnEventModel);
+            }
+            else
+            MessageBox.Show("Login failed");
         }
 
         public void SwitchToSignup()
         {
-            //_events.PublishOnUIThread((int)EventModel.SwitchToSignupEventModel);
-            ShellView.Instance.switchToSignUp();
+            _events.PublishOnUIThread((int)EventModel.SwitchToSignupEventModel);
+           // ShellView.Instance.switchToSignUp();
         }
     }
 }

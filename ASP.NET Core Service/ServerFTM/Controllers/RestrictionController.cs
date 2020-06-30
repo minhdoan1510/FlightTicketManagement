@@ -1,5 +1,6 @@
 ﻿using API.Shared.APIResponse;
 using Library.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerFTM.BUS;
 using System;
@@ -12,6 +13,7 @@ namespace ServerFTM.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RestrictionsController : Controller
     {
         [HttpGet]
