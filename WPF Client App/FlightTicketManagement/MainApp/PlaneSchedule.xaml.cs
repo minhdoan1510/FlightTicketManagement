@@ -42,6 +42,8 @@ namespace FlightTicketManagement
             InitializeComponent();
 
             airportList.Result = new List<AirportMenu>();
+            flightLoadingStatus.Visibility = Visibility.Hidden;
+            transitLoadingStatus.Visibility = Visibility.Hidden;
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e) {
@@ -300,10 +302,14 @@ namespace FlightTicketManagement
                 flightList.Result.Clear();
             this.flightDataGridView.Items.Refresh();
 
+            flightLoadingStatus.Visibility = Visibility.Visible;
+
             flightList = await BUS.BusControl.Instance.GetFlightAll();
 
             this.flightDataGridView.ItemsSource = flightList.Result;
             this.flightDataGridView.Items.Refresh();
+
+            flightLoadingStatus.Visibility = Visibility.Hidden;
         }
 
         private async void refreshTransits(string _flightID) {
@@ -311,10 +317,14 @@ namespace FlightTicketManagement
                 transitList.Result.Clear();
             this.transitDataGridView.Items.Refresh();
 
+            transitLoadingStatus.Visibility = Visibility.Visible;
+
             transitList = await BUS.BusControl.Instance.GetTransit(_flightID);
 
             this.transitDataGridView.ItemsSource = transitList.Result;
             this.transitDataGridView.Items.Refresh();
+
+            transitLoadingStatus.Visibility = Visibility.Hidden;
         }
 
         private void flightDataModify_Click(object sender, RoutedEventArgs e) {

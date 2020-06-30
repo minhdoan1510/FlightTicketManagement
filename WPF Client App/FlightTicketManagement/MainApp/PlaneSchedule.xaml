@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:local="clr-namespace:FlightTicketManagement"
              mc:Ignorable="d"
              Background="White"
@@ -251,7 +252,7 @@
                 BorderBrush="Transparent"
                 Background="#FF3AB77F">
             <materialDesign:PackIcon Kind="PlusBox"
-                                     Foreground="White" />
+                                     Foreground="White"/>
         </Button>
         <Button Margin="661,10,408.4,691.6"
                 Height="20"
@@ -266,6 +267,10 @@
             <materialDesign:PackIcon Kind="DeleteAlert"
                                      Foreground="White" />
         </Button>
+        <Image Margin="691,5,373.4,686.6"
+               Name="transitLoadingStatus"
+               gif:ImageBehavior.AnimatedSource="{StaticResource loadingIcon}">
+        </Image>
         <Button Margin="194,302,875.4,399.6"
                 Height="20"
                 Name="flightRefresh"
@@ -293,6 +298,9 @@
             <materialDesign:PackIcon Kind="DeleteAlert"
                                      Foreground="White" />
         </Button>
+        <Image Name="flightLoadingStatus"
+               gif:ImageBehavior.AnimatedSource="{StaticResource loadingIcon}"
+               Margin="254,297,810.4,394.6" />
 
         <DataGrid Margin="540,35,10.4,497.6"
                   Background="WhiteSmoke"

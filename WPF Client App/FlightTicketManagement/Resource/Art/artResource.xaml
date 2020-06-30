@@ -49,4 +49,6 @@
                  UriSource="mainIcon.png" />
     <BitmapImage x:Key="appIcon"
                  UriSource="appIcon.png" />
+    <BitmapImage x:Key="loadingIcon"
+                 UriSource="loading.gif" />
 </ResourceDictionary>
