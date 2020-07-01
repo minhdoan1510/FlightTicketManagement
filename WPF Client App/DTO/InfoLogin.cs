@@ -7,6 +7,9 @@ namespace DTO
 {
     public partial class InfoLogin
     {
+        [JsonProperty("UserName")]
+        public string UserName { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 

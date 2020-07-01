@@ -128,6 +128,7 @@ namespace ServerFTM.BUS
                     item.OriginAP = row["OriginAP"].ToString();
                     item.DestinationAP = row["DestinationAP"].ToString(); 
                     item.Price = row["Price"].ToString();
+                    item.TotalSeat = int.Parse(row["TotalSeat"].ToString());
                     item.Width = int.Parse(row["width"].ToString());
                     item.Height = int.Parse(row["height"].ToString());
                     item.DurationID = row["IDDurationFlight"].ToString(); 

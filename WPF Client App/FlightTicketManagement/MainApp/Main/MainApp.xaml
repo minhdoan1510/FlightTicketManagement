@@ -249,7 +249,7 @@
                             <TextBlock FontSize="20"
                                        x:Name="tile"
                                        Panel.ZIndex="1"
-                                       Margin="10,0,872.8,0"
+                                       Margin="10,0,750.8,0"
                                        FontWeight="Bold"
                                        MouseDown="tileBar_MouseDown">Dashboard</TextBlock>
                             <StackPanel x:Name="tileBar"

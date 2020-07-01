@@ -25,10 +25,5 @@ namespace DTO
                     "{0:n0}", double.Parse(this.Price));
             }
         }
-        public int displayTotalSeat {
-            get {
-                return Width * Height;
-            }
-        }
     }
 }

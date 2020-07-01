@@ -31,10 +31,13 @@ namespace FlightTicketManagement.SupportForm
 
             origionalAP.PreviewTextInput += PlaneSchedule.Instance.Menu_TextInput;
             origionalAP.PreviewKeyDown += PlaneSchedule.Instance.Menu_PreviewKeyDown;
+
             destinationAP.PreviewTextInput += PlaneSchedule.Instance.Menu_TextInput;
             destinationAP.PreviewKeyDown += PlaneSchedule.Instance.Menu_PreviewKeyDown;
+
             price.PreviewKeyDown += PlaneSchedule.Instance.price_KeyDown;
             price.TextChanged += PlaneSchedule.Instance.price_TextChanged;
+
             verticalSeat.PreviewKeyDown += PlaneSchedule.Instance.price_KeyDown;
             horizontalSeat.PreviewKeyDown += PlaneSchedule.Instance.price_KeyDown;
         }

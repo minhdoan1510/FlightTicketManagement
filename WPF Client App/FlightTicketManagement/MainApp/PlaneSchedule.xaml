@@ -267,10 +267,11 @@
             <materialDesign:PackIcon Kind="DeleteAlert"
                                      Foreground="White" />
         </Button>
-        <Image Margin="691,5,373.4,686.6"
-               Name="transitLoadingStatus"
-               gif:ImageBehavior.AnimatedSource="{StaticResource loadingIcon}">
-        </Image>
+        <ProgressBar Name="transitLoadingStatus"
+                     Margin="691,5,373.4,686.6"
+                     Style="{StaticResource MaterialDesignCircularProgressBar}"
+                     Value="0"
+                     IsIndeterminate="True" />
         <Button Margin="194,302,875.4,399.6"
                 Height="20"
                 Name="flightRefresh"
@@ -298,10 +299,21 @@
             <materialDesign:PackIcon Kind="DeleteAlert"
                                      Foreground="White" />
         </Button>
-        <Image Name="flightLoadingStatus"
-               gif:ImageBehavior.AnimatedSource="{StaticResource loadingIcon}"
-               Margin="254,297,810.4,394.6" />
-
+        <ProgressBar Name="flightLoadingStatus"
+                     Margin="671,302,403.4,399.6"
+                     Style="{StaticResource MaterialDesignCircularProgressBar}"
+                     Value="0"
+                     IsIndeterminate="True" RenderTransformOrigin="1.99,1.28" />
+        <ComboBox Margin="260,288,700.4,399.6" Height="34"
+                  Name="searchType"
+                  SelectionChanged="searchType_SelectionChanged"
+                  FontSize="12">
+        </ComboBox>
+        <TextBox Margin="399,298,428.4,399.6"
+                 Name="searchTextbox"
+                 KeyDown="searchTextbox_KeyDown"
+                 KeyUp="searchTextbox_KeyUp"
+                 TextChanged="searchTextbox_TextChanged"/>
         <DataGrid Margin="540,35,10.4,497.6"
                   Background="WhiteSmoke"
                   IsReadOnly="True"
@@ -431,7 +443,7 @@
                                     Binding="{Binding Path=Duration}" />
                 <DataGridTextColumn Header="Số Ghế"
                                     Width="*"
-                                    Binding="{Binding Path=displayTotalSeat}" />
+                                    Binding="{Binding Path=TotalSeat}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
