@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using Microsoft.Maps.MapControl.WPF;
+
 using DTO;
 using FlightTicketManagement.BUS;
 using FlightTicketManagement.Helper;
@@ -35,6 +38,7 @@ namespace FlightTicketManagement
             }
             this.loadWeather();
             this.loadStatistics();
+            this.loadFLightMap();
         }
 
         private async void loadWeather() {
@@ -88,6 +92,24 @@ namespace FlightTicketManagement
 
             dailyTicket.Text = result.Result.dailyTicket.ToString();
             dailyMoney.Text = result.Result.displayDailyMoney;
+        }
+
+        private async void loadFLightMap() {
+            flightMapWating.Visibility = Visibility.Visible;
+
+            Response<List<FlightRoute>> result = await BusControl.Instance.GetFlightRoutes();
+
+            foreach(var item in result.Result) {
+                Pushpin newPin = new Pushpin();
+                newPin.Location = new Location();
+
+                newPin.Location.Latitude = item.latOrigin;
+                newPin.Location.Longitude = item.lonOrigin;
+
+                flightMap.Children.Add(newPin);
+            }
+
+            flightMapWating.Visibility = Visibility.Hidden;
         }
 
         private void flightMap_MouseWheel(object sender, MouseWheelEventArgs e) {

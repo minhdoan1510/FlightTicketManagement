@@ -182,12 +182,21 @@
                         Width="950"
                         Height="500">
                     <StackPanel>
-                        <TextBlock FontSize="25"
-                                   Text="Các Chuyến Bay Hiện Tại"
-                                   FontWeight="Bold"
-                                   Margin="0 0 0 15">
+                        <StackPanel Height="45"
+                                    Orientation="Horizontal">
+                            <TextBlock FontSize="25"
+                                       Text="Các Chuyến Bay Hiện Tại"
+                                       FontWeight="Bold">
 
-                        </TextBlock>
+                            </TextBlock>
+                            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                         Margin="15 0 0 0"
+                                         Value="0"
+                                         IsIndeterminate="True"
+                                         Name="flightMapWating"
+                                         Padding="0"></ProgressBar>
+                        </StackPanel>
+                        
                         <Controls:Map Name="flightMap"
                                       MouseWheel="flightMap_MouseWheel"
                                       CredentialsProvider="4TVpiXr4TDrpvUv3Vx1e~6kDfAcRwQPNrxo_cHedf9w~AspdM1J6-KCvBj7qcsE0yLdcDiAoPaOFUTBhJcFdJQKRhaheaEEXUCKY70IUuAxs"
