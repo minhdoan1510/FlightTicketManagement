@@ -23,112 +23,108 @@ namespace FlightTicketManagement.Views
 
     public partial class MainAppView : Window
     {
-        const int controlTopLayer = 0;
-        const int controlBottomLayer = -1;
-
-        bool isMaximize = false;
-
-        bool onMenuMode = false;
-
-        List<Brush> buttonOrigionalColor = new List<Brush>();
-
         public MainAppView()
         {
             InitializeComponent();
-            // this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
 
-        void bringToFront(UIElement control)
-        {
-            Canvas.SetZIndex(control, controlTopLayer);
-            control.Visibility = Visibility.Visible;
-        }
 
-        void sendToBack(UIElement control)
-        {
-            Canvas.SetZIndex(control, controlBottomLayer);
-            control.Visibility = Visibility.Hidden;
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            // this.Close();
+            this.Close();
         }
 
         private void minimizeBtn_Click(object sender, RoutedEventArgs e)
         {
-            //  this.WindowState = WindowState.Minimized;
+            this.WindowState = WindowState.Minimized;
         }
 
         private void tileBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //this.DragMove();
+            this.DragMove();
         }
 
-        public void bringToFrontControlByName(string name)
-        {
-            foreach (var item in userControlGrid.Children)
-            {
-                if ((item as UserControl).Name == name)
-                {
-                    bringToFront(item as UserControl);
-                }
-                else sendToBack(item as UserControl);
-            }
-        }
+     
 
-        private void dashBoardBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //bringToFront(userControlGrid);
+        //private void dashBoardBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bringToFront(userControlGrid);
 
-            //bringToFrontControlByName("dashBoardCtrl");
-        }
+        //    bringToFrontControlByName("dashBoardCtrl");
+        //    this.setSelectionBtn(sender);
 
-        private void planeScheduleBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //bringToFront(userControlGrid);
+        //    this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        //}
 
-            //bringToFrontControlByName("planeScheduleCtrl");
-        }
+        //private void planeScheduleBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bringToFront(userControlGrid);
 
-        private void createTicketBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //bringToFront(userControlGrid);
+        //    bringToFrontControlByName("planeScheduleCtrl");
+        //    this.setSelectionBtn(sender);
 
-            //bringToFrontControlByName("createTicketCtrl");
-        }
+        //    this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        //}
 
-        private void planeListBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //bringToFront(userControlGrid);
+        //private void createTicketBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bringToFront(userControlGrid);
 
-            //bringToFrontControlByName("planeListCtrl");
-        }
+        //    bringToFrontControlByName("createTicketCtrl");
+        //    this.setSelectionBtn(sender);
 
-        private void reportBtn_Click(object sender, RoutedEventArgs e)
-        {
-            bringToFront(userControlGrid);
+        //    this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        //}
 
-            bringToFrontControlByName("reportCtrl");
-        }
+        //private void planeListBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bringToFront(userControlGrid);
 
-        private void donateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            bringToFront(userControlGrid);
+        //    bringToFrontControlByName("planeListCtrl");
+        //    this.setSelectionBtn(sender);
 
-            bringToFrontControlByName("donateCtrl");
-        }
+        //    this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        //}
 
-        private void settingBtn_Click(object sender, RoutedEventArgs e)
-        {
-            bringToFront(userControlGrid);
+        //private void reportBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bringToFront(userControlGrid);
 
-            bringToFrontControlByName("settingCtrl");
-        }
+        //    bringToFrontControlByName("reportCtrl");
+        //    this.setSelectionBtn(sender);
+
+        //    this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        //}
+
+        //private void donateBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bringToFront(userControlGrid);
+
+        //    bringToFrontControlByName("donateCtrl");
+        //    this.setSelectionBtn(sender);
+
+        //    this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        //}
+
+        //private void settingBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bringToFront(userControlGrid);
+
+        //    bringToFrontControlByName("settingCtrl");
+        //    this.setSelectionBtn(sender);
+
+        //    this.tile.Text = this.usercontrolTiles[sender as UIElement];
+        //}
+
+        //private void setSelectionBtn(object btn)
+        //{
+        //    int index = btnOrder[btn as UIElement];
+
+        //    buttonFlag.Margin = new Thickness(0, 146 + (51 * index), 0, 571 - (51 * index));
+        //}
+
     }
 }

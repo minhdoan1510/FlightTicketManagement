@@ -52,3 +52,12 @@ D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
 D:\Coding\clone\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.deps.json
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.dll
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.pdb
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csprojAssemblyReference.cache
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfoInputs.cache
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfo.cs
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
+D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb

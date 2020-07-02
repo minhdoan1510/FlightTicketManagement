@@ -13,10 +13,11 @@ namespace ServerFTM.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CityController : Controller
     {
         [HttpGet]
-        [Authorize]
+        
         public async Task<IActionResult> GetAll()
         {
             List<CityModel> cities = BUS_Controls.Controls.GetAllCity();

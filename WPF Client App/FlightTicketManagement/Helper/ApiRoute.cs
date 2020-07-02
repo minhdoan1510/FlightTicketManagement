@@ -25,82 +25,40 @@ namespace FlightTicketManagement.Helper
             public const string Get = Base + "/Restrictions";
             public const string Post = Base + "/Restrictions";
         }
-        public static class Flight
+        public static class FlightT
         {
             public const string GetAll = Base + "/Flight";
+            public const string GetFlightForCity = Base + "/Flight" + Key;
 
-            public const string Get = Base + "/Flight" + Key;
 
-            public const string Update = Base + "/Flight" + Key;
-
-            public const string Delete = Base + "/Flight" + Key;
-
-            public const string Create = Base + "/Flight";
         }
-        public static class Class
-
+        public static class Flight
         {
-            public const string GetAll = Base + "/classes";
-
-            public const string Get = Base + "/classes" + Key;
-
-            public const string Update = Base + "/classes" + Key;
-
-            public const string Delete = Base + "/classes" + Key;
-
-            public const string Create = Base + "/classes";
+            public const string GetTransit = Base + "/Flight/getTransit/ID={id}";
+            public const string GetAirportMenu = Base + "/Flight/airportMenu/Search={search}";
+            public const string CreateFlight = Base + "/Flight/createFlight";
+            public const string GetFlightAll = Base + "/Flight/getFlightAll";
+            public const string CreateTransit = Base + "/Flight/createTransit";
+            public const string UpdateFlight = Base + "/Flight/updateFlight";
+            public const string DisableFlight = Base + "/Flight/disableFlight";
+            public const string UpdateTransit = Base + "/Flight/updateTransit";
+            public const string DisableTransit = Base + "/Flight/disableTransit";
+            public const string DisableFlightTransit = Base + "/Flight/disableFlightTransit";
+            public const string DisableFlightAll = Base + "/Flight/disableFlightAll";
         }
-        public static class Passenger
 
-        {
-            public const string GetAll = Base + "/passengers";
 
-            public const string Get = Base + "/passengers" + Key;
-
-            public const string Update = Base + "/passengers" + Key;
-
-            public const string Delete = Base + "/passengers" + Key;
-
-            public const string Create = Base + "/passengers";
-        }
-        public static class Ticket
-
-        {
-            public const string GetAll = Base + "/tickets";
-
-            public const string Get = Base + "/tickets" + Key;
-
-            public const string Update = Base + "/tickets" + Key;
-
-            public const string Delete = Base + "/tickets" + Key;
-
-            public const string Create = Base + "/tickets";
-        }
         public static class Transit
 
         {
-            public const string GetAll = Base + "/transits";
 
             public const string Get = Base + "/Transit" + Key;
 
-            public const string Update = Base + "/transits" + Key;
 
-            public const string Delete = Base + "/transits" + Key;
-
-            public const string Create = Base + "/transits";
         }
         public static class City
-
         {
             public const string GetAll = Base + "/City";
-
-            public const string Get = Base + "/cities" + Key;
-
-            public const string Update = Base + "/cities" + Key;
-
-            public const string Delete = Base + "/cities" + Key;
-
-            public const string Create = Base + "/cities";
         }
     }
 }

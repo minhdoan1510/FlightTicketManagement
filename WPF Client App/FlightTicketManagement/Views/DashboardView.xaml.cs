@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using FlightTicketManagement.BUS;
+using FlightTicketManagement.Helper;
+
 namespace FlightTicketManagement.Views
 {
     /// <summary>
@@ -20,8 +23,47 @@ namespace FlightTicketManagement.Views
     /// </summary>
     public partial class DashboardView : UserControl
     {
-        public DashboardView() {
+        public DashboardView()
+        {
             InitializeComponent();
+            WeatherIconWaiting.Visibility = Visibility.Visible;
+        }
+
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+         //   this.welcomeUser.Text = AuthenticatedUser.Instance.data.UserName;
+
+            if (this.welcomeUser.Text == "")
+            {
+                this.welcomeUser.Text = "Username";
+            }
+            this.loadWeather();
+        }
+
+        private async void loadWeather()
+        {
+            GPSLocation.WeatherForecast.initClient();
+
+            GPSLocation.weather_data.RootObject weatherData = await
+                GPSLocation.WeatherForecast.requestWeather();
+
+            string weatherIcon = GPSLocation.WeatherForecast.getIconURL
+                (weatherData.weather[0].icon);
+
+            Console.WriteLine(weatherIcon);
+
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(weatherIcon, UriKind.Absolute);
+            bitmap.EndInit();
+
+            weatherStatusIcon.Source = bitmap;
+            weatherStatusIcon.Stretch = Stretch.Fill;
+            WeatherIconWaiting.Visibility = Visibility.Hidden;
+
+            weatherCity.Text = weatherData.name + ", " + weatherData.sys.country;
+            weatherTemerature.Text = ((int)(weatherData.main.temp - 272.15f)).ToString()
+                + "°C";
         }
     }
 }

@@ -55,9 +55,6 @@ namespace FlightTicketManagement.Helper
         {
             this.InitializeClient();
 
-            // add token to header 
-          //  apiClient.DefaultRequestHeaders.Add("token", authenticatedUser.Result.Token);
-
             using (HttpResponseMessage response = await apiClient.GetAsync(route))
             {
 
@@ -75,7 +72,7 @@ namespace FlightTicketManagement.Helper
             }
         }
 
-        public async Task<T> Post<T>(string route, object body)
+        public async Task<T> Post<T>(string route, object body = null)
         {
             this.InitializeClient();
    

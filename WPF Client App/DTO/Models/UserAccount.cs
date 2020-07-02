@@ -18,8 +18,5 @@ namespace Library.Models
 
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        [JsonProperty("acctype")]
-        public long Acctype { get; set; }
     }
 }

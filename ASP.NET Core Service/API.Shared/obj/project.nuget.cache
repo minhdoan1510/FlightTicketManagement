@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dEKryB4lpUk2b+F3awlzgRYwNYnbTGgecq7TzHX4nTwqpplSnqA5iHqeHsnPFy/VnAEh8Ktx2O4R9OgPytEksQ==",
+  "dgSpecHash": "+59m06hE5vKc1QzCUCIsKH079+GuV0wL78Xt2zh5UhDn2mYSp78lYeYs2g8Ky7nhPtoem+oTwPMhzIvViDYtMg==",
   "success": true,
-  "projectFilePath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+  "projectFilePath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -49,7 +49,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",

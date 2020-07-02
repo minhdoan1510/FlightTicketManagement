@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ServerFTM.Models;
 using ServerFTM.DAL.Query;
 using ServerFTM.DAL.DataProvider;
 using System.Data;
@@ -25,17 +24,17 @@ namespace ServerFTM.DAL.Controls
             }
             set => controls = value;
         }
-        public bool SignUp(Account account)
+        public bool SignUp(UserAccount account)
         {
             try
             {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcSignUp, 
                     new object[] { 
-                        account.IDAccount, 
+                        account.IdAccount, 
                         account.Username , 
                         account.Password, 
                         account.Name, 
-                        account.Acctype })>0; //--@id   @user @pass @name @acctype
+                        })>0; //--@id   @user @pass @name @acctype
             }
             catch
             {
@@ -43,7 +42,7 @@ namespace ServerFTM.DAL.Controls
             }
         }
 
-        public DataTable Login(Account account)
+        public DataTable Login(UserAccount account)
         {
             try
             {
@@ -166,5 +165,189 @@ namespace ServerFTM.DAL.Controls
                 return false;
             }
         }
+
+        public DataTable GetAirportMenu(string searchKey)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetAirportMenu,
+                    new object[] {
+                        searchKey
+                    });
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public bool CreateFlight(FlightCreateModel flight)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcCreateFlight,
+                    new object[] {
+                        flight.FlightID,
+                        flight.DurationID,
+                        flight.OriginApID,
+                        flight.DestinationApID,
+                        flight.TotalSeat,
+                        flight.Price,
+                        flight.Width,
+                        flight.Height,
+                        flight.Duration}) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool CreateTransit(TransitCreateModel transit)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcCreateTransit,
+                    new object[] {
+                        transit.transitID,
+                        transit.flightID,
+                        transit.airportID,
+                        transit.transitOrder,
+                        transit.transitTime,
+                        transit.transitNote
+                    }) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public DataTable GetTransit(string flightID)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetTransit,
+                    new object[] {
+                        flightID
+                });
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public DataTable GetFlightAll()
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightAll);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public bool UpdateFlight(FlightCreateModel value)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcUpdateFlight,
+                    new object[] {
+                        value.FlightID,
+                        value.DurationID,
+                        value.OriginApID,
+                        value.DestinationApID,
+                        value.Price,
+                        value.Width,
+                        value.Height,
+                        value.TotalSeat,
+                        value.Duration
+                    }) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool DisableFlight(FlightCreateModel value)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableFlight,
+                    new object[] {
+                        value.FlightID
+                    }) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateTransit(TransitCreateModel value)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcUpdateTransit,
+                    new object[] {
+                        value.transitID,
+                        value.airportID,
+                        value.transitOrder,
+                        value.transitTime,
+                        value.transitNote
+                    }) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool DisableTransit(TransitCreateModel value)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableTransit,
+                    new object[] {
+                        value.transitID
+                    }) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool DisableFlightTransit(FlightCreateModel value)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableFlightTransit,
+                    new object[] {
+                        value.FlightID
+                    }) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool DisableFlightAll()
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableFlightAll) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
     }
 }

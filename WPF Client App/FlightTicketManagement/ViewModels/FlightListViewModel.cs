@@ -32,24 +32,24 @@ namespace FlightTicketManagement.ViewModels
         }
         private async Task LoadFlights()
         {
-            Response <List<FlightModel>> response = await APIHelper.Instance.Get<Response<List<FlightModel>>>(ApiRoutes.Flight.GetAll);
+            Response <List<FlightDisplayModel>> response = await APIHelper.Instance.Get<Response<List<FlightDisplayModel>>>(ApiRoutes.FlightT.GetAll);
             if (response.IsSuccess)
             {
                 var list = response.Result;
 
-                Flights = new ObservableCollection<FlightModel>(list);
+                Flights = new ObservableCollection<FlightDisplayModel>(list);
             }
 
         }
 
         private async Task LoadFlightsForCity()
         {
-            Response<List<FlightModel>> response = await APIHelper.Instance.Get<Response<List<FlightModel>>>(ApiRoutes.Flight.Get.Replace(ApiRoutes.Keybase,SelectedCityId));
+            Response<List<FlightDisplayModel>> response = await APIHelper.Instance.Get<Response<List<FlightDisplayModel>>>(ApiRoutes.FlightT.GetFlightForCity.Replace(ApiRoutes.Keybase,SelectedCityId));
             if (response.IsSuccess)
             {
                 var list = response.Result;
                 
-                Flights = new ObservableCollection<FlightModel>(list);
+                Flights = new ObservableCollection<FlightDisplayModel>(list);
             }
 
         }
@@ -65,9 +65,9 @@ namespace FlightTicketManagement.ViewModels
 
         }
 
-        private ObservableCollection<FlightModel> _flights;
+        private ObservableCollection<FlightDisplayModel> _flights;
 
-        public ObservableCollection<FlightModel> Flights
+        public ObservableCollection<FlightDisplayModel> Flights
         {
             get => _flights;
             set
@@ -113,9 +113,9 @@ namespace FlightTicketManagement.ViewModels
                 
             }
         }
-        private FlightModel _selectedFlight;
+        private FlightDisplayModel _selectedFlight;
 
-        public FlightModel SelectedFlight
+        public FlightDisplayModel SelectedFlight
         {
             get { return _selectedFlight; }
             set { _selectedFlight = value; }

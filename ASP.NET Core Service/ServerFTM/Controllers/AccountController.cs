@@ -1,10 +1,9 @@
 ﻿using API.Shared.APIResponse;
+using Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using ServerFTM.Authorization;
 using ServerFTM.BUS;
-using ServerFTM.Models;
 using System;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
@@ -28,22 +27,13 @@ namespace ServerFTM.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> PostLogin([FromBody] Account account) {
+        public async Task<IActionResult> PostLogin([FromBody] UserAccount account) {
             Profile profile = BUS_Controls.Controls.Login(account);
 
             if (profile != null) {
-                //string ip = Request.Headers["X-Forwarded-For"];
-                //if (string.IsNullOrEmpty(ip))
-                //    ip = Request.Host.Value;
-
-                //AccessToken accessToken = new AccessToken(profile.IDAccount, account.Username, account.Password, ip);
-               
-                //BUS_Controls.Controls.AddDevice(accessToken.IdAccount, accessToken.Token);
-
-                //Debug.WriteLine("IDuser " + accessToken.Token + " login");
-                //Debug.WriteLine("Create succsess token:" + accessToken.Token);
                 var tokenStr = GenerateJSONWebToken(profile);
-                InfoLogin infoLogin = new InfoLogin(profile.IDAccount, profile.Name, tokenStr);
+                InfoLogin infoLogin = new InfoLogin { 
+                     Id = profile.IDAccount, Name =  profile.Name, Token = tokenStr };
                 return new JsonResult(new ApiResponse<object>(infoLogin));
             }
             else return new JsonResult(new ApiResponse<object>(200, "login failed"));
@@ -69,7 +59,7 @@ namespace ServerFTM.Controllers
         }
 
         [HttpPost("signUp")]
-        public async Task<IActionResult> PostSignUp([FromBody] Account account) {
+        public async Task<IActionResult> PostSignUp([FromBody] UserAccount account) {
             if (BUS_Controls.Controls.Signup(account)) {
                 Debug.WriteLine("Signup success User: " + account.Username);
 

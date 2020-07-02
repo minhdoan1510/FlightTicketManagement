@@ -1,0 +1,162 @@
+﻿<Window x:Class="FlightTicketManagement.Views.GetFlightView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:FlightTicketManagement.Views"
+        mc:Ignorable="d"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
+        Title="getFlight"
+        Height="503.2"
+        Width="347.429"
+        Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel Margin="0,0,-0.2,-0.4">
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Khởi Hành</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="origionalAP_status"
+                                         Kind="Check"
+                                         Foreground="Transparent">
+
+                </materialDesign:PackIcon>
+            </StackPanel>
+            <ComboBox Height="30"
+                      FontSize="13"
+                      IsEditable="True"
+                      StaysOpenOnEdit="True"
+                      IsTextSearchEnabled="False"
+                      SelectionChanged="subMenu_SelectionChanged"
+                      Text="Nhập Sân Bay"
+                      x:Name="origionalAP"
+                      Margin="5,0,5,0" />
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Kết Thúc</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="destinationAP_status"
+                                         Kind="Check"
+                                         Foreground="Transparent">
+
+                </materialDesign:PackIcon>
+            </StackPanel>
+            <ComboBox Height="30"
+                      FontSize="13"
+                      Margin="5,0,5,0"
+                      IsEditable="True"
+                      StaysOpenOnEdit="True"
+                      IsTextSearchEnabled="False"
+                      SelectionChanged="subMenu_SelectionChanged"
+                      Text="Nhập Sân Bay"
+                      x:Name="destinationAP" />
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Giờ Bay</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="timeFlight_status"
+                                         Kind="Check"
+                                         Foreground="Transparent"
+                                         IsHitTestVisible="False">
+                </materialDesign:PackIcon>
+            </StackPanel>
+
+            <materialDesign:TimePicker FontSize="13"
+                                       Height="30"
+                                       Margin="5,0,15,0"
+                                       Is24Hours="True"
+                                       x:Name="timeFlight">
+
+            </materialDesign:TimePicker>
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Chi Phí</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="price_status"
+                                         Kind="Check"
+                                         Foreground="Transparent">
+
+                </materialDesign:PackIcon>
+            </StackPanel>
+            <StackPanel Height="30"
+                        Orientation="Horizontal"
+                        Margin="5,0,5,0">
+                <TextBox FontSize="13"
+                         Width="290"
+                         Height="30"
+                         x:Name="price">
+                </TextBox>
+                <TextBlock Text="VNĐ"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="5, 0, 0, 0">
+
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Số Ghế Hàng Dọc</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="verticalSeat_status"
+                                         Kind="Check"
+                                         Foreground="Transparent">
+
+                </materialDesign:PackIcon>
+
+            </StackPanel>
+            <TextBox Height="30"
+                     FontSize="13"
+                     x:Name="verticalSeat"
+                     Margin="5,0,5,0" />
+
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Số Ghế Hàng Ngang</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="horizontalSeat_status"
+                                         Kind="Check"
+                                         Foreground="Transparent">
+
+                </materialDesign:PackIcon>
+            </StackPanel>
+            <TextBox Height="30"
+                     FontSize="13"
+                     x:Name="horizontalSeat"
+                     Margin="5,0,5,0" />
+
+        </StackPanel>
+
+        <Button Margin="10,399,262.8,34.6"
+                Name="saveFlightData"
+                Click="saveFlightData_Click"
+                Content="Lưu"
+                Background="#FF3AB768"
+                Height="Auto"></Button>
+        <Button Margin="97,399,171.8,34.6"
+                Content="Hủy"
+                IsCancel="True"
+                Background="#FFB76B3A"
+                Height="Auto" />
+    </Grid>
+</Window>

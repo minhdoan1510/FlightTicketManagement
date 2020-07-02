@@ -1,0 +1,82 @@
+﻿<Window x:Class="FlightTicketManagement.Views.GetTransitView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightTicketManagement.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="AirplaneTransit"
+        ResizeMode="NoResize"
+        Height="460.976"
+        Width="347.429">
+    <Grid Margin="0,0,0.4,-4.8">
+        <StackPanel>
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Sân Bay</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="airport_status"
+                                         Kind="Check"
+                                         Foreground="Transparent">
+
+                </materialDesign:PackIcon>
+            </StackPanel>
+            <ComboBox Height="30"
+                      FontSize="13"
+                      IsEditable="True"
+                      StaysOpenOnEdit="True"
+                      IsTextSearchEnabled="False"
+                      SelectionChanged="airport_SelectionChanged"
+                      Text="Nhập Sân Bay"
+                      x:Name="airport"
+                      Margin="5,0,5,0" />
+            <StackPanel Height="20"
+                        Margin="5, 10, 0, 0"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="15"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left">Thời Gian Chờ</TextBlock>
+                <materialDesign:PackIcon Margin="5, 0, 0, 0"
+                                         x:Name="timeTransit_status"
+                                         Kind="Check"
+                                         Foreground="Transparent">
+
+                </materialDesign:PackIcon>
+            </StackPanel>
+            <materialDesign:TimePicker FontSize="13"
+                                       Height="30"
+                                       Margin="5,0,15,0"
+                                       x:Name="timeTransit"
+                                       Is24Hours="True">
+            </materialDesign:TimePicker>
+            <TextBlock FontSize="15"
+                       FontWeight="Bold"
+                       Margin="5, 10, 0, 0"
+                       HorizontalAlignment="Left">Ghi Chú</TextBlock>
+            <TextBox Height="170"
+                       Margin="5,0,5,0"
+                       Background="Beige"
+                       Foreground="Black"
+                       FontSize="13"
+                       TextWrapping="Wrap"
+                        AcceptsReturn="True"
+                       Name="Note">
+
+            </TextBox>
+        </StackPanel>
+        <Button Height="Auto"
+                Margin="10,354,256.4,36"
+                Background="#FF3AB768"
+                Name="saveBtn"
+                Click="saveBtn_Click">Lưu</Button>
+        <Button Height="Auto"
+                Margin="102,354,159.4,36"
+                Name="cancelBtn"
+                IsCancel="True"
+                Background="#FFB76B3A">Hủy</Button>
+    </Grid>
+</Window>

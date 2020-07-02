@@ -19,7 +19,7 @@ namespace ServerFTM.Controllers
             [HttpGet("{flightId}")]
             public async Task<IActionResult> Get([FromRoute]string flightId )
             {
-                List<TransitModel> transits = BUS_Controls.Controls.GetTransits(flightId);
+                List<TransitDisplayModel> transits = BUS_Controls.Controls.GetTransits(flightId);
 
                 if (transits != null)
                 {
