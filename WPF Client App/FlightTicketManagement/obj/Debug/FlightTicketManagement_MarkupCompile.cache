@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-D:\Coding\clone2\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\
+D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\
 FlightTicketManagement
 none
 false
 DEBUG;TRACE
-D:\Coding\clone2\FlightTicketManagement\WPF Client App\FlightTicketManagement\App.xaml
-21-1331098531
+D:\Coding\clone\FlightTicketManagement\WPF Client App\FlightTicketManagement\App.xaml
+22960450680
 
-37610805723
-154101693631
-Views\CreateTicketView.xaml;MainApp\Donate.xaml;Views\DashboardView.xaml;Views\GetFlightView.xaml;Views\GetTransitView.xaml;Views\LoginView.xaml;Views\MainAppView.xaml;Views\FlightListView.xaml;Views\PlaneScheduleView.xaml;MainApp\Report.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Views\SignupView.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;Views\SettingView.xaml;Resource\transparentBackground.xaml;Views\ShellView.xaml;Views\TransitView.xaml;
+41-1737472827
+154727197135
+Views\CreateTicketView.xaml;MainApp\Donate.xaml;Views\DashboardView.xaml;Views\GetFlightView.xaml;Views\GetTransitView.xaml;Views\LoginView.xaml;Views\MainAppView.xaml;Views\FlightListView.xaml;Views\PlaneScheduleView.xaml;MainApp\Report.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Views\ReportView.xaml;Views\SignupView.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;Views\SettingView.xaml;Resource\transparentBackground.xaml;Views\ShellView.xaml;Views\TransitView.xaml;
 
 False
 

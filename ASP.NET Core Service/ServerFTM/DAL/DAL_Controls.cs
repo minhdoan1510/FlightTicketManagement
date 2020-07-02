@@ -349,5 +349,36 @@ namespace ServerFTM.DAL.Controls
             }
         }
 
+        #region Report
+
+        public DataTable GetMonthProfit(int month, int year)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcMonthProfit,
+                    new object[] { month, year });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public DataTable GetYearProfit(int year)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcYearProfit,
+                    new object[] { year });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        #endregion
     }
 }

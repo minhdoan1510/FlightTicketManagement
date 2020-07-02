@@ -60,5 +60,11 @@ namespace FlightTicketManagement.Helper
         {
             public const string GetAll = Base + "/City";
         }
+
+        public static class Report
+        {
+            public const string GetMonthReport = Base + "/Report/month";
+            public const string GetYearReport = Base + "/Report/year";
+        }
     }
 }

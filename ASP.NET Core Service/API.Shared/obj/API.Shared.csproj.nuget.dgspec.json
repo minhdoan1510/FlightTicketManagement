@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {}
+    "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {}
   },
   "projects": {
-    "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+    "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
         "projectName": "API.Shared",
-        "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
+        "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

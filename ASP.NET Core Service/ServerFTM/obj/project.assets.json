@@ -5345,11 +5345,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+      "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
       "projectName": "ServerFTM",
-      "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+      "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\obj\\",
+      "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5368,11 +5368,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
-              "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
+            "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+              "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
             },
-            "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
-              "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj"
+            "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
+              "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj"
             }
           }
         }

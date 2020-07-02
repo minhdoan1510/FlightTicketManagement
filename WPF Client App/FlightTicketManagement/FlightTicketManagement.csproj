@@ -192,10 +192,13 @@
     <Compile Include="Helper\AuthenticatedUser.cs" />
     <Compile Include="Helper\GPSLocation.cs" />
     <Compile Include="Helper\PasswordBoxHelper.cs" />
+    <Compile Include="Helper\VisibilityHelper.cs" />
+    <Compile Include="Resource\DatePickerCalendar.cs" />
     <Compile Include="ViewModels\CreateTicketViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\FlightListViewModel.cs" />
     <Compile Include="ViewModels\PlaneScheduleViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\TransitViewModel.cs" />
     <Compile Include="Views\CreateTicketView.xaml.cs">
@@ -216,6 +219,9 @@
     </Compile>
     <Compile Include="Views\MainAppView.xaml.cs">
       <DependentUpon>MainAppView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignupView.xaml.cs">
       <DependentUpon>SignupView.xaml</DependentUpon>
@@ -294,6 +300,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resource\tileButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

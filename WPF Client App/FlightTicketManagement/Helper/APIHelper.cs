@@ -51,10 +51,17 @@ namespace FlightTicketManagement.Helper
             }
         }
 
-        public async Task<T> Get<T>(string route)
+        public async Task<T> Get<T>(string route, KeyValuePair<string, string>[] parameter = null)
         {
             this.InitializeClient();
-
+            if (parameter != null)
+            {
+                for (int i = 0; i < parameter.Length; i++)
+                {
+                    route += ((i == 0) ? '?' : '&');
+                    route += string.Format("{0}={1}", parameter[i].Key, parameter[i].Value);
+                }
+            }
             using (HttpResponseMessage response = await apiClient.GetAsync(route))
             {
 

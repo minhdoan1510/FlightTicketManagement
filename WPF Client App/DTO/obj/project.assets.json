@@ -560,11 +560,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
+      "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
       "projectName": "Library",
-      "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
+      "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\obj\\",
+      "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+59m06hE5vKc1QzCUCIsKH079+GuV0wL78Xt2zh5UhDn2mYSp78lYeYs2g8Ky7nhPtoem+oTwPMhzIvViDYtMg==",
+  "dgSpecHash": "dEKryB4lpUk2b+F3awlzgRYwNYnbTGgecq7TzHX4nTwqpplSnqA5iHqeHsnPFy/VnAEh8Ktx2O4R9OgPytEksQ==",
   "success": true,
-  "projectFilePath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+  "projectFilePath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

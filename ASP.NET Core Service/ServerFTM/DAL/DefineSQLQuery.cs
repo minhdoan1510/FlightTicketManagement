@@ -33,5 +33,8 @@ namespace ServerFTM.DAL.Query
         public const string ProcDisableFlightTransit = "EXECUTE ProcDisableFlightTransit @flightID";
         public const string ProcDisableFlightAll = "EXECUTE ProcDisableFlightAll";
 
+
+        public const string ProcMonthProfit = "EXECUTE GetMonthProfit @month , @year";
+        public const string ProcYearProfit = "EXECUTE GetYearProfit @year";
     }
 }

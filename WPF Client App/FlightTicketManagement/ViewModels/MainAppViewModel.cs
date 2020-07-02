@@ -64,7 +64,9 @@ namespace FlightTicketManagement.ViewModels
         {
             switch(screen)
             {
-
+                case Screens.Report:
+                    ActivateItem(_container.GetInstance<ReportViewModel>());
+                    break;
                 case Screens.FlightList:
                     ActivateItem(_container.GetInstance<FlightListViewModel>());
                     break;
@@ -117,6 +119,11 @@ namespace FlightTicketManagement.ViewModels
         public void ShowPlaneScheduleView()
         {
             ActivateScreen(Screens.PlaneSchedule);
+        }
+
+        public void ShowReportView()
+        {
+            ActivateScreen(Screens.Report);
         }
 
     }

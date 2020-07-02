@@ -220,6 +220,48 @@ namespace ServerFTM.BUS
         }
 
 
+        #region Report_Handle
+
+        public List<ChildMonthReport> GetMonthReports(int mouth, int year)
+        {
+            DataTable data = DAL_Controls.Controls.GetMonthProfit(mouth, year);
+            List<ChildMonthReport> reports = new List<ChildMonthReport>();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                reports.Add(new ChildMonthReport()
+                {
+                    Rank = Convert.ToInt32(data.Rows[i]["Rank"]),
+                    IdFight = data.Rows[i]["IDFlight"].ToString(),
+                    OriginName = data.Rows[i]["OriginName"].ToString(),
+                    DestinationName = data.Rows[i]["DestName"].ToString(),
+                    OriginID = data.Rows[i]["OriginID"].ToString(),
+                    DestinationID = data.Rows[i]["DestID"].ToString(),
+                    TicketNum = Convert.ToInt32(data.Rows[i]["TicketNum"]),
+                    Ratio = float.Parse(data.Rows[i]["Ratio"].ToString()),
+                    Profit = Convert.ToInt32(data.Rows[i]["Profit"])
+                });
+            }
+            return reports;
+        }
+
+        public List<ChildYearReport> GetYearReports(int year)
+        {
+            DataTable data = DAL_Controls.Controls.GetYearProfit(year);
+            List<ChildYearReport> reports = new List<ChildYearReport>();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                reports.Add(new ChildYearReport()
+                {
+                    Month = Convert.ToInt32(data.Rows[i]["Month"]),
+                    TicketNum = Convert.ToInt32(data.Rows[i]["TicketNum"]),
+                    Ratio = float.Parse(data.Rows[i]["Ratio"].ToString()),
+                    Profit = Convert.ToInt32(data.Rows[i]["Profit"])
+                });
+            }
+            return reports;
+        }
+
+        #endregion
 
         #region Transit
         public List<TransitDisplayModel> GetTransits(string transitId)
