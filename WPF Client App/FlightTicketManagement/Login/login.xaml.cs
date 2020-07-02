@@ -34,6 +34,8 @@ namespace FlightTicketManagement
         }
 
         private async void login_Click(object sender, RoutedEventArgs e) {
+            MainWindow.Instance.Hide();
+
             string _userName = this.userName.Text;
             string _password = this.passWord.Password.ToString();
 

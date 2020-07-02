@@ -77,7 +77,7 @@ namespace ServerFTM.BUS
             flight.DurationID = GenerateID();
 
             if (!DAL_Controls.Controls.CreateFlight(flight)) {
-                return ""; 
+                return "";
             }
 
             return flight.FlightID;
@@ -85,9 +85,8 @@ namespace ServerFTM.BUS
 
         public bool createTransit(Transit transit) {
             transit.transitID = GenerateID();
-            transit.transitOrder = 1;
 
-            return DAL_Controls.Controls.CreateTransit(transit); 
+            return DAL_Controls.Controls.CreateTransit(transit);
         }
 
         public List<Transit> getTransit(string flightID) {
@@ -108,7 +107,7 @@ namespace ServerFTM.BUS
                     item.transitNote = row["transitNote"].ToString();
 
                     res.Add(item);
-                } 
+                }
             }
             return res;
         }
@@ -116,52 +115,100 @@ namespace ServerFTM.BUS
         public List<Flight> getFlightAll() {
             List<Flight> result = new List<Flight>();
 
-            DataTable flights = DAL_Controls.Controls.GetFlightAll(); 
+            DataTable flights = DAL_Controls.Controls.GetFlightAll();
 
             if (flights != null) {
-                foreach(DataRow row in flights.Rows) {
+                foreach (DataRow row in flights.Rows) {
                     Flight item = new Flight();
 
                     item.FlightID = row["FlightId"].ToString();
                     item.OriginApID = row["OriginApID"].ToString();
                     item.DestinationApID = row["DestinationApID"].ToString();
                     item.OriginAP = row["OriginAP"].ToString();
-                    item.DestinationAP = row["DestinationAP"].ToString(); 
+                    item.DestinationAP = row["DestinationAP"].ToString();
                     item.Price = row["Price"].ToString();
                     item.TotalSeat = int.Parse(row["TotalSeat"].ToString());
                     item.Width = int.Parse(row["width"].ToString());
                     item.Height = int.Parse(row["height"].ToString());
-                    item.DurationID = row["IDDurationFlight"].ToString(); 
+                    item.DurationID = row["IDDurationFlight"].ToString();
                     item.Duration = row["Duration"].ToString();
 
-                    result.Add(item); 
+                    result.Add(item);
                 }
             }
             return result;
         }
 
         public bool DisableFlight(Flight value) {
-            return DAL_Controls.Controls.DisableFlight(value); 
+            return DAL_Controls.Controls.DisableFlight(value);
         }
 
         public bool UpdateFlight(Flight value) {
-            return DAL_Controls.Controls.UpdateFlight(value); 
+            return DAL_Controls.Controls.UpdateFlight(value);
         }
 
         public bool UpdateTransit(Transit value) {
-            return DAL_Controls.Controls.UpdateTransit(value); 
+            return DAL_Controls.Controls.UpdateTransit(value);
         }
 
         public bool DisableTransit(Transit value) {
-            return DAL_Controls.Controls.DisableTransit(value); 
+            return DAL_Controls.Controls.DisableTransit(value);
         }
 
         public bool DisableFlightTransit(Flight value) {
-            return DAL_Controls.Controls.DisableFlightTransit(value); 
+            return DAL_Controls.Controls.DisableFlightTransit(value);
         }
 
         public bool DisableFlightAll() {
-            return DAL_Controls.Controls.DisableFlightAll(); 
+            return DAL_Controls.Controls.DisableFlightAll();
+        }
+
+        public DashStatistic GetDashStatistic(string date) {
+            DashStatistic result = new DashStatistic();
+
+            DataTable dailyTicket = DAL_Controls.Controls.getTicketCountDaily(date);
+            DataTable dailyMoney = DAL_Controls.Controls.getSumMoneyDaily(date);
+
+            if (dailyTicket != null && dailyMoney != null) {
+                result.dailyTicket = int.Parse(dailyTicket.Rows[0]["ticketDaily"].ToString());
+                result.dailyMoney = double.Parse(dailyMoney.Rows[0]["moneyDaily"].ToString());
+            }
+            return result;
+        }
+
+        public List<FlightRoute> GetFlightRoute() {
+            List<FlightRoute> result = new List<FlightRoute>();
+
+            DataTable flights = DAL_Controls.Controls.getFlightRouteAll();
+
+            if (flights != null) {
+                foreach (DataRow row in flights.Rows) {
+                    FlightRoute item = new FlightRoute();
+
+                    item.latOrigin = float.Parse(row["latOrigin"].ToString());
+                    item.lonOrigin = float.Parse(row["lonOrigin"].ToString());
+                    item.latDestination = float.Parse(row["latDestination"].ToString());
+                    item.lonDestination = float.Parse(row["lonDestination"].ToString()); 
+                    item.flightID = row["flightID"].ToString();
+
+                    DataTable transits = DAL_Controls.Controls.getTransitRouteFromFlight(item.flightID);
+
+                    if (transits != null) {
+                        item.transitList = new List<TransitLocation>();
+
+                        foreach (DataRow transRow in transits.Rows) {
+                            TransitLocation transItem = new TransitLocation();
+
+                            transItem.transitLat = float.Parse(transRow["transitLat"].ToString());
+                            transItem.transitLon = float.Parse(transRow["transitLon"].ToString());
+
+                            item.transitList.Add(transItem);
+                        }
+                    }
+                    result.Add(item);
+                }
+            }
+            return result;
         }
 
         public bool checkToken(string token) {

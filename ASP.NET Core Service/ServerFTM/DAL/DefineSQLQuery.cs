@@ -32,7 +32,10 @@ namespace ServerFTM.DAL.Query
         public string ProcDisableTransit = "EXECUTE ProcDisableTransit @transitID";
         public string ProcDisableFlightTransit = "EXECUTE ProcDisableFlightTransit @flightID";
         public string ProcDisableFlightAll = "EXECUTE ProcDisableFlightAll";
-
+        public string ProcCountTicketDaily = "EXECUTE ProcCountTicketDaily @day";
+        public string ProcSumMoneyDaily = "EXECUTE ProcSumMoneyDaily @day";
+        public string ProcGetFlightRouteAll = "EXECUTE ProcGetFlightRouteAll";
+        public string ProcGetTransitRouteFromFlight = "EXECUTE ProcGetTransitRouteFromFlight @flightID"; 
         public string ProcTestTime = "exec testTimeMap";
     }
 }

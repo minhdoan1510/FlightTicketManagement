@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -80,7 +79,7 @@ namespace FlightTicketManagement
             int typeIndex = searchType.SelectedIndex;
             string typeText = (searchType.ItemsSource as List<KeyValuePair<string, string>>)[typeIndex].Value;
 
-            if (typeText == "TotalSeat") {
+            if (typeText == "TotalSeat" || typeText == "Price") {
                 this.price_KeyDown(sender, e);
             }
         }
@@ -116,28 +115,31 @@ namespace FlightTicketManagement
             switch (typeText) {
                 case "OriginAP":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.OriginAP, "%" + searchTextbox.Text + "%")
+                                where x.OriginAP.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "DestinationAP":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.DestinationAP, "%" + searchTextbox.Text + "%")
+                                where x.DestinationAP.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "Price":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.displayPrice, "%" + searchTextbox.Text + "%")
+                                where x.Price.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "Duration":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.Duration, "%" + searchTextbox.Text + "%")
+                                where x.Duration.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "TotalSeat":
-                    newItems = (from x in tempList
-                                where x.TotalSeat.Equals(int.Parse(searchTextbox.Text))
-                                select x).ToList();
+                    int checkValue;
+                    if (int.TryParse(searchTextbox.Text, out checkValue)) {
+                        newItems = (from x in tempList
+                                    where x.TotalSeat.Equals(checkValue)
+                                    select x).ToList();
+                    } 
                     break;
                 default:
                     return;

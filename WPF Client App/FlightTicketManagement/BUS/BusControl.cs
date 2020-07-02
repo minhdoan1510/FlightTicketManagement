@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FlightTicketManagement.Helper;
 using DTO;
+using System.Runtime.Remoting.Lifetime;
 
 namespace FlightTicketManagement.BUS
 {
@@ -97,6 +98,18 @@ namespace FlightTicketManagement.BUS
         public async Task<Response<string>> DisableFlightAll() {
             return await APIHelper.Instance.PostWithToken<Response<string>>
                 (ApiRoutes.Flight.DisableFlightAll);
+        }
+
+        public async Task<Response<DashStatistic>> GetDashBoardStatistic(string date) {
+            string url = ApiRoutes.Flight.GetDashStatistic;
+            url.Replace("{date}", date);
+
+            return await APIHelper.Instance.Get<Response<DashStatistic>>(url);
+        }
+
+        public async Task<Response<List<FlightRoute>>> GetFlightRoutes() {
+            return await APIHelper.Instance.Get<Response<List<FlightRoute>>>
+                (ApiRoutes.Flight.GetFlightRoute); 
         }
     }
 }

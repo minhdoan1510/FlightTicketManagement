@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using DTO;
 using FlightTicketManagement.BUS;
 using FlightTicketManagement.Helper;
 
@@ -25,7 +25,6 @@ namespace FlightTicketManagement
     {
         public Dashboard() {
             InitializeComponent();
-            WeatherIconWaiting.Visibility = Visibility.Visible;
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e) {
@@ -34,11 +33,12 @@ namespace FlightTicketManagement
             if (this.welcomeUser.Text == "") {
                 this.welcomeUser.Text = "Username"; 
             }
-            this.loadWeather(); 
+            this.loadWeather();
+            this.loadStatistics();
         }
 
         private async void loadWeather() {
-            GPSLocation.WeatherForecast.initClient();
+            WeatherWaiting.Visibility = Visibility.Visible;
 
             GPSLocation.weather_data.RootObject weatherData = await
                 GPSLocation.WeatherForecast.requestWeather();
@@ -49,17 +49,54 @@ namespace FlightTicketManagement
             Console.WriteLine(weatherIcon);
 
             BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(weatherIcon, UriKind.Absolute);
-            bitmap.EndInit();
+            await Task.Factory.StartNew(() => {
+                this.Dispatcher.Invoke(() => {
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(weatherIcon, UriKind.Absolute);
+                    bitmap.EndInit();
 
-            weatherStatusIcon.Source = bitmap;
-            weatherStatusIcon.Stretch = Stretch.Fill;
-            WeatherIconWaiting.Visibility = Visibility.Hidden;
+                    weatherStatusIcon.Source = bitmap;
+                    weatherStatusIcon.Stretch = Stretch.Fill;
+                });
+            }); 
+
+            WeatherWaiting.Visibility = Visibility.Hidden;
+
+            if (weatherData.name == "" || weatherData.name == " " || weatherData.name == null) 
+                weatherData.name = "undefined location name";
 
             weatherCity.Text = weatherData.name + ", " + weatherData.sys.country;
             weatherTemerature.Text = ((int)(weatherData.main.temp - 272.15f)).ToString()
-                + "°C";
+                + "°C, " + weatherData.weather[0].description;
+        }
+
+        private async void loadStatistics() {
+            TicketWaiting.Visibility = Visibility.Visible;
+            ticketImage.Visibility = Visibility.Hidden;
+
+            MoneyWaiting.Visibility = Visibility.Visible;
+            moneyImage.Visibility = Visibility.Hidden;
+
+            string date = string.Format("{0:yyyy/dd/MM HH:mm:ss tt}", DateTime.Now);
+
+            Response<DashStatistic> result = await BusControl.Instance.GetDashBoardStatistic(date);
+
+            TicketWaiting.Visibility = Visibility.Hidden;
+            MoneyWaiting.Visibility = Visibility.Hidden;
+            ticketImage.Visibility = Visibility.Visible;
+            moneyImage.Visibility = Visibility.Visible;
+
+            dailyTicket.Text = result.Result.dailyTicket.ToString();
+            dailyMoney.Text = result.Result.displayDailyMoney;
+        }
+
+        private void flightMap_MouseWheel(object sender, MouseWheelEventArgs e) {
+            e.Handled = true;
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            Console.WriteLine(e.NewValue); 
+            flightMap.ZoomLevel = e.NewValue;
         }
     }
 }

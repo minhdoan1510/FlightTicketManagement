@@ -7,6 +7,7 @@ using ServerFTM.Models;
 using ServerFTM.DAL.Query;
 using ServerFTM.DAL.DataProvider;
 using System.Data;
+using Microsoft.OpenApi.Models;
 
 namespace ServerFTM.DAL.Controls
 {
@@ -209,9 +210,45 @@ namespace ServerFTM.DAL.Controls
             }
         }
 
-        public DataTable testTime() {
+        public DataTable getTicketCountDaily(string date) {
             try {
-                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.Query.ProcTestTime);
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.Query.ProcCountTicketDaily,
+                    new object[] {
+                        date
+                    });
+            }
+            catch (Exception e) {
+                return null; 
+            }
+        }
+
+        public DataTable getSumMoneyDaily(string date) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.Query.ProcSumMoneyDaily,
+                    new object[] {
+                        date
+                    });
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+
+        public DataTable getFlightRouteAll() {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.Query.ProcGetFlightRouteAll);
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+
+        public DataTable getTransitRouteFromFlight(string flightID) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.Query.ProcGetTransitRouteFromFlight,
+                    new object[] {
+                        flightID
+                    });
             }
             catch (Exception e) {
                 return null;

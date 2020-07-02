@@ -51,4 +51,12 @@
                  UriSource="appIcon.png" />
     <BitmapImage x:Key="loadingIcon"
                  UriSource="loading.gif" />
+    <BitmapImage x:Key="userIcon"
+                 UriSource="user.png"/>
+    <BitmapImage x:Key="passPortIcon"
+                 UriSource="passport.png" />
+    <BitmapImage x:Key="planeIcon"
+                 UriSource="plane.png" />
+    <BitmapImage x:Key="moneyIcon"
+                 UriSource="money.png" />
 </ResourceDictionary>

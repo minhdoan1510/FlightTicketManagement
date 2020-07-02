@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Device.Location;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace GPSLocation
 {
@@ -18,8 +21,10 @@ namespace GPSLocation
         public static void initClient() {
             Client = new HttpClient();
             Client.DefaultRequestHeaders.Accept.Clear();
+
             Client.DefaultRequestHeaders.Accept.Add
                 (new MediaTypeWithQualityHeaderValue("application/json"));
+            Client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"); 
         }
 
         public static DateTime toLocal(int input) // input the unix code
@@ -30,21 +35,20 @@ namespace GPSLocation
         }
 
         public static string getIconURL(string iconName) {
-            return iconUrl + iconName + ".png"; 
+            return iconUrl + iconName + ".png";
         }
 
-        public static async Task<string> requestIP() {
-            string url = "http://checkip.dyndns.org/json";
+        public static async Task<IPAdress> requestIP() {
+            initClient();
+
+            string url = "http://api.myip.com/";
 
             using (HttpResponseMessage respond = await Client.GetAsync(url)) {
                 if (respond.IsSuccessStatusCode) {
-                    string data = await respond.Content.ReadAsStringAsync();
+                    string temp = await respond.Content.ReadAsStringAsync();
+                    IPAdress data = JsonConvert.DeserializeObject<IPAdress>(temp);
 
-                    int index = data.IndexOf("Current IP Address:");
-                    data = data.Substring(index + 20);
-
-                    index = data.IndexOf('<');
-                    data = data.Remove(index);
+                    Console.WriteLine(data.ip);
 
                     return data;
                 }
@@ -55,14 +59,21 @@ namespace GPSLocation
         }
 
         public static async Task<location_data> requestLocation() {
-            string ip_address = await requestIP();
-            string url = $"https://api.ipdata.co/{ip_address}" +
-                $"?api-key=5eda9e6bd49b361f4bf8f23a85d3b57692ba0c963f8132c9460c4bf9";
+            initClient();
+
+            IPAdress ip_address = await requestIP();
+
+            string url = $"http://geolocation-db.com/json/" +
+                $"697de680-a737-11ea-9820-af05f4014d91/" +
+                $"{ip_address.ip}";
+
+            Console.WriteLine(url); 
 
             using (HttpResponseMessage respond = await Client.GetAsync(url)) {
                 if (respond.IsSuccessStatusCode) {
-                    location_data data = await respond.Content.
-                        ReadAsAsync<location_data>();
+                    string dataString = respond.Content.ReadAsStringAsync().Result;
+                    location_data data = JsonConvert.DeserializeObject<location_data>(dataString);
+
                     return data;
                 }
                 else {
@@ -72,32 +83,42 @@ namespace GPSLocation
         }
 
         public static async Task<weather_data.RootObject> requestWeather() {
-            location_data current_location = await requestLocation();
+            initClient();
+
+            location_data coord = await requestLocation();
 
             string url = "http://api.openweathermap.org/data/2.5/weather";
-            url += $"?lat={ current_location.latitude }&lon={ current_location.longitude }";
+            url += $"?lat={ coord.latitude }&lon={ coord.longitude }";
             url += $"&appid={API_key}";
+
+            Console.WriteLine(url);
 
             using (HttpResponseMessage respond = await Client.GetAsync(url)) {
                 if (respond.IsSuccessStatusCode) {
                     weather_data.RootObject data = await respond.Content.
                         ReadAsAsync<weather_data.RootObject>();
+                    data.sys.country = coord.country_name;
+                    data.name = coord.city;
                     return data;
                 }
                 else {
                     throw new Exception("Please check your internet\n");
                 }
             }
+
         }
     }
 
-    public class ip
+    public class IPAdress
     {
-        public string CurrentIPAddress { get; set; }
+        [JsonProperty("ip")]
+        public string ip { get; set; }
     }
 
     public class location_data
     {
+        public string country_name { get; set; }
+        public string city { get; set; }
         public double longitude { get; set; }
         public double latitude { get; set; }
     }

@@ -86,7 +86,7 @@ namespace ServerFTM.Controllers
             }
             return new JsonResult(new ApiResponse<object>(200, "disable FlightTransit failed"));
         }
-
+        
         [HttpPost("disableFlightAll")]
         public async Task<IActionResult> DisableFlightAll() {
             if (BUS_Controls.Controls.DisableFlightAll()) {
@@ -98,6 +98,20 @@ namespace ServerFTM.Controllers
         [HttpGet("getFlightAll")]
         public async Task<IActionResult> GetFlightAll() {
             List<Flight> result = BUS_Controls.Controls.getFlightAll();
+
+            return new JsonResult(new ApiResponse<object>(result)); 
+        }
+
+        [HttpGet("getDashStatistic/Date={date}")]
+        public async Task<IActionResult> GetDashStatistic(string date) {
+            DashStatistic result = BUS_Controls.Controls.GetDashStatistic(date);
+
+            return new JsonResult(new ApiResponse<object>(result)); 
+        }
+
+        [HttpGet("getFlightRoute")]
+        public async Task<IActionResult> GetFlightRoute() {
+            List<FlightRoute> result = BUS_Controls.Controls.GetFlightRoute();
 
             return new JsonResult(new ApiResponse<object>(result)); 
         }
