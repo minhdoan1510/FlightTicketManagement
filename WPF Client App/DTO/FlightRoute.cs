@@ -11,13 +11,16 @@ namespace DTO
         public float lonOrigin { get; set; }
         public float latDestination { get; set; }
         public float lonDestination { get; set; }
+        public string originName { get; set; }
+        public string destinationName { get; set; }
 
-        List<TransitLocation> transitList { get; set; }
+        public List<TransitLocation> transitList { get; set; }
     }
 
     public class TransitLocation
     {
         public float transitLat { get; set; }
         public float transitLon { get; set; }
+        public string transitName { get; set; }
     }
 }

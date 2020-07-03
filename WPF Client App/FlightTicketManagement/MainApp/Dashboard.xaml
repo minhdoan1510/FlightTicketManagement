@@ -11,6 +11,8 @@
              Background="White"
              d:DesignWidth="1094"
              Height="722">
+    <UserControl.Resources>
+    </UserControl.Resources>
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Visible">
@@ -18,9 +20,7 @@
                 <Border Margin="25 15 0 0"
                         Width="450"
                         Padding="0"
-                        BorderThickness="2"
-                        BorderBrush="Black"
-                        Background="White"
+                        Background="#FF357154"
                         Height="150">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                         <Image Grid.Column="0"
                                Margin="25"
                                Stretch="Fill"
-                               Source="{StaticResource userIcon}" />
+                               Source="{StaticResource userIconWhite}" />
 
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -41,20 +41,20 @@
                                        Text="UserName"
                                        FontSize="25"
                                        FontWeight="Bold"
-                                       TextWrapping="Wrap" />
+                                       TextWrapping="Wrap"
+                                       Foreground="White"/>
                             <TextBlock Grid.Row="1"
                                        Text="UserName"
                                        Name="welcomeUser"
                                        FontSize="25"
+                                       Foreground="White"
                                        TextWrapping="Wrap" />
                         </Grid>
                     </Grid>
                 </Border>
                 <Border Margin="25 15 0 0"
                         Padding="0"
-                        BorderThickness="2"
-                        BorderBrush="Black"
-                        Background="White"
+                        Background="#FF355F5E"
                         Height="150"
                         Width="450">
                     <Grid>
@@ -64,6 +64,7 @@
                         </Grid.ColumnDefinitions>
                         <ProgressBar x:Name="WeatherWaiting"
                                      Grid.Column="0"
+                                     Foreground="White"
                                      Style="{StaticResource MaterialDesignCircularProgressBar}"
                                      Value="0"
                                      IsIndeterminate="True" />
@@ -82,11 +83,13 @@
                                        Text="Loading..."
                                        FontWeight="Bold"
                                        TextWrapping="Wrap"
+                                       Foreground="White"
                                        FontSize="25" />
                             <TextBlock Grid.Row="1"
                                        Name="weatherTemerature"
                                        FontSize="30"
                                        Text="Loading..."
+                                       Foreground="White"
                                        TextWrapping="Wrap" />
                         </Grid>
                     </Grid>
@@ -96,7 +99,7 @@
                         Padding="0"
                         BorderThickness="2"
                         BorderBrush="Black"
-                        Background="White"
+                        Background="#FF512E5D"
                         Height="150">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -107,12 +110,13 @@
                                      Grid.Column="0"
                                      Style="{StaticResource MaterialDesignCircularProgressBar}"
                                      Value="0"
+                                     Foreground="White"
                                      IsIndeterminate="True" />
                         <Image Grid.Column="0"
                                Margin="25"
                                Stretch="Fill"
                                Name="ticketImage"
-                               Source="{StaticResource passPortIcon}" />
+                               Source="{StaticResource passPortIconWhite}" />
 
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -123,11 +127,13 @@
                                        Text="Số Vé Bán Trong Ngày"
                                        FontSize="25"
                                        FontWeight="Bold"
+                                       Foreground="White"
                                        Padding="5 0 0 0"
                                        TextWrapping="Wrap" />
                             <TextBlock Grid.Row="1"
                                        Text="UserName"
                                        Name="dailyTicket"
+                                       Foreground="White"
                                        FontSize="25"
                                        Padding="5 0 0 0"
                                        TextWrapping="Wrap" />
@@ -139,7 +145,7 @@
                         Padding="0"
                         BorderThickness="2"
                         BorderBrush="Black"
-                        Background="White"
+                        Background="#FF543131"
                         Height="150">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -149,13 +155,14 @@
                         <ProgressBar x:Name="MoneyWaiting"
                                      Grid.Column="0"
                                      Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="White"
                                      Value="0"
                                      IsIndeterminate="True" />
                         <Image Grid.Column="0"
                                Margin="25"
                                Stretch="Fill"
                                Name="moneyImage"
-                               Source="{StaticResource moneyIcon}" />
+                               Source="{StaticResource moneyIconWhite}" />
 
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -165,12 +172,14 @@
                             <TextBlock Grid.Row="0"
                                        Text="Doanh Thu Trong Ngày"
                                        FontSize="25"
+                                       Foreground="White"
                                        FontWeight="Bold"
                                        Padding="5 0 0 0"
                                        TextWrapping="Wrap" />
                             <TextBlock Grid.Row="1"
                                        Text="UserName"
                                        Name="dailyMoney"
+                                       Foreground="White"
                                        FontSize="25"
                                        Padding="5 0 0 0"
                                        TextWrapping="Wrap" />
@@ -196,7 +205,7 @@
                                          Name="flightMapWating"
                                          Padding="0"></ProgressBar>
                         </StackPanel>
-                        
+
                         <Controls:Map Name="flightMap"
                                       MouseWheel="flightMap_MouseWheel"
                                       CredentialsProvider="4TVpiXr4TDrpvUv3Vx1e~6kDfAcRwQPNrxo_cHedf9w~AspdM1J6-KCvBj7qcsE0yLdcDiAoPaOFUTBhJcFdJQKRhaheaEEXUCKY70IUuAxs"
@@ -217,7 +226,7 @@
                                                 Maximum="10"
                                                 Minimum="1"
                                                 ValueChanged="Slider_ValueChanged">
-                                            
+
                                         </Slider>
                                     </StackPanel>
                                 </Grid>

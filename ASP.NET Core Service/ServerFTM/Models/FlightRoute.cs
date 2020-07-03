@@ -12,6 +12,8 @@ namespace ServerFTM.Models
         public float lonOrigin { get; set; }
         public float latDestination { get; set; }
         public float lonDestination { get; set; }
+        public string originName { get; set; }
+        public string destinationName { get; set; }
 
         public List<TransitLocation> transitList { get; set; }
     }
@@ -20,5 +22,6 @@ namespace ServerFTM.Models
     {
         public float transitLat { get; set; }
         public float transitLon { get; set; }
+        public string transitName { get; set; }
     }
 }

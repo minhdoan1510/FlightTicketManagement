@@ -59,4 +59,12 @@
                  UriSource="plane.png" />
     <BitmapImage x:Key="moneyIcon"
                  UriSource="money.png" />
+    <BitmapImage x:Key="bingMapPoint"
+                 UriSource="bingMapPoint.png" />
+    <BitmapImage x:Key="userIconWhite"
+                 UriSource="userWhite.png" />
+    <BitmapImage x:Key="passPortIconWhite"
+                 UriSource="passportWhite.png" />
+    <BitmapImage x:Key="moneyIconWhite"
+                 UriSource="moneyWhite.png" />
 </ResourceDictionary>

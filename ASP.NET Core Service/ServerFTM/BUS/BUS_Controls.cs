@@ -190,6 +190,8 @@ namespace ServerFTM.BUS
                     item.latDestination = float.Parse(row["latDestination"].ToString());
                     item.lonDestination = float.Parse(row["lonDestination"].ToString()); 
                     item.flightID = row["flightID"].ToString();
+                    item.originName = row["originName"].ToString();
+                    item.destinationName = row["destinationName"].ToString();
 
                     DataTable transits = DAL_Controls.Controls.getTransitRouteFromFlight(item.flightID);
 
@@ -201,6 +203,7 @@ namespace ServerFTM.BUS
 
                             transItem.transitLat = float.Parse(transRow["transitLat"].ToString());
                             transItem.transitLon = float.Parse(transRow["transitLon"].ToString());
+                            transItem.transitName = transRow["transitName"].ToString();
 
                             item.transitList.Add(transItem);
                         }
