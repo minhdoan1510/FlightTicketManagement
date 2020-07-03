@@ -45,6 +45,8 @@ namespace FlightTicketManagement.Helper
             public const string DisableTransit = Base + "/Flight/disableTransit";
             public const string DisableFlightTransit = Base + "/Flight/disableFlightTransit";
             public const string DisableFlightAll = Base + "/Flight/disableFlightAll";
+            public const string GetDashStatistic = Base + "/Flight/getDashStatistic/Date={date}";
+            public const string GetFlightRoute = Base + "/Flight/getFlightRoute";
         }
 
 

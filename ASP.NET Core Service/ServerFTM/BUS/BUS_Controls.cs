@@ -263,6 +263,66 @@ namespace ServerFTM.BUS
 
         #endregion
 
+        #region Dashboard
+        public DashStatistic GetDashStatistic(string date)
+        {
+            DashStatistic result = new DashStatistic();
+
+            DataTable dailyTicket = DAL_Controls.Controls.getTicketCountDaily(date);
+            DataTable dailyMoney = DAL_Controls.Controls.getSumMoneyDaily(date);
+
+            if (dailyTicket != null && dailyMoney != null)
+            {
+                result.dailyTicket = int.Parse(dailyTicket.Rows[0]["ticketDaily"].ToString());
+                result.dailyMoney = double.Parse(dailyMoney.Rows[0]["moneyDaily"].ToString());
+            }
+            return result;
+        }
+
+        public List<FlightRoute> GetFlightRoute()
+        {
+            List<FlightRoute> result = new List<FlightRoute>();
+
+            DataTable flights = DAL_Controls.Controls.getFlightRouteAll();
+
+            if (flights != null)
+            {
+                foreach (DataRow row in flights.Rows)
+                {
+                    FlightRoute item = new FlightRoute();
+
+                    item.latOrigin = float.Parse(row["latOrigin"].ToString());
+                    item.lonOrigin = float.Parse(row["lonOrigin"].ToString());
+                    item.latDestination = float.Parse(row["latDestination"].ToString());
+                    item.lonDestination = float.Parse(row["lonDestination"].ToString());
+                    item.flightID = row["flightID"].ToString();
+                    item.originName = row["originName"].ToString();
+                    item.destinationName = row["destinationName"].ToString();
+
+                    DataTable transits = DAL_Controls.Controls.getTransitRouteFromFlight(item.flightID);
+
+                    if (transits != null)
+                    {
+                        item.transitList = new List<TransitLocation>();
+
+                        foreach (DataRow transRow in transits.Rows)
+                        {
+                            TransitLocation transItem = new TransitLocation();
+
+                            transItem.transitLat = float.Parse(transRow["transitLat"].ToString());
+                            transItem.transitLon = float.Parse(transRow["transitLon"].ToString());
+                            transItem.transitName = transRow["transitName"].ToString();
+
+                            item.transitList.Add(transItem);
+                        }
+                    }
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+        #endregion
+
         #region Transit
         public List<TransitDisplayModel> GetTransits(string transitId)
         {

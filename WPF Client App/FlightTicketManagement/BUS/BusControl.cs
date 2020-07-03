@@ -110,19 +110,20 @@ namespace FlightTicketManagement.BUS
             return await APIHelper.Instance.Post<Response<string>>
                 (ApiRoutes.Flight.DisableFlightAll);
         }
+        public async Task<Response<DashStatistic>> GetDashBoardStatistic(string date)
+        {
+            string url = ApiRoutes.Flight.GetDashStatistic;
+            url.Replace("{date}", date);
+
+            return await APIHelper.Instance.Get<Response<DashStatistic>>(url);
+        }
+
+        public async Task<Response<List<FlightRoute>>> GetFlightRoutes()
+        {
+            return await APIHelper.Instance.Get<Response<List<FlightRoute>>>
+                (ApiRoutes.Flight.GetFlightRoute);
+        }
     }
-    //public async Task<InfoLogin> Login(string username, string password) {
-    //    UserAccount user = new UserAccount();
-    //    user.Username = username;
-    //    user.Password = password;
-
-    //    return await APIHelper<InfoLogin>.Instance.Post(ApiRoutes.Account.LogIn,
-    //        user);
-    //}
-
-    //public async Task<Signup> Signup(object account) {
-    //    return await APIHelper<Signup>.Instance.Post(ApiRoutes.Account.SignUp,
-    //        account);
-    //}
+    
 }
 

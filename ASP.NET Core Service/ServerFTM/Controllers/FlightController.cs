@@ -147,6 +147,21 @@ namespace ServerFTM.Controllers
             return new JsonResult(new ApiResponse<object>(result));
         }
 
+        [HttpGet("getDashStatistic/Date={date}")]
+        public async Task<IActionResult> GetDashStatistic(string date)
+        {
+            DashStatistic result = BUS_Controls.Controls.GetDashStatistic(date);
+
+            return new JsonResult(new ApiResponse<object>(result));
+        }
+
+        [HttpGet("getFlightRoute")]
+        public async Task<IActionResult> GetFlightRoute()
+        {
+            List<FlightRoute> result = BUS_Controls.Controls.GetFlightRoute();
+
+            return new JsonResult(new ApiResponse<object>(result));
+        }
     }
     
 }

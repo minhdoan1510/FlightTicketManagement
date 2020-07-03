@@ -36,5 +36,10 @@ namespace ServerFTM.DAL.Query
 
         public const string ProcMonthProfit = "EXECUTE GetMonthProfit @month , @year";
         public const string ProcYearProfit = "EXECUTE GetYearProfit @year";
+        public const string ProcCountTicketDaily = "EXECUTE ProcCountTicketDaily @day";
+        public const string ProcSumMoneyDaily = "EXECUTE ProcSumMoneyDaily @day";
+        public const string ProcGetFlightRouteAll = "EXECUTE ProcGetFlightRouteAll";
+        public const string ProcGetTransitRouteFromFlight = "EXECUTE ProcGetTransitRouteFromFlight @flightID";
+        public const string ProcTestTime = "exec testTimeMap";
     }
 }

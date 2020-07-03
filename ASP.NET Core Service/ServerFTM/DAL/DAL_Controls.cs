@@ -380,5 +380,62 @@ namespace ServerFTM.DAL.Controls
         }
 
         #endregion
+
+        public DataTable getTicketCountDaily(string date)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcCountTicketDaily,
+                    new object[] {
+                        date
+                    });
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public DataTable getSumMoneyDaily(string date)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcSumMoneyDaily,
+                    new object[] {
+                        date
+                    });
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public DataTable getFlightRouteAll()
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightRouteAll);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public DataTable getTransitRouteFromFlight(string flightID)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetTransitRouteFromFlight,
+                    new object[] {
+                        flightID
+                    });
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }
