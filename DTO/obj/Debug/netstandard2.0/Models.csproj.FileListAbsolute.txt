@@ -1,0 +1,9 @@
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\bin\Debug\netstandard2.0\Models.deps.json
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\bin\Debug\netstandard2.0\Models.dll
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\bin\Debug\netstandard2.0\Models.pdb
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\Models.csprojAssemblyReference.cache
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\Models.AssemblyInfoInputs.cache
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\Models.AssemblyInfo.cs
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\Models.csproj.CoreCompileInputs.cache
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\Models.dll
+D:\Coding\clone\FlightTicketManagement\WPF Client App\DTO\obj\Debug\netstandard2.0\Models.pdb

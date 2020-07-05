@@ -1,0 +1,9 @@
+D:\NewServerFTM\ServerFTM\DTO\bin\Release\netstandard2.0\linux-x64\Library.deps.json
+D:\NewServerFTM\ServerFTM\DTO\bin\Release\netstandard2.0\linux-x64\Library.dll
+D:\NewServerFTM\ServerFTM\DTO\bin\Release\netstandard2.0\linux-x64\Library.pdb
+D:\NewServerFTM\ServerFTM\DTO\obj\Release\netstandard2.0\linux-x64\Library.csprojAssemblyReference.cache
+D:\NewServerFTM\ServerFTM\DTO\obj\Release\netstandard2.0\linux-x64\Library.AssemblyInfoInputs.cache
+D:\NewServerFTM\ServerFTM\DTO\obj\Release\netstandard2.0\linux-x64\Library.AssemblyInfo.cs
+D:\NewServerFTM\ServerFTM\DTO\obj\Release\netstandard2.0\linux-x64\Library.csproj.CoreCompileInputs.cache
+D:\NewServerFTM\ServerFTM\DTO\obj\Release\netstandard2.0\linux-x64\Library.dll
+D:\NewServerFTM\ServerFTM\DTO\obj\Release\netstandard2.0\linux-x64\Library.pdb

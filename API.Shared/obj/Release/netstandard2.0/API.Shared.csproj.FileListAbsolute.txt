@@ -1,0 +1,18 @@
+D:\check master\ASP.NET Core Service\API.Shared\bin\Release\netstandard2.0\API.Shared.deps.json
+D:\check master\ASP.NET Core Service\API.Shared\bin\Release\netstandard2.0\API.Shared.dll
+D:\check master\ASP.NET Core Service\API.Shared\bin\Release\netstandard2.0\API.Shared.pdb
+D:\check master\ASP.NET Core Service\API.Shared\obj\Release\netstandard2.0\API.Shared.AssemblyInfoInputs.cache
+D:\check master\ASP.NET Core Service\API.Shared\obj\Release\netstandard2.0\API.Shared.AssemblyInfo.cs
+D:\check master\ASP.NET Core Service\API.Shared\obj\Release\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
+D:\check master\ASP.NET Core Service\API.Shared\obj\Release\netstandard2.0\API.Shared.dll
+D:\check master\ASP.NET Core Service\API.Shared\obj\Release\netstandard2.0\API.Shared.pdb
+D:\check master\ASP.NET Core Service\API.Shared\obj\Release\netstandard2.0\API.Shared.csprojAssemblyReference.cache
+D:\NewServerFTM\ServerFTM\API.Shared\bin\Release\netstandard2.0\API.Shared.deps.json
+D:\NewServerFTM\ServerFTM\API.Shared\bin\Release\netstandard2.0\API.Shared.dll
+D:\NewServerFTM\ServerFTM\API.Shared\bin\Release\netstandard2.0\API.Shared.pdb
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\API.Shared.csprojAssemblyReference.cache
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\API.Shared.AssemblyInfoInputs.cache
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\API.Shared.AssemblyInfo.cs
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\API.Shared.dll
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\API.Shared.pdb

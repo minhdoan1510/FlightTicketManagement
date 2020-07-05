@@ -1,0 +1,9 @@
+D:\NewServerFTM\ServerFTM\API.Shared\bin\Release\netstandard2.0\linux-x64\API.Shared.deps.json
+D:\NewServerFTM\ServerFTM\API.Shared\bin\Release\netstandard2.0\linux-x64\API.Shared.dll
+D:\NewServerFTM\ServerFTM\API.Shared\bin\Release\netstandard2.0\linux-x64\API.Shared.pdb
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\linux-x64\API.Shared.AssemblyInfoInputs.cache
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\linux-x64\API.Shared.AssemblyInfo.cs
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\linux-x64\API.Shared.csproj.CoreCompileInputs.cache
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\linux-x64\API.Shared.dll
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\linux-x64\API.Shared.pdb
+D:\NewServerFTM\ServerFTM\API.Shared\obj\Release\netstandard2.0\linux-x64\API.Shared.csprojAssemblyReference.cache
