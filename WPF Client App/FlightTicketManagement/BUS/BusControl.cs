@@ -121,7 +121,12 @@ namespace FlightTicketManagement.BUS
         public async Task<Response<List<FlightRoute>>> GetFlightRoutes()
         {
             return await APIHelper.Instance.Get<Response<List<FlightRoute>>>
-                (ApiRoutes.Flight.GetFlightRoute);
+                (ApiRoutes.Flight.GetAllFlightRoute);
+        }
+
+        public async Task<Response<List<FlightRoute>>> GetFlightRoute(string selectedCityId)
+        {
+            return await APIHelper.Instance.Get<Response<List<FlightRoute>>>(ApiRoutes.Flight.GetFlightRoute.Replace(ApiRoutes.Keybase,selectedCityId));
         }
     }
     

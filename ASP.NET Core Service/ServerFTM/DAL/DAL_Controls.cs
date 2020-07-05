@@ -423,6 +423,22 @@ namespace ServerFTM.DAL.Controls
             }
         }
 
+        public DataTable GetFlightRoute(string flightId)
+        {
+            try
+            {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightRoute,
+                    new object[]
+                    {
+                        flightId
+                    });
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         public DataTable getTransitRouteFromFlight(string flightID)
         {
             try

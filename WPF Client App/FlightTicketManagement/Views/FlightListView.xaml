@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightTicketManagement"
              xmlns:viewmodel="clr-namespace:FlightTicketManagement.ViewModels"
+        
+              xmlns:Controls="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              mc:Ignorable="d"
              Background="White"
@@ -14,10 +16,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Tìm kiếm chuyến bay" Grid.Row="0"  FontWeight="Bold" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
+        <Button x:Name="CZoom"> test</Button>
         <ComboBox Grid.Row="1"
                     materialDesign:HintAssist.Hint="Thành phố"
                     ItemsSource="{Binding Cities}"
@@ -34,12 +38,23 @@
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <DataGrid Grid.Row="2"
+        <Controls:Map x:Name="FlightMap"  Grid.Row="2"  
+                                 xmlns:m ="clr-namespace:Helpers"                             
+                      CredentialsProvider="4TVpiXr4TDrpvUv3Vx1e~6kDfAcRwQPNrxo_cHedf9w~AspdM1J6-KCvBj7qcsE0yLdcDiAoPaOFUTBhJcFdJQKRhaheaEEXUCKY70IUuAxs"             
+                      m:MapHelper.Center="{Binding Center}"
+                      Mode="aerial"                                    
+                      Height="250"                                    
+                      ZoomLevel="{ Binding Zoom}" 
+                      Margin="0,0,0.4,0">
+            <Controls:MapItemsControl ItemsSource="{Binding MapItem}" ></Controls:MapItemsControl>
+        </Controls:Map>
+ 
+        <DataGrid Grid.Row="3"
             ItemsSource="{Binding Flights}"
             CanUserAddRows="False"
             SelectionUnit="FullRow"
             AutoGenerateColumns="False"
-            SelectionMode="Extended" Margin="0,261,0,10" 
+            SelectionMode="Extended" Margin="0,0,0,10" 
             IsReadOnly="True"
             SelectedItem="{Binding SelectedFlight,Mode=TwoWay}"
                   >

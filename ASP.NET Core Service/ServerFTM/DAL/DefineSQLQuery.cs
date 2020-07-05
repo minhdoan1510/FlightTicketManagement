@@ -41,5 +41,7 @@ namespace ServerFTM.DAL.Query
         public const string ProcGetFlightRouteAll = "EXECUTE ProcGetFlightRouteAll";
         public const string ProcGetTransitRouteFromFlight = "EXECUTE ProcGetTransitRouteFromFlight @flightID";
         public const string ProcTestTime = "exec testTimeMap";
+
+        public const string ProcGetFlightRoute = "EXECUTE ProcGetFlightRoute @flightId";
     }
 }

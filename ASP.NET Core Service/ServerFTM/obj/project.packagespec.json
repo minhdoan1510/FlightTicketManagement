@@ -1,0 +1,112 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+    "projectName": "ServerFTM",
+    "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+    "outputPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp3.1"
+    ],
+    "sources": {
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "projectReferences": {
+          "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+            "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
+          },
+          "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
+            "projectPath": "D:\\Coding\\clone\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.1": {
+      "dependencies": {
+        "Docker.DotNet": {
+          "target": "Package",
+          "version": "[3.125.2, )"
+        },
+        "Microsoft.AspNetCore.Authentication.JwtBearer": {
+          "target": "Package",
+          "version": "[3.1.5, )"
+        },
+        "Microsoft.AspNetCore.Mvc.Core": {
+          "target": "Package",
+          "version": "[2.2.5, )"
+        },
+        "Microsoft.AspNetCore.Mvc.Formatters.Json": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.CodeAnalysis.FxCopAnalyzers": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[3.0.0, )"
+        },
+        "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+          "target": "Package",
+          "version": "[1.10.9, )"
+        },
+        "Swashbuckle.AspNetCore.Swagger": {
+          "target": "Package",
+          "version": "[5.5.0, )"
+        },
+        "Swashbuckle.AspNetCore.SwaggerGen": {
+          "target": "Package",
+          "version": "[5.5.0, )"
+        },
+        "Swashbuckle.AspNetCore.SwaggerUI": {
+          "target": "Package",
+          "version": "[5.5.0, )"
+        },
+        "System.Data.SqlClient": {
+          "target": "Package",
+          "version": "[4.5.1, )"
+        },
+        "System.IdentityModel.Tokens.Jwt": {
+          "target": "Package",
+          "version": "[6.7.0, )"
+        },
+        "System.ServiceModel.Primitives": {
+          "target": "Package",
+          "version": "[4.7.0, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true,
+      "frameworkReferences": {
+        "Microsoft.AspNetCore.App": {
+          "privateAssets": "none"
+        },
+        "Microsoft.NETCore.App": {
+          "privateAssets": "all"
+        }
+      },
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+    }
+  }
+}
