@@ -37,10 +37,9 @@ namespace ServerFTM
                     Startup.Configuration.GetSection("AppSetting:TrustedProxyServer").Value));
             });
 
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            services.Configure<ForwardedHeadersOptions>(options => {
+                options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor
+                    | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
             });
 
             services.AddControllers().AddJsonOptions(options => {
