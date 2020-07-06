@@ -4,7 +4,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>Docker</ActiveDebugProfile>
+    <ActiveDebugProfile>ServerFTM</ActiveDebugProfile>
     <NameOfLastUsedPublishProfile>registry.hub.docker.com_mingkhoi</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
