@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="FlightTicketManagement.Views.ChairGridView"
+             xmlns:localVM="clr-namespace:FlightTicketManagement.ViewModels"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightTicketManagement.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="500.8" d:DesignWidth="1000.8"
+             Height="auto"
+             Width="auto"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <UserControl.Resources>
+        <localVM:ConvertChairStatus x:Key="ConvertChairStatus"/>
+        <localVM:ConvertChairType x:Key="ConvertChairType"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <ListView 
+            x:Name="ChairList"
+            SelectedItem="{Binding ChairSelected}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <local:WrapPanelWithRowsOrColumnsCount
+                        Orientation="Horizontal"
+                        RowsOrColumnsCount ="4" 
+                        ItemHeight="{Binding MaxSizeItem}" 
+                        ItemWidth="{Binding MaxSizeItem}"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top"
+                        MaxWidth="{Binding MaxSize}"
+                        />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border 
+                        BorderBrush="{Binding TypeChair, Converter={StaticResource ConvertChairType}}"
+                        BorderThickness="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="3 3 3 3">
+                        <Label 
+                            Content="{Binding IDchair}"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="{Binding Status, Converter={StaticResource ConvertChairStatus}}"/>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

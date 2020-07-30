@@ -23,8 +23,10 @@ namespace Models
 
         [JsonProperty("destAP")]
         public string DestAP { get; set; }
+
         [JsonProperty("totalSeat")]
         public int TotalSeat { get; set; }
+
         [JsonProperty("Time")]
         public DateTime Time { get; set; }
         // public int NumOfTransit { get; set; } public class InfoLogin

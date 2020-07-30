@@ -87,6 +87,7 @@ namespace FlightTicketManagement.Helper
         public async Task<T> Post<T>(string route, object body = null)
         {
             this.InitializeClient();
+            apiClient.DefaultRequestHeaders.Add("token", accesstoken);//authenticatedUser.Result.Token);
             using (HttpResponseMessage response = await apiClient.PostAsJsonAsync(route, body))
             {
                 if (response.IsSuccessStatusCode)

@@ -42,6 +42,13 @@ namespace FlightTicketManagement.ViewModels
             ActivateItem(_container.GetInstance<ReportViewModel>());
         }
 
+
+        public void ShowCreateTicketView()
+        {
+            TitleView = _container.GetInstance<CreateTicketViewModel>().DisplayName;
+            ActivateItem(_container.GetInstance<CreateTicketViewModel>());
+        }
+
         public void CloseMainView()
         {
            // this.CloseMainView();

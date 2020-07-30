@@ -65,28 +65,6 @@ namespace FlightTicketManagement.ViewModels
                 new UserAccount() { Username = this.Username, Password = this.Password }
             );
 
-            //if (user.IsSuccess)
-            //{
-            //    Console.WriteLine("id: " + user.Result.Id + '\n');
-            //    Console.WriteLine("userName: " + user.Result.Name + '\n');
-            //    Console.WriteLine("token: " + user.Result.Token + '\n');
-
-            //    MainWindow.Instance.Hide();
-
-            //    MainApp mainApp = new MainApp();
-            //    mainApp.Closed += onMainAppClose;
-            //    mainApp.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("login failed\n");
-            //}
-
-            //ShellView.Instance.Hide();
-
-            //    MainApp mainApp = new MainApp();
-            //    mainApp.Closed += onMainAppClose;
-            //    mainApp.Show();
             if (response.IsSuccess)
             {
                 ShellView.Instance.Hide();

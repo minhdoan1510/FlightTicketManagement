@@ -400,3 +400,5 @@ C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\WPF Client App\Fligh
 C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.CopyComplete
 C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.exe
 C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.pdb
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\WPF Client App\FlightTicketManagement\obj\Debug\Views\ChairGridView.g.cs
+C:\Users\Minh\Desktop\GitMinh\FlightTicketManagement\Source\WPF Client App\FlightTicketManagement\obj\Debug\Views\ChairGridView.baml

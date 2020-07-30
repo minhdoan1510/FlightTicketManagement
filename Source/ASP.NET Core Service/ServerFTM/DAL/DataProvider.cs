@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using ServerFTM.DAL.Helper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -57,7 +59,7 @@ namespace ServerFTM.DAL.DataProvider
             return data;
         }
 
-        public int ExecuteNonQuery(string query, object[] parameter = null)
+        public bool ExecuteNonQuery(string query, object[] parameter = null)
         {
             int data = 0;
 
@@ -86,7 +88,7 @@ namespace ServerFTM.DAL.DataProvider
                 connection.Close();
             }
 
-            return data;
+            return data>0;
         }
 
         public object ExecuteScalar(string query, object[] parameter = null)

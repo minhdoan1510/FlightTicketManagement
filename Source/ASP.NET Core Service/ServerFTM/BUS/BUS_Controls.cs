@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServerFTM.Authorization.TokenManager;
+using ServerFTM.DAL.Helper;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ServerFTM.BUS
 {
@@ -27,7 +29,6 @@ namespace ServerFTM.BUS
         }
 
         private BUS_Controls() { }
-        
         #endregion
 
         #region DeviceManager
@@ -39,6 +40,7 @@ namespace ServerFTM.BUS
         {
             TokenManager.Instance.DelAccessToken(token);
         }
+
 
         public bool CheckDevice(string token)
         {
@@ -52,7 +54,10 @@ namespace ServerFTM.BUS
         #region Account_Handle
         public Profile Login(Account account)
         {
-            DataRow dataAcc = (DAL_Controls.Controls.Login(account))?.Rows[0];
+            ResponseDTB response = DAL_Controls.Controls.Login(account);
+            if (!response.IsSuccess)
+                return null;
+            DataRow dataAcc = response.Result?.Rows[0];
 
             if (dataAcc == null)
                 return null;
@@ -62,18 +67,35 @@ namespace ServerFTM.BUS
             //accountCurrent.Acctype = (Convert.ToInt32(dataAcc["TypeAccount"]));
             return accountCurrent;
         }
+
+        internal KeyValuePair<int, int> GetDefineChairFlight(string id)
+        {
+            ResponseDTB response = DAL_Controls.Controls.GetDefineChairFlight(id);
+            if (!response.IsSuccess)
+                return default;
+            DataRow data = response.Result?.Rows[0];
+
+            if (data == null)
+                return default;
+            KeyValuePair<int, int> result = new KeyValuePair<int, int>(Convert.ToInt32(data["Width"]), Convert.ToInt32(data["Height"]));
+            return result;
+        }
+
         public bool Signup(Account account)
         {
             account.IDAccount = GenerateID();
-            return DAL_Controls.Controls.SignUp(account);
+            return DAL_Controls.Controls.SignUp(account).IsSuccess;
         }
         #endregion
 
         #region Report_Handle
         
-        public  List<ChildMonthReport> GetMonthReports(int mouth, int year)
+        public List<ChildMonthReport> GetMonthReports(int mouth, int year)
         {
-            DataTable data = DAL_Controls.Controls.GetMonthProfit(mouth, year);
+            ResponseDTB response = DAL_Controls.Controls.GetMonthProfit(mouth, year);
+            if (!response.IsSuccess)
+                return default;
+            DataTable data = response.Result;
             List<ChildMonthReport> reports = new List<ChildMonthReport>();
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -95,7 +117,10 @@ namespace ServerFTM.BUS
 
         public  List<ChildYearReport> GetYearReports(int year)
         {
-            DataTable data = DAL_Controls.Controls.GetYearProfit(year);
+            ResponseDTB response = DAL_Controls.Controls.GetYearProfit(year);
+            if (!response.IsSuccess)
+                return default;
+            DataTable data = response.Result;
             List<ChildYearReport> reports = new List<ChildYearReport>();
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -110,6 +135,139 @@ namespace ServerFTM.BUS
             return reports;
         }
 
+        #endregion
+
+        #region City_Handle
+
+        public List<City> GetCityAlready(string idlocal)
+        {
+            ResponseDTB response = DAL_Controls.Controls.GetCityAlready(idlocal);
+            if (!response.IsSuccess)
+                return default;
+            DataTable data = response.Result;
+            List<City> reports = new List<City>();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                reports.Add(new City()
+                {
+                    IDCity = data.Rows[i]["IDCity"].ToString(),
+                    CityName = data.Rows[i]["CityName"].ToString()
+                });
+            }
+            return reports;
+        }
+
+        #endregion
+
+        #region Flight_Handle
+
+        public List<DurationTime> GetDurationFlight(string idoriap, string iddestap)
+        {
+            ResponseDTB response = DAL_Controls.Controls.GetDurationFlight(idoriap, iddestap);
+            if (!response.IsSuccess)
+                return default;
+            DataTable data = response.Result;
+            List<DurationTime> result = new List<DurationTime>();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                result.Add(new DurationTime()
+                {
+                    IDDurationTime = data.Rows[i]["IDDuration"].ToString(),
+                    DurTime = data.Rows[i]["Duration"].ToString()
+                }) ;
+            }
+            return result;
+        }
+        #endregion
+
+        #region Airport_Handle
+
+
+        public List<Airport> GetAPinCity(string idcity, string idairport)
+        {
+            ResponseDTB response = DAL_Controls.Controls.GetAPinCity(idairport, idcity);
+            if (!response.IsSuccess)
+                return default;
+            DataTable data = response.Result;
+            List<Airport> reports = new List<Airport>();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                reports.Add(new Airport()
+                {
+                    IDAirport = data.Rows[i]["IDAirport"].ToString(),
+                    AirportName = data.Rows[i]["AirportName"].ToString()
+                });
+            }
+            return reports;
+        }
+
+        #endregion
+
+        #region Ticket_Handle
+        public bool AddTicket(Ticket ticket)
+        {
+            return DAL.Controls.DAL_Controls.Controls.AddTicket(ticket).IsSuccess;
+        }
+
+        public int GetPrice(string iddur, string idclass)
+        {
+            return Convert.ToInt32(DAL_Controls.Controls.GetPrice(iddur, idclass).Result.Rows[0]["Price"]);
+        }
+
+        public List<ChairBooking> GetListChair(string id, DateTime timeDur)
+        {
+            ResponseDTB response = DAL_Controls.Controls.GetListChair(id, timeDur);
+            if (!response.IsSuccess)
+                return default;
+            DataTable data = response.Result;
+            List<ChairBooking> result = new List<ChairBooking>();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                result.Add(new ChairBooking()
+                {
+                    IDchair = Convert.ToChar(Convert.ToInt32(data.Rows[i]["XPos"]) + 65).ToString() + Convert.ToInt32(data.Rows[i]["YPos"]).ToString(),
+                    Status = ChairStatus.Booked
+                });
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region Passenger_Handle
+        public Passenger GetExistPassenger(string tel)
+        {
+            ResponseDTB responseDTB =  DAL.Controls.DAL_Controls.Controls.GetExistPassenger(tel);
+            if (responseDTB.IsSuccess)
+            {
+                Passenger passenger = new Passenger()
+                {
+                    IDPassenger = responseDTB.Result.Rows[0]["IDPassenger"].ToString(),
+                    IDCard = responseDTB.Result.Rows[0]["IDCard"].ToString(),
+                    Tel = responseDTB.Result.Rows[0]["TEL"].ToString(),
+                    PassengerName = responseDTB.Result.Rows[0]["NAME"].ToString(),
+                };
+                return passenger;
+            }
+            else
+            {
+                return null;
+            }    
+        }
+
+
+        public bool GetAddPassenger(Passenger passenger)
+        {
+            ResponseDTB responseDTB = DAL.Controls.DAL_Controls.Controls.GetAddPassenger(passenger);
+            if (responseDTB.IsSuccess)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region Utilities
@@ -127,6 +285,8 @@ namespace ServerFTM.BUS
             return builder.ToString();
         }
         #endregion
+
+        
 
     }
 }

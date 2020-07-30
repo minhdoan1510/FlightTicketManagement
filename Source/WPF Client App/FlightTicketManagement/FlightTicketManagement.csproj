@@ -108,10 +108,14 @@
     <Compile Include="Helper\PasswordBoxHelper.cs" />
     <Compile Include="Helper\VisibilityHelper.cs" />
     <Compile Include="Resource\DatePickerCalendar.cs" />
+    <Compile Include="ViewModels\ChairGridViewModel.cs" />
     <Compile Include="ViewModels\CreateTicketViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\FlightListViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="Views\ChairGridView.xaml.cs">
+      <DependentUpon>ChairGridView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateTicketView.xaml.cs">
       <DependentUpon>CreateTicketView.xaml</DependentUpon>
     </Compile>
@@ -143,6 +147,10 @@
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\ChairGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreateTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

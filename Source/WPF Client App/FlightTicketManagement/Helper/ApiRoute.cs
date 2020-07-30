@@ -30,6 +30,9 @@ namespace FlightTicketManagement.Helper
             public const string Delete = Base + "/flights" + Key;
 
             public const string Create = Base + "/flights";
+
+            public const string GetDurationTime = Base + "/flight/durationtime";
+            public const string GetDefineChairFlight = Base + "/flight/DefineChairFlight";
         }
         public static class Class
 
@@ -47,6 +50,10 @@ namespace FlightTicketManagement.Helper
         public static class Passenger
 
         {
+            public const string GetExist = Base + "/Passenger/GetExist";
+
+            public const string Add = Base + "/Passenger/AddPassenger";
+
             public const string GetAll = Base + "/passengers";
 
             public const string Get = Base + "/passengers" + Key;
@@ -58,8 +65,12 @@ namespace FlightTicketManagement.Helper
             public const string Create = Base + "/passengers";
         }
         public static class Ticket
-
         {
+            
+            public const string GetPrice = Base + "/Ticket/getprice";
+
+            public const string Add = Base + "/Ticket/add";
+
             public const string GetAll = Base + "/tickets";
 
             public const string Get = Base + "/tickets" + Key;
@@ -69,6 +80,8 @@ namespace FlightTicketManagement.Helper
             public const string Delete = Base + "/tickets" + Key;
 
             public const string Create = Base + "/tickets";
+
+            public const string LoadStateChair = Base + "/Ticket/LoadStateChair";
         }
         public static class Transit
 
@@ -88,6 +101,8 @@ namespace FlightTicketManagement.Helper
         {
             public const string GetAll = Base + "/cities";
 
+            public const string GetCityAlready = Base + "/City";
+
             public const string Get = Base + "/cities" + Key;
 
             public const string Update = Base + "/cities" + Key;
@@ -102,5 +117,22 @@ namespace FlightTicketManagement.Helper
             public const string GetMonthReport = Base + "/Report/month";
             public const string GetYearReport = Base + "/Report/year";
         }
+
+        public static class Airport
+
+        {
+            public const string GetAll = Base + "/airports";
+
+            public const string GetAPAlready = Base + "/Airport";
+
+            public const string Get = Base + "/airports" + Key;
+
+            public const string Update = Base + "/airports" + Key;
+
+            public const string Delete = Base + "/airports" + Key;
+
+            public const string Create = Base + "/airports";
+        }
+
     }
 }
