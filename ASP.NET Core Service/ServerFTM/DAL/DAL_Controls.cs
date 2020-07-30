@@ -8,6 +8,7 @@ using ServerFTM.DAL.DataProvider;
 using System.Data;
 using System.Reflection;
 using Library.Models;
+using ServerFTM.Models;
 
 namespace ServerFTM.DAL.Controls
 {
@@ -24,38 +25,33 @@ namespace ServerFTM.DAL.Controls
             }
             set => controls = value;
         }
-        public bool SignUp(UserAccount account)
-        {
-            try
-            {
-                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcSignUp, 
-                    new object[] { 
-                        account.IdAccount, 
-                        account.Username , 
-                        account.Password, 
-                        account.Name, 
-                        })>0; //--@id   @user @pass @name @acctype
+
+        public bool SignUp(Account account) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcSignUp,
+                    new object[] {
+                        account.IDAccount,
+                        account.Username ,
+                        account.Password,
+                        account.Name }) > 0; //--@id   @user @pass @name @acctype
             }
-            catch
-            {
+            catch {
                 return false;
             }
         }
 
-        public DataTable Login(UserAccount account)
-        {
-            try
-            {
-                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcLogin, 
+        public DataTable Login(Account account) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcLogin,
                     new object[] {
                         account.Username,
                         account.Password }); //--@id   @user @pass @name @acctype
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
+
         public DataTable GetAllFlight()
         {
             try
@@ -129,8 +125,6 @@ namespace ServerFTM.DAL.Controls
             {
                 return null;
             }
-
-           
         }
 
         public DataTable GetRestrictions()
@@ -166,25 +160,22 @@ namespace ServerFTM.DAL.Controls
             }
         }
 
-        public DataTable GetAirportMenu(string searchKey)
-        {
-            try
-            {
+        #region flightCreate + Dashboard
+
+        public DataTable GetAirportMenu(string searchKey) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetAirportMenu,
                     new object[] {
                         searchKey
                     });
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
 
-        public bool CreateFlight(FlightCreateModel flight)
-        {
-            try
-            {
+        public bool CreateFlight(Flight flight) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcCreateFlight,
                     new object[] {
                         flight.FlightID,
@@ -197,16 +188,13 @@ namespace ServerFTM.DAL.Controls
                         flight.Height,
                         flight.Duration}) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        public bool CreateTransit(TransitCreateModel transit)
-        {
-            try
-            {
+        public bool CreateTransit(Transit transit) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcCreateTransit,
                     new object[] {
                         transit.transitID,
@@ -217,43 +205,34 @@ namespace ServerFTM.DAL.Controls
                         transit.transitNote
                     }) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        public DataTable GetTransit(string flightID)
-        {
-            try
-            {
+        public DataTable GetTransit(string flightID) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetTransit,
                     new object[] {
                         flightID
                 });
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
 
-        public DataTable GetFlightAll()
-        {
-            try
-            {
+        public DataTable GetFlightAll() {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightAll);
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
 
-        public bool UpdateFlight(FlightCreateModel value)
-        {
-            try
-            {
+        public bool UpdateFlight(Flight value) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcUpdateFlight,
                     new object[] {
                         value.FlightID,
@@ -267,31 +246,25 @@ namespace ServerFTM.DAL.Controls
                         value.Duration
                     }) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        public bool DisableFlight(FlightCreateModel value)
-        {
-            try
-            {
+        public bool DisableFlight(Flight value) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableFlight,
                     new object[] {
                         value.FlightID
                     }) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        public bool UpdateTransit(TransitCreateModel value)
-        {
-            try
-            {
+        public bool UpdateTransit(Transit value) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcUpdateTransit,
                     new object[] {
                         value.transitID,
@@ -301,53 +274,88 @@ namespace ServerFTM.DAL.Controls
                         value.transitNote
                     }) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        public bool DisableTransit(TransitCreateModel value)
-        {
-            try
-            {
+        public bool DisableTransit(Transit value) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableTransit,
                     new object[] {
                         value.transitID
                     }) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        public bool DisableFlightTransit(FlightCreateModel value)
-        {
-            try
-            {
+        public bool DisableFlightTransit(Flight value) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableFlightTransit,
                     new object[] {
                         value.FlightID
                     }) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        public bool DisableFlightAll()
-        {
-            try
-            {
+        public bool DisableFlightAll() {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcDisableFlightAll) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
+        public DataTable getTicketCountDaily(string date) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcCountTicketDaily,
+                    new object[] {
+                        date
+                    });
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+
+        public DataTable getSumMoneyDaily(string date) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcSumMoneyDaily,
+                    new object[] {
+                        date
+                    });
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+
+        public DataTable getFlightRouteAll() {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightRouteAll);
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+
+        public DataTable getTransitRouteFromFlight(string flightID) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetTransitRouteFromFlight,
+                    new object[] {
+                        flightID
+                    });
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+        #endregion
     }
 }

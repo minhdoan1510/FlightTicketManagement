@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using FlightTicketManagement.BUS;
 using Library.Models;
+using ServerFTM.Models;
+using FlightTicketManagement.Views;
+using System.Numerics;
 
 namespace FlightTicketManagement.Views
 {
@@ -33,10 +35,9 @@ namespace FlightTicketManagement.Views
 
         int mode;
 
-        TransitCreateModel transitData = new TransitCreateModel();
+        Transit transitData = new Transit();
 
-        public GetTransitView(string _flightID)
-        {
+        public GetTransitView(string _flightID) {
             InitializeComponent();
 
             this.flightID = _flightID;
@@ -46,11 +47,10 @@ namespace FlightTicketManagement.Views
             airport.PreviewKeyDown += PlaneScheduleView.Instance.Menu_PreviewKeyDown;
         }
 
-        public GetTransitView(ref object value)
-        {
+        public GetTransitView(ref object value) {
             InitializeComponent();
 
-            transitData = value as TransitCreateModel;
+            transitData = value as Transit;
             this.flightID = transitData.flightID;
             mode = (int)transitSign.modifyTransit;
 
@@ -60,12 +60,10 @@ namespace FlightTicketManagement.Views
             this.loadData();
         }
 
-        void loadData()
-        {
+        void loadData() {
             List<AirportMenu> defaultAP = new List<AirportMenu>();
 
-            defaultAP.Add(new AirportMenu()
-            {
+            defaultAP.Add(new AirportMenu() {
                 AirportID = transitData.airportID,
                 AirportName = transitData.airportName
             });
@@ -77,10 +75,8 @@ namespace FlightTicketManagement.Views
             Note.Text = transitData.transitNote;
         }
 
-        private bool checkAirport()
-        {
-            if (airport.SelectedIndex == -1)
-            {
+        private bool checkAirport() {
+            if (airport.SelectedIndex == -1) {
                 PlaneScheduleView.Instance.setDeniedStatus(airport_status);
                 return false;
             }
@@ -88,10 +84,8 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        private bool checkTimeTransit()
-        {
-            if (timeTransit.Text == "" || timeTransit.Text == null)
-            {
+        private bool checkTimeTransit() {
+            if (timeTransit.Text == "" || timeTransit.Text == null) {
                 PlaneScheduleView.Instance.setDeniedStatus(timeTransit_status);
                 return false;
             }
@@ -99,8 +93,7 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        private void airport_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void airport_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             Console.WriteLine("airplane selected");
 
             AirportMenu res = (sender as ComboBox).SelectedItem as AirportMenu;
@@ -112,8 +105,7 @@ namespace FlightTicketManagement.Views
             transitData.airportName = res.AirportName;
         }
 
-        private void resetInformation()
-        {
+        private void resetInformation() {
             PlaneScheduleView.Instance.setNormalStatus(airport_status);
             PlaneScheduleView.Instance.setNormalStatus(timeTransit_status);
 
@@ -121,15 +113,13 @@ namespace FlightTicketManagement.Views
             timeTransit.Text = "";
         }
 
-        private async void saveBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private async void saveBtn_Click(object sender, RoutedEventArgs e) {
             bool a1 = checkAirport();
             bool a2 = checkTimeTransit();
 
             bool res = a1 && a2;
 
-            if (res == true)
-            {
+            if (res == true) {
                 Console.WriteLine("ready to post data");
 
                 transitData.flightID = flightID;
@@ -139,19 +129,17 @@ namespace FlightTicketManagement.Views
                     transitData.transitNote = "không có ghi chú";
                 else transitData.transitNote = Note.Text;
 
-                if (mode == (int)transitSign.createTransit)
-                {
-                    await BusControl.Instance.CreateTransit(transitData);
+                if (mode == (int)transitSign.createTransit) {
+                    await FlightBusControl.Instance.CreateTransit(transitData);
                 }
-                else if (mode == (int)transitSign.modifyTransit)
-                {
-                    await BusControl.Instance.UpdateTransit(transitData);
+                else if (mode == (int)transitSign.modifyTransit) {
+                    await FlightBusControl.Instance.UpdateTransit(transitData);
 
                     this.DialogResult = true;
                     return;
                 }
 
-                this.transitData = new TransitCreateModel();
+                this.transitData = new Transit();
                 this.resetInformation();
             }
         }

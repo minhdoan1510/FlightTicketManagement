@@ -68,7 +68,6 @@
                         <Button x:Name="ShowDashBoardView"
                                 Margin="3"
                                 Background="Transparent"
-                               
                                 BorderThickness="0"
                                 Padding="0"
                                 Height="45">
@@ -281,9 +280,7 @@
                     </Border >
 
                     <Grid Grid.Row="1"  x:Name="homeGrid">
-                        
-                            <ContentControl x:Name="ActiveItem" Margin="5"/>
-                       
+                                               
                         <Grid x:Name="userControlGrid">
                             <!--<local:PlaneSchedule x:Name="planeScheduleCtrl" />
                             <local:CreateTicket x:Name="createTicketCtrl" />

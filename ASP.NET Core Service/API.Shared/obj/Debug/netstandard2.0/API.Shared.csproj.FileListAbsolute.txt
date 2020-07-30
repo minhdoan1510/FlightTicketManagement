@@ -61,3 +61,12 @@ D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debu
 D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
 D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
 D:\Coding\clone2\FlightTicketManagement\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb
+D:\check master\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.deps.json
+D:\check master\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.dll
+D:\check master\ASP.NET Core Service\API.Shared\bin\Debug\netstandard2.0\API.Shared.pdb
+D:\check master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csprojAssemblyReference.cache
+D:\check master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfoInputs.cache
+D:\check master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.AssemblyInfo.cs
+D:\check master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.csproj.CoreCompileInputs.cache
+D:\check master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.dll
+D:\check master\ASP.NET Core Service\API.Shared\obj\Debug\netstandard2.0\API.Shared.pdb

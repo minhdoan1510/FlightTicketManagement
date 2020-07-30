@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlightTicketManagement.ViewModels
 {
-    class DashboardViewModel:Screen
+    class DashboardViewModel : Screen
     {
     }
 }

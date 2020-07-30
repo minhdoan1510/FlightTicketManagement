@@ -12,5 +12,4 @@ namespace FlightTicketManagement.EventModels
         SwitchToLoginEventModel,
         SwitchToSignupEventModel
     }
-
 }

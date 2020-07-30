@@ -1901,11 +1901,12 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "00shSgAB2VYI3UQgmJyGCjPCBro1kXBJfyzZXqLGVyzcs79rSlG/ilxZ0pgq510p0RHseW+3WOIuMwvA7Gr/Yg==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -4253,23 +4254,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+      "projectUniqueName": "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
       "projectName": "API.Shared",
-      "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
+      "projectPath": "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+      "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
+      "outputPath": "D:\\check master\\ASP.NET Core Service\\API.Shared\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4322,7 +4319,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

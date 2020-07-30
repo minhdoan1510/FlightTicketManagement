@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {}
+    "D:\\check master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {}
   },
   "projects": {
-    "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+    "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "projectUniqueName": "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
         "projectName": "API.Shared",
-        "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\obj\\",
+        "projectPath": "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj",
+        "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
+        "outputPath": "D:\\check master\\ASP.NET Core Service\\API.Shared\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -70,24 +67,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {
+    "D:\\check master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+        "projectUniqueName": "D:\\check master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
         "projectName": "ServerFTM",
-        "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\ServerFTM\\obj\\",
+        "projectPath": "D:\\check master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+        "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
+        "outputPath": "D:\\check master\\ASP.NET Core Service\\ServerFTM\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,11 +94,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
-                "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
+              "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+                "projectPath": "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
               },
-              "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
-                "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj"
+              "D:\\check master\\WPF Client App\\DTO\\Library.csproj": {
+                "projectPath": "D:\\check master\\WPF Client App\\DTO\\Library.csproj"
               }
             }
           }
@@ -179,24 +173,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj": {
+    "D:\\check master\\WPF Client App\\DTO\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
+        "projectUniqueName": "D:\\check master\\WPF Client App\\DTO\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\Library.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\clone2\\FlightTicketManagement\\WPF Client App\\DTO\\obj\\",
+        "projectPath": "D:\\check master\\WPF Client App\\DTO\\Library.csproj",
+        "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
+        "outputPath": "D:\\check master\\WPF Client App\\DTO\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -245,7 +236,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

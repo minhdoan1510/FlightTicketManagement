@@ -9,5 +9,6 @@ namespace FlightTicketManagement.ViewModels
 {
     class PlaneScheduleViewModel : Screen
     {
+
     }
 }

@@ -15,6 +15,7 @@ namespace FlightTicketManagement.ViewModels
     {
         private IEventAggregator _events;
         SimpleContainer _container;
+
         public ShellViewModel(IEventAggregator events,SimpleContainer container)
         {
             _events = events;
@@ -23,7 +24,6 @@ namespace FlightTicketManagement.ViewModels
             ActivateItem(_container.GetInstance<LoginViewModel>());
 
         }
-
        
         public void Handle(int message)
         {

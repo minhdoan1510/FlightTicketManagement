@@ -1,16 +1,13 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Library.Models
+namespace ServerFTM.Models
 {
     public class AirportMenu
     {
-        [JsonProperty("AirportID")]
         public string AirportID { get; set; }
-
-        [JsonProperty("AirportName")]
         public string AirportName { get; set; }
     }
 }

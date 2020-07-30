@@ -10,45 +10,233 @@
              d:DesignHeight="722" d:DesignWidth="1094"
              Loaded="UserControl_Loaded"
              Background="White">
+    <UserControl.Resources>
+    </UserControl.Resources>
     <Grid>
-        <Border Margin="10,10,1004.4,631.6"
-                BorderThickness="1"
-                BorderBrush="Black">
-            <Image Name="userIcon"
-                   Stretch="Fill"
-                   Source="{StaticResource man}" />
-        </Border>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Visible">
+            <WrapPanel>
+                <Border Margin="25 15 0 0"
+                        Width="450"
+                        Padding="0"
+                        Background="#FF357154"
+                        Height="150">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Margin="25"
+                               Stretch="Fill"
+                               Source="{StaticResource userIconWhite}" />   
 
-        <TextBlock Text="Username"
-                   FontSize="35"
-                   Name="welcomeUser"
-                   FontWeight="Bold"
-                   Margin="95,10,577.4,631.6" />
-        <ProgressBar x:Name="WeatherIconWaiting"
-                     Margin="616,10,398.4,631.6"
-                     Style="{StaticResource MaterialDesignCircularProgressBar}"
-                     Value="0"
-                     IsIndeterminate="True" />
-        <Image Name="weatherStatusIcon"
-               Margin="616,10,398.4,631.6"
-               Stretch="Fill"/>
-        <TextBlock Margin="701,10,84.4,674.6"
-                   Name="weatherCity"
-                   Text="Loading..."
-                   FontWeight="SemiBold"
-                   FontSize="15"
-                   Padding="5 0 0 0"/>
-        <TextBlock Margin="701,40,279.4,631.6"
-                   Name="weatherTemerature"
-                   Padding="5 0 0 0"
-                   FontWeight="Bold"
-                   FontSize="25"
-                   Text="Loading.." />
-        <Controls:Map Name="flightMap"
-                      CredentialsProvider="4TVpiXr4TDrpvUv3Vx1e~6kDfAcRwQPNrxo_cHedf9w~AspdM1J6-KCvBj7qcsE0yLdcDiAoPaOFUTBhJcFdJQKRhaheaEEXUCKY70IUuAxs"
-                      Margin="10,135,428.4,169.6"
-                      Mode="Aerial">
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"
+                                       Text="UserName"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       Foreground="White" />
+                            <TextBlock Grid.Row="1"
+                                       Text="UserName"
+                                       Name="welcomeUser"
+                                       FontSize="25"
+                                       Foreground="White"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border Margin="25 15 0 0"
+                        Padding="0"
+                        Background="#FF355F5E"
+                        Height="150"
+                        Width="450">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ProgressBar x:Name="WeatherWaiting"
+                                     Grid.Column="0"
+                                     Foreground="White"
+                                     Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="0"
+                                     IsIndeterminate="True" />
+                        <Image Grid.Column="0"
+                               Name="weatherStatusIcon"
+                               Margin="25"
+                               Stretch="Fill" />
 
-        </Controls:Map>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"
+                                       Name="weatherCity"
+                                       Text="Loading..."
+                                       FontWeight="Bold"
+                                       TextWrapping="Wrap"
+                                       Foreground="White"
+                                       FontSize="25" />
+                            <TextBlock Grid.Row="1"
+                                       Name="weatherTemerature"
+                                       FontSize="30"
+                                       Text="Loading..."
+                                       Foreground="White"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border Margin="25 15 0 0"
+                        Width="450"
+                        Padding="0"
+                        BorderThickness="2"
+                        BorderBrush="Black"
+                        Background="#FF512E5D"
+                        Height="150">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ProgressBar x:Name="TicketWaiting"
+                                     Grid.Column="0"
+                                     Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="0"
+                                     Foreground="White"
+                                     IsIndeterminate="True" />
+                        <Image Grid.Column="0"
+                               Margin="25"
+                               Stretch="Fill"
+                               Name="ticketImage"
+                               Source="{StaticResource passPortIconWhite}" />
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"
+                                       Text="Số Vé Bán Trong Ngày"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       Padding="5 0 0 0"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="1"
+                                       Text="UserName"
+                                       Name="dailyTicket"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       Padding="5 0 0 0"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border Margin="25 15 0 0"
+                        Width="450"
+                        Padding="0"
+                        BorderThickness="2"
+                        BorderBrush="Black"
+                        Background="#FF543131"
+                        Height="150">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ProgressBar x:Name="MoneyWaiting"
+                                     Grid.Column="0"
+                                     Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="White"
+                                     Value="0"
+                                     IsIndeterminate="True" />
+                        <Image Grid.Column="0"
+                               Margin="25"
+                               Stretch="Fill"
+                               Name="moneyImage"
+                               Source="{StaticResource moneyIconWhite}" />
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"
+                                       Text="Doanh Thu Trong Ngày"
+                                       FontSize="25"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       Padding="5 0 0 0"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="1"
+                                       Text="UserName"
+                                       Name="dailyMoney"
+                                       Foreground="White"
+                                       FontSize="25"
+                                       Padding="5 0 0 0"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <Border Margin="25 50 25 15"
+                        Width="950"
+                        Height="500">
+                    <StackPanel>
+                        <StackPanel Height="45"
+                                    Orientation="Horizontal">
+                            <TextBlock FontSize="25"
+                                       Text="Các Chuyến Bay Hiện Tại"
+                                       FontWeight="Bold">
+
+                            </TextBlock>
+                            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                         Margin="15 0 0 0"
+                                         Value="0"
+                                         IsIndeterminate="True"
+                                         Name="flightMapWating"
+                                         Padding="0"></ProgressBar>
+                        </StackPanel>
+
+                        <Controls:Map Name="flightMap"
+                                      MouseWheel="flightMap_MouseWheel"
+                                      CredentialsProvider="4TVpiXr4TDrpvUv3Vx1e~6kDfAcRwQPNrxo_cHedf9w~AspdM1J6-KCvBj7qcsE0yLdcDiAoPaOFUTBhJcFdJQKRhaheaEEXUCKY70IUuAxs"
+                                      Mode="road"
+                                      Height="460"
+                                      ZoomLevel="1"
+                                      Margin="0,0,0.4,0">
+                            <Controls:MapLayer>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="45" />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="1"
+                                                Orientation="Horizontal">
+                                        <Slider Margin="75,0,0,10"
+                                                Width="450"
+                                                Maximum="10"
+                                                Minimum="1"
+                                                ValueChanged="Slider_ValueChanged">
+
+                                        </Slider>
+                                    </StackPanel>
+                                </Grid>
+
+                            </Controls:MapLayer>
+                        </Controls:Map>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+        </ScrollViewer>
+
     </Grid>
 </UserControl>

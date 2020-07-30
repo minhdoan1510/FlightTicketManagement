@@ -1,6 +1,5 @@
 ﻿using Caliburn.Micro;
 using Library.Models;
-using FlightTicketManagement.BUS;
 using FlightTicketManagement.EventModels;
 using System;
 using System.Collections.Generic;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
+using FlightTicketManagement.Helper;
 
 namespace FlightTicketManagement.ViewModels
 {
@@ -18,12 +18,14 @@ namespace FlightTicketManagement.ViewModels
         private string _password;
         private string _name;
         private int _acctype;
+
         private IEventAggregator _events;
 
         public SignupViewModel(IEventAggregator events)
         {
             _events = events;
         }
+
         public string Name { 
             get => _name;
             set
@@ -31,10 +33,9 @@ namespace FlightTicketManagement.ViewModels
                 _name = value;
                 NotifyOfPropertyChange(() => Name);
                 NotifyOfPropertyChange(() => CanSignup);
-
-               
             }
         }
+
         public string Username
         {
             get { return _username; }
@@ -56,6 +57,7 @@ namespace FlightTicketManagement.ViewModels
                 NotifyOfPropertyChange(() => CanSignup);
             }
         }
+
         public bool CanSignup
         {
             get
@@ -71,30 +73,27 @@ namespace FlightTicketManagement.ViewModels
 
         public async Task Signup()
         {
-          //  UserAccount user = new UserAccount();
-          //  user.Username = Username;
-          //  user.Password = Password;
-          //  user.Name = Name;
-          //  user.Acctype = AccountType;
-          //  MessageBox.Show("Signup success\n");
-          ////  Signup signUpAccount = await BusControl.Instance.Signup(user);
+            UserAccount user = new UserAccount();
+            user.Username = Username;
+            user.Password = Password;
+            user.Name = Name;
 
-          //  if (signUpAccount.IsSuccess)
-          //  {
-          //      MessageBox.Show("Signup success\n");
-          //      _events.PublishOnUIThread((int)EventModel.SwitchToLoginEventModel);
-          //  }
-                
-          //  else
-          //  {
-          //      MessageBox.Show("signup failed\n");
-          //  }
+            Response<object> result = await APIHelper.Instance.Post<Response<object>>
+                (ApiRoutes.Account.SignUp, user);
+
+            if (result.IsSuccess) {
+                MessageBox.Show("Signup success\n"); 
+                _events.PublishOnUIThread((int)EventModel.SwitchToLoginEventModel);
+            }
+
+            else {
+                MessageBox.Show("signup failed\n");
+            }
         }
 
         public void backToLogin()
         {
             _events.PublishOnUIThread((int)EventModel.SwitchToLoginEventModel);
-
         }
     }
 }

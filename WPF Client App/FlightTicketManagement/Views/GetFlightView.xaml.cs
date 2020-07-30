@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using FlightTicketManagement.BUS;
 using Library.Models;
+using ServerFTM.Models;
 
 namespace FlightTicketManagement.Views
 {
@@ -22,13 +22,12 @@ namespace FlightTicketManagement.Views
     /// </summary>
     public partial class GetFlightView : Window
     {
-        FlightCreateModel updateFlight = new FlightCreateModel();
+        Flight updateFlight = new Flight();
 
-        public GetFlightView(ref object dataItem)
-        {
+        public GetFlightView(ref object dataItem) {
             InitializeComponent();
 
-            updateFlight = dataItem as FlightCreateModel;
+            updateFlight = dataItem as Flight;
 
             origionalAP.PreviewTextInput += PlaneScheduleView.Instance.Menu_TextInput;
             origionalAP.PreviewKeyDown += PlaneScheduleView.Instance.Menu_PreviewKeyDown;
@@ -43,19 +42,16 @@ namespace FlightTicketManagement.Views
             horizontalSeat.PreviewKeyDown += PlaneScheduleView.Instance.price_KeyDown;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
             List<AirportMenu> defaultOrigion = new List<AirportMenu>();
             List<AirportMenu> defaultDestination = new List<AirportMenu>();
 
-            defaultOrigion.Add(new AirportMenu()
-            {
+            defaultOrigion.Add(new AirportMenu() {
                 AirportID = updateFlight.OriginApID,
                 AirportName = updateFlight.OriginAP
             });
 
-            defaultDestination.Add(new AirportMenu()
-            {
+            defaultDestination.Add(new AirportMenu() {
                 AirportID = updateFlight.DestinationApID,
                 AirportName = updateFlight.DestinationAP
             });
@@ -71,29 +67,23 @@ namespace FlightTicketManagement.Views
             horizontalSeat.Text = updateFlight.Width.ToString();
         }
 
-        private void subMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void subMenu_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             AirportMenu res = (sender as ComboBox).SelectedItem as AirportMenu;
 
-            if (res != null)
-            {
-                if ((sender as ComboBox).Name == "origionalAP")
-                {
+            if (res != null) {
+                if ((sender as ComboBox).Name == "origionalAP") {
                     updateFlight.OriginApID = res.AirportID;
                     updateFlight.OriginAP = res.AirportName;
                 }
-                else if ((sender as ComboBox).Name == "destinationAP")
-                {
+                else if ((sender as ComboBox).Name == "destinationAP") {
                     updateFlight.DestinationApID = res.AirportID;
                     updateFlight.DestinationAP = res.AirportName;
                 }
             }
         }
 
-        public bool checkOrigionalAP()
-        {
-            if (origionalAP.SelectedIndex == -1)
-            {
+        public bool checkOrigionalAP() {
+            if (origionalAP.SelectedIndex == -1) {
                 PlaneScheduleView.Instance.setDeniedStatus(origionalAP_status);
                 return false;
             }
@@ -101,10 +91,8 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkDestinationAP()
-        {
-            if (destinationAP.SelectedIndex == -1)
-            {
+        public bool checkDestinationAP() {
+            if (destinationAP.SelectedIndex == -1) {
                 PlaneScheduleView.Instance.setDeniedStatus(destinationAP_status);
                 return false;
             }
@@ -112,10 +100,8 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkPrice()
-        {
-            if (price.Text == "")
-            {
+        public bool checkPrice() {
+            if (price.Text == "") {
                 PlaneScheduleView.Instance.setDeniedStatus(price_status);
                 return false;
             }
@@ -123,10 +109,8 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkTimeFlight()
-        {
-            if (timeFlight.Text == "" || timeFlight.Text == null)
-            {
+        public bool checkTimeFlight() {
+            if (timeFlight.Text == "" || timeFlight.Text == null) {
                 PlaneScheduleView.Instance.setDeniedStatus(timeFlight_status);
                 return false;
             }
@@ -134,12 +118,10 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkVerticalSeat()
-        {
+        public bool checkVerticalSeat() {
             int value = 0;
 
-            if (!int.TryParse(verticalSeat.Text, out value) || value < 2)
-            {
+            if (!int.TryParse(verticalSeat.Text, out value) || value < 2) {
                 PlaneScheduleView.Instance.setDeniedStatus(verticalSeat_status);
                 return false;
             }
@@ -147,12 +129,10 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkHorizontalSeat()
-        {
+        public bool checkHorizontalSeat() {
             int value = 0;
 
-            if (!int.TryParse(horizontalSeat.Text, out value) || value < 2)
-            {
+            if (!int.TryParse(horizontalSeat.Text, out value) || value < 2) {
                 PlaneScheduleView.Instance.setDeniedStatus(horizontalSeat_status);
                 return false;
             }
@@ -160,8 +140,7 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        private async void saveFlightData_Click(object sender, RoutedEventArgs e)
-        {
+        private async void saveFlightData_Click(object sender, RoutedEventArgs e) {
 
             bool a1 = checkOrigionalAP();
             bool a2 = checkDestinationAP();
@@ -172,8 +151,7 @@ namespace FlightTicketManagement.Views
 
             bool res = a1 && a2 && a3 && a4 && a5 && a6;
 
-            if (res == true)
-            {
+            if (res == true) {
                 Console.WriteLine("ready to post data");
 
                 // orginAP, destinationAP
@@ -184,10 +162,10 @@ namespace FlightTicketManagement.Views
                 updateFlight.Height = int.Parse(verticalSeat.Text);
                 updateFlight.TotalSeat = updateFlight.Width * updateFlight.Height;
 
-                FlightCreateModel clone = new FlightCreateModel();
+                Flight clone = new Flight();
                 clone = updateFlight;
 
-                await BusControl.Instance.UpdateFlight(clone);
+                await FlightBusControl.Instance.UpdateFlight(clone);
 
                 this.DialogResult = true;
             }

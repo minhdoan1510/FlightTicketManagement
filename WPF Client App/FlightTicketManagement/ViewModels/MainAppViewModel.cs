@@ -14,8 +14,10 @@ namespace FlightTicketManagement.ViewModels
     {
         private IEventAggregator _events;
         private IWindowManager _windowManager;
+
         SimpleContainer _container;
         Dictionary<Screens, string> Titles;
+
         enum Screens
         {
            DashBoard,
@@ -48,28 +50,29 @@ namespace FlightTicketManagement.ViewModels
             }
         }
 
-
-
         public MainAppViewModel(IEventAggregator events, SimpleContainer container)
         {
             _events = events;
             _container = container;
             _windowManager = _container.GetInstance<IWindowManager>();
             _events.Subscribe(this);
+
             SetTitles();
             ActivateScreen(Screens.DashBoard);
-           
         }
+
         private void ActivateScreen(Screens screen)
         {
             switch(screen)
             {
-
                 case Screens.FlightList:
                     ActivateItem(_container.GetInstance<FlightListViewModel>());
                     break;
                 case Screens.PlaneSchedule:
                     ActivateItem(_container.GetInstance<PlaneScheduleViewModel>());
+                    break;
+                case Screens.CreateTicket:
+                    ActivateItem(_container.GetInstance<CreateTicketViewModel>());
                     break;
                 case Screens.Setting:
                     ActivateItem(_container.GetInstance<SettingViewModel>());
@@ -81,8 +84,8 @@ namespace FlightTicketManagement.ViewModels
             }
             Title = Titles[screen];
             ButtonTracker = new Thickness(0, 146 + (51 * (int)screen), 0, 571 - (51 * (int)screen));
-
         }
+
         private void SetTitles()
         {
             Titles = new Dictionary<Screens, string>();
@@ -97,7 +100,6 @@ namespace FlightTicketManagement.ViewModels
 
         public void Handle(GetTransitEvent message)
         {
-
             _windowManager.ShowWindow(new TransitViewModel(message.FlightId));
         }
 
@@ -118,6 +120,5 @@ namespace FlightTicketManagement.ViewModels
         {
             ActivateScreen(Screens.PlaneSchedule);
         }
-
     }
 }

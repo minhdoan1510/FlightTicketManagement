@@ -24,12 +24,14 @@ namespace FlightTicketManagement.ViewModels
         {
             _events = events;
         }
+
         protected override async void OnViewLoaded(object view)
         {
             base.OnViewLoaded(view);
             await LoadFlights();
             await LoadCity();
         }
+
         private async Task LoadFlights()
         {
             Response <List<FlightDisplayModel>> response = await APIHelper.Instance.Get<Response<List<FlightDisplayModel>>>(ApiRoutes.FlightT.GetAll);

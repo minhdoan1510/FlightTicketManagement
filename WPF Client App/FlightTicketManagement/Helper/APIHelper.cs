@@ -108,7 +108,7 @@ namespace FlightTicketManagement.Helper
                     var data = await response.Content.ReadAsAsync<Response<InfoLogin>>();
                     if (data != null)
                     {
-                        userInfo = data.Result;
+                        AuthenticatedUser.Instance.data = data.Result;
                         return true;
                     }
                 }

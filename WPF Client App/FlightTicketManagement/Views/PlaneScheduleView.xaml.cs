@@ -16,28 +16,112 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-
+using ServerFTM.Models;
+using FlightTicketManagement.Helper;
 using Library.Models;
+using FlightTicketManagement.Views;
+
+public class FlightBusControl
+{
+    public static FlightBusControl _instance = null;
+
+    public static FlightBusControl Instance {
+        get {
+            if (_instance == null) {
+                _instance = new FlightBusControl();
+            }
+            return _instance;
+        }
+    }
+
+    public async Task<Response<string>> CreateFlight(Flight flight) {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.CreateFlight, flight);
+    }
+
+    public async Task<Response<string>> CreateTransit(Transit transit) {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.CreateTransit, transit);
+    }
+
+    public async Task<Response<List<Transit>>> GetTransit(string _flightID) {
+
+        string apiURL = ApiRoutes.Flight.GetTransit;
+        apiURL = apiURL.Replace("{id}", _flightID);
+
+        return await APIHelper.Instance.Get<Response<List<Transit>>>(apiURL);
+    }
+
+    public async Task<Response<List<AirportMenu>>> GetAirportMenu(string searchKey) {
+        string apiURL = ApiRoutes.Flight.GetAirportMenu;
+        apiURL = apiURL.Replace("{search}", searchKey);
+
+        Console.WriteLine(apiURL);
+
+        return await APIHelper.Instance.Get<Response<List<AirportMenu>>>(apiURL);
+    }
+
+    public async Task<Response<List<Flight>>> GetFlightAll() {
+        return await APIHelper.Instance.Get<Response<List<Flight>>>
+            (ApiRoutes.Flight.GetFlightAll);
+    }
+
+    public async Task<Response<string>> UpdateFlight(Flight value) {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.UpdateFlight, value);
+    }
+
+    public async Task<Response<string>> DisableFlight(Flight value) {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.DisableFlight, value);
+    }
+
+    public async Task<Response<string>> UpdateTransit(Transit value) {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.UpdateTransit, value);
+    }
+
+    public async Task<Response<string>> DisableTransit(Transit value) {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.DisableTransit, value);
+    }
+
+    public async Task<Response<string>> DisableFlightTransit(Flight value) {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.DisableFlightTransit, value);
+    }
+
+    public async Task<Response<string>> DisableFlightAll() {
+        return await APIHelper.Instance.Post<Response<string>>
+            (ApiRoutes.Flight.DisableFlightAll);
+    }
+
+    public async Task<Response<DashStatistic>> GetDashBoardStatistic(string date) {
+        string url = ApiRoutes.Flight.GetDashStatistic;
+        url.Replace("{date}", date);
+
+        return await APIHelper.Instance.Get<Response<DashStatistic>>(url);
+    }
+
+    public async Task<Response<List<FlightRoute>>> GetFlightRoutes() {
+        return await APIHelper.Instance.Get<Response<List<FlightRoute>>>
+            (ApiRoutes.Flight.GetFlightRoute);
+    }
+}
 
 namespace FlightTicketManagement.Views
 {
-    /// <summary>
-    /// Interaction logic for planeSchedule.xaml
-    /// </summary>
-    ///
-
-    public partial class PlaneScheduleView: UserControl
+    public partial class PlaneScheduleView : UserControl
     {
-        Response<List<FlightCreateModel>> flightList = new Response<List<FlightCreateModel>>();
+        Response<List<Flight>> flightList = new Response<List<Flight>>();
 
-        FlightCreateModel flightToCreate = new FlightCreateModel();
+        Flight flightToCreate = new Flight();
 
-        List<FlightCreateModel> flightListForDataGrid { get; set; }
+        List<Flight> flightListForDataGrid { get; set; }
 
         public static PlaneScheduleView Instance;
 
-        public PlaneScheduleView()
-        {
+        public PlaneScheduleView() {
             Instance = this;
             InitializeComponent();
 
@@ -47,13 +131,11 @@ namespace FlightTicketManagement.Views
             initSearchType();
         }
 
-        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e) {
             this.refreshFlights();
         }
 
-        private void initSearchType()
-        {
+        private void initSearchType() {
             List<KeyValuePair<string, string>> tempList = new List<KeyValuePair<string, string>>();
             tempList.Add(new KeyValuePair<string, string>("Khởi Hành", "OriginAP"));
             tempList.Add(new KeyValuePair<string, string>("Kết Thúc", "DestinationAP"));
@@ -66,58 +148,48 @@ namespace FlightTicketManagement.Views
             searchType.SelectedIndex = 0;
         }
 
-        private void searchType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void searchType_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             int typeIndex = searchType.SelectedIndex;
             string typeText = (searchType.ItemsSource as List<KeyValuePair<string, string>>)[typeIndex].Value;
 
-            if (typeText == "TotalSeat")
-            {
+            if (typeText == "TotalSeat") {
                 int testValue = 0;
 
-                if (searchTextbox.Text.Length > 0 && !int.TryParse(searchTextbox.Text, out testValue))
-                {
+                if (searchTextbox.Text.Length > 0 && !int.TryParse(searchTextbox.Text, out testValue)) {
                     searchTextbox.Clear();
                 }
             }
         }
 
-        private void searchTextbox_KeyDown(object sender, KeyEventArgs e)
-        {
+        private void searchTextbox_KeyDown(object sender, KeyEventArgs e) {
             int typeIndex = searchType.SelectedIndex;
             string typeText = (searchType.ItemsSource as List<KeyValuePair<string, string>>)[typeIndex].Value;
 
-            if (typeText == "TotalSeat")
-            {
+            if (typeText == "TotalSeat" || typeText == "Price") {
                 this.price_KeyDown(sender, e);
             }
         }
 
-        private void searchTextbox_KeyUp(object sender, KeyEventArgs e)
-        {
+        private void searchTextbox_KeyUp(object sender, KeyEventArgs e) {
             filterFlight();
         }
 
-        private void searchTextbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        private void searchTextbox_TextChanged(object sender, TextChangedEventArgs e) {
             int typeIndex = searchType.SelectedIndex;
             string typeText = (searchType.ItemsSource as List<KeyValuePair<string, string>>)[typeIndex].Value;
 
-            if (typeText == "Price")
-            {
+            if (typeText == "Price") {
                 this.price_TextChanged(sender, e);
             }
         }
 
-        private void filterFlight()
-        {
-            List<FlightCreateModel> tempList = flightList.Result;
+        private void filterFlight() {
+            List<Flight> tempList = flightList.Result;
 
             int typeIndex = searchType.SelectedIndex;
             string typeText = (searchType.ItemsSource as List<KeyValuePair<string, string>>)[typeIndex].Value;
 
-            if (searchTextbox.Text == "" || searchTextbox.Text == null)
-            {
+            if (searchTextbox.Text == "" || searchTextbox.Text == null) {
                 flightDataGridView.ItemsSource = tempList;
                 flightDataGridView.Items.Refresh();
                 return;
@@ -125,33 +197,35 @@ namespace FlightTicketManagement.Views
             if (tempList == null)
                 return;
 
-            List<FlightCreateModel> newItems = null;
-            switch (typeText)
-            {
+            List<Flight> newItems = null;
+            switch (typeText) {
                 case "OriginAP":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.OriginAP, "%" + searchTextbox.Text + "%")
+                                where x.OriginAP.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "DestinationAP":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.DestinationAP, "%" + searchTextbox.Text + "%")
+                                where x.DestinationAP.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "Price":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.displayPrice, "%" + searchTextbox.Text + "%")
+                                where x.Price.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "Duration":
                     newItems = (from x in tempList
-                                where EF.Functions.Like(x.Duration, "%" + searchTextbox.Text + "%")
+                                where x.Duration.StartsWith(searchTextbox.Text)
                                 select x).ToList();
                     break;
                 case "TotalSeat":
-                    newItems = (from x in tempList
-                                where x.TotalSeat.Equals(int.Parse(searchTextbox.Text))
-                                select x).ToList();
+                    int checkValue;
+                    if (int.TryParse(searchTextbox.Text, out checkValue)) {
+                        newItems = (from x in tempList
+                                    where x.TotalSeat.Equals(checkValue)
+                                    select x).ToList();
+                    }
                     break;
                 default:
                     return;
@@ -160,61 +234,52 @@ namespace FlightTicketManagement.Views
             flightDataGridView.Items.Refresh();
         }
 
-        public void setApproveStatus(UIElement icon)
-        {
+        public void setApproveStatus(UIElement icon) {
             var status = icon as MaterialDesignThemes.Wpf.PackIcon;
 
             status.Kind = MaterialDesignThemes.Wpf.PackIconKind.Check;
             status.Foreground = Brushes.Green;
         }
 
-        public void setDeniedStatus(UIElement icon)
-        {
+        public void setDeniedStatus(UIElement icon) {
             var status = icon as MaterialDesignThemes.Wpf.PackIcon;
 
             status.Kind = MaterialDesignThemes.Wpf.PackIconKind.Cancel;
             status.Foreground = Brushes.Red;
         }
 
-        public void setNormalStatus(UIElement icon)
-        {
+        public void setNormalStatus(UIElement icon) {
             var status = icon as MaterialDesignThemes.Wpf.PackIcon;
 
             status.Kind = MaterialDesignThemes.Wpf.PackIconKind.Check;
             status.Foreground = Brushes.Transparent;
         }
 
-        private void callTransitInputForm(string _flightID)
-        {
+        private void callTransitInputForm(string _flightID) {
             GetTransitView transitForm = new GetTransitView(_flightID);
             transitForm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             transitForm.ShowDialog();
         }
 
-        private void callModifyFlightForm(ref object value)
-        {
+        private void callModifyFlightForm(ref object value) {
             GetFlightView flightForm = new GetFlightView(ref value);
             flightForm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             flightForm.ShowDialog();
         }
 
-        private void callModifyTransit(ref object value)
-        {
+        private void callModifyTransit(ref object value) {
             GetTransitView transitForm = new GetTransitView(ref value);
             transitForm.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             transitForm.ShowDialog();
         }
 
-        private async void menuGetData(object sender)
-        {
+        private async void menuGetData(object sender) {
             string searchKey = "A";
 
-            if ((sender as ComboBox).Text != "")
-            {
+            if ((sender as ComboBox).Text != "") {
                 searchKey = (sender as ComboBox).Text;
             }
-            else
-            {
+            else {
                 List<AirportMenu> tempList = (sender as ComboBox).ItemsSource as List<AirportMenu>;
                 if (tempList != null)
                     tempList.Clear();
@@ -224,25 +289,22 @@ namespace FlightTicketManagement.Views
             }
 
             Response<List<AirportMenu>> airportList = await
-                BUS.BusControl.Instance.GetAirportMenu(searchKey);
+                FlightBusControl.Instance.GetAirportMenu(searchKey);
 
             (sender as ComboBox).ItemsSource = airportList.Result;
             (sender as ComboBox).DisplayMemberPath = "AirportName";
             (sender as ComboBox).IsDropDownOpen = true;
         }
 
-        public void Menu_TextInput(object sender, TextCompositionEventArgs e)
-        {
+        public void Menu_TextInput(object sender, TextCompositionEventArgs e) {
             var textBox = e.OriginalSource as TextBox;
 
             textBox.SelectionLength = 0;
             textBox.SelectionStart = textBox.Text.Length;
         }
 
-        public async void Menu_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space || e.Key == Key.Enter)
-            {
+        public async void Menu_PreviewKeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Space || e.Key == Key.Enter) {
                 var textBox = e.OriginalSource as TextBox;
 
                 textBox.SelectionLength = 0;
@@ -251,8 +313,7 @@ namespace FlightTicketManagement.Views
             menuGetData(sender);
         }
 
-        public void Menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        public void Menu_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             Console.WriteLine("airplane selected");
 
             AirportMenu res = (sender as ComboBox).SelectedItem as AirportMenu;
@@ -260,34 +321,28 @@ namespace FlightTicketManagement.Views
             if (res == null)
                 return;
 
-            if ((sender as ComboBox).Name == "origionalAP")
-            {
+            if ((sender as ComboBox).Name == "origionalAP") {
                 flightToCreate.OriginApID = res.AirportID;
 
                 Console.WriteLine("origin: " + res.AirportID);
             }
-            else if ((sender as ComboBox).Name == "destinationAP")
-            {
+            else if ((sender as ComboBox).Name == "destinationAP") {
                 flightToCreate.DestinationApID = res.AirportID;
 
                 Console.WriteLine("destination: " + res.AirportID);
             }
         }
 
-        public void price_KeyDown(object sender, KeyEventArgs e)
-        {
+        public void price_KeyDown(object sender, KeyEventArgs e) {
             // backspace press 
             if (e.Key == Key.Back)
                 return;
 
             bool keyboardHandle = true;
 
-            if (!e.Key.ToString().Contains("Oem"))
-            {
-                foreach (char item in e.Key.ToString())
-                {
-                    if (char.IsDigit(item))
-                    {
+            if (!e.Key.ToString().Contains("Oem")) {
+                foreach (char item in e.Key.ToString()) {
+                    if (char.IsDigit(item)) {
                         keyboardHandle = false;
                         break;
                     }
@@ -296,23 +351,19 @@ namespace FlightTicketManagement.Views
             e.Handled = keyboardHandle;
         }
 
-        public void price_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        public void price_TextChanged(object sender, TextChangedEventArgs e) {
             string text = (sender as TextBox).Text;
             double value = 0.0f;
 
-            if (text.Length > 2 && double.TryParse(text, out value))
-            {
+            if (text.Length > 2 && double.TryParse(text, out value)) {
                 (sender as TextBox).Text = string.Format(System.Globalization.CultureInfo.CurrentCulture,
                     "{0:n0}", value);
                 (sender as TextBox).CaretIndex = (sender as TextBox).Text.Length;
             }
         }
 
-        public bool checkOrigionalAP()
-        {
-            if (origionalAP.SelectedIndex == -1)
-            {
+        public bool checkOrigionalAP() {
+            if (origionalAP.SelectedIndex == -1) {
                 this.setDeniedStatus(origionalAP_status);
                 return false;
             }
@@ -320,10 +371,8 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkDestinationAP()
-        {
-            if (destinationAP.SelectedIndex == -1)
-            {
+        public bool checkDestinationAP() {
+            if (destinationAP.SelectedIndex == -1) {
                 this.setDeniedStatus(destinationAP_status);
                 return false;
             }
@@ -331,10 +380,8 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkPrice()
-        {
-            if (price.Text == "")
-            {
+        public bool checkPrice() {
+            if (price.Text == "") {
                 this.setDeniedStatus(price_status);
                 return false;
             }
@@ -342,10 +389,8 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkTimeFlight()
-        {
-            if (timeFlight.Text == "" || timeFlight.Text == null)
-            {
+        public bool checkTimeFlight() {
+            if (timeFlight.Text == "" || timeFlight.Text == null) {
                 this.setDeniedStatus(timeFlight_status);
                 return false;
             }
@@ -353,12 +398,10 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkVerticalSeat()
-        {
+        public bool checkVerticalSeat() {
             int value = 0;
 
-            if (!int.TryParse(verticalSeat.Text, out value) || value < 2)
-            {
+            if (!int.TryParse(verticalSeat.Text, out value) || value < 2) {
                 this.setDeniedStatus(verticalSeat_status);
                 return false;
             }
@@ -366,12 +409,10 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public bool checkHorizontalSeat()
-        {
+        public bool checkHorizontalSeat() {
             int value = 0;
 
-            if (!int.TryParse(horizontalSeat.Text, out value) || value < 2)
-            {
+            if (!int.TryParse(horizontalSeat.Text, out value) || value < 2) {
                 this.setDeniedStatus(horizontalSeat_status);
                 return false;
             }
@@ -379,8 +420,7 @@ namespace FlightTicketManagement.Views
             return true;
         }
 
-        public void resetInformation()
-        {
+        public void resetInformation() {
             setNormalStatus(origionalAP_status);
             setNormalStatus(destinationAP_status);
             setNormalStatus(price_status);
@@ -396,8 +436,7 @@ namespace FlightTicketManagement.Views
             horizontalSeat.Clear();
         }
 
-        private async void saveFlightData_Click(object sender, RoutedEventArgs e)
-        {
+        private async void saveFlightData_Click(object sender, RoutedEventArgs e) {
 
             bool a1 = checkOrigionalAP();
             bool a2 = checkDestinationAP();
@@ -408,8 +447,7 @@ namespace FlightTicketManagement.Views
 
             bool res = a1 && a2 && a3 && a4 && a5 && a6;
 
-            if (res == true)
-            {
+            if (res == true) {
                 Console.WriteLine("ready to post data");
 
                 // orginAP, destinationAP
@@ -419,13 +457,13 @@ namespace FlightTicketManagement.Views
                 flightToCreate.Height = int.Parse(verticalSeat.Text);
                 flightToCreate.TotalSeat = flightToCreate.Width * flightToCreate.Height;
 
-                FlightCreateModel clone = new FlightCreateModel();
+                Flight clone = new Flight();
                 clone = flightToCreate;
 
-                flightToCreate = new FlightCreateModel();
+                flightToCreate = new Flight();
                 this.resetInformation();
 
-                Response<string> sign = await BUS.BusControl.Instance.CreateFlight(clone);
+                Response<string> sign = await FlightBusControl.Instance.CreateFlight(clone);
                 string flightID = sign.Result;
 
                 this.callTransitInputForm(flightID);
@@ -433,19 +471,16 @@ namespace FlightTicketManagement.Views
             }
         }
 
-        private async void flightDataGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            FlightCreateModel rowValue = flightDataGridView.SelectedItem as FlightCreateModel;
+        private async void flightDataGridView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            Flight rowValue = flightDataGridView.SelectedItem as Flight;
 
-            if (rowValue != null)
-            {
+            if (rowValue != null) {
                 this.refreshTransits(rowValue.FlightID);
             }
         }
 
-        private async Task refreshFlights()
-        {
-            List<FlightCreateModel> tempList = this.flightDataGridView.ItemsSource as List<FlightCreateModel>;
+        private async Task refreshFlights() {
+            List<Flight> tempList = this.flightDataGridView.ItemsSource as List<Flight>;
             if (tempList != null)
                 tempList.Clear();
 
@@ -453,7 +488,7 @@ namespace FlightTicketManagement.Views
 
             flightLoadingStatus.Visibility = Visibility.Visible;
 
-            flightList = await BUS.BusControl.Instance.GetFlightAll();
+            flightList = await FlightBusControl.Instance.GetFlightAll();
 
             this.flightDataGridView.ItemsSource = flightList.Result;
             this.flightDataGridView.Items.Refresh();
@@ -461,9 +496,8 @@ namespace FlightTicketManagement.Views
             flightLoadingStatus.Visibility = Visibility.Hidden;
         }
 
-        private async void refreshTransits(string _flightID)
-        {
-            List<TransitCreateModel> tempList = this.flightDataGridView.ItemsSource as List<TransitCreateModel>;
+        private async void refreshTransits(string _flightID) {
+            List<Transit> tempList = this.flightDataGridView.ItemsSource as List<Transit>;
             if (tempList != null)
                 tempList.Clear();
 
@@ -471,7 +505,7 @@ namespace FlightTicketManagement.Views
 
             transitLoadingStatus.Visibility = Visibility.Visible;
 
-            Response<List<TransitCreateModel>> transitList = await BUS.BusControl.Instance.GetTransit(_flightID);
+            Response<List<Transit>> transitList = await FlightBusControl.Instance.GetTransit(_flightID);
 
             this.transitDataGridView.ItemsSource = transitList.Result;
             this.transitDataGridView.Items.Refresh();
@@ -479,8 +513,7 @@ namespace FlightTicketManagement.Views
             transitLoadingStatus.Visibility = Visibility.Hidden;
         }
 
-        private void flightDataModify_Click(object sender, RoutedEventArgs e)
-        {
+        private void flightDataModify_Click(object sender, RoutedEventArgs e) {
             object value = flightDataGridView.SelectedItem;
 
             this.callModifyFlightForm(ref value);
@@ -488,15 +521,14 @@ namespace FlightTicketManagement.Views
             flightDataGridView.Items.Refresh();
         }
 
-        private async void flightDataDelete_Click(object sender, RoutedEventArgs e)
-        {
-            FlightCreateModel rowValue = flightDataGridView.SelectedItem as FlightCreateModel;
+        private async void flightDataDelete_Click(object sender, RoutedEventArgs e) {
+            Flight rowValue = flightDataGridView.SelectedItem as Flight;
 
-            await BUS.BusControl.Instance.DisableFlight(rowValue);
+            await FlightBusControl.Instance.DisableFlight(rowValue);
 
             await Task.Factory.StartNew(() => {
                 this.Dispatcher.Invoke(async () => {
-                    List<FlightCreateModel> tempList = flightDataGridView.ItemsSource as List<FlightCreateModel>;
+                    List<Flight> tempList = flightDataGridView.ItemsSource as List<Flight>;
                     tempList.Remove(rowValue);
 
                     await refreshFlights();
@@ -505,8 +537,7 @@ namespace FlightTicketManagement.Views
             });
         }
 
-        private void transitDataModify_Click(object sender, RoutedEventArgs e)
-        {
+        private void transitDataModify_Click(object sender, RoutedEventArgs e) {
             object value = transitDataGridView.SelectedItem;
 
             this.callModifyTransit(ref value);
@@ -514,75 +545,64 @@ namespace FlightTicketManagement.Views
             transitDataGridView.Items.Refresh();
         }
 
-        private async void transitDataDelete_Click(object sender, RoutedEventArgs e)
-        {
-            TransitCreateModel rowValue = transitDataGridView.SelectedItem as TransitCreateModel;
+        private async void transitDataDelete_Click(object sender, RoutedEventArgs e) {
+            Transit rowValue = transitDataGridView.SelectedItem as Transit;
 
-            await BUS.BusControl.Instance.DisableTransit(rowValue);
+            await FlightBusControl.Instance.DisableTransit(rowValue);
 
             await Task.Factory.StartNew(() => {
                 this.Dispatcher.Invoke(() => {
-                    List<TransitCreateModel> tempList = transitDataGridView.ItemsSource as List<TransitCreateModel>;
+                    List<Transit> tempList = transitDataGridView.ItemsSource as List<Transit>;
                     tempList.Remove(rowValue);
                     transitDataGridView.Items.Refresh();
                 });
             });
         }
 
-        private void transitAdd_Click(object sender, RoutedEventArgs e)
-        {
-            FlightCreateModel rowValue = flightDataGridView.SelectedItem as FlightCreateModel;
+        private void transitAdd_Click(object sender, RoutedEventArgs e) {
+            Flight rowValue = flightDataGridView.SelectedItem as Flight;
 
-            if (rowValue == null)
-            {
+            if (rowValue == null) {
                 MessageBox.Show("hãy chọn một chuyến bay");
             }
-            else
-            {
+            else {
                 this.callTransitInputForm(rowValue.FlightID);
                 this.refreshTransits(rowValue.FlightID);
             }
         }
 
-        private async void transitClearAll_Click(object sender, RoutedEventArgs e)
-        {
+        private async void transitClearAll_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult res = MessageBox.Show("Bạn có chắc muốn xóa hết dữ liệu không ?", "Caution!",
                 MessageBoxButton.YesNo);
 
-            if (res == MessageBoxResult.Yes)
-            {
-                FlightCreateModel rowValue = flightDataGridView.SelectedItem as FlightCreateModel;
+            if (res == MessageBoxResult.Yes) {
+                Flight rowValue = flightDataGridView.SelectedItem as Flight;
 
-                if (rowValue == null)
-                {
+                if (rowValue == null) {
                     MessageBox.Show("hãy chọn một chuyến bay");
                 }
-                else
-                {
-                    List<TransitCreateModel> tempList = flightDataGridView.ItemsSource as List<TransitCreateModel>;
+                else {
+                    List<Transit> tempList = flightDataGridView.ItemsSource as List<Transit>;
                     if (tempList != null)
                         tempList.Clear();
 
                     transitDataGridView.Items.Refresh();
 
-                    await BUS.BusControl.Instance.DisableFlightTransit(rowValue);
+                    await FlightBusControl.Instance.DisableFlightTransit(rowValue);
                 }
             }
         }
 
-        private async void flightRefresh_Click(object sender, RoutedEventArgs e)
-        {
+        private async void flightRefresh_Click(object sender, RoutedEventArgs e) {
             await this.refreshFlights();
         }
 
-        private async void flightClearAll_Click(object sender, RoutedEventArgs e)
-        {
+        private async void flightClearAll_Click(object sender, RoutedEventArgs e) {
             MessageBoxResult res = MessageBox.Show("Bạn có chắc muốn xóa hết dữ liệu không ?", "Caution!",
                MessageBoxButton.YesNo);
 
-            if (res == MessageBoxResult.Yes)
-            {
-                List<FlightCreateModel> tempList = flightDataGridView.ItemsSource as List<FlightCreateModel>;
+            if (res == MessageBoxResult.Yes) {
+                List<Flight> tempList = flightDataGridView.ItemsSource as List<Flight>;
                 if (tempList != null)
                     tempList.Clear();
                 if (flightList.Result != null)
@@ -590,7 +610,7 @@ namespace FlightTicketManagement.Views
 
                 flightDataGridView.Items.Refresh();
 
-                await BUS.BusControl.Instance.DisableFlightAll();
+                await FlightBusControl.Instance.DisableFlightAll();
             }
         }
     }

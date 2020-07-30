@@ -1,6 +1,5 @@
 ﻿using Caliburn.Micro;
 using Library.Models;
-using FlightTicketManagement.BUS;
 using FlightTicketManagement.EventModels;
 using FlightTicketManagement.Views;
 using System;
@@ -19,6 +18,7 @@ namespace FlightTicketManagement.ViewModels
         private string _username;
         private string _password;
         private IEventAggregator _events;
+
         public LoginViewModel(IEventAggregator events)
         {
             _events = events;
@@ -34,8 +34,6 @@ namespace FlightTicketManagement.ViewModels
                 NotifyOfPropertyChange(() => CanLogin);
             }
         }
-
-       
 
         public string Password
         {
@@ -59,19 +57,20 @@ namespace FlightTicketManagement.ViewModels
 
         public async Task Login()
         {
-
             if(await APIHelper.Instance.Authenticate(Username, Password))
             {
                 _events.PublishOnUIThread((int)EventModel.LogOnEventModel);
             }
-            else
-            MessageBox.Show("Login failed");
+            else MessageBox.Show("Login failed");
+        }
+
+        private void MainApp_Closed(object sender, EventArgs e) {
+            ShellView.Instance.Close();
         }
 
         public void SwitchToSignup()
         {
             _events.PublishOnUIThread((int)EventModel.SwitchToSignupEventModel);
-           // ShellView.Instance.switchToSignUp();
         }
     }
 }
