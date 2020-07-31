@@ -105,7 +105,7 @@ public class FlightBusControl
 
     public async Task<Response<List<FlightRoute>>> GetFlightRoutes() {
         return await APIHelper.Instance.Get<Response<List<FlightRoute>>>
-            (ApiRoutes.Flight.GetFlightRoute);
+            (ApiRoutes.Flight.GetFlightRouteAll);
     }
 }
 

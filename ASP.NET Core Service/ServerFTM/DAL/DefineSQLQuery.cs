@@ -38,6 +38,7 @@ namespace ServerFTM.DAL.Query
         public const string ProcCountTicketDaily = "EXECUTE ProcCountTicketDaily @day";
         public const string ProcSumMoneyDaily = "EXECUTE ProcSumMoneyDaily @day";
         public const string ProcGetFlightRouteAll = "EXECUTE ProcGetFlightRouteAll";
+        public const string ProcGetFlightRoute = "EXECUTE ProcGetFlightRoute @flightId";
         public const string ProcGetTransitRouteFromFlight = "EXECUTE ProcGetTransitRouteFromFlight @flightID";
         public const string ProcTestTime = "exec testTimeMap";
 

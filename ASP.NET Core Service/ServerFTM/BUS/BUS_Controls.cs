@@ -221,6 +221,45 @@ namespace ServerFTM.BUS
             return result;
         }
 
+        public List<FlightRoute> GetFlightRoute(string flightId) {
+            List<FlightRoute> result = new List<FlightRoute>();
+
+            DataTable flightDT = DAL_Controls.Controls.GetFlightRoute(flightId);
+            if (flightDT != null) {
+                foreach (DataRow row in flightDT.Rows) {
+                    FlightRoute item = new FlightRoute();
+
+                    item.latOrigin = float.Parse(row["latOrigin"].ToString());
+                    item.lonOrigin = float.Parse(row["lonOrigin"].ToString());
+                    item.latDestination = float.Parse(row["latDestination"].ToString());
+                    item.lonDestination = float.Parse(row["lonDestination"].ToString());
+                    item.flightID = row["flightID"].ToString();
+                    item.originName = row["originName"].ToString();
+                    item.destinationName = row["destinationName"].ToString();
+
+                    DataTable transits = DAL_Controls.Controls.getTransitRouteFromFlight(item.flightID);
+
+                    if (transits != null) {
+                        item.transitList = new List<TransitLocation>();
+
+                        foreach (DataRow transRow in transits.Rows) {
+                            TransitLocation transItem = new TransitLocation();
+
+                            transItem.transitLat = float.Parse(transRow["transitLat"].ToString());
+                            transItem.transitLon = float.Parse(transRow["transitLon"].ToString());
+                            transItem.transitName = transRow["transitName"].ToString();
+
+                            item.transitList.Add(transItem);
+                        }
+                    }
+                    result.Add(item);
+                }
+            }
+
+            return result;
+
+        }
+
         #endregion
 
         #region minhtien

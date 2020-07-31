@@ -39,6 +39,13 @@ namespace ServerFTM.Controllers
             else return new JsonResult(new ApiResponse<object>(200, "found nothing"));
         }
 
+        [HttpGet("getFlightRoute/{flightId}")]
+        public async Task<IActionResult> GetFlightRoute([FromRoute] string flightId) {
+            List<FlightRoute> result = BUS_Controls.Controls.GetFlightRoute(flightId);
+
+            return new JsonResult(new ApiResponse<object>(result));
+        }
+
         [HttpPost("createFlight")]
         public async Task<IActionResult> PostCreateFlight([FromBody] Flight flight) {
             string flightID = BUS_Controls.Controls.createFlight(flight);

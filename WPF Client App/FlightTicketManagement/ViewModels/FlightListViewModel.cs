@@ -179,6 +179,7 @@ namespace FlightTicketManagement.ViewModels
         }
 
         private async void loadFLightMap() {
+
             Response<List<FlightRoute>> response = await APIHelper.Instance.Get
                 <Response<List<FlightRoute>>>(ApiRoutes.Flight.GetFlightRoute.Replace
                 (ApiRoutes.Keybase, SelectedFlight.Id));
@@ -277,7 +278,6 @@ namespace FlightTicketManagement.ViewModels
 
     }
 }
-
 namespace Helpers
 {
     public static class MapHelper
