@@ -1,20 +1,20 @@
 ﻿FlightTicketManagement
 
 
-winexe
+exe
 C#
 .cs
-D:\FlightTicketManagement-master\Source\FlightTicketManagement\obj\Release\
+D:\check master\WPF Client App\FlightTicketManagement\obj\Release\
 FlightTicketManagement
 none
 false
 TRACE
-D:\FlightTicketManagement-master\Source\FlightTicketManagement\App.xaml
-9-805631826
+D:\check master\WPF Client App\FlightTicketManagement\App.xaml
+22960450680
 
-81375081476
-15-708196730
-Login\login.xaml;MainApp\MainApp.xaml;MainWindow.xaml;Resource\Art\artResource.xaml;Resource\tileButton.xaml;Login\signUp.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;
+451525846211
+1541903914324
+Views\CreateTicketView.xaml;MainApp\Donate.xaml;Views\DashboardView.xaml;Views\GetFlightView.xaml;Views\GetTransitView.xaml;Views\LoginView.xaml;Views\MainAppView.xaml;Views\FlightListView.xaml;Views\PlaneScheduleView.xaml;MainApp\Report.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Views\ReportView.xaml;Views\SignupView.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;Views\SettingView.xaml;Resource\transparentBackground.xaml;Views\ShellView.xaml;Views\TransitView.xaml;
 
 True
 

@@ -10,26 +10,20 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ServerFTM.Controllers
 {
-   
-        [Route("api/[controller]")]
-        [ApiController]
-        [Authorize]
+
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize]
     public class TransitController : Controller
-        {
-            [HttpGet("{flightId}")]
-            public async Task<IActionResult> Get([FromRoute]string flightId )
-            {
-                List<TransitDisplayModel> transits = BUS_Controls.Controls.GetTransits(flightId);
+    {
+        [HttpGet("{flightId}")]
+        public async Task<IActionResult> Get([FromRoute] string flightId) {
+            List<TransitDisplayModel> transits = BUS_Controls.Controls.GetTransits(flightId);
 
-                if (transits != null)
-                {
-                    return new JsonResult(new ApiResponse<object>(transits));
-                }
-                else return new JsonResult(new ApiResponse<object>(200, "found nothing"));
+            if (transits != null) {
+                return new JsonResult(new ApiResponse<object>(transits));
             }
-
-
+            else return new JsonResult(new ApiResponse<object>(200, "found nothing"));
         }
-
-    
+    }
 }

@@ -9,16 +9,15 @@ using System.Data;
 using System.Reflection;
 using Library.Models;
 using ServerFTM.Models;
+using ServerFTM.DAL.Helper;
 
 namespace ServerFTM.DAL.Controls
 {
     class DAL_Controls
     {
         private static DAL_Controls controls;
-        public static DAL_Controls Controls
-        {
-            get
-            {
+        public static DAL_Controls Controls {
+            get {
                 if (controls == null)
                     controls = new DAL_Controls();
                 return controls;
@@ -26,6 +25,7 @@ namespace ServerFTM.DAL.Controls
             set => controls = value;
         }
 
+        #region account
         public bool SignUp(Account account) {
             try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcSignUp,
@@ -51,31 +51,27 @@ namespace ServerFTM.DAL.Controls
                 return null;
             }
         }
+        #endregion
 
-        public DataTable GetAllFlight()
-        {
-            try
-            {
+        #region minhtien
+        public DataTable GetAllFlight() {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetAllFlight);
-                    
+
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
-        public List<T> CreateListFromTable<T>(DataTable dt)
-        {
+
+        public List<T> CreateListFromTable<T>(DataTable dt) {
             var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
             var properties = typeof(T).GetProperties();
             return dt.AsEnumerable().Select(row => {
                 var objT = Activator.CreateInstance<T>();
-                foreach (var pro in properties)
-                {
-                    if (columnNames.Contains(pro.Name.ToLower()))
-                    {
-                        try
-                        {
+                foreach (var pro in properties) {
+                    if (columnNames.Contains(pro.Name.ToLower())) {
+                        try {
                             pro.SetValue(objT, row[pro.Name]);
                         }
                         catch (Exception ex) { }
@@ -85,66 +81,52 @@ namespace ServerFTM.DAL.Controls
             }).ToList();
         }
 
-        internal DataTable GetFlightForCity(string cityId)
-        {
-            try
-            {
+        internal DataTable GetFlightForCity(string cityId) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightForCity,
-                    new object[] { cityId});
+                    new object[] { cityId });
 
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
 
-        public DataTable GetAllCity()
-        {
-            try
-            {
+        public DataTable GetAllCity() {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetCity);
 
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
 
-        public DataTable GetTransits(string transitId)
-        {
+        public DataTable GetTransits(string transitId) {
 
-            try
-            {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetTransits,
                     new object[] { transitId });
-                      
+
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
 
-        public DataTable GetRestrictions()
-        {
-            try
-            {
+        public DataTable GetRestrictions() {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetRestrictions);
-                    
+
 
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return null;
             }
         }
 
-        public bool ChangeRestrictions(RestrictionsModel model)
-        {
-            try
-            {
+        public bool ChangeRestrictions(RestrictionsModel model) {
+            try {
                 return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcChangeRestrictions,
                     new object[] {  model.MinFlightTime,
                                     model.MaxTransit,
@@ -152,15 +134,38 @@ namespace ServerFTM.DAL.Controls
                                     model.MaxTransitTime,
                                     model.LatestBookingTime,
                                     model.LatestCancelingTime
-                                     } )>0;
+                                     }) > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 return false;
             }
         }
 
-        #region flightCreate + Dashboard
+        public DataTable GetMonthProfit(int month, int year) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcMonthProfit,
+                    new object[] { month, year });
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public DataTable GetYearProfit(int year) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcYearProfit,
+                    new object[] { year });
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region mingkhoi
 
         public DataTable GetAirportMenu(string searchKey) {
             try {
@@ -356,6 +361,143 @@ namespace ServerFTM.DAL.Controls
                 return null;
             }
         }
+
+        #region Ticket
+
+        public ResponseDTB AddTicket(Ticket ticket) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery_b(DefineSQLQuery.ProcAddTicket,
+                    new object[] { ticket.IDTicket,
+                        ticket.IDPassenger,
+                    ticket.IDDurationFlight,
+                    ticket.IDClass,
+                    ticket.TimeFlight,
+                    ticket.TimeBooking,
+                    ticket.IsPaid,
+                    ticket.IDChairBooked,
+                    ticket.XChair,
+                    ticket.YChair}) ? ResponseDTBHelper.OkResultDB() : ResponseDTBHelper.FailResultDB(); //@idTicket , @idPassenger , @iDDurationFlight , @classId , @timeflight , @timebooking , @isPaid , @xchair , @ychair";
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+
+
+        public ResponseDTB GetPrice(string iddur, string idclass) {
+            try {
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetPriceFight,
+                    new object[] { iddur, idclass }));
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+
+        internal ResponseDTB GetListChair(string id, DateTime timeDur) {
+            try {
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetListChair,
+                    new object[] { id, timeDur }));
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+
+
+        internal ResponseDTB GetDefineChairFlight(string id) {
+            try {
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetDefineChairFlight,
+                    new object[] { id }));
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+
+        }
+        #endregion
+
+        #region Airport
+
+        internal ResponseDTB GetAPinCity(string idcity, object idlocal) {
+            try {
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcAPinCity,
+                    new object[] {
+                        idlocal, idcity}));
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+        #endregion
+
+        #region City
+
+        internal ResponseDTB GetCityAlready(string idlocal) {
+            try {
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcCityAlready,
+                    new object[] {
+                        idlocal }));
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+        #endregion
+
+        #region DurationTime
+
+        public ResponseDTB GetDurationFlight(string idoriap, string iddestap) {
+            try {
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetDurationTime,
+                    new object[] {
+                        idoriap, iddestap }));
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+
+        #endregion
+
+        #region Passenger
+
+        public ResponseDTB GetExistPassenger(string tel) {
+            try {
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetExistPassenger,
+                    new object[] {
+                        tel }));
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+
+        public ResponseDTB GetAddPassenger(Passenger passenger) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery_b(DefineSQLQuery.ProcAddPassenger,
+                    new object[] {
+                        passenger.IDPassenger,
+                        passenger.PassengerName,
+                        passenger.IDCard,
+                        passenger.Tel
+                        }) ? ResponseDTBHelper.OkResultDB() : ResponseDTBHelper.FailResultDB(); //--@IDPassenger , @PassengerName , @PassengerIDCard , @PassenserTel
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return ResponseDTBHelper.ErrorResultDB(e.Message);
+            }
+        }
+
         #endregion
     }
+    #endregion
 }

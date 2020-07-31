@@ -28,8 +28,5 @@ namespace ServerFTM.Controllers
             }
             else return new JsonResult(new ApiResponse<object>(200, "found nothing"));
         }
-
-
-
     }
 }

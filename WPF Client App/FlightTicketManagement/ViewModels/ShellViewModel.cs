@@ -42,6 +42,7 @@ namespace FlightTicketManagement.ViewModels
                     break;
             }
         }
+
         public static void showVMDialog(PropertyChangedBase viewmodel, string windowHeader)
         {
             WindowManager windowManager = new WindowManager();

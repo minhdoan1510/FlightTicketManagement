@@ -1,18 +1,44 @@
 ﻿using API.Shared.APIResponse;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
 using ServerFTM.BUS;
 using ServerFTM.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+
+using Library.Models;
 
 namespace ServerFTM.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class FlightController : ControllerBase
     {
+        [HttpGet]
+        public async Task<IActionResult> GetAll() {
+            List<FlightDisplayModel> flights = BUS_Controls.Controls.GetAllFlight();
+
+            if (flights != null) {
+                return new JsonResult(new ApiResponse<object>(flights));
+            }
+            else return new JsonResult(new ApiResponse<object>(200, "found nothing"));
+        }
+
+        [HttpGet("{cityId}")]
+        public async Task<IActionResult> GetForCity([FromRoute] string cityId) {
+            List<FlightDisplayModel> flights = BUS_Controls.Controls.GetFlightForCity(cityId);
+
+            if (flights != null) {
+                return new JsonResult(new ApiResponse<object>(flights));
+            }
+            else return new JsonResult(new ApiResponse<object>(200, "found nothing"));
+        }
+
         [HttpPost("createFlight")]
         public async Task<IActionResult> PostCreateFlight([FromBody] Flight flight) {
             string flightID = BUS_Controls.Controls.createFlight(flight);

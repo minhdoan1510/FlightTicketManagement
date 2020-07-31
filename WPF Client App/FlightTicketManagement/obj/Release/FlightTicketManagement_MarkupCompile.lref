@@ -1,12 +1,25 @@
-﻿D:\FlightTicketManagement-master\Source\FlightTicketManagement\obj\Release\GeneratedInternalTypeHelper.g.cs
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\App.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\Login\login.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\MainApp\MainApp.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\MainWindow.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\Resource\Art\artResource.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\Resource\tileButton.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\Login\signUp.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\Resource\loginButton.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\Resource\resource.xaml;;
-FD:\FlightTicketManagement-master\Source\FlightTicketManagement\Resource\tileBarButton.xaml;;
+﻿D:\check master\WPF Client App\FlightTicketManagement\obj\Release\GeneratedInternalTypeHelper.g.cs
+FD:\check master\WPF Client App\FlightTicketManagement\App.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\CreateTicketView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\MainApp\Donate.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\DashboardView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\GetFlightView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\GetTransitView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\LoginView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\MainAppView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\FlightListView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\PlaneScheduleView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\MainApp\Report.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Resource\Art\artResource.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Resource\menuStyle.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Resource\tileButton.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\ReportView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\SignupView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Resource\loginButton.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Resource\resource.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Resource\tileBarButton.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\SettingView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Resource\transparentBackground.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\ShellView.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\TransitView.xaml;;
 

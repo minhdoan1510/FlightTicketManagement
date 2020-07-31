@@ -1,0 +1,159 @@
+﻿<UserControl x:Class="FlightTicketManagement.Views.ReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:FlightTicketManagement.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="716.8"
+             d:DesignWidth="1088.8"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             xmlns:my="clr-namespace:FlightTicketManagement.Helper">
+
+    <UserControl.Resources>
+        <my:VisibilityHelper x:Key="NotVisibility" />
+    </UserControl.Resources>
+
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1"
+                  Grid.Row="0">
+                <TextBlock Text="Báo cáo doanh thu theo tháng"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Height="24"
+                           Margin="1,11,431,10.2"
+                           Width="auto"></TextBlock>
+                <DatePicker x:Name="MonthProfit"
+                            DisplayDate="{Binding MonthProfit}"
+                            local:DatePickerCalendar.IsMonthYear="True"
+                            local:DatePickerDateFormat.DateFormat="MM-yyyy"
+                            Text="MM-yyyy"
+                            Height="35"
+                            Margin="796,7,11.8,2.8">
+                    <DatePicker.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="0.218" />
+                            <TranslateTransform X="-0.005"
+                                                Y="0.119" />
+                        </TransformGroup>
+                    </DatePicker.RenderTransform>
+                </DatePicker>
+            </Grid>
+
+
+            <Grid Grid.Row="1"
+                  Grid.Column="1">
+                <ProgressBar x:Name="pbMonthReport"
+                             Style="{StaticResource MaterialDesignCircularProgressBar}"
+                             Value="0"
+                             IsIndeterminate="True"
+                             Visibility="{Binding IsLoadingMonthReport}" />
+                <DataGrid x:Name="MonthReports"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          VerticalScrollBarVisibility="Auto"
+                          Background="WhiteSmoke"
+                          SelectionMode="Extended"
+                          Visibility="{Binding IsLoadingMonthReport, Converter= {StaticResource NotVisibility}}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Xếp hạng"
+                                            SortDirection="Ascending"
+                                            Binding="{Binding Rank}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Chuyến bay"
+                                            Binding="{Binding FullName}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Số chuyến bay (chuyến)"
+                                            Binding="{Binding TicketNum}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Lợi nhuận (VNĐ)"
+                                            Binding="{Binding Profit, StringFormat={}{0:#,# đ}}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Tỷ lệ (%)"
+                                            Binding="{Binding Ratio , StringFormat= 0.00}"
+                                            Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Grid Grid.Column="1"
+                  Grid.Row="2">
+                <TextBlock Text="Báo cáo doanh thu năm"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Height="30"
+                           Margin="0,9,774.8,6.2" />
+
+                <ComboBox x:Name="DataCbYear"
+                          Margin="897,9,9.8,9.2"
+                          SelectedIndex="{Binding SelectedIndex}" />
+            </Grid>
+            <Grid Grid.Row="3"
+                  Grid.Column="1">
+                <ProgressBar x:Name="pbYearReport"
+                             Style="{StaticResource MaterialDesignCircularProgressBar}"
+                             Value="0"
+                             IsIndeterminate="True"
+                             Visibility="{Binding IsLoadingYearReport}" />
+
+                <DataGrid CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          IsReadOnly="True"
+                          x:Name="YearReports"
+                          AutoGenerateColumns="False"
+                          VerticalScrollBarVisibility="Auto"
+                          Background="WhiteSmoke"
+                          SelectionMode="Extended"
+                          Visibility="{Binding IsLoadingYearReport, Converter= {StaticResource NotVisibility}}"
+                          GridLinesVisibility="Horizontal"
+                          HeadersVisibility="Column"
+                          HorizontalAlignment="Center">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Tháng"
+                                            Binding="{Binding Month}"
+                                            SortDirection="Ascending"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Số chuyến bay (chuyến)"
+                                            Binding="{Binding TicketNum}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Lợi nhuận (VNĐ)"
+                                            Binding="{Binding Profit, StringFormat={}{0:#,# đ}}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Tỷ lệ (%)"
+                                            Binding="{Binding Ratio , StringFormat = 0.00}"
+                                            Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

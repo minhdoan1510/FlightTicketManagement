@@ -83,6 +83,35 @@ namespace ServerFTM.DAL.DataProvider
             return data;
         }
 
+        public bool ExecuteNonQuery_b(string query, object[] parameter = null) {
+            int data = 0;
+
+            string connectionString = Startup.Configuration.GetSection("AppSetting:ConnectionString").Value;
+
+            using (SqlConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (parameter != null) {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara) {
+                        if (item.Contains('@')) {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+
+                data = command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+
+            return data > 0;
+        }
+
         public object ExecuteScalar(string query, object[] parameter = null) {
             object data = 0;
 

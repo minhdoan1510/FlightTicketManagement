@@ -191,17 +191,21 @@
     <Compile Include="Helper\AuthenticatedUser.cs" />
     <Compile Include="Helper\GPSLocation.cs" />
     <Compile Include="Helper\PasswordBoxHelper.cs" />
+    <Compile Include="Helper\VisibilityHelper.cs" />
+    <Compile Include="Resource\DatePickerCalendar.cs" />
+    <Compile Include="ViewModels\ChairGridViewModel.cs" />
     <Compile Include="ViewModels\CreateTicketViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\FlightListViewModel.cs" />
     <Compile Include="ViewModels\PlaneScheduleViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\TransitViewModel.cs" />
+    <Compile Include="Views\ChairGridView.xaml.cs">
+      <DependentUpon>ChairGridView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateTicketView.xaml.cs">
       <DependentUpon>CreateTicketView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainApp\Donate.xaml.cs">
-      <DependentUpon>Donate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
@@ -216,14 +220,14 @@
     <Compile Include="Views\MainAppView.xaml.cs">
       <DependentUpon>MainAppView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SignupView.xaml.cs">
       <DependentUpon>SignupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FlightListView.xaml.cs">
       <DependentUpon>FlightListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainApp\Report.xaml.cs">
-      <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
@@ -237,11 +241,11 @@
     <Compile Include="Views\TransitView.xaml.cs">
       <DependentUpon>TransitView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\CreateTicketView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\ChairGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainApp\Donate.xaml">
+    <Page Include="Views\CreateTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,10 +284,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainApp\Report.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resource\Art\artResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -293,6 +293,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resource\tileButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -449,11 +453,7 @@
   <ItemGroup>
     <Resource Include="Resource\Art\mainIcon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Login\" />
-    <Folder Include="MainApp\Main\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resource\Art\userWhite.png" />
   </ItemGroup>

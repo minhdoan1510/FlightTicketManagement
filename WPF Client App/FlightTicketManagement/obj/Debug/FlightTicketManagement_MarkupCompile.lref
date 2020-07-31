@@ -1,7 +1,7 @@
-﻿
+﻿D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
 FD:\check master\WPF Client App\FlightTicketManagement\App.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\ChairGridView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\CreateTicketView.xaml;;
-FD:\check master\WPF Client App\FlightTicketManagement\MainApp\Donate.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\DashboardView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\GetFlightView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\GetTransitView.xaml;;
@@ -9,10 +9,10 @@ FD:\check master\WPF Client App\FlightTicketManagement\Views\LoginView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\MainAppView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\FlightListView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\PlaneScheduleView.xaml;;
-FD:\check master\WPF Client App\FlightTicketManagement\MainApp\Report.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Resource\Art\artResource.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Resource\menuStyle.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Resource\tileButton.xaml;;
+FD:\check master\WPF Client App\FlightTicketManagement\Views\ReportView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Views\SignupView.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Resource\loginButton.xaml;;
 FD:\check master\WPF Client App\FlightTicketManagement\Resource\resource.xaml;;

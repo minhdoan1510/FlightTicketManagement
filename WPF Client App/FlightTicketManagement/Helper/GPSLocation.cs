@@ -37,6 +37,7 @@ namespace GPSLocation
 
         public static async Task<string> requestIP()
         {
+            initClient();
             string url = "http://checkip.dyndns.org/json";
 
             using (HttpResponseMessage respond = await Client.GetAsync(url))
@@ -62,6 +63,7 @@ namespace GPSLocation
 
         public static async Task<location_data> requestLocation()
         {
+            initClient();
             string ip_address = await requestIP();
             string url = $"https://api.ipdata.co/{ip_address}" +
                 $"?api-key=5eda9e6bd49b361f4bf8f23a85d3b57692ba0c963f8132c9460c4bf9";
@@ -83,6 +85,7 @@ namespace GPSLocation
 
         public static async Task<weather_data.RootObject> requestWeather()
         {
+            initClient();
             location_data current_location = await requestLocation();
 
             string url = "http://api.openweathermap.org/data/2.5/weather";

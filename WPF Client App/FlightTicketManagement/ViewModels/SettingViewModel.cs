@@ -90,6 +90,7 @@ namespace FlightTicketManagement.ViewModels
             base.OnViewLoaded(view);
             await LoadRestrictions();
         }
+
         private async Task LoadRestrictions()
         {
             Response<RestrictionsModel> response = await APIHelper.Instance.Get<Response<RestrictionsModel>>(ApiRoutes.Restriction.Get);

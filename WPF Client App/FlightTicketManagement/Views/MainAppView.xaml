@@ -8,13 +8,11 @@
         mc:Ignorable="d"
         Height="768"
         Width="1300"
-    WindowStyle="None"
+        WindowStyle="None"
         BorderThickness="0"
         AllowsTransparency="True"
         Title="MainApp"
-        
-        ResizeMode="NoResize"
-        >
+        ResizeMode="NoResize">
     <Window.Resources>
 
     </Window.Resources>
@@ -63,7 +61,7 @@
                           Width="8"
                           Margin="{Binding ButtonTracker}"
                           HorizontalAlignment="Left" />
-                    
+
                     <StackPanel Margin="0,143,0,54.4">
                         <Button x:Name="ShowDashBoardView"
                                 Margin="3"
@@ -89,7 +87,6 @@
                         <Button x:Name="ShowPlaneScheduleView"
                                 Margin="3"
                                 Background="Transparent"
-                               
                                 BorderThickness="0"
                                 Padding="0"
                                 Height="45">
@@ -111,7 +108,6 @@
                         <Button x:Name="ShowCreateTicketView"
                                 Margin="3"
                                 Background="Transparent"
-                                
                                 BorderThickness="0"
                                 Padding="0"
                                 Height="45">
@@ -133,7 +129,6 @@
                         <Button x:Name="ShowPlaneListView"
                                 Margin="3"
                                 Background="Transparent"
-                               
                                 BorderThickness="0"
                                 Padding="0"
                                 Height="45">
@@ -155,7 +150,6 @@
                         <Button x:Name="ShowReportView"
                                 Margin="3"
                                 Background="Transparent"
-                                
                                 BorderThickness="0"
                                 Padding="0"
                                 Height="45">
@@ -177,7 +171,6 @@
                         <Button x:Name="donateBtn"
                                 Margin="3"
                                 Background="Transparent"
-                 
                                 BorderThickness="0"
                                 Padding="0"
                                 Height="45">
@@ -199,7 +192,6 @@
                         <Button x:Name="ShowSettingView"
                                 Margin="3"
                                 Background="Transparent"
-                
                                 BorderThickness="0"
                                 Padding="0"
                                 Height="45">
@@ -237,59 +229,51 @@
                             VerticalAlignment="Top"
                             HorizontalAlignment="Stretch">
                         <Grid>
-                             <TextBlock FontSize="20"
+                            <TextBlock FontSize="20"
                                        x:Name="Title"
-                                        
                                        Panel.ZIndex="1"
                                        Margin="10,0,750.8,0"
                                        FontWeight="Bold"
                                        MouseDown="tileBar_MouseDown">Dashboard</TextBlock>
-                        <StackPanel x:Name="tileBar"
-                                    Background="White"
-                                    MouseDown="tileBar_MouseDown"
-                                    Orientation="Horizontal"
-                                    FlowDirection="RightToLeft">
-                            <Button x:Name="closeBtn"
-                                    Background="{x:Null}"
-                                    Click="cancelBtn_Click"
-                                    Width="35"
-                                    Padding="0"
-                                    BorderThickness="0">
-                                <materialDesign:PackIcon Kind="WindowClose"
-                                                         Background="White"
-                                                         Foreground="Black"
-                                                         Margin="0"
-                                                         Height="29"
-                                                         Width="32" />
-                            </Button>
-                            <Button x:Name="minimizeBtn"
-                                    Background="{x:Null}"
-                                    Click="minimizeBtn_Click"
-                                    Width="35"
-                                    Padding="0"
-                                    BorderThickness="0">
-                                <materialDesign:PackIcon Kind="WindowMinimize"
-                                                         Background="White"
-                                                         Foreground="Black"
-                                                         Margin="0"
-                                                         Height="29"
-                                                         Width="32" />
-                            </Button>
-                        </StackPanel>
+                            <StackPanel x:Name="tileBar"
+                                        Background="White"
+                                        MouseDown="tileBar_MouseDown"
+                                        Orientation="Horizontal"
+                                        FlowDirection="RightToLeft">
+                                <Button x:Name="closeBtn"
+                                        Background="{x:Null}"
+                                        Click="cancelBtn_Click"
+                                        Width="35"
+                                        Padding="0"
+                                        BorderThickness="0">
+                                    <materialDesign:PackIcon Kind="WindowClose"
+                                                             Background="White"
+                                                             Foreground="Black"
+                                                             Margin="0"
+                                                             Height="29"
+                                                             Width="32" />
+                                </Button>
+                                <Button x:Name="minimizeBtn"
+                                        Background="{x:Null}"
+                                        Click="minimizeBtn_Click"
+                                        Width="35"
+                                        Padding="0"
+                                        BorderThickness="0">
+                                    <materialDesign:PackIcon Kind="WindowMinimize"
+                                                             Background="White"
+                                                             Foreground="Black"
+                                                             Margin="0"
+                                                             Height="29"
+                                                             Width="32" />
+                                </Button>
+                            </StackPanel>
                         </Grid>
                     </Border >
 
-                    <Grid Grid.Row="1"  x:Name="homeGrid">
-                                               
-                        <Grid x:Name="userControlGrid">
-                            <!--<local:PlaneSchedule x:Name="planeScheduleCtrl" />
-                            <local:CreateTicket x:Name="createTicketCtrl" />
-                            <local:PlaneList x:Name="planeListCtrl" />
-                            <local:Report x:Name="reportCtrl" />
-                            <local:Donate x:Name="donateCtrl" />
-                            <local:Setting x:Name="settingCtrl" />
-                            <local:Dashboard x:Name="dashBoardCtrl" />-->
-                        </Grid>
+                    <Grid Grid.Row="1"
+                          x:Name="homeGrid">
+                        <ContentControl x:Name="ActiveItem" />
+
                     </Grid>
                 </Grid>
 

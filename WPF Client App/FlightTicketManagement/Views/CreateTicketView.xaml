@@ -1,13 +1,341 @@
-﻿<UserControl x:Class="FlightTicketManagement.Views.CreateTicket"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:FlightTicketManagement"
+             xmlns:model="clr-namespace:FlightTicketManagement.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local1="clr-namespace:FlightTicketManagement.Views"
+             x:Class="FlightTicketManagement.Views.CreateTicketView"
              mc:Ignorable="d"
-             Background="White"
-             d:DesignHeight="722" d:DesignWidth="1094">
-    <Grid>
-        <TextBlock FontSize="50">create ticket</TextBlock>
+             d:DesignHeight="716.8"
+             d:DesignWidth="1088.8"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             xmlns:localHelper="clr-namespace:FlightTicketManagement.Helper">
+
+    <UserControl.Resources>
+        <localHelper:BoolisibilityHelper x:Key="NotBoolisibilityHelper" />
+        <model:CalMultiBinding x:Key="CalMultiBinding" />
+    </UserControl.Resources>
+    <Grid ScrollViewer.CanContentScroll="True"
+          ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition  Height="auto" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1">
+                <TextBlock Margin="10"
+                           Text="Thông tin khách hàng"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             Margin="10 10 10 10"
+                             materialDesign:HintAssist.Hint="Tên khách hàng"
+                             Width="249"
+                             Text="{Binding PassengerName}" />
+                    <TextBox VerticalAlignment="Stretch"
+                             Margin="10 10 10 10"
+                             materialDesign:HintAssist.Hint="Số điện thoại"
+                             Width="259"
+                             TextInput="TextBox_TextInput"
+                             Text="{Binding Tel}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             Margin="10 10 10 10"
+                             materialDesign:HintAssist.Hint="Số CMND"
+                             Width="249"
+                             Text="{Binding IDCard}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0">
+                <TextBlock Margin="10"
+                           Text="Thông tin đặt vé"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center" />
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nơi đến"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <ComboBox x:Name="DestCity"
+                              materialDesign:HintAssist.Hint="Thành phố"
+                              materialDesign:HintAssist.HintOpacity=".26"
+                              Margin="50 10"
+                              DisplayMemberPath="CityName"
+                              SelectedValue="{Binding CitySelected}"
+                              IsEditable="True"
+                              Width="177" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Sân bay"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <ComboBox x:Name="DestAirport"
+                              materialDesign:HintAssist.Hint="Tên sân bay"
+                              materialDesign:HintAssist.HintOpacity=".26"
+                              DisplayMemberPath="AirportName"
+                              SelectedValue="{Binding AirportSelected}"
+                              Margin="50 10"
+                              IsEditable="True"
+                              Width="177" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ngày bay"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <DatePicker x:Name="FutureDatePicker"
+                                Width="177"
+                                Margin="50 10"
+                                materialDesign:HintAssist.Hint="Future Date"
+                                SelectedDate="{Binding TimeBooking}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Tuyến bay"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <ListView x:Name="DurationTime"
+                              Margin="50 0 0 0"
+                              Width="410"
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              SelectionMode="Single"
+                              SelectedItem="{Binding DurationSelected}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True"
+                                           Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush"
+                                                    Value="{DynamicResource PrimaryHueMidBrush}" />
+                                            <Setter Property="BorderThickness"
+                                                    Value="1" />
+                                            <Setter Property="CornerRadius"
+                                                    Value="5" />
+                                            <Setter Property="Width"
+                                                    Value="auto" />
+                                            <Setter Property="Height"
+                                                    Value="auto" />
+                                        </Style>
+                                    </Border.Style>
+                                    <TextBlock Text="{Binding DurTime, StringFormat=\{0:hh\\:mm\}}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Margin="5 5">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Width"
+                                                        Value="auto" />
+                                                <Setter Property="Height"
+                                                        Value="auto" />
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}" />
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Loại vé"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <ComboBox x:Name="ClassList"
+                              materialDesign:HintAssist.Hint="Loại vé"
+                              materialDesign:HintAssist.HintOpacity=".26"
+                              Margin="50 10"
+                              SelectedValue="{Binding ClassSelected}"
+                              IsEditable="false"
+                              Width="177">
+
+                    </ComboBox>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Dãy ghế"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <TextBox x:Name="PosW"
+                             Margin="50 0"
+                             Width="410" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Số ghế"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <TextBox x:Name="PosH"
+                             Margin="50 0 0 0"
+                             Width="410" />
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+        <ContentControl x:Name="ActiveItem"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Grid.Row="1" />
+
+        <StackPanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Thanh toán"
+                           HorizontalAlignment="Right"
+                           Margin="20 0" />
+                <ToggleButton HorizontalAlignment="Right"
+                              x:Name="IsPaid"
+                              Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                              IsChecked="{Binding IsPaid, UpdateSourceTrigger=PropertyChanged}">
+
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                        <SolidColorBrush Color="Green" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                        <SolidColorBrush Color="Red" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                </ToggleButton>
+            </StackPanel>
+            <Grid HorizontalAlignment="Left"
+                  Width="1089"
+                  Visibility="{Binding IsPaid , Converter = {StaticResource NotBoolisibilityHelper}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="914*" />
+                    <ColumnDefinition Width="175*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel HorizontalAlignment="Right"
+                            Margin="0,0,28,0"
+                            Width="101">
+                    <TextBlock Text="Thành tiền"
+                               Margin="0 10 0 25"
+                               Height="auto"
+                               VerticalAlignment="Bottom"
+                               FontSize="20"
+                               FontWeight="Bold" />
+                    <TextBlock Text="Khách đưa"
+                               Margin="0 10 0 25"
+                               Height="auto"
+                               VerticalAlignment="Bottom"
+                               FontSize="20"
+                               FontWeight="Bold" />
+                    <TextBlock Text="Còn lại"
+                               Margin="0 10 0 25"
+                               Height="auto"
+                               VerticalAlignment="Bottom"
+                               FontSize="20"
+                               FontWeight="Bold" />
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            Width="175"
+                            Margin="0,0,-0.2,0">
+                    <TextBox x:Name="Totals"
+                             IsReadOnly="True"
+                             Text="{Binding Totals, StringFormat={}{0:#,# đ}}"
+                             Width="auto"
+                             Height="40"
+                             Margin="0 0 0 15"
+                             HorizontalContentAlignment="Left"
+                             VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="Receive"
+                             Text="{Binding Receive, StringFormat={}{0:#,# đ}}"
+                             Width="auto"
+                             Height="40"
+                             Margin="0 0 0 15"
+                             HorizontalContentAlignment="Left"
+                             VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox IsReadOnly="True"
+                             Width="auto"
+                             Height="40"
+                             Margin="0 0 0 15"
+                             HorizontalContentAlignment="Left"
+                             VerticalContentAlignment="Center">
+                        <TextBox.Text>
+                            <MultiBinding Converter="{StaticResource CalMultiBinding}"
+                                          StringFormat='{}{0:#,#0 đ}'>
+                                <Binding ElementName="Totals"
+                                         Path="Text" />
+                                <Binding ElementName="Receive"
+                                         Path="Text" />
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="CreateTicket"
+                    IsEnabled="{Binding CompleteTicket}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    Height="40"
+                    Width="124"
+                    materialDesign:ButtonAssist.CornerRadius="25"
+                    HorizontalAlignment="Center"
+                    Content="Tạo vé"
+                    Background="ForestGreen">
+            </Button>
+            <Button x:Name="ReloadScene"
+                    Margin="5"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    ToolTip="Đặt lại"
+                    Background="Gray"
+                    BorderBrush="Gray">
+                <materialDesign:PackIcon Kind="ReloadAlert" />
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

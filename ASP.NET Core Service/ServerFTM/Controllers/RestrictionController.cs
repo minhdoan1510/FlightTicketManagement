@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace ServerFTM.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]

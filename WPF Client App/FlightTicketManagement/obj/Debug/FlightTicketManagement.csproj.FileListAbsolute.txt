@@ -416,6 +416,24 @@ D:\Coding\clone2\FlightTicketManagement\WPF Client App\FlightTicketManagement\ob
 D:\Coding\clone2\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.GenerateResource.cache
 D:\Coding\clone2\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.CoreCompileInputs.cache
 D:\Coding\clone2\FlightTicketManagement\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.CopyComplete
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csprojAssemblyReference.cache
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\CreateTicketView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\DashboardView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\GetFlightView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\GetTransitView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\LoginView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\MainAppView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\FlightListView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\PlaneScheduleView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ReportView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\SignupView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\SettingView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ShellView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\TransitView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\App.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement_MarkupCompile.cache
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement_MarkupCompile.lref
 D:\check master\WPF Client App\FlightTicketManagement\bin\Debug\FlightTicketManagement.exe.config
 D:\check master\WPF Client App\FlightTicketManagement\bin\Debug\FlightTicketManagement.exe
 D:\check master\WPF Client App\FlightTicketManagement\bin\Debug\FlightTicketManagement.pdb
@@ -490,28 +508,8 @@ D:\check master\WPF Client App\FlightTicketManagement\bin\Debug\System.Text.Enco
 D:\check master\WPF Client App\FlightTicketManagement\bin\Debug\System.Text.Json.xml
 D:\check master\WPF Client App\FlightTicketManagement\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\check master\WPF Client App\FlightTicketManagement\bin\Debug\System.ValueTuple.xml
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csprojAssemblyReference.cache
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\CreateTicketView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Donate.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\DashboardView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\GetFlightView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\GetTransitView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\LoginView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\MainAppView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\FlightListView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\PlaneScheduleView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Report.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\SignupView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\SettingView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ShellView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\TransitView.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\App.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement_MarkupCompile.cache
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement_MarkupCompile.lref
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\App.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\CreateTicketView.baml
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Donate.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\DashboardView.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\GetFlightView.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\GetTransitView.baml
@@ -519,10 +517,10 @@ D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\LoginView.
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\MainAppView.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\FlightListView.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\PlaneScheduleView.baml
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\MainApp\Report.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Resource\Art\artResource.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Resource\menuStyle.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Resource\tileButton.baml
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ReportView.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\SignupView.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Resource\loginButton.baml
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Resource\resource.baml
@@ -538,3 +536,5 @@ D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketMana
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.csproj.CopyComplete
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.exe
 D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\FlightTicketManagement.pdb
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ChairGridView.g.cs
+D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ChairGridView.baml

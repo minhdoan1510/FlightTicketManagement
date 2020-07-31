@@ -15,6 +15,9 @@ namespace ServerFTM.DAL.Query
         public const string ProcGetTransits = "EXECUTE GetTransit @flightId";
         public const string ProcGetRestrictions = "EXECUTE GetRestrictions";
         public const string ProcChangeRestrictions = "EXECUTE ChangeRestrictions @MinFlightTime , @MaxTransit , @MinTransitTime , @MaxTransitTime , @LatestBookingTime , @LatestCancelingTime";
+        public const string ProcMonthProfit = "EXECUTE GetMonthProfit @month , @year";
+        public const string ProcYearProfit = "EXECUTE GetYearProfit @year";
+
 
         public const string ProcGetCity = "EXECUTE GetCity";
         public const string ProcGetFlightForCity = "EXECUTE GetFlightForCity @cityId";
@@ -37,5 +40,15 @@ namespace ServerFTM.DAL.Query
         public const string ProcGetFlightRouteAll = "EXECUTE ProcGetFlightRouteAll";
         public const string ProcGetTransitRouteFromFlight = "EXECUTE ProcGetTransitRouteFromFlight @flightID";
         public const string ProcTestTime = "exec testTimeMap";
+
+        public const string ProcAddTicket = "EXECUTE ProcAddTicket @idTicket , @idPassenger , @iDDurationFlight , @classId , @timeflight , @timebooking , @isPaid  , @idChairBooked , @xchair , @ychair";
+        public const string ProcAddPassenger = "EXECUTE ProcAddPassenger @IDPassenger , @PassengerName , @PassengerIDCard , @PassenserTel";
+        public const string ProcAPinCity = "EXECUTE ProcAPinCity @idlocal , @idcity";
+        public const string ProcCityAlready = "EXECUTE ProcCityAlready @idlocal";
+        public const string ProcGetDurationTime = "EXECUTE ProcGetDurationTime @idoriap , @iddestap";
+        public const string ProcGetExistPassenger = "EXECUTE GetInfoPassenger @tel";
+        public const string ProcGetPriceFight = "EXECUTE ProcGetPriceFight @IDDurationFlight , @ClassId";
+        public const string ProcGetListChair = "EXECUTE ProcGetListChair @id , @timedur ";
+        public const string ProcGetDefineChairFlight = "EXECUTE ProcGetDefineChairFlight @id";
     }
 }

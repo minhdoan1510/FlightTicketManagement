@@ -7,6 +7,7 @@ using ServerFTM.BUS;
 using System;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,11 +33,12 @@ namespace ServerFTM.Controllers
 
             if (profile != null) {
 
+                var tokenStr = GenerateJSONWebToken(profile);
                 InfoLogin infoLogin = new InfoLogin() {
                     UserName = account.Username,
                     Name = profile.Name,
                     Id = profile.IDAccount,
-                    Token = "This Is Null"
+                    Token = tokenStr
                 };
 
                 return new JsonResult(new ApiResponse<object>(infoLogin));
@@ -54,8 +56,7 @@ namespace ServerFTM.Controllers
             else return new JsonResult(new ApiResponse<object>(200, "signup failed"));
         }
 
-        private string GenerateJSONWebToken(Profile profile)
-        {
+        private string GenerateJSONWebToken(Profile profile) {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Secret"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -65,7 +66,7 @@ namespace ServerFTM.Controllers
                 new Claim(JwtRegisteredClaimNames.Jti,profile.IDAccount)
             };
 
-            var token = new JwtSecurityToken(null, null, 
+            var token = new JwtSecurityToken(null, null,
                                         claims,
                                         expires: DateTime.Now.AddMinutes(360),
                                         signingCredentials: credentials);

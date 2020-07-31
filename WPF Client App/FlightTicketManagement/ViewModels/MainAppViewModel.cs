@@ -74,6 +74,9 @@ namespace FlightTicketManagement.ViewModels
                 case Screens.CreateTicket:
                     ActivateItem(_container.GetInstance<CreateTicketViewModel>());
                     break;
+                case Screens.Report:
+                    ActivateItem(_container.GetInstance<ReportViewModel>());
+                    break;
                 case Screens.Setting:
                     ActivateItem(_container.GetInstance<SettingViewModel>());
                     break;
@@ -108,6 +111,10 @@ namespace FlightTicketManagement.ViewModels
             ActivateScreen(Screens.DashBoard);
         }
 
+        public void ShowCreateTicketView() {
+            ActivateScreen(Screens.CreateTicket);
+        }
+
         public void ShowPlaneListView()
         {
             ActivateScreen(Screens.FlightList);
@@ -116,9 +123,14 @@ namespace FlightTicketManagement.ViewModels
         {
             ActivateScreen(Screens.Setting);
         }
+
         public void ShowPlaneScheduleView()
         {
             ActivateScreen(Screens.PlaneSchedule);
+        }
+
+        public void ShowReportView() {
+            ActivateScreen(Screens.Report);
         }
     }
 }

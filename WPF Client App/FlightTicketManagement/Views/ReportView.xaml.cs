@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightTicketManagement
+namespace FlightTicketManagement.Views
 {
     /// <summary>
-    /// Interaction logic for Donate.xaml
+    /// Interaction logic for ReportView.xaml
     /// </summary>
-    public partial class Donate : UserControl
+    public partial class ReportView : UserControl
     {
-        public Donate() {
+        public ReportView() {
             InitializeComponent();
         }
     }

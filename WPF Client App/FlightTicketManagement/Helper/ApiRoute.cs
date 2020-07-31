@@ -13,11 +13,11 @@ namespace FlightTicketManagement.Helper
 
         public const string Keybase = "{id}";
         public const string Key = "/{id}";
+
         public static class Account
         {
             public const string LogIn = Base + "/Account/login";
             public const string SignUp = Base + "/Account/signup";
-
         }
 
         public static class Restriction
@@ -25,12 +25,39 @@ namespace FlightTicketManagement.Helper
             public const string Get = Base + "/Restrictions";
             public const string Post = Base + "/Restrictions";
         }
+
+        public static class Passenger
+        {
+            public const string GetExist = Base + "/Passenger/GetExist";
+            public const string Add = Base + "/Passenger/AddPassenger";
+            public const string GetAll = Base + "/passengers";
+            public const string Get = Base + "/passengers" + Key;
+            public const string Update = Base + "/passengers" + Key;
+            public const string Delete = Base + "/passengers" + Key;
+            public const string Create = Base + "/passengers";
+        }
+        public static class Ticket
+        {
+            public const string GetPrice = Base + "/Ticket/getprice";
+            public const string Add = Base + "/Ticket/add";
+            public const string GetAll = Base + "/tickets";
+            public const string Get = Base + "/tickets" + Key;
+            public const string Update = Base + "/tickets" + Key;
+            public const string Delete = Base + "/tickets" + Key;
+            public const string Create = Base + "/tickets";
+            public const string LoadStateChair = Base + "/Ticket/LoadStateChair";
+        }
+
+        public static class Report
+        {
+            public const string GetMonthReport = Base + "/Report/month";
+            public const string GetYearReport = Base + "/Report/year";
+        }
+
         public static class FlightT
         {
             public const string GetAll = Base + "/Flight";
             public const string GetFlightForCity = Base + "/Flight" + Key;
-
-
         }
 
         public static class Flight
@@ -48,19 +75,34 @@ namespace FlightTicketManagement.Helper
             public const string DisableFlightAll = Base + "/Flight/disableFlightAll";
             public const string GetDashStatistic = Base + "/Flight/getDashStatistic/Date={date}";
             public const string GetFlightRoute = Base + "/Flight/getFlightRoute";
+
+            public const string GetDurationTime = Base + "/flight/durationtime";
+            public const string GetDefineChairFlight = Base + "/flight/DefineChairFlight";
         }
 
         public static class Transit
-
         {
-
             public const string Get = Base + "/Transit" + Key;
-
-
         }
+
+        public static class Airport
+        {
+            public const string GetAll = Base + "/airports";
+            public const string GetAPAlready = Base + "/Airport";
+            public const string Get = Base + "/airports" + Key;
+            public const string Update = Base + "/airports" + Key;
+            public const string Delete = Base + "/airports" + Key;
+            public const string Create = Base + "/airports";
+        }
+
         public static class City
         {
+            public const string GetCityAlready = Base + "/City";
             public const string GetAll = Base + "/City";
+            public const string Get = Base + "/cities" + Key;
+            public const string Update = Base + "/cities" + Key;
+            public const string Delete = Base + "/cities" + Key;
+            public const string Create = Base + "/cities";
         }
     }
 }
