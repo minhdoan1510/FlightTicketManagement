@@ -82,8 +82,7 @@ namespace FlightTicketManagement.Views
             MoneyWaiting.Visibility = Visibility.Visible;
             moneyImage.Visibility = Visibility.Hidden;
 
-            string date = string.Format("{0:yyyy/dd/MM HH:mm:ss tt}", DateTime.Now);
-
+            string date = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
             Response<DashStatistic> result = await FlightBusControl.Instance.GetDashBoardStatistic(date);
 
             TicketWaiting.Visibility = Visibility.Hidden;

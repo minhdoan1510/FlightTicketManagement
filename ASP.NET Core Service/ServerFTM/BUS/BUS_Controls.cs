@@ -11,6 +11,7 @@ using Library.Models;
 using ServerFTM.Models;
 using ServerFTM.DAL.Helper;
 using Models;
+using System.Diagnostics;
 
 namespace ServerFTM.BUS
 {
@@ -179,6 +180,8 @@ namespace ServerFTM.BUS
             if (dailyTicket != null && dailyMoney != null) {
                 result.dailyTicket = int.Parse(dailyTicket.Rows[0]["ticketDaily"].ToString());
                 result.dailyMoney = double.Parse(dailyMoney.Rows[0]["moneyDaily"].ToString());
+
+                Debug.WriteLine(result.dailyTicket);
             }
             return result;
         }

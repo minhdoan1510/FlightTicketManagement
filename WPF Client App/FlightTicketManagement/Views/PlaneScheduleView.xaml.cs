@@ -96,11 +96,9 @@ public class FlightBusControl
             (ApiRoutes.Flight.DisableFlightAll);
     }
 
-    public async Task<Response<DashStatistic>> GetDashBoardStatistic(string date) {
-        string url = ApiRoutes.Flight.GetDashStatistic;
-        url.Replace("{date}", date);
-
-        return await APIHelper.Instance.Get<Response<DashStatistic>>(url);
+    public async Task<Response<DashStatistic>> GetDashBoardStatistic(string value) {
+        return await APIHelper.Instance.Post<Response<DashStatistic>>
+            (ApiRoutes.Flight.GetDashStatistic, new { date = value });
     }
 
     public async Task<Response<List<FlightRoute>>> GetFlightRoutes() {

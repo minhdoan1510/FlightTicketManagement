@@ -16,7 +16,6 @@ namespace ServerFTM.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-
     public class FlightController : ControllerBase
     {
         [HttpGet]
@@ -134,9 +133,9 @@ namespace ServerFTM.Controllers
             return new JsonResult(new ApiResponse<object>(result)); 
         }
 
-        [HttpGet("getDashStatistic/Date={date}")]
-        public async Task<IActionResult> GetDashStatistic(string date) {
-            DashStatistic result = BUS_Controls.Controls.GetDashStatistic(date);
+        [HttpPost("getDashStatistic")]
+        public async Task<IActionResult> GetDashStatistic([FromBody] DashDate value) {
+            DashStatistic result = BUS_Controls.Controls.GetDashStatistic(value.date);
 
             return new JsonResult(new ApiResponse<object>(result)); 
         }
