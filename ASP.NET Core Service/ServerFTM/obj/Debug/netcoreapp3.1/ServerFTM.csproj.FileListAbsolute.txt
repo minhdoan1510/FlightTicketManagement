@@ -388,3 +388,13 @@ D:\check master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\staticweb
 D:\check master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.dll
 D:\check master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.pdb
 D:\check master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.genruntimeconfig.cache
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Library.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Library.pdb

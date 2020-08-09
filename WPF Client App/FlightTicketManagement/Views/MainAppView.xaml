@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FlightTicketManagement"
+        xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         Height="768"
         Width="1300"
         WindowStyle="None"
         BorderThickness="0"
         AllowsTransparency="True"
+        Closed="Window_Closed"
         Title="MainApp"
         ResizeMode="NoResize">
     <Window.Resources>

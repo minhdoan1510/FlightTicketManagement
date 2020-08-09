@@ -4,16 +4,16 @@
 exe
 C#
 .cs
-D:\check master\WPF Client App\FlightTicketManagement\obj\Debug\
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\
 FlightTicketManagement
 none
 false
 DEBUG;TRACE
-D:\check master\WPF Client App\FlightTicketManagement\App.xaml
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\App.xaml
 21-1027007611
 
 401872509927
-154-133508340
+154793587678
 Views\ChairGridView.xaml;Views\CreateTicketView.xaml;Views\DashboardView.xaml;Views\GetFlightView.xaml;Views\GetTransitView.xaml;Views\LoginView.xaml;Views\MainAppView.xaml;Views\FlightListView.xaml;Views\PlaneScheduleView.xaml;Resource\Art\artResource.xaml;Resource\menuStyle.xaml;Resource\tileButton.xaml;Views\ReportView.xaml;Views\SignupView.xaml;Resource\loginButton.xaml;Resource\resource.xaml;Resource\tileBarButton.xaml;Views\SettingView.xaml;Resource\transparentBackground.xaml;Views\ShellView.xaml;Views\TransitView.xaml;
 
 False

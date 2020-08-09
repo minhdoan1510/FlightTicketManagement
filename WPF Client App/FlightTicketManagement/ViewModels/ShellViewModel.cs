@@ -22,7 +22,6 @@ namespace FlightTicketManagement.ViewModels
             _container = container;
             _events.Subscribe(this);
             ActivateItem(_container.GetInstance<LoginViewModel>());
-
         }
        
         public void Handle(int message)

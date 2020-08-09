@@ -13,9 +13,9 @@
              d:DesignWidth="1094">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -23,31 +23,45 @@
                    Grid.Row="0"
                    FontWeight="Bold"
                    FontSize="20"
-                   HorizontalAlignment="Center"></TextBlock>
-        <ComboBox Grid.Row="1"
-                  materialDesign:HintAssist.Hint="Thành phố"
-                  ItemsSource="{Binding Cities}"
-                  DisplayMemberPath="Name"
-                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                  SelectedValue="{Binding SelectedCityId ,Mode=TwoWay}"
-                  SelectedValuePath="Id">
+                   HorizontalAlignment="Center">
+        </TextBlock>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Grid.Row="1">
+            <ComboBox materialDesign:HintAssist.Hint="Thành phố"
+                      FontSize="17"
+                      ItemsSource="{Binding Cities}"
+                      DisplayMemberPath="Name"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      SelectedValue="{Binding SelectedCityId ,Mode=TwoWay}"
+                      Width="988"
+                      SelectedValuePath="Id">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <Button Background="#FF4AB73A"
+                    Margin="20,0,0,-0.2"
+                    VerticalAlignment="Bottom"
+                    Padding="0"
+                    Width="48"
+                    x:Name="Refresh">
+                <materialDesign:PackIcon Kind="Refresh"
+                                         Width="28"
+                                         Height="24" />
+            </Button>
+        </StackPanel>
 
-
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
         <Controls:Map x:Name="FlightMap"
                       Grid.Row="2"
                       xmlns:m="clr-namespace:Helpers"
                       CredentialsProvider="4TVpiXr4TDrpvUv3Vx1e~6kDfAcRwQPNrxo_cHedf9w~AspdM1J6-KCvBj7qcsE0yLdcDiAoPaOFUTBhJcFdJQKRhaheaEEXUCKY70IUuAxs"
                       m:MapHelper.Center="{Binding Center}"
                       Mode="road"
-                      Height="250"
-                      ZoomLevel="{ Binding Zoom}"
-                      Margin="0,0,0.4,0">
+                      Margin="0 10 0 10"
+                      ZoomLevel="{ Binding Zoom}">
             <Controls:MapItemsControl ItemsSource="{Binding MapItem}"></Controls:MapItemsControl>
         </Controls:Map>
 
@@ -57,36 +71,39 @@
                   SelectionUnit="FullRow"
                   AutoGenerateColumns="False"
                   SelectionMode="Extended"
-                  Margin="0,0,0,10"
+                  Margin="0,0,0,0"
                   IsReadOnly="True"
+                  HorizontalScrollBarVisibility="Hidden"
                   SelectedItem="{Binding SelectedFlight,Mode=TwoWay}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Điểm khởi hành"
                                     Binding="{Binding OriginCity}"
-                                    Width="auto" />
+                                    Width="150" />
                 <DataGridTextColumn Header="Sân bay đi"
                                     Binding="{Binding OriginAP}"
-                                    Width="auto" />
+                                    Width="150" />
                 <DataGridTextColumn Header="Điểm kết thúc"
                                     Binding="{Binding DestCity}"
-                                    Width="auto" />
+                                    Width="150" />
                 <DataGridTextColumn Header="Sân bay đến"
                                     Binding="{Binding DestAP}"
-                                    Width="auto" />
+                                    Width="150" />
                 <DataGridTextColumn Header="Thời gian"
                                     Binding="{Binding Time, StringFormat=hh\\:mm}"
-                                    Width="auto" />
+                                    Width="120" />
                 <DataGridTextColumn Header="Transit"
                                     Binding="{Binding TransitNum}"
-                                    Width="auto" />
-                <DataGridTemplateColumn Width="auto">
+                                    Width="120" />
+                <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate xmlns:cal="http://www.caliburnproject.org">
                             <StackPanel Orientation="Horizontal">
                                 <Button cal:Bind.Model="{Binding FlightViewModel, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                         cal:Message.Attach="ShowTransit"
+                                        Margin="5"
                                         IsEnabled="{Binding IsEnabled}">Details</Button>
-                                <Button x:Name="BookTicket">Book Ticket</Button>
+                                <Button x:Name="BookTicket"
+                                        Margin="5">Book Ticket</Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

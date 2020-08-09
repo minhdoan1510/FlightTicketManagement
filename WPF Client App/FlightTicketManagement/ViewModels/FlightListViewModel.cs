@@ -19,7 +19,6 @@ using ServerFTM.Models;
 
 namespace FlightTicketManagement.ViewModels
 {
-
     class FlightListViewModel : Screen
     {
         private readonly IEventAggregator _events;
@@ -50,16 +49,20 @@ namespace FlightTicketManagement.ViewModels
 
                 Flights = new ObservableCollection<FlightDisplayModel>(list);
             }
-
         }
+
         private async Task LoadCity() {
             Response<List<CityModel>> response = await APIHelper.Instance.Get<Response<List<CityModel>>>(ApiRoutes.City.GetAll);
             if (response.IsSuccess) {
                 var list = response.Result;
 
+                list.Insert(0, new CityModel() {
+                    Id = "000",
+                    Name = "*** Get All Flights ***",
+                    Country = "None"
+                });
                 Cities = new BindingList<CityModel>(list);
             }
-
         }
 
         private ObservableCollection<FlightDisplayModel> _flights;
@@ -138,24 +141,34 @@ namespace FlightTicketManagement.ViewModels
             polygon.StrokeThickness = 5;
             polygon.Opacity = 0.7;
             polygon.Locations = new LocationCollection() {
-        new Location(47.6424,-122.3219),
-        new Location(47.8424,-122.1747),
-        new Location(47.5814,-122.1747) };
+                new Location(47.6424,-122.3219),
+                new Location(47.8424,-122.1747),
+                new Location(47.5814,-122.1747) };
             if (MapItem == null)
                 MapItem = new ObservableCollection<object>();
             MapItem.Add(polygon);
 
         }
+
+        public async void Refresh() {
+            await LoadFlights();
+            await LoadCity();
+        }
+
         private string _selectedCityId;
 
         public string SelectedCityId {
             get { return _selectedCityId; }
             set {
+                if (value == "000") {
+                    Flights.Clear();
+                    Task.WhenAll(Task.Run(() => LoadFlights()));
+                    return;
+                }
                 _selectedCityId = value;
                 NotifyOfPropertyChange(() => SelectedCityId);
                 Flights.Clear();
                 Task.WhenAll(Task.Run(() => LoadFlightsForCity()));
-
             }
         }
         private FlightDisplayModel _selectedFlight;
@@ -164,12 +177,12 @@ namespace FlightTicketManagement.ViewModels
             get { return _selectedFlight; }
             set {
                 _selectedFlight = value;
+
                 NotifyOfPropertyChange(() => SelectedFlight);
                 if (MapItem != null)
                     MapItem.Clear();
                 Task.Run(() => {
                     loadFLightMap();
-
                 });
             }
         }
@@ -179,6 +192,8 @@ namespace FlightTicketManagement.ViewModels
         }
 
         private async void loadFLightMap() {
+            if (SelectedFlight == null)
+                return;
 
             Response<List<FlightRoute>> response = await APIHelper.Instance.Get
                 <Response<List<FlightRoute>>>(ApiRoutes.Flight.GetFlightRoute.Replace

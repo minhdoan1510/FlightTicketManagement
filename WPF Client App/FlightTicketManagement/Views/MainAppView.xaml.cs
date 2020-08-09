@@ -23,25 +23,25 @@ namespace FlightTicketManagement.Views
 
     public partial class MainAppView : Window
     {
-        public MainAppView()
-        {
+        public MainAppView() {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
 
-        private void cancelBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void cancelBtn_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
 
-        private void minimizeBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void minimizeBtn_Click(object sender, RoutedEventArgs e) {
             this.WindowState = WindowState.Minimized;
         }
 
-        private void tileBar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void tileBar_MouseDown(object sender, MouseButtonEventArgs e) {
             this.DragMove();
+        }
+
+        private void Window_Closed(object sender, EventArgs e) {
+            ShellView.Instance.Close(); 
         }
     }
 }

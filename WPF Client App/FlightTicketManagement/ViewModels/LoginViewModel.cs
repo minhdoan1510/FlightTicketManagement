@@ -22,7 +22,6 @@ namespace FlightTicketManagement.ViewModels
         public LoginViewModel(IEventAggregator events)
         {
             _events = events;
-           
         }
 
         public string Username
@@ -59,13 +58,11 @@ namespace FlightTicketManagement.ViewModels
         {
             if(await APIHelper.Instance.Authenticate(Username, Password))
             {
+                ShellView.Instance.Hide();
+
                 _events.PublishOnUIThread((int)EventModel.LogOnEventModel);
             }
             else MessageBox.Show("Login failed");
-        }
-
-        private void MainApp_Closed(object sender, EventArgs e) {
-            ShellView.Instance.Close();
         }
 
         public void SwitchToSignup()

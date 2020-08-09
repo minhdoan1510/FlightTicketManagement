@@ -5344,11 +5344,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\check master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+      "projectUniqueName": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
       "projectName": "ServerFTM",
-      "projectPath": "D:\\check master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
+      "projectPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
       "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
-      "outputPath": "D:\\check master\\ASP.NET Core Service\\ServerFTM\\obj\\",
+      "outputPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5364,11 +5364,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
-              "projectPath": "D:\\check master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
+            "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj": {
+              "projectPath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\API.Shared\\API.Shared.csproj"
             },
-            "D:\\check master\\WPF Client App\\DTO\\Library.csproj": {
-              "projectPath": "D:\\check master\\WPF Client App\\DTO\\Library.csproj"
+            "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\Library.csproj": {
+              "projectPath": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\Library.csproj"
             }
           }
         }

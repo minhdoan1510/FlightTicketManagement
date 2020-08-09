@@ -29,7 +29,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition  Height="auto" />
-            <RowDefinition Height="100" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -82,43 +82,14 @@
                            HorizontalAlignment="Center" />
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nơi đến"
-                               Margin="10 10"
-                               VerticalAlignment="Center"
-                               Width="65" />
-                    <ComboBox x:Name="DestCity"
-                              materialDesign:HintAssist.Hint="Thành phố"
-                              materialDesign:HintAssist.HintOpacity=".26"
-                              Margin="50 10"
-                              DisplayMemberPath="CityName"
-                              SelectedValue="{Binding CitySelected}"
-                              IsEditable="True"
-                              Width="177" />
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Sân bay"
-                               Margin="10 10"
-                               VerticalAlignment="Center"
-                               Width="65" />
-                    <ComboBox x:Name="DestAirport"
-                              materialDesign:HintAssist.Hint="Tên sân bay"
-                              materialDesign:HintAssist.HintOpacity=".26"
-                              DisplayMemberPath="AirportName"
-                              SelectedValue="{Binding AirportSelected}"
-                              Margin="50 10"
-                              IsEditable="True"
-                              Width="177" />
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Ngày bay"
                                Margin="10 10"
                                VerticalAlignment="Center"
                                Width="65" />
                     <DatePicker x:Name="FutureDatePicker"
                                 Width="177"
-                                Margin="50 10"
+                                Margin="50 0 0 0"
+                                VerticalAlignment="Bottom"
                                 materialDesign:HintAssist.Hint="Future Date"
                                 SelectedDate="{Binding TimeBooking}" />
                 </StackPanel>
@@ -128,94 +99,32 @@
                                Margin="10 10"
                                VerticalAlignment="Center"
                                Width="65" />
-                    <ListView x:Name="DurationTime"
-                              Margin="50 0 0 0"
-                              Width="410"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              SelectionMode="Single"
-                              SelectedItem="{Binding DurationSelected}"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel IsItemsHost="True"
-                                           Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Border HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch">
-                                    <Border.Style>
-                                        <Style TargetType="{x:Type Border}">
-                                            <Setter Property="BorderBrush"
-                                                    Value="{DynamicResource PrimaryHueMidBrush}" />
-                                            <Setter Property="BorderThickness"
-                                                    Value="1" />
-                                            <Setter Property="CornerRadius"
-                                                    Value="5" />
-                                            <Setter Property="Width"
-                                                    Value="auto" />
-                                            <Setter Property="Height"
-                                                    Value="auto" />
-                                        </Style>
-                                    </Border.Style>
-                                    <TextBlock Text="{Binding DurTime, StringFormat=\{0:hh\\:mm\}}"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               Margin="5 5">
-                                        <TextBlock.Style>
-                                            <Style TargetType="{x:Type TextBlock}">
-                                                <Setter Property="Width"
-                                                        Value="auto" />
-                                                <Setter Property="Height"
-                                                        Value="auto" />
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}" />
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Loại vé"
-                               Margin="10 10"
-                               VerticalAlignment="Center"
-                               Width="65" />
-                    <ComboBox x:Name="ClassList"
-                              materialDesign:HintAssist.Hint="Loại vé"
-                              materialDesign:HintAssist.HintOpacity=".26"
-                              Margin="50 10"
-                              SelectedValue="{Binding ClassSelected}"
-                              IsEditable="false"
-                              Width="177">
-
-                    </ComboBox>
-
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Dãy ghế"
-                               Margin="10 10"
-                               VerticalAlignment="Center"
-                               Width="65" />
-                    <TextBox x:Name="PosW"
-                             Margin="50 0"
-                             Width="410" />
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Số ghế"
-                               Margin="10 10"
-                               VerticalAlignment="Center"
-                               Width="65" />
-                    <TextBox x:Name="PosH"
+                    <TextBox x:Name="flightID"
                              Margin="50 0 0 0"
-                             Width="410" />
+                             IsReadOnly="True"
+                             VerticalAlignment="Bottom"
+                             Text=""
+                             Width="154" />
+                    <Button x:Name="flightPicker"
+                            Content="Chọn"
+                            Margin="10 5 0 5" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ghế Ngồi"
+                               Margin="10 10"
+                               VerticalAlignment="Center"
+                               Width="65" />
+                    <TextBox x:Name="chairPosition"
+                             Margin="50 0 0 0"
+                             IsReadOnly="True"
+                             VerticalAlignment="Bottom"
+                             Text=""
+                             Width="154" />
+                    <Button x:Name="chairPicker" 
+                            Content="Chọn"
+                            Margin="10 5 0 5"
+                            />
                 </StackPanel>
             </StackPanel>
 
@@ -226,14 +135,17 @@
                         HorizontalAlignment="Stretch"
                         Grid.Row="1" />
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="2"
+                    Margin="10 10 0 0">
             <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
+                        HorizontalAlignment="Left">
                 <TextBlock Text="Thanh toán"
-                           HorizontalAlignment="Right"
-                           Margin="20 0" />
+                           FontWeight="DemiBold"
+                           FontSize="20"
+                           HorizontalAlignment="Right" />
                 <ToggleButton HorizontalAlignment="Right"
                               x:Name="IsPaid"
+                              Margin="25 0 0 0"
                               Style="{StaticResource MaterialDesignSwitchToggleButton}"
                               IsChecked="{Binding IsPaid, UpdateSourceTrigger=PropertyChanged}">
 
@@ -245,97 +157,51 @@
                     </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
                 </ToggleButton>
             </StackPanel>
-            <Grid HorizontalAlignment="Left"
-                  Width="1089"
-                  Visibility="{Binding IsPaid , Converter = {StaticResource NotBoolisibilityHelper}}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="914*" />
-                    <ColumnDefinition Width="175*" />
-                </Grid.ColumnDefinitions>
-                <StackPanel HorizontalAlignment="Right"
-                            Margin="0,0,28,0"
-                            Width="101">
-                    <TextBlock Text="Thành tiền"
-                               Margin="0 10 0 25"
-                               Height="auto"
-                               VerticalAlignment="Bottom"
-                               FontSize="20"
-                               FontWeight="Bold" />
-                    <TextBlock Text="Khách đưa"
-                               Margin="0 10 0 25"
-                               Height="auto"
-                               VerticalAlignment="Bottom"
-                               FontSize="20"
-                               FontWeight="Bold" />
-                    <TextBlock Text="Còn lại"
-                               Margin="0 10 0 25"
-                               Height="auto"
-                               VerticalAlignment="Bottom"
-                               FontSize="20"
-                               FontWeight="Bold" />
-                </StackPanel>
-                <StackPanel Grid.Column="1"
-                            HorizontalAlignment="Left"
-                            Width="175"
-                            Margin="0,0,-0.2,0">
-                    <TextBox x:Name="Totals"
-                             IsReadOnly="True"
-                             Text="{Binding Totals, StringFormat={}{0:#,# đ}}"
-                             Width="auto"
-                             Height="40"
-                             Margin="0 0 0 15"
-                             HorizontalContentAlignment="Left"
-                             VerticalContentAlignment="Center">
-                    </TextBox>
-                    <TextBox x:Name="Receive"
-                             Text="{Binding Receive, StringFormat={}{0:#,# đ}}"
-                             Width="auto"
-                             Height="40"
-                             Margin="0 0 0 15"
-                             HorizontalContentAlignment="Left"
-                             VerticalContentAlignment="Center">
-                    </TextBox>
-                    <TextBox IsReadOnly="True"
-                             Width="auto"
-                             Height="40"
-                             Margin="0 0 0 15"
-                             HorizontalContentAlignment="Left"
-                             VerticalContentAlignment="Center">
-                        <TextBox.Text>
-                            <MultiBinding Converter="{StaticResource CalMultiBinding}"
-                                          StringFormat='{}{0:#,#0 đ}'>
-                                <Binding ElementName="Totals"
-                                         Path="Text" />
-                                <Binding ElementName="Receive"
-                                         Path="Text" />
-                            </MultiBinding>
-                        </TextBox.Text>
-                    </TextBox>
-                </StackPanel>
-            </Grid>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
 
-        <StackPanel Grid.Row="3"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-            <Button x:Name="CreateTicket"
-                    IsEnabled="{Binding CompleteTicket}"
-                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                    Height="40"
-                    Width="124"
-                    materialDesign:ButtonAssist.CornerRadius="25"
-                    HorizontalAlignment="Center"
-                    Content="Tạo vé"
-                    Background="ForestGreen">
-            </Button>
-            <Button x:Name="ReloadScene"
-                    Margin="5"
-                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                    ToolTip="Đặt lại"
-                    Background="Gray"
-                    BorderBrush="Gray">
-                <materialDesign:PackIcon Kind="ReloadAlert" />
-            </Button>
+                <TextBlock Text="Thành Tiền"
+                           FontWeight="DemiBold"
+                           FontSize="20"
+                           Margin="0 10 0 0"
+                           HorizontalAlignment="Right" />
+
+                <TextBox x:Name="sumMoney"
+                         Margin="20 0 0 0"
+                         Width="200"
+                         IsReadOnly="True"
+                         VerticalAlignment="Bottom"
+                         FontSize="17"
+                         Text="woierj" />
+
+                <TextBlock Text="VNĐ"
+                           FontSize="17"
+                           Margin="10 10 0 0"
+                           HorizontalAlignment="Right" />
+            </StackPanel>
+
+            <StackPanel Margin="0 20 0 0"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                <Button x:Name="CreateTicket"
+                        IsEnabled="{Binding CompleteTicket}"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Height="40"
+                        Width="124"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        HorizontalAlignment="Center"
+                        Content="Tạo vé"
+                        Background="ForestGreen">
+                </Button>
+                <Button x:Name="ReloadScene"
+                        Margin="5"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                        ToolTip="Đặt lại"
+                        Background="Gray"
+                        BorderBrush="Gray">
+                    <materialDesign:PackIcon Kind="ReloadAlert" />
+                </Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

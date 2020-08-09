@@ -33,8 +33,14 @@ namespace FlightTicketManagement.Views
 
         public ShellView()
         {
-            Instance = this;
             InitializeComponent();
+
+            Instance = this;
+            Instance.Closed += MainApp_Closed;
+        }
+
+        private void MainApp_Closed(object sender, EventArgs e) {
+            ShellView.Instance.Close();
         }
 
         public void switchToSignUp()

@@ -318,27 +318,27 @@ namespace ServerFTM.DAL.Controls
         }
 
         public DataTable getTicketCountDaily(string date) {
-            try {
+            //try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcCountTicketDaily,
                     new object[] {
                         date
                     });
-            }
-            catch (Exception e) {
-                return null;
-            }
+            //}
+            //catch (Exception e) {
+            //    return null;
+            //}
         }
 
         public DataTable getSumMoneyDaily(string date) {
-            try {
+            //try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcSumMoneyDaily,
                     new object[] {
                         date
                     });
-            }
-            catch (Exception e) {
-                return null;
-            }
+            //}
+            //catch (Exception e) {
+            //    return null;
+            //}
         }
 
         public DataTable getFlightRouteAll() {
@@ -434,57 +434,11 @@ namespace ServerFTM.DAL.Controls
         }
         #endregion
 
-        #region Airport
-
-        internal ResponseDTB GetAPinCity(string idcity, object idlocal) {
-            try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcAPinCity,
-                    new object[] {
-                        idlocal, idcity}));
-            }
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
-            }
-        }
-        #endregion
-
-        #region City
-
-        internal ResponseDTB GetCityAlready(string idlocal) {
-            try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcCityAlready,
-                    new object[] {
-                        idlocal }));
-            }
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
-            }
-        }
-        #endregion
-
-        #region DurationTime
-
-        public ResponseDTB GetDurationFlight(string idoriap, string iddestap) {
-            try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetDurationTime,
-                    new object[] {
-                        idoriap, iddestap }));
-            }
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
-            }
-        }
-
-        #endregion
-
         #region Passenger
 
-        public ResponseDTB GetExistPassenger(string tel) {
+        public ResponseDTB GetInfoPassenger(string tel) {
             try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetExistPassenger,
+                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetInfoPassenger,
                     new object[] {
                         tel }));
             }

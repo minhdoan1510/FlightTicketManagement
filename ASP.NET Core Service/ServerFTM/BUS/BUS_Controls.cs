@@ -180,8 +180,6 @@ namespace ServerFTM.BUS
             if (dailyTicket != null && dailyMoney != null) {
                 result.dailyTicket = int.Parse(dailyTicket.Rows[0]["ticketDaily"].ToString());
                 result.dailyMoney = double.Parse(dailyMoney.Rows[0]["moneyDaily"].ToString());
-
-                Debug.WriteLine(result.dailyTicket);
             }
             return result;
         }
@@ -410,66 +408,10 @@ namespace ServerFTM.BUS
 
         #endregion
 
-        #region City_Handle
-
-        public List<City> GetCityAlready(string idlocal) {
-            ResponseDTB response = DAL_Controls.Controls.GetCityAlready(idlocal);
-            if (!response.IsSuccess)
-                return default;
-            DataTable data = response.Result;
-            List<City> reports = new List<City>();
-            for (int i = 0; i < data.Rows.Count; i++) {
-                reports.Add(new City() {
-                    IDCity = data.Rows[i]["IDCity"].ToString(),
-                    CityName = data.Rows[i]["CityName"].ToString()
-                });
-            }
-            return reports;
-        }
-
-        #endregion
-
-        #region Flight_Handle
-
-        public List<DurationTime> GetDurationFlight(string idoriap, string iddestap) {
-            ResponseDTB response = DAL_Controls.Controls.GetDurationFlight(idoriap, iddestap);
-            if (!response.IsSuccess)
-                return default;
-            DataTable data = response.Result;
-            List<DurationTime> result = new List<DurationTime>();
-            for (int i = 0; i < data.Rows.Count; i++) {
-                result.Add(new DurationTime() {
-                    IDDurationTime = data.Rows[i]["IDDuration"].ToString(),
-                    DurTime = data.Rows[i]["Duration"].ToString()
-                });
-            }
-            return result;
-        }
-        #endregion
-
-        #region Airport_Handle
-
-
-        public List<Airport> GetAPinCity(string idcity, string idairport) {
-            ResponseDTB response = DAL_Controls.Controls.GetAPinCity(idairport, idcity);
-            if (!response.IsSuccess)
-                return default;
-            DataTable data = response.Result;
-            List<Airport> reports = new List<Airport>();
-            for (int i = 0; i < data.Rows.Count; i++) {
-                reports.Add(new Airport() {
-                    IDAirport = data.Rows[i]["IDAirport"].ToString(),
-                    AirportName = data.Rows[i]["AirportName"].ToString()
-                });
-            }
-            return reports;
-        }
-
-        #endregion
-
         #region Passenger_Handle
-        public Passenger GetExistPassenger(string tel) {
-            ResponseDTB responseDTB = DAL.Controls.DAL_Controls.Controls.GetExistPassenger(tel);
+
+        public Passenger GetInfoPassenger(string tel) {
+            ResponseDTB responseDTB = DAL.Controls.DAL_Controls.Controls.GetInfoPassenger(tel);
             if (responseDTB.IsSuccess) {
                 Passenger passenger = new Passenger() {
                     IDPassenger = responseDTB.Result.Rows[0]["IDPassenger"].ToString(),
@@ -494,6 +436,7 @@ namespace ServerFTM.BUS
                 return false;
             }
         }
+
         #endregion
 
         #region Utilities
