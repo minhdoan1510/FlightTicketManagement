@@ -12,12 +12,12 @@
 ![N|AddB](/doc/addbet.png)
 ##### 1.5 Danh sách chuyến bay
 ![N|FlightList](/doc/fllist.png)
-##### 1.6 Cài đặt 
-![N|Setting](/doc/setting.png)
 ##### 1.7 Báo cáo doanh thu
 ![N|Report](/doc/report.png)
 ##### 1.8 Bán vé
 ![N|AddTicket](/doc/addtic.png)
+##### 1.6 Cài đặt 
+![N|Setting](/doc/setting.png)
 ### 2. Kĩ thuật trong phần mềm
 ##### 2.1 Xây dựng dữ liệu
 Sử dụng ngôn ngữ phát triển là SQL Server
