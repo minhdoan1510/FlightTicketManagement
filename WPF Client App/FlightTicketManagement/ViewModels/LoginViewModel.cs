@@ -16,6 +16,7 @@ namespace FlightTicketManagement.ViewModels
     public class LoginViewModel : Screen
     {
         private string _username;
+
         private string _password;
         private IEventAggregator _events;
 
@@ -54,15 +55,22 @@ namespace FlightTicketManagement.ViewModels
             }
         }
 
+        bool LoginOnce = false;
         public async Task Login()
         {
-            if(await APIHelper.Instance.Authenticate(Username, Password))
-            {
+            if (LoginOnce == true)
+                return;
+
+            LoginOnce = true;
+            if (await APIHelper.Instance.Authenticate(Username, Password)) {
                 ShellView.Instance.Hide();
 
                 _events.PublishOnUIThread((int)EventModel.LogOnEventModel);
             }
-            else MessageBox.Show("Login failed");
+            else {
+                MessageBox.Show("Login failed");
+                LoginOnce = false;
+            }
         }
 
         public void SwitchToSignup()

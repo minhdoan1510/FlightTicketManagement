@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:FlightTicketManagement"
              xmlns:model="clr-namespace:FlightTicketManagement.ViewModels"
+             xmlns:cal="http://www.caliburnproject.org"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local1="clr-namespace:FlightTicketManagement.Views"
              x:Class="FlightTicketManagement.Views.CreateTicketView"
@@ -17,11 +18,11 @@
              TextOptions.TextRenderingMode="Auto"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}"
+             Loaded="UserControl_Loaded"
              xmlns:localHelper="clr-namespace:FlightTicketManagement.Helper">
 
     <UserControl.Resources>
         <localHelper:BoolisibilityHelper x:Key="NotBoolisibilityHelper" />
-        <model:CalMultiBinding x:Key="CalMultiBinding" />
     </UserControl.Resources>
     <Grid ScrollViewer.CanContentScroll="True"
           ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -29,7 +30,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition  Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -54,13 +55,14 @@
                              Margin="10 10 10 10"
                              materialDesign:HintAssist.Hint="Tên khách hàng"
                              Width="249"
-                             Text="{Binding PassengerName}" />
+                             Name="passengerName" />
                     <TextBox VerticalAlignment="Stretch"
                              Margin="10 10 10 10"
+                             Name="passengerPhone"
                              materialDesign:HintAssist.Hint="Số điện thoại"
                              Width="259"
-                             TextInput="TextBox_TextInput"
-                             Text="{Binding Tel}" />
+                             KeyDown="price_KeyDown"
+                             MaxLength="10" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBox VerticalAlignment="Stretch"
@@ -68,7 +70,9 @@
                              Margin="10 10 10 10"
                              materialDesign:HintAssist.Hint="Số CMND"
                              Width="249"
-                             Text="{Binding IDCard}" />
+                             MaxLength="11"
+                             KeyDown="price_KeyDown"
+                             Name="passengerIdCard" />
                 </StackPanel>
             </StackPanel>
 
@@ -90,8 +94,7 @@
                                 Width="177"
                                 Margin="50 0 0 0"
                                 VerticalAlignment="Bottom"
-                                materialDesign:HintAssist.Hint="Future Date"
-                                SelectedDate="{Binding TimeBooking}" />
+                                materialDesign:HintAssist.Hint="Future Date"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -99,15 +102,23 @@
                                Margin="10 10"
                                VerticalAlignment="Center"
                                Width="65" />
-                    <TextBox x:Name="flightID"
+                    <TextBox x:Name="flightInfo"
                              Margin="50 0 0 0"
                              IsReadOnly="True"
                              VerticalAlignment="Bottom"
                              Text=""
                              Width="154" />
-                    <Button x:Name="flightPicker"
+                    <Button cal:Message.Attach="BookTicket"
                             Content="Chọn"
                             Margin="10 5 0 5" />
+                    <materialDesign:PackIcon Kind="Check"
+                                             VerticalAlignment="Center"
+                                             Margin="20 0 0 0"
+                                             Height="23"
+                                             Width="22"
+                                             Name="flightApprove"
+                                             Visibility="Hidden"
+                                             Foreground="#FF2C9935" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -115,16 +126,24 @@
                                Margin="10 10"
                                VerticalAlignment="Center"
                                Width="65" />
-                    <TextBox x:Name="chairPosition"
+                    <TextBox x:Name="chairInfo"
                              Margin="50 0 0 0"
                              IsReadOnly="True"
                              VerticalAlignment="Bottom"
                              Text=""
                              Width="154" />
                     <Button x:Name="chairPicker" 
+                            Click="chairPicker_Click"
                             Content="Chọn"
-                            Margin="10 5 0 5"
-                            />
+                            Margin="10 5 0 5"/>
+                    <materialDesign:PackIcon Kind="Check"
+                                             VerticalAlignment="Center"
+                                             Margin="20 0 0 0"
+                                             Height="23"
+                                             Width="22"
+                                             Name="seetApprove"
+                                             Visibility="Hidden"
+                                             Foreground="#FF2C9935" />
                 </StackPanel>
             </StackPanel>
 
@@ -137,7 +156,7 @@
 
         <StackPanel Grid.Row="2"
                     Margin="10 10 0 0">
-            <StackPanel Orientation="Horizontal"
+            <!--<StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
                 <TextBlock Text="Thanh toán"
                            FontWeight="DemiBold"
@@ -156,23 +175,23 @@
                         <SolidColorBrush Color="Red" />
                     </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
                 </ToggleButton>
-            </StackPanel>
+            </StackPanel>-->
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
 
                 <TextBlock Text="Thành Tiền"
                            FontWeight="DemiBold"
-                           FontSize="20"
+                           FontSize="25"
                            Margin="0 10 0 0"
                            HorizontalAlignment="Right" />
 
                 <TextBox x:Name="sumMoney"
                          Margin="20 0 0 0"
-                         Width="200"
+                         Width="220"
                          IsReadOnly="True"
                          VerticalAlignment="Bottom"
-                         FontSize="17"
-                         Text="woierj" />
+                         FontSize="20"
+                         Text="0.00" />
 
                 <TextBlock Text="VNĐ"
                            FontSize="17"
@@ -184,22 +203,14 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
                 <Button x:Name="CreateTicket"
-                        IsEnabled="{Binding CompleteTicket}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Height="40"
                         Width="124"
                         materialDesign:ButtonAssist.CornerRadius="15"
                         HorizontalAlignment="Center"
                         Content="Tạo vé"
+                        Click="CreateTicket_Click"
                         Background="ForestGreen">
-                </Button>
-                <Button x:Name="ReloadScene"
-                        Margin="5"
-                        Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-                        ToolTip="Đặt lại"
-                        Background="Gray"
-                        BorderBrush="Gray">
-                    <materialDesign:PackIcon Kind="ReloadAlert" />
                 </Button>
             </StackPanel>
         </StackPanel>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Shared.APIResponse;
+using Library.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
@@ -15,25 +16,47 @@ namespace ServerFTM.Controllers
     [ApiController]
     public class TicketController : ControllerBase
     {
-        [HttpPost("add")]
+        [HttpPost("AddTicket")]
         public async Task<IActionResult> AddTicket([FromBody] Ticket ticket) {
             if (BUS_Controls.Controls.AddTicket(ticket))
-                return new JsonResult(new ApiResponse<object>(true));
+                return new JsonResult(new ApiResponse<object>("Add Ticket Ok"));
             else
-                return new JsonResult(new ApiResponse<object>(false));
+                return new JsonResult(new ApiResponse<object>(200, "Add Ticket Failed"));
         }
 
-        [HttpGet("getprice")]
-        public async Task<IActionResult> GetPrice(string iddur, string idclass) {
+        [HttpPost("AddPassenger")]
+        public async Task<IActionResult> AddPassenger([FromBody] Passenger passenger) {
+            string result = BUS_Controls.Controls.AddPassenger(passenger);
 
-            return new JsonResult(new ApiResponse<int>(BUS_Controls.Controls.GetPrice(iddur, idclass)));
+            if (result != "")
+                return new JsonResult(new ApiResponse<object>(result));
+            else
+                return new JsonResult(new ApiResponse<object>(200, "Add Passenger Failed"));
         }
 
-        [HttpGet("LoadStateChair")]
-        public async Task<IActionResult> LoadStateChair(string time, string id) {
-            DateTime timeDur = new DateTime(Convert.ToInt64(time));
-            List<ChairBooking> chairBookings = BUS_Controls.Controls.GetListChair(id, timeDur);
-            return new JsonResult(new ApiResponse<List<ChairBooking>>(chairBookings));
+        [HttpGet("GetPrice/durationId={durationId}/classId={classId}")]
+        public async Task<IActionResult> GetPrice(string durationId, string classId) {
+            return new JsonResult(new ApiResponse<object>(BUS_Controls.Controls.GetPrice(durationId, classId)));
+        }
+
+        [HttpGet("GetFlightInfo/flightId={id}")]
+        public async Task<IActionResult> GetFlightInfo(string id) {
+            FlightInfo result = BUS_Controls.Controls.GetFlightInfo(id); 
+
+            if (result != null) {
+                return new JsonResult(new ApiResponse<object>(result)); 
+            }
+            return new JsonResult(new ApiResponse<object>(200, "Get Flight Info Failed")); 
+        }
+
+        [HttpPost("GetChairState")]
+        public async Task<IActionResult> GetChairState([FromBody] ChairRequest value) {
+            ChairState result = BUS_Controls.Controls.GetChairState(value); 
+
+            if (result != null) {
+                return new JsonResult(new ApiResponse<object>(result)); 
+            }
+            return new JsonResult(new ApiResponse<object>(200, "Get Chair State Failed")); 
         }
     }
 }

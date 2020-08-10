@@ -102,7 +102,7 @@
                                         cal:Message.Attach="ShowTransit"
                                         Margin="5"
                                         IsEnabled="{Binding IsEnabled}">Details</Button>
-                                <Button x:Name="BookTicket"
+                                <Button cal:Message.Attach="BookTicket"
                                         Margin="5">Book Ticket</Button>
                             </StackPanel>
                         </DataTemplate>

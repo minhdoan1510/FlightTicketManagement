@@ -54,6 +54,7 @@ namespace ServerFTM.DAL.Controls
         #endregion
 
         #region minhtien
+
         public DataTable GetAllFlight() {
             try {
                 return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetAllFlight);
@@ -319,10 +320,10 @@ namespace ServerFTM.DAL.Controls
 
         public DataTable getTicketCountDaily(string date) {
             //try {
-                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcCountTicketDaily,
-                    new object[] {
+            return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcCountTicketDaily,
+                new object[] {
                         date
-                    });
+                });
             //}
             //catch (Exception e) {
             //    return null;
@@ -331,10 +332,10 @@ namespace ServerFTM.DAL.Controls
 
         public DataTable getSumMoneyDaily(string date) {
             //try {
-                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcSumMoneyDaily,
-                    new object[] {
+            return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcSumMoneyDaily,
+                new object[] {
                         date
-                    });
+                });
             //}
             //catch (Exception e) {
             //    return null;
@@ -377,93 +378,95 @@ namespace ServerFTM.DAL.Controls
 
         #region Ticket
 
-        public ResponseDTB AddTicket(Ticket ticket) {
+        public bool AddTicket(Ticket ticket) {
             try {
-                return DataProvider.DataProvider.Instance.ExecuteNonQuery_b(DefineSQLQuery.ProcAddTicket,
-                    new object[] { ticket.IDTicket,
+                return DataProvider.DataProvider.Instance.ExecuteNonQuery(DefineSQLQuery.ProcAddTicket,
+                    new object[] {
+                        ticket.IDTicket,
                         ticket.IDPassenger,
-                    ticket.IDDurationFlight,
-                    ticket.IDClass,
-                    ticket.TimeFlight,
-                    ticket.TimeBooking,
-                    ticket.IsPaid,
-                    ticket.IDChairBooked,
-                    ticket.XChair,
-                    ticket.YChair}) ? ResponseDTBHelper.OkResultDB() : ResponseDTBHelper.FailResultDB(); //@idTicket , @idPassenger , @iDDurationFlight , @classId , @timeflight , @timebooking , @isPaid , @xchair , @ychair";
+                        ticket.IDDurationFlight,
+                        ticket.IDClass,
+                        ticket.TimeFlight,
+                        ticket.TimeBooking,
+                        ticket.IsPaid,
+                        ticket.IDChairBooked,
+                        ticket.XChair,
+                        ticket.YChair
+                    }) > 0;
             }
             catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
+                return false;
             }
         }
 
-
-        public ResponseDTB GetPrice(string iddur, string idclass) {
+        public DataTable GetPrice(string idDuration, string idClass) {
             try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetPriceFight,
-                    new object[] { iddur, idclass }));
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetPriceFlight,
+                    new object[] { 
+                        idDuration, 
+                        idClass 
+                    });
             }
             catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
+                return null;
             }
         }
 
-        internal ResponseDTB GetListChair(string id, DateTime timeDur) {
+        public DataTable GetDefineSizeFlight(string idDurationFlight) {
             try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetListChair,
-                    new object[] { id, timeDur }));
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetDefineSizeFlight,
+                    new object[] {
+                        idDurationFlight
+                    });
             }
             catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
+                return null;
             }
         }
 
-
-        internal ResponseDTB GetDefineChairFlight(string id) {
+        public DataTable GetBookedChair(string idDurationFlight, string date) {
             try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetDefineChairFlight,
-                    new object[] { id }));
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetBookedChair,
+                    new object[] {
+                        idDurationFlight,
+                        date
+                    });
             }
             catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
+                return null;
             }
-
         }
+
+        public DataTable GetFlightInfo(string flightId) {
+            try {
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetFlightInfo,
+                    new object[] {
+                        flightId
+                    });
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+
         #endregion
 
         #region Passenger
 
-        public ResponseDTB GetInfoPassenger(string tel) {
+            public DataTable AddPassenger(Passenger value) {
             try {
-                return ResponseDTBHelper.OkResultDB(DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcGetInfoPassenger,
+                return DataProvider.DataProvider.Instance.ExecuteQuery(DefineSQLQuery.ProcAddPassenger,
                     new object[] {
-                        tel }));
+                        value.IDPassenger,
+                        value.PassengerName,
+                        value.IDCard,
+                        value.Tel
+                    });
             }
             catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
+                return null;
             }
         }
-
-        public ResponseDTB GetAddPassenger(Passenger passenger) {
-            try {
-                return DataProvider.DataProvider.Instance.ExecuteNonQuery_b(DefineSQLQuery.ProcAddPassenger,
-                    new object[] {
-                        passenger.IDPassenger,
-                        passenger.PassengerName,
-                        passenger.IDCard,
-                        passenger.Tel
-                        }) ? ResponseDTBHelper.OkResultDB() : ResponseDTBHelper.FailResultDB(); //--@IDPassenger , @PassengerName , @PassengerIDCard , @PassenserTel
-            }
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return ResponseDTBHelper.ErrorResultDB(e.Message);
-            }
-        }
-
         #endregion
     }
     #endregion

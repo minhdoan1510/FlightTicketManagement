@@ -14,7 +14,8 @@
         AllowsTransparency="True"
         Closed="Window_Closed"
         Title="MainApp"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        cal:Message.Attach="[Event KeyDown] = [Action reloadScreen($eventArgs)]">
     <Window.Resources>
 
     </Window.Resources>
@@ -275,7 +276,6 @@
                     <Grid Grid.Row="1"
                           x:Name="homeGrid">
                         <ContentControl x:Name="ActiveItem" />
-
                     </Grid>
                 </Grid>
 

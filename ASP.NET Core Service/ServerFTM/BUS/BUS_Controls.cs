@@ -371,75 +371,76 @@ namespace ServerFTM.BUS
 
         #region Ticket_Handle
 
-        internal KeyValuePair<int, int> GetDefineChairFlight(string id) {
-            ResponseDTB response = DAL_Controls.Controls.GetDefineChairFlight(id);
-            if (!response.IsSuccess)
-                return default;
-            DataRow data = response.Result?.Rows[0];
-
-            if (data == null)
-                return default;
-            KeyValuePair<int, int> result = new KeyValuePair<int, int>(Convert.ToInt32(data["Width"]), Convert.ToInt32(data["Height"]));
-            return result;
-        }
-
         public bool AddTicket(Ticket ticket) {
-            return DAL.Controls.DAL_Controls.Controls.AddTicket(ticket).IsSuccess;
+            ticket.IDTicket = GenerateID();
+            ticket.IDChairBooked = GenerateID();
+            return DAL.Controls.DAL_Controls.Controls.AddTicket(ticket);
         }
 
-        public int GetPrice(string iddur, string idclass) { 
-            return Convert.ToInt32(DAL_Controls.Controls.GetPrice(iddur, idclass).Result.Rows[0]["Price"]);
+        public double GetPrice(string iddur, string idclass) { 
+            return double.Parse(DAL_Controls.Controls.GetPrice(iddur, idclass).Rows[0]["Price"].ToString());
         }
 
-        public List<ChairBooking> GetListChair(string id, DateTime timeDur) {
-            ResponseDTB response = DAL_Controls.Controls.GetListChair(id, timeDur);
-            if (!response.IsSuccess)
-                return default;
-            DataTable data = response.Result;
-            List<ChairBooking> result = new List<ChairBooking>();
-            for (int i = 0; i < data.Rows.Count; i++) {
-                result.Add(new ChairBooking() {
-                    IDchair = Convert.ToChar(Convert.ToInt32(data.Rows[i]["XPos"]) + 65).ToString() + Convert.ToInt32(data.Rows[i]["YPos"]).ToString(),
-                    Status = ChairStatus.Booked
-                });
+        public FlightInfo GetFlightInfo(string flightId) {
+            FlightInfo result = new FlightInfo();
+
+            DataTable flightInfo = DAL_Controls.Controls.GetFlightInfo(flightId); 
+
+            if (flightInfo != null) {
+                result.durationID = flightInfo.Rows[0]["IDDurationFlight"].ToString();
+                result.flightTime = flightInfo.Rows[0]["Duration"].ToString();
+                result.originID = flightInfo.Rows[0]["originAp"].ToString();
+                result.originName = flightInfo.Rows[0]["originName"].ToString();
+                result.destinationID = flightInfo.Rows[0]["destinationAp"].ToString();
+                result.destinationName = flightInfo.Rows[0]["destinationName"].ToString();
             }
             return result;
         }
+
+        public ChairState GetChairState(ChairRequest value) {
+            ChairState result = new ChairState();
+
+            DataTable sizeFlight = DAL_Controls.Controls.GetDefineSizeFlight(value.durationId);
+            DataTable bookedChair = DAL_Controls.Controls.GetBookedChair(value.durationId, value.date);
+
+            if (sizeFlight != null && bookedChair != null) {
+                result.width = int.Parse(sizeFlight.Rows[0]["width"].ToString());
+                result.height = int.Parse(sizeFlight.Rows[0]["height"].ToString());
+
+                result.chairBooked = new List<ChairPos>();
+
+                foreach(DataRow row in bookedChair.Rows) {
+                    ChairPos booked = new ChairPos();
+                    booked.posX = int.Parse(row["XPos"].ToString());
+                    booked.posY = int.Parse(row["YPos"].ToString());
+
+                    result.chairBooked.Add(booked); 
+                }
+            }
+            return result;
+        } 
 
         #endregion
 
         #region Passenger_Handle
 
-        public Passenger GetInfoPassenger(string tel) {
-            ResponseDTB responseDTB = DAL.Controls.DAL_Controls.Controls.GetInfoPassenger(tel);
-            if (responseDTB.IsSuccess) {
-                Passenger passenger = new Passenger() {
-                    IDPassenger = responseDTB.Result.Rows[0]["IDPassenger"].ToString(),
-                    IDCard = responseDTB.Result.Rows[0]["IDCard"].ToString(),
-                    Tel = responseDTB.Result.Rows[0]["TEL"].ToString(),
-                    PassengerName = responseDTB.Result.Rows[0]["NAME"].ToString(),
-                };
-                return passenger;
-            }
-            else {
-                return null;
-            }
-        }
+        public string AddPassenger(Passenger passenger) {
+            string result = ""; 
 
+            passenger.IDPassenger = GenerateID();
 
-        public bool GetAddPassenger(Passenger passenger) {
-            ResponseDTB responseDTB = DAL.Controls.DAL_Controls.Controls.GetAddPassenger(passenger);
-            if (responseDTB.IsSuccess) {
-                return true;
+            DataTable _passenger = DAL_Controls.Controls.AddPassenger(passenger);
+            
+            if (_passenger != null) {
+                result = _passenger.Rows[0]["PassengerId"].ToString();
             }
-            else {
-                return false;
-            }
+            return result;
         }
 
         #endregion
 
         #region Utilities
+
         string GenerateID()
         {
             StringBuilder builder = new StringBuilder();

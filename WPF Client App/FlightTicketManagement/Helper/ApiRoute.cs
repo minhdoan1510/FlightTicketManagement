@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,14 +39,11 @@ namespace FlightTicketManagement.Helper
         }
         public static class Ticket
         {
-            public const string GetPrice = Base + "/Ticket/getprice";
-            public const string Add = Base + "/Ticket/add";
-            public const string GetAll = Base + "/tickets";
-            public const string Get = Base + "/tickets" + Key;
-            public const string Update = Base + "/tickets" + Key;
-            public const string Delete = Base + "/tickets" + Key;
-            public const string Create = Base + "/tickets";
-            public const string LoadStateChair = Base + "/Ticket/LoadStateChair";
+            public const string AddTicket = Base + "/Ticket/AddTicket";
+            public const string AddPassenger = Base + "/Ticket/AddPassenger";
+            public const string GetPrice = Base + "/Ticket/GetPrice/durationId={durationId}/classId={classId}";
+            public const string GetFlightInfo = Base + "/Ticket/GetFlightInfo/flightId={id}";
+            public const string GetChairState = Base + "/Ticket/GetChairState";
         }
 
         public static class Report

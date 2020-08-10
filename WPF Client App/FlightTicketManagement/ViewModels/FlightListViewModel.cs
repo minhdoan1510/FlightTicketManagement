@@ -191,6 +191,10 @@ namespace FlightTicketManagement.ViewModels
             _events.PublishOnUIThread(new GetTransitEvent(SelectedFlight.Id));
         }
 
+        public void BookTicket() {
+            _events.PublishOnUIThread(new CreateTicketEvent(SelectedFlight.Id)); 
+        }
+
         private async void loadFLightMap() {
             if (SelectedFlight == null)
                 return;

@@ -604,3 +604,5 @@ D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\Views\SettingView.baml
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ShellView.baml
 D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\Views\TransitView.baml
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ChairButton.g.cs
+D:\FlightTicketManagement-master\WPF Client App\FlightTicketManagement\obj\Debug\Views\ChairButton.baml

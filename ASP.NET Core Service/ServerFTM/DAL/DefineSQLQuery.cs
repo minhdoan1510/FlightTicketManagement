@@ -44,13 +44,15 @@ namespace ServerFTM.DAL.Query
 
         public const string ProcAddTicket = "EXECUTE ProcAddTicket @idTicket , @idPassenger , @iDDurationFlight , @classId , @timeflight , @timebooking , @isPaid  , @idChairBooked , @xchair , @ychair";
         public const string ProcAddPassenger = "EXECUTE ProcAddPassenger @IDPassenger , @PassengerName , @PassengerIDCard , @PassenserTel";
-        public const string ProcGetPriceFight = "EXECUTE ProcGetPriceFight @IDDurationFlight , @ClassId";
-        public const string ProcGetInfoPassenger = "EXECUTE GetInfoPassenger @tel";
+        public const string ProcGetPriceFlight = "EXECUTE ProcGetPriceFlight @IDDurationFlight , @ClassId";
+        public const string ProcGetDefineSizeFlight = "EXECUTE ProcGetDefineSizeFlight @IdDurationFlight";
+        public const string ProcGetBookedChair = "EXECUTE ProcGetBookedChair @IdDurationFlight , @date";
+        public const string ProcGetFlightInfo = "EXECUTE ProcGetFlightInfo @flightId"; 
 
         //public const string ProcAPinCity = "EXECUTE ProcAPinCity @idlocal , @idcity";
         //public const string ProcCityAlready = "EXECUTE ProcCityAlready @idlocal";
         //public const string ProcGetDurationTime = "EXECUTE ProcGetDurationTime @idoriap , @iddestap";
-        public const string ProcGetListChair = "EXECUTE ProcGetListChair @id , @timedur ";
-        public const string ProcGetDefineChairFlight = "EXECUTE ProcGetDefineChairFlight @id";
+        //public const string ProcGetListChair = "EXECUTE ProcGetListChair @id , @timedur ";
+        //public const string ProcGetDefineChairFlight = "EXECUTE ProcGetDefineChairFlight @id";
     }
 }

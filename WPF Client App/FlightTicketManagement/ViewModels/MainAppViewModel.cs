@@ -3,14 +3,17 @@ using FlightTicketManagement.EventModels;
 using FlightTicketManagement.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace FlightTicketManagement.ViewModels
 {
-    class MainAppViewModel : Conductor<object>,IHandle<GetTransitEvent>
+    class MainAppViewModel : Conductor<object>, IHandle<GetTransitEvent>, IHandle<CreateTicketEvent>,
+        IHandle<BookTicketEvent>
     {
         private IEventAggregator _events;
         private IWindowManager _windowManager;
@@ -28,6 +31,8 @@ namespace FlightTicketManagement.ViewModels
             Donate,
             Setting
         }
+        Screens currentScreen; 
+
         private string title;
 
         public string Title
@@ -61,9 +66,17 @@ namespace FlightTicketManagement.ViewModels
             ActivateScreen(Screens.DashBoard);
         }
 
+        public void reloadScreen(KeyEventArgs e) {
+            if (e.Key == Key.F5) {
+                ActivateScreen(currentScreen);
+            }
+        }
+
         private void ActivateScreen(Screens screen)
         {
-            switch(screen)
+            currentScreen = screen;
+
+            switch (screen)
             {
                 case Screens.FlightList:
                     ActivateItem(_container.GetInstance<FlightListViewModel>());
@@ -104,6 +117,15 @@ namespace FlightTicketManagement.ViewModels
         public void Handle(GetTransitEvent message)
         {
             _windowManager.ShowWindow(new TransitViewModel(message.FlightId));
+        }
+
+        public void Handle(CreateTicketEvent message) {
+            ActivateScreen(Screens.CreateTicket);
+            CreateTicketView.Instance.flightId = message.flightId;
+        }
+
+        public void Handle(BookTicketEvent message) {
+            ActivateScreen(Screens.FlightList);
         }
 
         public void ShowDashBoardView()
