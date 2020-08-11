@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\Library.csproj": {}
+    "D:\\FlightTicketmanagement\\WPF Client App\\DTO\\Library.csproj": {}
   },
   "projects": {
-    "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\Library.csproj": {
+    "D:\\FlightTicketmanagement\\WPF Client App\\DTO\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\Library.csproj",
+        "projectUniqueName": "D:\\FlightTicketmanagement\\WPF Client App\\DTO\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\Library.csproj",
+        "projectPath": "D:\\FlightTicketmanagement\\WPF Client App\\DTO\\Library.csproj",
         "packagesPath": "C:\\Users\\mingkhoi\\.nuget\\packages\\",
-        "outputPath": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\obj\\",
+        "outputPath": "D:\\FlightTicketmanagement\\WPF Client App\\DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mingkhoi\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -415,7 +415,7 @@ namespace FlightTicketManagement.Views
         public bool checkHorizontalSeat() {
             int value = 0;
 
-            if (!int.TryParse(horizontalSeat.Text, out value) || value < 2) {
+            if (!int.TryParse(horizontalSeat.Text, out value) || value < 10) {
                 this.setDeniedStatus(horizontalSeat_status);
                 return false;
             }
