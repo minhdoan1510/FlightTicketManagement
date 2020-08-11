@@ -101,6 +101,15 @@ namespace FlightTicketManagement.Views
             if (res == null)
                 return;
 
+            if (res.AirportID == PlaneScheduleView.Instance.originId ||
+                res.AirportID == PlaneScheduleView.Instance.destinationId) {
+                MessageBox.Show("Transit không được trùng với điểm khởi hành/kết thúc !");
+
+                (sender as ComboBox).SelectedValue = null;
+                (sender as ComboBox).SelectedIndex = -1;
+                return;
+            }
+
             transitData.airportID = res.AirportID;
             transitData.airportName = res.AirportName;
         }

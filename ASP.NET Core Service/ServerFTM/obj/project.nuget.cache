@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "To3oU+7SePywytwCt/er7UGxlaa3cpivTW1JeTclTkNUTTmnCe+0eIerLKD6D5P+EGhYkMQ4Z9ve4Gps3iOSqw==",
+  "dgSpecHash": "MLd5Ou5NlVf5VthgZlHciNGOyuNJ2Ofn6ZLPQYhLJNor5qZreZ2HvBI168Wkl5xPQKsiuFXB4jg93EBB6AGhzw==",
   "success": true,
   "projectFilePath": "D:\\FlightTicketManagement-master\\ASP.NET Core Service\\ServerFTM\\ServerFTM.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\docker.dotnet\\3.125.2\\docker.dotnet.3.125.2.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -60,6 +61,7 @@
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.netframework.analyzers\\3.0.0\\microsoft.netframework.analyzers.3.0.0.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
@@ -117,7 +119,8 @@
     "C:\\Users\\mingkhoi\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
-    "C:\\Users\\mingkhoi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.1\\system.threading.tasks.extensions.4.5.1.nupkg.sha512"
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.1\\system.threading.tasks.extensions.4.5.1.nupkg.sha512",
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\system.valuetuple\\4.4.0\\system.valuetuple.4.4.0.nupkg.sha512"
   ],
   "logs": []
 }

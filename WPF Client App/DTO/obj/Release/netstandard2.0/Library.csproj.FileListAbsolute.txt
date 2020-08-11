@@ -7,3 +7,12 @@ D:\check master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.AssemblyIn
 D:\check master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.csproj.CoreCompileInputs.cache
 D:\check master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.dll
 D:\check master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.pdb
+D:\FlightTicketManagement-master\WPF Client App\DTO\bin\Release\netstandard2.0\Library.deps.json
+D:\FlightTicketManagement-master\WPF Client App\DTO\bin\Release\netstandard2.0\Library.dll
+D:\FlightTicketManagement-master\WPF Client App\DTO\bin\Release\netstandard2.0\Library.pdb
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.csprojAssemblyReference.cache
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.AssemblyInfoInputs.cache
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.AssemblyInfo.cs
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.csproj.CoreCompileInputs.cache
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.dll
+D:\FlightTicketManagement-master\WPF Client App\DTO\obj\Release\netstandard2.0\Library.pdb

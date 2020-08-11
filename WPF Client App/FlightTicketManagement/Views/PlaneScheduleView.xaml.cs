@@ -20,6 +20,7 @@ using ServerFTM.Models;
 using FlightTicketManagement.Helper;
 using Library.Models;
 using FlightTicketManagement.Views;
+using System.Xaml;
 
 public class FlightBusControl
 {
@@ -116,6 +117,8 @@ namespace FlightTicketManagement.Views
         Flight flightToCreate = new Flight();
 
         List<Flight> flightListForDataGrid { get; set; }
+
+        public string originId, destinationId;
 
         public static PlaneScheduleView Instance;
 
@@ -321,11 +324,13 @@ namespace FlightTicketManagement.Views
 
             if ((sender as ComboBox).Name == "origionalAP") {
                 flightToCreate.OriginApID = res.AirportID;
+                this.originId = res.AirportID;
 
                 Console.WriteLine("origin: " + res.AirportID);
             }
             else if ((sender as ComboBox).Name == "destinationAP") {
                 flightToCreate.DestinationApID = res.AirportID;
+                this.destinationId = res.AirportID;
 
                 Console.WriteLine("destination: " + res.AirportID);
             }

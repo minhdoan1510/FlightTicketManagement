@@ -72,10 +72,12 @@ namespace FlightTicketManagement.Views
 
             if (res != null) {
                 if ((sender as ComboBox).Name == "origionalAP") {
+                    PlaneScheduleView.Instance.originId = res.AirportID;
                     updateFlight.OriginApID = res.AirportID;
                     updateFlight.OriginAP = res.AirportName;
                 }
                 else if ((sender as ComboBox).Name == "destinationAP") {
+                    PlaneScheduleView.Instance.destinationId = res.AirportID;
                     updateFlight.DestinationApID = res.AirportID;
                     updateFlight.DestinationAP = res.AirportName;
                 }

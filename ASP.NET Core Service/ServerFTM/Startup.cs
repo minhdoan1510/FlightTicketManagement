@@ -17,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using ServerFTM.JwtSetting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace ServerFTM
 {
@@ -36,8 +37,11 @@ namespace ServerFTM
                {
                    options.JsonSerializerOptions.IgnoreNullValues = true;
                });
-
-            
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
 
             var jwtSettings = new JwtSettings();
             Configuration.Bind(key: nameof(jwtSettings), jwtSettings);
@@ -104,6 +108,8 @@ namespace ServerFTM
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

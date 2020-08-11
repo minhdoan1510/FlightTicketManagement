@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerFTM", "ServerFTM\Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Shared", "API.Shared\API.Shared.csproj", "{029809B2-4CAF-4AD2-BBFA-1EC7DEC1C415}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "..\WPF Client App\DTO\Library.csproj", "{624E0355-A242-4C3F-8A49-225262BBD8C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "DTO\Library.csproj", "{F8C5E8FB-2E59-439C-A88D-90289E5A2B1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{029809B2-4CAF-4AD2-BBFA-1EC7DEC1C415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{029809B2-4CAF-4AD2-BBFA-1EC7DEC1C415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{029809B2-4CAF-4AD2-BBFA-1EC7DEC1C415}.Release|Any CPU.Build.0 = Release|Any CPU
-		{624E0355-A242-4C3F-8A49-225262BBD8C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{624E0355-A242-4C3F-8A49-225262BBD8C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{624E0355-A242-4C3F-8A49-225262BBD8C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{624E0355-A242-4C3F-8A49-225262BBD8C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8C5E8FB-2E59-439C-A88D-90289E5A2B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8C5E8FB-2E59-439C-A88D-90289E5A2B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8C5E8FB-2E59-439C-A88D-90289E5A2B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8C5E8FB-2E59-439C-A88D-90289E5A2B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

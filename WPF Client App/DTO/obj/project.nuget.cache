@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "coMp4yKfsog762ONXrR+RFltKgkNyKUejCOqTkYMG1F7UMAH0phR3fbewBy5NeSh+mnN1+kk8FbAXxtHwNCiRQ==",
+  "dgSpecHash": "LItc78KkxKJtD5UmBqsLY48xlQB89JVyK5ngPwgh0DJLOEIxCVHibWk1KF8MnJ72/WYFgV3crGJ/Op75d7ptRA==",
   "success": true,
   "projectFilePath": "D:\\FlightTicketManagement-master\\WPF Client App\\DTO\\Library.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\docker.dotnet\\3.125.2\\docker.dotnet.3.125.2.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
@@ -14,7 +15,8 @@
     "C:\\Users\\mingkhoi\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.7.1\\system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\system.text.encodings.web\\4.7.1\\system.text.encodings.web.4.7.1.nupkg.sha512",
     "C:\\Users\\mingkhoi\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\mingkhoi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\mingkhoi\\.nuget\\packages\\system.valuetuple\\4.4.0\\system.valuetuple.4.4.0.nupkg.sha512"
   ],
   "logs": []
 }

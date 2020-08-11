@@ -222,9 +222,6 @@ D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcor
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csprojAssemblyReference.cache
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.AssemblyInfoInputs.cache
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.AssemblyInfo.cs
-D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csproj.CoreCompileInputs.cache
-D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cs
-D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cache
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.RazorTargetAssemblyInfo.cache
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csproj.CopyComplete
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\staticwebassets\ServerFTM.StaticWebAssets.Manifest.cache
@@ -398,3 +395,7 @@ D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcor
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Library.dll
 D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Library.pdb
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\bin\Debug\netcoreapp3.1\Docker.DotNet.dll
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.csproj.CoreCompileInputs.cache
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cs
+D:\FlightTicketManagement-master\ASP.NET Core Service\ServerFTM\obj\Debug\netcoreapp3.1\ServerFTM.MvcApplicationPartsAssemblyInfo.cache

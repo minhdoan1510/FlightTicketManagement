@@ -155,7 +155,7 @@
                         Grid.Row="1" />
 
         <StackPanel Grid.Row="2"
-                    Margin="10 10 0 0">
+                    Margin="5 45 0 0">
             <!--<StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
                 <TextBlock Text="Thanh toán"
